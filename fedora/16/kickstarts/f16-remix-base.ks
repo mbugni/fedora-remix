@@ -33,6 +33,7 @@ repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?rep
 
 -PackageKit*
 -bash-completion*
+dejavu-sans-*
 hunspell-it
 liberation-mono-fonts
 liberation-s*-fonts

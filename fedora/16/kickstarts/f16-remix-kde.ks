@@ -112,7 +112,7 @@ sed -i 's/#DefaultUser=johndoe/DefaultUser=liveuser/' /etc/kde/kdm/kdmrc
 mkdir -p /home/liveuser/.kde/share/config/
 cat > /home/liveuser/.kde/share/config/kickoffrc << MENU_EOF
 [Favorites]
-FavoriteURLs=/usr/share/applications/kde4/konqbrowser.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/liveinst.desktop
+FavoriteURLs=/usr/share/applications/mozilla-firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/liveinst.desktop
 MENU_EOF
 
 # show liveinst.desktop on desktop and in menu
@@ -189,7 +189,7 @@ sed -i 's/kde4-konqueror.desktop/mozilla-firefox.desktop/g' /usr/local/share/app
 # Firefox as default browser
 sed -i '/^\[General\]$/a BrowserApplication[$e]=mozilla-firefox.desktop' /usr/share/kde-settings/kde-profile/default/share/config/kdeglobals
 
-# oxygen-gtk3 as default theme
+# oxygen-gtk3 as default gtk3 theme
 if [ ! -d "/etc/skel/.config/gtk-3.0" ]; then
   mkdir -p /etc/skel/.config/gtk-3.0
 fi

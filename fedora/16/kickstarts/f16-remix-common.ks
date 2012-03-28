@@ -15,10 +15,11 @@ rpmfusion-free-release
 rpmfusion-nonfree-release
 
 # Drivers
-broadcom-wl
+# broadcom-wl
 
 # Multimedia
 gstreamer-ffmpeg
+gstreamer-plugins-bad
 gstreamer-plugins-bad-nonfree
 gstreamer-plugins-ugly
 
@@ -83,7 +84,7 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 
 EOF_FONTS
 
-cat > /etc/profile.d/remix-prompt.sh << EOF_PROMPT
+cat > /etc/profile.d/remix-shell.sh << EOF_SHELL
 ## Colored prompt
 if [ -n "\$PS1" ]; then
         if [ \${UID} -eq 0 ]; then
@@ -92,9 +93,18 @@ if [ -n "\$PS1" ]; then
                 PS1='\[\e[32m\]\u@\h \[\e[33m\]\W\[\e[0m\]\\$ '
         fi
 fi
-EOF_PROMPT
+EOF_SHELL
 
-# Disable ISCSI service
+# OpenPrinting/Database/DriverPackages based on the LSB 3.2
+cat > /etc/yum.repos.d/openprinting-drivers.repo << OPENPRINTING_EOF
+[openprinting-drivers]
+name=OpenPrinting LSB-based driver packages
+baseurl=http://www.openprinting.org/download/printdriver/RPMS
+enabled=1
+gpgcheck=0
+OPENPRINTING_EOF
+
+# Disable ISCSI service: long time-out on boot
 systemctl disable iscsi.service
 systemctl disable iscsid.service
 
