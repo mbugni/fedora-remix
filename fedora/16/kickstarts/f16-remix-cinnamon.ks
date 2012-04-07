@@ -2,7 +2,7 @@
 
 %include f16-remix-common.ks
 
-part / --size 4096
+part / --size 3584
 
 repo --name=fedora-cinnamon --baseurl=http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-$releasever/$basearch/
 
@@ -21,8 +21,7 @@ cinnamon
 control-center
 notification-daemon
 NetworkManager-gnome 
-PackageKit-gtk-module
-PackageKit-gtk3-module
+PackageKit-gtk*
 avahi    
 brasero-nautilus
 cheese
@@ -121,7 +120,7 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
   # need to move it to anaconda.desktop to make shell happy
   mv /usr/share/applications/liveinst.desktop /usr/share/applications/anaconda.desktop
 
-  cat >> /usr/share/glib-2.0/schemas/org.cinnamon.remix.gschema.override << FOE
+  cat > /usr/share/glib-2.0/schemas/org.cinnamon.remix.gschema.override << FOE
 [org.cinnamon]
 favorite-apps=['cinnamon-settings.desktop', 'mozilla-firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop', 'anaconda.desktop']
 FOE
@@ -151,6 +150,8 @@ EOF
 
 %post
 
+echo -e "\n**********\nPOST CINNAMON\n**********\n"
+
 # override default gnome settings
 cat >> /usr/share/glib-2.0/schemas/org.gnome.remix.gschema.override << GNOME_EOF
 [org.gnome.desktop.interface]
@@ -165,17 +166,29 @@ show-desktop-icons=true
 font='Liberation Sans Bold 9'
 GNOME_EOF
 
-glib-compile-schemas /usr/share/glib-2.0/schemas
+# override default cinnamon settings
+cat > /usr/share/glib-2.0/schemas/org.cinnamon.remix.gschema.override << CINNAMON_EOF
+[org.cinnamon]
+favorite-apps=['cinnamon-settings.desktop', 'mozilla-firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']
+CINNAMON_EOF
 
 # window title font
 gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --type string --set /apps/metacity/general/titlebar_font "Liberation Sans Bold 9"
+
+glib-compile-schemas /usr/share/glib-2.0/schemas
 
 %end
 
 %post --nochroot
 
+echo -e "\n**********\nPOST NOCHROOT CINNAMON\n**********\n"
+
 # crate cinnamon repo
-curl -s http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-cinnamon.repo -o $INSTALL_ROOT/etc/yum.repos.d/fedora-cinnamon.repo
+if [ -e /etc/yum.repos.d/fedora-cinnamon.repo ] ; then
+    cp /etc/yum.repos.d/fedora-cinnamon.repo $INSTALL_ROOT/etc/yum.repos.d/fedora-cinnamon.repo
+else
+    curl -s http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-cinnamon.repo -o $INSTALL_ROOT/etc/yum.repos.d/fedora-cinnamon.repo
+fi
 
 %end
 

@@ -2,7 +2,7 @@
 
 %include f16-remix-common.ks
 
-part / --size 4096 --fstype ext4
+part / --size 3584
 
 %packages
 
@@ -21,21 +21,19 @@ k3b
 kamoso
 kcm-gtk
 kcm_touchpad
-kdebase
+kde-baseapps
+kde-l10n-Italian
+kdeplasma-addons
+kde-plasma-networkmanagement
+kde-settings-pulseaudio
 kdegraphics
 kdemultimedia-kmix
 kdemultimedia-kscd
 kdepim
 kdeutils
 kdm
-kde-l10n-Italian
-kdeplasma-addons
-kde-plasma-networkmanagement
-kde-settings-pulseaudio
 kipi-plugins
-konq-plugins
-oxygen-gtk
-oxygen-gtk3
+oxygen-gtk*
 phonon-backend-gstreamer
 xsettings-kde
 xterm
@@ -176,9 +174,11 @@ EOF
 %end
 
 
+## REMIX kde
+
 %post
 
-## REMIX KDE modifications
+echo -e "\n**********\nPOST KDE\n**********\n"
 
 # Default apps: vlc, firefox
 cp /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list /usr/local/share/applications/mimeapps.list
@@ -194,7 +194,7 @@ if [ ! -d "/etc/skel/.config/gtk-3.0" ]; then
   mkdir -p /etc/skel/.config/gtk-3.0
 fi
 
-cat > /etc/skel/.config/gtk-3.0/settings.ini << EOF_SETTINGS_GTK3
+cat >> /etc/skel/.config/gtk-3.0/settings.ini << EOF_SETTINGS_GTK3
 [Settings]
 gtk-theme-name = oxygen-gtk
 EOF_SETTINGS_GTK3

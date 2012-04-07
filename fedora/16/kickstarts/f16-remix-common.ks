@@ -18,6 +18,7 @@ rpmfusion-nonfree-release
 # broadcom-wl
 
 # Multimedia
+PackageKit-gstreamer-plugin
 gstreamer-ffmpeg
 gstreamer-plugins-bad
 gstreamer-plugins-bad-nonfree
@@ -27,6 +28,13 @@ gstreamer-plugins-ugly
 
 
 %post
+
+echo -e "\n**********\nPOST COMMON\n**********\n"
+
+# Import RPM-GPG keys
+for key in $(ls /etc/pki/rpm-gpg/RPM-GPG-KEY-*fedora-*-primary) ; do
+   rpmkeys --import $key
+done
 
 # Antialiasing by default
 ln -sf /etc/fonts/conf.avail/10-autohint.conf /etc/fonts/conf.d/

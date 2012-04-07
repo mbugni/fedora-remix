@@ -31,7 +31,7 @@ repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?rep
 @hardware-support
 @printing
 
--PackageKit*
+-PackageKit-command*
 -bash-completion*
 dejavu-sans-*
 hunspell-it
