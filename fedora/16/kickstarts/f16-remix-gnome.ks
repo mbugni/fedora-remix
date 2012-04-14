@@ -1,4 +1,4 @@
-## fedora-remix-cinnamon.ks
+## fedora-remix-gnome.ks
 
 %include f16-remix-common.ks
 
@@ -8,12 +8,19 @@ repo --name=fedora-cinnamon --baseurl=http://repos.fedorapeople.org/repos/leigh1
 
 %packages
 @graphical-internet
+# @sound-and-video
+@gnome-desktop --nodefaults
+# @office
 
 -abrt*
 -at-*
+-caribou*
+-deja-dup*
+-gnome-games*
 -icedtea*
+-orca*
 
-### @gnome-desktop
+### @gnome-desktop defaults 
 control-center
 notification-daemon
 NetworkManager-gnome 
@@ -78,6 +85,7 @@ ffmpegthumbnailer
 gnash-plugin
 
 ### Tools
+gnome-tweak-tool
 gparted
 
 # FIXME; apparently the glibc maintainers dislike this, but it got put into the
@@ -120,7 +128,11 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
   # need to move it to anaconda.desktop to make shell happy
   mv /usr/share/applications/liveinst.desktop /usr/share/applications/anaconda.desktop
 
-  cat > /usr/share/glib-2.0/schemas/org.cinnamon.remix.gschema.override << FOE
+  cat > /usr/share/glib-2.0/schemas/org.gnome.shell.remix.gschema.override << FOE
+[org.gnome.shell]
+favorite-apps=['mozilla-firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop', 'anaconda.desktop']
+FOE
+ cat > /usr/share/glib-2.0/schemas/org.cinnamon.remix.gschema.override << FOE
 [org.cinnamon]
 favorite-apps=['cinnamon-settings.desktop', 'mozilla-firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop', 'anaconda.desktop']
 FOE
@@ -146,11 +158,11 @@ EOF
 %end
 
 
-## REMIX cinnamon
+## REMIX gnome
 
 %post
 
-echo -e "\n**********\nPOST CINNAMON\n**********\n"
+echo -e "\n**********\nPOST GNOME\n**********\n"
 
 # override default gnome settings
 cat >> /usr/share/glib-2.0/schemas/org.gnome.remix.gschema.override << GNOME_EOF
@@ -165,6 +177,12 @@ show-desktop-icons=true
 [org.gnome.nautilus.desktop]
 font='Liberation Sans Bold 9'
 GNOME_EOF
+
+# override default gnome-shell settings
+cat > /usr/share/glib-2.0/schemas/org.gnome.shell.remix.gschema.override << GNOME_SHELL_EOF
+[org.gnome.shell]
+favorite-apps=['mozilla-firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']
+GNOME_SHELL_EOF
 
 # override default cinnamon settings
 cat > /usr/share/glib-2.0/schemas/org.cinnamon.remix.gschema.override << CINNAMON_EOF
@@ -181,7 +199,7 @@ glib-compile-schemas /usr/share/glib-2.0/schemas
 
 %post --nochroot
 
-echo -e "\n**********\nPOST NOCHROOT CINNAMON\n**********\n"
+echo -e "\n**********\nPOST NOCHROOT GNOME\n**********\n"
 
 # create cinnamon repo
 if [ -e /etc/yum.repos.d/fedora-cinnamon.repo ] ; then
