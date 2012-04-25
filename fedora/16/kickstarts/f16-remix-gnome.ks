@@ -176,6 +176,10 @@ show-desktop-icons=true
 
 [org.gnome.nautilus.desktop]
 font='Liberation Sans Bold 9'
+
+[org.gnome.settings-daemon.plugins.updates]
+auto-update-type='none'
+frequency-get-updates=0
 GNOME_EOF
 
 # override default gnome-shell settings
