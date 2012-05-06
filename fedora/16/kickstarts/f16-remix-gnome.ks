@@ -4,14 +4,9 @@
 
 part / --size 3584
 
-repo --name=fedora-cinnamon --baseurl=http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-$releasever/$basearch/
-
 %packages
-@graphical-internet
-# @sound-and-video
-@gnome-desktop --nodefaults
-# @office
 
+# Unwanted stuff
 -abrt*
 -at-*
 -caribou*
@@ -19,6 +14,8 @@ repo --name=fedora-cinnamon --baseurl=http://repos.fedorapeople.org/repos/leigh1
 -gnome-games*
 -icedtea*
 -orca*
+
+@gnome-desktop --nodefaults
 
 ### @gnome-desktop defaults 
 control-center
@@ -70,15 +67,21 @@ vino
 xdg-user-dirs-gtk
 yelp
 
+### @graphical-internet
+firefox
+empathy
+thunderbird  
+transmission-gtk
+# evolution
+# evolution-NetworkManager  
+# evolution-help  
+
 ### @sound-and-video
 alsa-plugins-pulseaudio
 pavucontrol
 rhythmbox
 totem-mozplugin
 totem-nautilus
-
-### Cinnamon
-cinnamon
 
 ### Multimedia
 ffmpegthumbnailer
@@ -130,11 +133,7 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
 
   cat > /usr/share/glib-2.0/schemas/org.gnome.shell.remix.gschema.override << FOE
 [org.gnome.shell]
-favorite-apps=['mozilla-firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop', 'anaconda.desktop']
-FOE
- cat > /usr/share/glib-2.0/schemas/org.cinnamon.remix.gschema.override << FOE
-[org.cinnamon]
-favorite-apps=['cinnamon-settings.desktop', 'mozilla-firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop', 'anaconda.desktop']
+favorite-apps=['gnome-tweak-tool.desktop','mozilla-firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop', 'anaconda.desktop']
 FOE
 fi
 
@@ -146,6 +145,7 @@ cat >> /etc/gdm/custom.conf << FOE
 [daemon]
 AutomaticLoginEnable=True
 AutomaticLogin=liveuser
+DefaultSession=gnome.desktop
 FOE
 
 # Turn off PackageKit-command-not-found while uninstalled
@@ -171,9 +171,6 @@ font-name='Liberation Sans 10'
 document-font-name='Liberation Sans 10'
 monospace-font-name='Liberation Mono 10'
 
-[org.gnome.desktop.background]
-show-desktop-icons=true
-
 [org.gnome.nautilus.desktop]
 font='Liberation Sans Bold 9'
 
@@ -185,14 +182,8 @@ GNOME_EOF
 # override default gnome-shell settings
 cat > /usr/share/glib-2.0/schemas/org.gnome.shell.remix.gschema.override << GNOME_SHELL_EOF
 [org.gnome.shell]
-favorite-apps=['mozilla-firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']
+favorite-apps=['gnome-tweak-tool.desktop','mozilla-firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']
 GNOME_SHELL_EOF
-
-# override default cinnamon settings
-cat > /usr/share/glib-2.0/schemas/org.cinnamon.remix.gschema.override << CINNAMON_EOF
-[org.cinnamon]
-favorite-apps=['cinnamon-settings.desktop', 'mozilla-firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']
-CINNAMON_EOF
 
 # window title font
 gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --type string --set /apps/metacity/general/titlebar_font "Liberation Sans Bold 9"
@@ -204,13 +195,6 @@ glib-compile-schemas /usr/share/glib-2.0/schemas
 %post --nochroot
 
 echo -e "\n**********\nPOST NOCHROOT GNOME\n**********\n"
-
-# create cinnamon repo
-if [ -e /etc/yum.repos.d/fedora-cinnamon.repo ] ; then
-    cp /etc/yum.repos.d/fedora-cinnamon.repo $INSTALL_ROOT/etc/yum.repos.d/fedora-cinnamon.repo
-else
-    curl -s http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-cinnamon.repo -o $INSTALL_ROOT/etc/yum.repos.d/fedora-cinnamon.repo
-fi
 
 %end
 

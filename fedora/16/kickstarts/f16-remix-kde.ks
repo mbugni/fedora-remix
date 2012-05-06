@@ -8,9 +8,12 @@ part / --size 3584
 
 ### The KDE-Desktop
 
-@kde-desktop --nodefaults
+# Unwanted stuff
 -abrt*
 -gnome*
+-kdepim*
+
+@kde-desktop --nodefaults
 amarok
 apper
 bluedevil
@@ -30,7 +33,6 @@ kdegraphics
 kdemultimedia-kmix
 kdemultimedia-kscd
 kdenetwork-kopete
-kdepim
 kdeutils
 kdm
 kipi-plugins
@@ -42,6 +44,7 @@ xterm
 
 ### Internet
 firefox
+thunderbird
 
 ### Multimedia
 gnash-plugin
@@ -183,38 +186,48 @@ EOF
 echo -e "\n**********\nPOST KDE\n**********\n"
 
 # Default apps: vlc, firefox
-cp /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list /usr/local/share/applications/mimeapps.list
-sed -i 's/Default\ Applications/Added\ Associations/g' /usr/local/share/applications/mimeapps.list
-sed -i 's/kde4-dragonplayer.desktop/vlc.desktop/g' /usr/local/share/applications/mimeapps.list
-sed -i 's/kde4-konqueror.desktop/mozilla-firefox.desktop/g' /usr/local/share/applications/mimeapps.list
+echo '[Added Associations]' > /usr/local/share/applications/mimeapps.list
+grep kde4-dragonplayer.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
+	| sed 's/kde4-dragonplayer.desktop/vlc.desktop/g' >> /usr/local/share/applications/mimeapps.list
+grep kde4-konqueror.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
+	| sed 's/kde4-konqueror.desktop/mozilla-firefox.desktop/g' >> /usr/local/share/applications/mimeapps.list
 
 # Firefox as default browser
 sed -i '/^\[General\]$/a BrowserApplication[$e]=mozilla-firefox.desktop' /usr/share/kde-settings/kde-profile/default/share/config/kdeglobals
 
-# Some deafault settings
-if [ ! -d "/etc/skel/.kde/share/config" ]; then
-  mkdir -p /etc/skel/.kde/share/config
-fi
-
-# Disable the update notifications of apper 
-cat > /etc/skel/.kde/share/config/apper << APPER_EOF
-[CheckUpdate]
-autoUpdate=0
-interval=0
-APPER_EOF
+# Disable the update notifications of apper
+sed -i 's/interval=.*/interval=0/g' /usr/share/kde-settings/kde-profile/default/share/config/apper
 
 # Add defaults to favorites menu
-cat > /etc/skel/.kde/share/config/kickoffrc << KICKOFF_EOF
+cat > /usr/share/kde-settings/kde-profile/default/share/config/kickoffrc << KICKOFF_EOF
 [Favorites]
 FavoriteURLs=/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/mozilla-firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/konsole.desktop
 KICKOFF_EOF
+
+# Avoid konqueror preload
+cat >> /usr/share/kde-settings/kde-profile/default/share/config/konquerorrc << KONQUEROR_EOF
+
+[Reusing]
+AlwaysHavePreloaded=false
+MaxPreloadCount=0
+PreloadOnStartup=false
+KONQUEROR_EOF
+
+# Set Thunderbird as default email client
+cat > /usr/share/kde-settings/kde-profile/default/share/config/emaildefaults << EMAILDEFAULTS_EOF
+[Defaults]
+Profile=Default
+
+[PROFILE_Default]
+EmailClient[$e]=thunderbird
+TerminalClient=false
+EMAILDEFAULTS_EOF
 
 # oxygen-gtk3 as default gtk3 theme
 if [ ! -d "/etc/skel/.config/gtk-3.0" ]; then
   mkdir -p /etc/skel/.config/gtk-3.0
 fi
-
-cat >> /etc/skel/.config/gtk-3.0/settings.ini << EOF_SETTINGS_GTK3
+cat > /etc/skel/.config/gtk-3.0/settings.ini << EOF_SETTINGS_GTK3
 [Settings]
 gtk-theme-name = oxygen-gtk
 EOF_SETTINGS_GTK3

@@ -7,13 +7,21 @@ part / --size 3584
 repo --name=fedora-cinnamon --baseurl=http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-$releasever/$basearch/
 
 %packages
-@graphical-internet
 
+# Unwanted stuff
 -abrt*
 -at-*
+-caribou*
+-deja-dup*
+-gnome-games*
 -icedtea*
+-orca*
 
-### @gnome-desktop
+### Cinnamon
+metacity
+cinnamon
+
+### @gnome-desktop defaults 
 control-center
 notification-daemon
 NetworkManager-gnome 
@@ -63,15 +71,18 @@ vino
 xdg-user-dirs-gtk
 yelp
 
+### @graphical-internet
+firefox
+pidgin
+thunderbird  
+transmission-gtk
+
 ### @sound-and-video
 alsa-plugins-pulseaudio
 pavucontrol
 rhythmbox
 totem-mozplugin
 totem-nautilus
-
-### Cinnamon
-cinnamon
 
 ### Multimedia
 ffmpegthumbnailer
@@ -134,6 +145,7 @@ cat >> /etc/gdm/custom.conf << FOE
 [daemon]
 AutomaticLoginEnable=True
 AutomaticLogin=liveuser
+DefaultSession=cinnamon.desktop
 FOE
 
 # Turn off PackageKit-command-not-found while uninstalled
@@ -164,6 +176,10 @@ show-desktop-icons=true
 
 [org.gnome.nautilus.desktop]
 font='Liberation Sans Bold 9'
+
+[org.gnome.settings-daemon.plugins.updates]
+auto-update-type='none'
+frequency-get-updates=0
 GNOME_EOF
 
 # override default cinnamon settings

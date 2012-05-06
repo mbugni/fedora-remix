@@ -24,6 +24,10 @@ gstreamer-plugins-bad
 gstreamer-plugins-bad-nonfree
 gstreamer-plugins-ugly
 
+# Tools
+yum-plugin-fastestmirror
+unrar
+
 %end
 
 
