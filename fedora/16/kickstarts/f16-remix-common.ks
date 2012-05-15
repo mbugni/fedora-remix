@@ -2,17 +2,21 @@
 
 %include f16-remix-base.ks
 
+# Extra repositories
 repo --name=rpmfusion-free --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch
 repo --name=rpmfusion-free-updates --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch
 repo --name=rpmfusion-nonfree --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=nonfree-fedora-$releasever&arch=$basearch
 repo --name=rpmfusion-nonfree-updates --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=nonfree-fedora-updates-released-$releasever&arch=$basearch
-
+repo --name=livna --baseurl=http://rpm.livna.org/repo/$releasever/$basearch/
 
 %packages
 
 # RPM Fusion repositories
 rpmfusion-free-release
 rpmfusion-nonfree-release
+
+# Livna repositories
+livna-release
 
 # Drivers
 # broadcom-wl
@@ -23,6 +27,7 @@ gstreamer-ffmpeg
 gstreamer-plugins-bad
 gstreamer-plugins-bad-nonfree
 gstreamer-plugins-ugly
+libdvdcss
 
 # Tools
 yum-plugin-fastestmirror
@@ -36,7 +41,7 @@ unrar
 echo -e "\n**********\nPOST COMMON\n**********\n"
 
 # Import RPM-GPG keys
-for key in $(ls /etc/pki/rpm-gpg/RPM-GPG-KEY-*fedora-*-primary) ; do
+for key in $(ls /etc/pki/rpm-gpg/RPM-GPG-KEY-*) ; do
    rpmkeys --import $key
 done
 

@@ -133,6 +133,7 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
 
   cat > /usr/share/glib-2.0/schemas/org.cinnamon.remix.gschema.override << FOE
 [org.cinnamon]
+desktop-effects=false
 favorite-apps=['cinnamon-settings.desktop', 'mozilla-firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop', 'anaconda.desktop']
 FOE
 fi
@@ -185,6 +186,7 @@ GNOME_EOF
 # override default cinnamon settings
 cat > /usr/share/glib-2.0/schemas/org.cinnamon.remix.gschema.override << CINNAMON_EOF
 [org.cinnamon]
+desktop-effects=false
 favorite-apps=['cinnamon-settings.desktop', 'mozilla-firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']
 CINNAMON_EOF
 

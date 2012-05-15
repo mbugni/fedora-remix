@@ -49,6 +49,7 @@ thunderbird
 ### Multimedia
 gnash-plugin
 vlc
+npapi-vlc
 
 ## System Tools
 kde-partitionmanager
