@@ -17,8 +17,9 @@ repo --name=fedora-cinnamon --baseurl=http://repos.fedorapeople.org/repos/leigh1
 -icedtea*
 -orca*
 
-### Cinnamon
+### Cinnamon desktop
 metacity
+gnome-shell
 cinnamon
 
 ### @gnome-desktop defaults 
@@ -54,6 +55,7 @@ gvfs-fuse
 gvfs-gphoto2
 gvfs-smb
 ibus
+libgnomeui
 libproxy-mozjs
 libsane-hpaio
 mousetweaks
@@ -73,7 +75,7 @@ yelp
 
 ### @graphical-internet
 firefox
-empathy
+pidgin
 thunderbird  
 transmission-gtk
 
@@ -181,6 +183,7 @@ font='Liberation Sans Bold 9'
 [org.gnome.settings-daemon.plugins.updates]
 auto-update-type='none'
 frequency-get-updates=0
+frequency-get-upgrades=0
 GNOME_EOF
 
 # override default settings

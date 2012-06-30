@@ -30,13 +30,31 @@ liveusb-creator
 #pavucontrol			# pavucontrol has duplicate functionality with kmix
 #kaffeine*			# kaffeine has duplicate functionality with dragonplayer (~3 megs)
 krusader			# file manager, more power-user-oriented than Dolphin (~4 megs)
-kdeedu
-kdeedu-marble
-kdeedu-math
-kdeedu-kstars
+
+# kdeedu apps
+blinken
+kalzium
+kanagram
+kgeography
+khangman
+kiten
+klettres
+ktouch
+kturtle
+kwordquiz
+parley
+step
+marble
+kstars
+kalgebra
+kbruch
+kig
+kmplot
+rocs
+cantor
 
 # Cantor backends
-kdeedu-math-cantor-R	# Cantor R backend, built against R-core at compile time
+cantor-R		# Cantor R backend, built against R-core at compile time
 maxima			# runtime dependency of the Cantor Maxima backend
 octave			# runtime dependency of the Cantor Octave backend
 

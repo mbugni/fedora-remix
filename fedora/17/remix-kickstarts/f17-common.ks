@@ -7,7 +7,7 @@ repo --name=rpmfusion-free --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?
 repo --name=rpmfusion-free-updates --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-updates-released-$releasever&arch=$basearch
 repo --name=rpmfusion-nonfree --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=nonfree-fedora-$releasever&arch=$basearch
 repo --name=rpmfusion-nonfree-updates --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=nonfree-fedora-updates-released-$releasever&arch=$basearch
-repo --name=livna --baseurl=http://rpm.livna.org/repo/$releasever/$basearch/
+repo --name=remi --includepkgs=libdvd*,remi-release* --baseurl=http://rpms.famillecollet.com/fedora/$releasever/remi/$basearch/
 
 %packages
 
@@ -15,8 +15,8 @@ repo --name=livna --baseurl=http://rpm.livna.org/repo/$releasever/$basearch/
 rpmfusion-free-release
 rpmfusion-nonfree-release
 
-# Livna repositories
-livna-release
+# Remi repositories (disabled)
+remi-release
 
 # Multimedia
 PackageKit-gstreamer-plugin
@@ -130,9 +130,17 @@ enabled=1
 gpgcheck=0
 OPENPRINTING_EOF
 
-# Disable ISCSI service: long time-out on boot
-# systemctl disable iscsi.service
-# systemctl disable iscsid.service
+cat > /etc/yum.repos.d/remix.repo << REPO_EOF
+[remix-remi]
+name=Remix Remi - Fedora \$releasever - \$basearch
+#baseurl=http://rpms.famillecollet.com/fedora/\$releasever/remi/\$basearch/
+mirrorlist=http://rpms.famillecollet.com/fedora/\$releasever/remi/mirror
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+failovermethod=priority
+includepkgs=libdvd*,remi-release*
+REPO_EOF
 
 %end
 

@@ -42,20 +42,21 @@ phonon-backend-gstreamer
 xsettings-kde
 xterm
 
-### Internet
+### @graphical-internet
 firefox
+pidgin
 thunderbird
+transmission-qt
 
 ### Multimedia
+kffmpegthumbnailer
 gnash-plugin
 vlc
 npapi-vlc
 
-## System Tools
+## Tools
 kde-partitionmanager
 
-## Tools
-kffmpegthumbnailer
 
 ### fixes
 

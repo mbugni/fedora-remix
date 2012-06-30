@@ -17,8 +17,9 @@ repo --name=fedora-cinnamon --baseurl=http://repos.fedorapeople.org/repos/leigh1
 -icedtea*
 -orca*
 
-### Cinnamon
+### Cinnamon desktop
 metacity
+gnome-shell
 cinnamon
 
 ### @gnome-desktop defaults 
@@ -54,6 +55,7 @@ gvfs-fuse
 gvfs-gphoto2
 gvfs-smb
 ibus
+libgnomeui
 libproxy-mozjs
 libsane-hpaio
 mousetweaks
@@ -183,7 +185,7 @@ auto-update-type='none'
 frequency-get-updates=0
 GNOME_EOF
 
-# override default cinnamon settings
+# override default settings
 cat > /usr/share/glib-2.0/schemas/org.cinnamon.remix.gschema.override << CINNAMON_EOF
 [org.cinnamon]
 desktop-effects=false

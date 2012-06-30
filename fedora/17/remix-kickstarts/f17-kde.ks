@@ -32,7 +32,7 @@ kde-settings-pulseaudio
 kdegraphics
 kdemultimedia-kmix
 kdemultimedia-kscd
-kdenetwork-kopete
+# kdenetwork-kopete
 kdeutils
 kdm
 kipi-plugins
@@ -42,20 +42,21 @@ phonon-backend-gstreamer
 xsettings-kde
 xterm
 
-### Internet
+### @graphical-internet
 firefox
+pidgin
 thunderbird
+transmission-qt
 
 ### Multimedia
+kffmpegthumbnailer
 gnash-plugin
 vlc
 npapi-vlc
 
-## System Tools
+## Tools
 kde-partitionmanager
 
-## Tools
-kffmpegthumbnailer
 
 ### fixes
 
@@ -193,10 +194,10 @@ echo '[Added Associations]' > /usr/local/share/applications/mimeapps.list
 grep kde4-dragonplayer.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
 	| sed 's/kde4-dragonplayer.desktop/vlc.desktop/g' >> /usr/local/share/applications/mimeapps.list
 grep kde4-konqueror.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
-	| sed 's/kde4-konqueror.desktop/mozilla-firefox.desktop/g' >> /usr/local/share/applications/mimeapps.list
+	| sed 's/kde4-konqueror.desktop/firefox.desktop/g' >> /usr/local/share/applications/mimeapps.list
 
 # Firefox as default browser
-sed -i '/^\[General\]$/a BrowserApplication[$e]=mozilla-firefox.desktop' /usr/share/kde-settings/kde-profile/default/share/config/kdeglobals
+sed -i '/^\[General\]$/a BrowserApplication[$e]=firefox.desktop' /usr/share/kde-settings/kde-profile/default/share/config/kdeglobals
 
 # Disable the update notifications of apper
 sed -i 's/interval=.*/interval=0/g' /usr/share/kde-settings/kde-profile/default/share/config/apper
@@ -204,7 +205,7 @@ sed -i 's/interval=.*/interval=0/g' /usr/share/kde-settings/kde-profile/default/
 # Add defaults to favorites menu
 cat > /usr/share/kde-settings/kde-profile/default/share/config/kickoffrc << KICKOFF_EOF
 [Favorites]
-FavoriteURLs=/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/mozilla-firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/konsole.desktop
+FavoriteURLs=/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/konsole.desktop
 KICKOFF_EOF
 
 # Avoid konqueror preload

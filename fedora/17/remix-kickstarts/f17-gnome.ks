@@ -177,6 +177,7 @@ font='Liberation Sans Bold 9'
 [org.gnome.settings-daemon.plugins.updates]
 auto-update-type='none'
 frequency-get-updates=0
+frequency-get-upgrades=0
 GNOME_EOF
 
 # override default settings

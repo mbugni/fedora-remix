@@ -125,7 +125,6 @@ org.sugarlabs.IRC
 org.sugarlabs.Infoslicer
 org.sugarlabs.PortfolioActivity
 org.sugarlabs.VisualMatchActivity
-org.vpri.EtoysActivity
 com.garycmartin.Moon
 mulawa.Countries
 tv.alterna.Clock
