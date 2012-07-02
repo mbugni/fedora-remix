@@ -32,6 +32,7 @@ repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?rep
 @printing
 
 # Unwanted stuff
+-NetworkManager-open*
 -PackageKit-command*
 -bash-completion*
 

@@ -31,8 +31,11 @@ repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?rep
 @hardware-support
 @printing
 
+# Unwanted stuff
+-NetworkManager-open*
 -PackageKit-command*
 -bash-completion*
+
 dejavu-sans-*
 hunspell-it
 liberation-mono-fonts

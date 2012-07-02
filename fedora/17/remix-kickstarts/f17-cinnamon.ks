@@ -45,10 +45,11 @@ gnome-media
 gnome-packagekit
 gnome-power-manager
 gnome-screensaver
+gnome-screenshot
+gnome-search-tool
 gnome-system-monitor
 gnome-terminal
 gnome-user-docs
-# gnome-utils
 gucharmap
 gvfs-archive
 gvfs-fuse

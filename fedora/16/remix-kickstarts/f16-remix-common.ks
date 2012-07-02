@@ -114,9 +114,21 @@ EOF_SHELL
 
 # OpenPrinting/Database/DriverPackages based on the LSB 3.2
 cat > /etc/yum.repos.d/openprinting-drivers.repo << OPENPRINTING_EOF
-[openprinting-drivers]
+[openprinting-drivers-main]
 name=OpenPrinting LSB-based driver packages
-baseurl=http://www.openprinting.org/download/printdriver/RPMS
+baseurl=http://www.openprinting.org/download/printdriver/components/lsb3.2/main/RPMS
+enabled=1
+gpgcheck=0
+
+[openprinting-drivers-contrib]
+name=OpenPrinting LSB-based driver packages
+baseurl=http://www.openprinting.org/download/printdriver/components/lsb3.2/contrib/RPMS
+enabled=1
+gpgcheck=0
+
+[openprinting-drivers-main-nonfree]
+name=OpenPrinting LSB-based driver packages
+baseurl=http://www.openprinting.org/download/printdriver/components/lsb3.2/main-nonfree/RPMS
 enabled=1
 gpgcheck=0
 OPENPRINTING_EOF
