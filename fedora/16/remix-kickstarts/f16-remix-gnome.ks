@@ -37,7 +37,6 @@ gedit
 gnome-backgrounds
 gnome-bluetooth
 gnome-color-manager
-gnome-contacts
 gnome-disk-utility
 gnome-media
 gnome-packagekit

@@ -14,7 +14,6 @@ repo --name=fedora-cinnamon --baseurl=http://repos.fedorapeople.org/repos/leigh1
 -caribou*
 -deja-dup*
 -gnome-games*
--icedtea*
 -orca*
 
 @gnome-desktop --nodefaults
@@ -37,7 +36,6 @@ gedit
 gnome-backgrounds
 gnome-bluetooth
 gnome-color-manager
-gnome-contacts
 gnome-disk-utility
 gnome-media
 gnome-packagekit
@@ -75,6 +73,7 @@ yelp
 ### @graphical-internet
 gnome-shell-extension-pidgin
 firefox
+icedtea-web
 pidgin
 thunderbird  
 transmission-gtk
@@ -90,8 +89,12 @@ totem-mozplugin
 totem-nautilus
 
 ### Multimedia
-ffmpegthumbnailer
+# ffmpegthumbnailer
 gnash-plugin
+
+### Office
+libreoffice
+libreoffice-langpack-it
 
 ### Tools
 gnome-tweak-tool
@@ -203,9 +206,6 @@ cat > /usr/share/glib-2.0/schemas/org.gnome.shell.remix.gschema.override << EOF
 [org.gnome.shell]
 favorite-apps=['gnome-tweak-tool.desktop','firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']
 EOF
-
-# window title font
-gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --type string --set /apps/metacity/general/titlebar_font "Liberation Sans Bold 9"
 
 glib-compile-schemas /usr/share/glib-2.0/schemas
 

@@ -12,16 +12,21 @@ part / --size 4096
 -abrt*
 -gnome*
 -kdepim*
+-libreoffice-kde
 
 @kde-desktop --nodefaults
 amarok
 apper
+ark
 bluedevil
 cagibi
 cups-pk-helper
 digikam
+gwenview
 k3b
 kamoso
+kcalc
+kcharselect
 kcm-gtk
 kcm_touchpad
 kde-baseapps
@@ -29,21 +34,26 @@ kde-l10n-Italian
 kdeplasma-addons
 kde-plasma-networkmanagement
 kde-settings-pulseaudio
-kdegraphics
+kdegraphics-thumbnailers
 kdemultimedia-kmix
 kdemultimedia-kscd
-# kdenetwork-kopete
-kdeutils
 kdm
-kipi-plugins
+kgamma
+ksnapshot
+kwallet
 kwebkitpart
+okular
 oxygen-gtk*
 phonon-backend-gstreamer
+skanlite
+svgpart
+sweeper
 xsettings-kde
 xterm
 
 ### @graphical-internet
 firefox
+icedtea-web
 pidgin
 thunderbird
 transmission-qt
@@ -53,6 +63,10 @@ kffmpegthumbnailer
 gnash-plugin
 vlc
 npapi-vlc
+
+### Office
+libreoffice
+libreoffice-langpack-it
 
 ## Tools
 kde-partitionmanager
