@@ -4,8 +4,6 @@
 
 part / --size 4096
 
-repo --name=fedora-cinnamon --baseurl=http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-$releasever/$basearch/
-
 %packages
 
 # Unwanted stuff
@@ -210,17 +208,3 @@ EOF
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
 %end
-
-%post --nochroot
-
-echo -e "\n**********\nPOST NOCHROOT GNOME\n**********\n"
-
-# create cinnamon repo
-if [ -e /etc/yum.repos.d/fedora-cinnamon.repo ] ; then
-    cp /etc/yum.repos.d/fedora-cinnamon.repo $INSTALL_ROOT/etc/yum.repos.d/fedora-cinnamon.repo
-else
-    curl -s http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-cinnamon.repo -o $INSTALL_ROOT/etc/yum.repos.d/fedora-cinnamon.repo
-fi
-
-%end
-

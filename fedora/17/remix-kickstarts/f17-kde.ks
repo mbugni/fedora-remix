@@ -43,7 +43,7 @@ ksnapshot
 kwallet
 kwebkitpart
 okular
-oxygen-gtk*
+oxygen-gtk
 phonon-backend-gstreamer
 skanlite
 svgpart
@@ -215,6 +215,15 @@ sed -i '/^\[General\]$/a BrowserApplication[$e]=firefox.desktop' /usr/share/kde-
 
 # Disable the update notifications of apper
 sed -i 's/interval=.*/interval=0/g' /usr/share/kde-settings/kde-profile/default/share/config/apper
+
+# KDE Globals
+cat >> /usr/share/kde-settings/kde-profile/default/share/config/kdeglobals << KDE_GLOBALS_EOF
+
+[Locale]
+Country=it
+Language=it:en_US
+
+KDE_GLOBALS_EOF
 
 # Add defaults to favorites menu
 cat > /usr/share/kde-settings/kde-profile/default/share/config/kickoffrc << KICKOFF_EOF
