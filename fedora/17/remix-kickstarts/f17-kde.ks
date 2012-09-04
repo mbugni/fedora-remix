@@ -210,30 +210,29 @@ grep kde4-dragonplayer.desktop /usr/share/kde-settings/kde-profile/default/share
 grep kde4-konqueror.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
 	| sed 's/kde4-konqueror.desktop/firefox.desktop/g' >> /usr/local/share/applications/mimeapps.list
 
-# Firefox as default browser
-sed -i '/^\[General\]$/a BrowserApplication[$e]=firefox.desktop' /usr/share/kde-settings/kde-profile/default/share/config/kdeglobals
-
 # Disable the update notifications of apper
-sed -i 's/interval=.*/interval=0/g' /usr/share/kde-settings/kde-profile/default/share/config/apper
+cat > /etc/kde/apper << APPER_EOF
+[CheckUpdate]
+interval=0
+APPER_EOF
 
-# KDE Globals
-cat >> /usr/share/kde-settings/kde-profile/default/share/config/kdeglobals << KDE_GLOBALS_EOF
+cat > /etc/kde/kdeglobals << GLOBALS_EOF
+[General]
+BrowserApplication[\$e]=firefox.desktop
 
 [Locale]
 Country=it
 Language=it:en_US
-
-KDE_GLOBALS_EOF
+GLOBALS_EOF
 
 # Add defaults to favorites menu
-cat > /usr/share/kde-settings/kde-profile/default/share/config/kickoffrc << KICKOFF_EOF
+cat > /etc/kde/kickoffrc << KICKOFF_EOF
 [Favorites]
 FavoriteURLs=/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/konsole.desktop
 KICKOFF_EOF
 
 # Avoid konqueror preload
-cat >> /usr/share/kde-settings/kde-profile/default/share/config/konquerorrc << KONQUEROR_EOF
-
+cat > /etc/kde/konquerorrc << KONQUEROR_EOF
 [Reusing]
 AlwaysHavePreloaded=false
 MaxPreloadCount=0
@@ -241,12 +240,12 @@ PreloadOnStartup=false
 KONQUEROR_EOF
 
 # Set Thunderbird as default email client
-cat > /usr/share/kde-settings/kde-profile/default/share/config/emaildefaults << EMAILDEFAULTS_EOF
+cat > /etc/kde/emaildefaults << EMAILDEFAULTS_EOF
 [Defaults]
 Profile=Default
 
 [PROFILE_Default]
-EmailClient[$e]=thunderbird
+EmailClient[\$e]=thunderbird
 TerminalClient=false
 EMAILDEFAULTS_EOF
 

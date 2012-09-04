@@ -35,7 +35,7 @@ unrar
 
 %post
 
-echo -e "\n**********\nPOST COMMON\n**********\n"
+echo -e "\n***********\nPOST COMMON\n***********\n"
 
 # Import RPM-GPG keys
 for key in $(ls /etc/pki/rpm-gpg/RPM-GPG-KEY-*) ; do
@@ -44,7 +44,7 @@ done
 
 # Antialiasing by default
 ln -sf /etc/fonts/conf.avail/10-autohint.conf /etc/fonts/conf.d/
-ln -sf /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
+# ln -sf /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/conf.d/
 
 # Set Liberation Fonts as preferred family
 cat > /etc/fonts/local.conf << EOF_FONTS
