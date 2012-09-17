@@ -54,6 +54,7 @@ ConsoleKit-x11
 # java plugin
 icedtea-web
 blueman
+gvfs-obexftp
 lightdm-gtk
 xscreensaver-base
 xdg-user-dirs-gtk
