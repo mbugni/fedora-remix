@@ -18,10 +18,11 @@ libreoffice
 libreoffice-langpack-it
 
 # Graphics
-epdfview
+evince
 
 # Internet
 firefox
+pidgin
 remmina
 remmina-plugins-rdp
 remmina-plugins-vnc
@@ -165,9 +166,9 @@ rm -f /etc/xdg/autostart/xfconf-migration-4.6.desktop || :
 mkdir -p /home/liveuser/.config/xfce4/xfconf/xfce-perchannel-xml
 cp /etc/xdg/xfce4/panel/default.xml /home/liveuser/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
 
-# set up auto-login
-sed -ei '|^#autologin-user=|autologin-user=liveuser|' /etc/lightdm/lightdm.conf 
-sed -ei '|^#autologin-user-timeout=0|autologin-user-timeout=10|' /etc/lightdm/lightdm.conf 
+# set up lightdm autologin
+sed -i 's/^#autologin-user=/autologin-user=liveuser/' /etc/lightdm/lightdm.conf 
+sed -i 's/^#autologin-user-timeout=0/autologin-user-timeout=10/' /etc/lightdm/lightdm.conf
 
 # Show harddisk install on the desktop
 sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop

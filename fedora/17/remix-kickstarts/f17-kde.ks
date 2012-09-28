@@ -35,8 +35,8 @@ kdeplasma-addons
 kde-plasma-networkmanagement
 kde-settings-pulseaudio
 kdegraphics-thumbnailers
-kdemultimedia-kmix
-kdemultimedia-kscd
+kmix
+kscd
 kdm
 kgamma
 ksnapshot

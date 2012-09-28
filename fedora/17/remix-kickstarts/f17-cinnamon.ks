@@ -4,8 +4,6 @@
 
 part / --size 4096
 
-repo --name=fedora-cinnamon --baseurl=http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-$releasever/$basearch/
-
 %packages
 
 # Unwanted stuff
@@ -14,7 +12,6 @@ repo --name=fedora-cinnamon --baseurl=http://repos.fedorapeople.org/repos/leigh1
 -caribou*
 -deja-dup*
 -gnome-games*
--icedtea*
 -orca*
 
 ### Cinnamon desktop
@@ -39,7 +36,6 @@ gedit
 gnome-backgrounds
 gnome-bluetooth
 gnome-color-manager
-gnome-contacts
 gnome-disk-utility
 gnome-media
 gnome-packagekit
@@ -76,6 +72,7 @@ yelp
 
 ### @graphical-internet
 firefox
+icedtea-web
 pidgin
 thunderbird  
 transmission-gtk
@@ -88,8 +85,12 @@ totem-mozplugin
 totem-nautilus
 
 ### Multimedia
-ffmpegthumbnailer
+# ffmpegthumbnailer
 gnash-plugin
+
+### Office
+libreoffice
+libreoffice-langpack-it
 
 ### Tools
 gparted
@@ -171,15 +172,18 @@ echo -e "\n**********\nPOST CINNAMON\n**********\n"
 # override default gnome settings
 cat >> /usr/share/glib-2.0/schemas/org.gnome.remix.gschema.override << GNOME_EOF
 [org.gnome.desktop.interface]
-font-name='Liberation Sans 10'
-document-font-name='Liberation Sans 10'
-monospace-font-name='Liberation Mono 10'
+font-name='Sans 10'
+document-font-name='Sans 10'
+monospace-font-name='Monospace 10'
+
+[org.gnome.desktop.wm.preferences]
+titlebar-font='Sans Bold 9'
 
 [org.gnome.desktop.background]
 show-desktop-icons=true
 
 [org.gnome.nautilus.desktop]
-font='Liberation Sans Bold 9'
+font='Sans Bold 9'
 
 [org.gnome.settings-daemon.plugins.updates]
 auto-update-type='none'
@@ -194,23 +198,6 @@ desktop-effects=false
 favorite-apps=['cinnamon-settings.desktop', 'firefox.desktop', 'nautilus.desktop', 'gnome-terminal.desktop']
 EOF
 
-# window title font
-gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --type string --set /apps/metacity/general/titlebar_font "Liberation Sans Bold 9"
-
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
 %end
-
-%post --nochroot
-
-echo -e "\n**********\nPOST NOCHROOT CINNAMON\n**********\n"
-
-# create cinnamon repo
-if [ -e /etc/yum.repos.d/fedora-cinnamon.repo ] ; then
-    cp /etc/yum.repos.d/fedora-cinnamon.repo $INSTALL_ROOT/etc/yum.repos.d/fedora-cinnamon.repo
-else
-    curl -s http://repos.fedorapeople.org/repos/leigh123linux/cinnamon/fedora-cinnamon.repo -o $INSTALL_ROOT/etc/yum.repos.d/fedora-cinnamon.repo
-fi
-
-%end
-
