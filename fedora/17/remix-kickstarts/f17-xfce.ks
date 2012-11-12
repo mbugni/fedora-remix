@@ -12,6 +12,7 @@
 -gnome-*
 -*nodoka*
 -orca*
+-xarchiver
 
 # Office
 libreoffice
@@ -47,6 +48,7 @@ setroubleshoot
 
 # Accessories
 catfish
+file-roller
 galculator
 seahorse
 ConsoleKit-x11
@@ -168,7 +170,7 @@ cp /etc/xdg/xfce4/panel/default.xml /home/liveuser/.config/xfce4/xfconf/xfce-per
 
 # set up lightdm autologin
 sed -i 's/^#autologin-user=/autologin-user=liveuser/' /etc/lightdm/lightdm.conf 
-sed -i 's/^#autologin-user-timeout=0/autologin-user-timeout=10/' /etc/lightdm/lightdm.conf
+sed -i 's/^#autologin-user-timeout=0/autologin-user-timeout=30/' /etc/lightdm/lightdm.conf
 
 # Show harddisk install on the desktop
 sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop

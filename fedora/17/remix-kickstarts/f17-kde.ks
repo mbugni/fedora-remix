@@ -32,6 +32,7 @@ kcm_touchpad
 kde-baseapps
 kde-l10n-Italian
 kdeplasma-addons
+kde-plasma-ktorrent
 kde-plasma-networkmanagement
 kde-settings-pulseaudio
 kdegraphics-thumbnailers
@@ -42,6 +43,7 @@ kgamma
 ksnapshot
 kwallet
 kwebkitpart
+kwrite
 okular
 oxygen-gtk
 phonon-backend-gstreamer
@@ -56,7 +58,6 @@ firefox
 icedtea-web
 pidgin
 thunderbird
-transmission-qt
 
 ### Multimedia
 kffmpegthumbnailer
