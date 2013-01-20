@@ -96,6 +96,10 @@ ln -sf /dev/null /etc/systemd/system/hwclock-save.service
 
 livedir="LiveOS"
 for arg in \`cat /proc/cmdline\` ; do
+  if [ "\${arg##rd.live.dir=}" != "\${arg}" ]; then
+    livedir=\${arg##rd.live.dir=}
+    return
+  fi
   if [ "\${arg##live_dir=}" != "\${arg}" ]; then
     livedir=\${arg##live_dir=}
     return

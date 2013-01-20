@@ -70,7 +70,7 @@ libreoffice
 libreoffice-langpack-it
 
 ## Tools
-kde-partitionmanager
+gparted
 
 
 ### fixes
@@ -177,16 +177,13 @@ cat > /home/liveuser/.kde/share/config/nepomukserverrc << NEPOMUK_EOF
 [Basic Settings]
 Start Nepomuk=false
 
-[Service-nepomukstrigiservice]
+[Service-nepomukfileindexer]
 autostart=false
 NEPOMUK_EOF
 
 # make sure to set the right permissions and selinux contexts
 chown -R liveuser:liveuser /home/liveuser/
 restorecon -R /home/liveuser/
-
-# don't use prelink on a running KDE live image
-sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink
 
 # small hack to enable plasma-netbook workspace on boot
 if strstr "\`cat /proc/cmdline\`" netbook ; then

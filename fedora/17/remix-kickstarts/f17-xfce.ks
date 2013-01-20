@@ -121,6 +121,9 @@ xfwm4-themes
 # not needed, but as long as there is space left, we leave this in
 #-desktop-backgrounds-basic
 
+# unlock default keyring. FIXME: Should probably be done in comps
+gnome-keyring-pam
+
 # save some space
 -autofs
 -acpid
@@ -169,13 +172,20 @@ mkdir -p /home/liveuser/.config/xfce4/xfconf/xfce-perchannel-xml
 cp /etc/xdg/xfce4/panel/default.xml /home/liveuser/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
 
 # set up lightdm autologin
-sed -i 's/^#autologin-user=/autologin-user=liveuser/' /etc/lightdm/lightdm.conf 
-sed -i 's/^#autologin-user-timeout=0/autologin-user-timeout=30/' /etc/lightdm/lightdm.conf
+sed -i 's/^#autologin-user=.*/autologin-user=liveuser/' /etc/lightdm/lightdm.conf
+sed -i 's/^#autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
+#sed -i 's/^#show-language-selector=.*/show-language-selector=true/' /etc/lightdm/lightdm-gtk-greeter.conf
+
+# set Xfce as default session, otherwise login will fail
+sed -i 's/^#user-session=.*/user-session=xfce/' /etc/lightdm/lightdm.conf
 
 # Show harddisk install on the desktop
 sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
 mkdir /home/liveuser/Desktop
 cp /usr/share/applications/liveinst.desktop /home/liveuser/Desktop
+
+# and mark it as executable (new Xfce security feature)
+chmod +x /home/liveuser/Desktop/liveinst.desktop
 
 # this goes at the end after all other changes. 
 chown -R liveuser:liveuser /home/liveuser
