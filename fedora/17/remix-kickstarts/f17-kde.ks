@@ -10,6 +10,7 @@ part / --size 4096
 
 # Unwanted stuff
 -abrt*
+-*akonadi*
 -gnome*
 -kdepim*
 -libreoffice-kde
@@ -24,6 +25,7 @@ cups-pk-helper
 digikam
 gwenview
 k3b
+k3b-extras-freeworld
 kamoso
 kcalc
 kcharselect
@@ -75,9 +77,9 @@ gparted
 
 ### fixes
 
-# use system-config-printer-kde instead of system-config-printer
+# use kde-print-manager instead of system-config-printer
 -system-config-printer
-system-config-printer-kde
+kde-print-manager
 
 # make sure alsaunmute is there
 alsa-utils
@@ -211,6 +213,7 @@ grep kde4-konqueror.desktop /usr/share/kde-settings/kde-profile/default/share/ap
 # Disable the update notifications of apper
 cat > /etc/kde/apper << APPER_EOF
 [CheckUpdate]
+autoUpdate=0
 interval=0
 APPER_EOF
 
