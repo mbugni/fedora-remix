@@ -21,7 +21,6 @@ apper
 ark
 bluedevil
 cagibi
-cups-pk-helper
 digikam
 gwenview
 k3b
@@ -45,7 +44,7 @@ kgamma
 ksnapshot
 kwallet
 kwebkitpart
-kwrite
+kate
 okular
 oxygen-gtk
 phonon-backend-gstreamer
