@@ -54,6 +54,9 @@ sweeper
 xsettings-kde
 xterm
 
+# Fallback icons for some gtk apps 
+gnome-icon-theme-symbolic
+
 ### @graphical-internet
 firefox
 icedtea-web
@@ -256,6 +259,7 @@ fi
 cat > /etc/skel/.config/gtk-3.0/settings.ini << EOF_SETTINGS_GTK3
 [Settings]
 gtk-theme-name = oxygen-gtk
+gtk-fallback-icon-theme = gnome
 EOF_SETTINGS_GTK3
 
 %end
