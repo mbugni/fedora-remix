@@ -102,10 +102,6 @@ nss-mdns
 # This one needs to be kicked out of @base
 -smartmontools
 
-# The gnome-shell team does not want extensions in the default spin;
-# ibus support in gnome-shell will be integrated in GNOME 3.4
--ibus-gnome3
-
 %end
 
 %post
