@@ -259,6 +259,7 @@ fi
 cat > /etc/skel/.config/gtk-3.0/settings.ini << EOF_SETTINGS_GTK3
 [Settings]
 gtk-theme-name = oxygen-gtk
+gtk-icon-theme-name = oxygen
 gtk-fallback-icon-theme = gnome
 EOF_SETTINGS_GTK3
 

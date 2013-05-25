@@ -19,36 +19,29 @@ part / --size 4096
 # KDE components
 ark
 bluedevil
+juk
 kde-baseapps
 kde-l10n-Italian
 kdm
 kate
+konsole
 okular
-oxygen-gtk
-qt-config
 xsettings-kde
 xterm
 
+# Audio
 pavucontrol
-polkit-qt
 pulseaudio-utils
+
+# Standards
+polkit-qt
 upower
 xdg-utils
 
 # RazorQT components
-# clementine
-# goldendict
-# juffed-plugins
-nomacs
-# pcmanfm-qt
-qastools
-qbittorrent
+obconf
+openbox
 qlipper
-# qpdfview
-# qterminal
-# quiterss
-# qupzilla
-# qutim
 qxkb
 screengrab
 speedcrunch
@@ -57,6 +50,14 @@ razorqt-themes
 # lightdm-razorqt
 
 NetworkManager-gnome
+
+# Theme and icons
+oxygen-icon-theme
+gtk2-engines
+clearlooks-phenix-gtk3-theme
+
+# Fallback icons for some gtk apps 
+gnome-icon-theme-symbolic
 
 ### @graphical-internet
 firefox
@@ -102,22 +103,22 @@ DISPLAYMANAGER="KDE"
 EOF
 
 # make oxygen-gtk the default GTK+ theme for root (see #683855, #689070, #808062)
-cat > /root/.gtkrc-2.0 << EOF
-include "/usr/share/themes/oxygen-gtk/gtk-2.0/gtkrc"
-include "/etc/gtk-2.0/gtkrc"
-gtk-theme-name="oxygen-gtk"
-EOF
-mkdir -p /root/.config/gtk-3.0
-cat > /root/.config/gtk-3.0/settings.ini << EOF
-[Settings]
-gtk-theme-name = oxygen-gtk
-EOF
+#cat > /root/.gtkrc-2.0 << EOF
+#include "/usr/share/themes/oxygen-gtk/gtk-2.0/gtkrc"
+#include "/etc/gtk-2.0/gtkrc"
+#gtk-theme-name="oxygen-gtk"
+#EOF
+#mkdir -p /root/.config/gtk-3.0
+#cat > /root/.config/gtk-3.0/settings.ini << EOF
+#[Settings]
+#gtk-theme-name = oxygen-gtk
+#gtk-fallback-icon-theme = gnome
+#EOF
 
 # add initscript
 cat >> /etc/rc.d/init.d/livesys << EOF
 
 # make liveuser use RazorQT
-echo "startrazor" > /home/liveuser/.xsession
 chmod a+x /home/liveuser/.xsession
 chown liveuser:liveuser /home/liveuser/.xsession
 
@@ -131,15 +132,6 @@ sed -i 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desk
 # chmod +x ~/Desktop/liveinst.desktop to disable KDE's security warning
 chmod +x /usr/share/applications/liveinst.desktop
 
-# copy over the icons for liveinst to hicolor
-cp /usr/share/icons/gnome/16x16/apps/system-software-install.png /usr/share/icons/hicolor/16x16/apps/
-cp /usr/share/icons/gnome/22x22/apps/system-software-install.png /usr/share/icons/hicolor/22x22/apps/
-cp /usr/share/icons/gnome/24x24/apps/system-software-install.png /usr/share/icons/hicolor/24x24/apps/
-cp /usr/share/icons/gnome/32x32/apps/system-software-install.png /usr/share/icons/hicolor/32x32/apps/
-cp /usr/share/icons/gnome/48x48/apps/system-software-install.png /usr/share/icons/hicolor/48x48/apps/
-cp /usr/share/icons/gnome/256x256/apps/system-software-install.png /usr/share/icons/hicolor/256x256/apps/
-touch /usr/share/icons/hicolor/
-
 # Disable the update notifications of apper 
 # cat > /home/liveuser/.kde/share/config/apper << APPER_EOF
 # [CheckUpdate]
@@ -151,6 +143,8 @@ touch /usr/share/icons/hicolor/
 chown -R liveuser:liveuser /home/liveuser/
 restorecon -R /home/liveuser/
 
+EOF
+
 %end
 
 
@@ -158,14 +152,14 @@ restorecon -R /home/liveuser/
 
 %post
 
-echo -e "\n*************\nPOST RAZOR-QT\n*************\n"
+echo -e "\n************\nPOST RAZORQT\n************\n"
 
 # Default apps: vlc, firefox
-# echo '[Added Associations]' > /usr/local/share/applications/mimeapps.list
-# grep kde4-dragonplayer.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
-#	| sed 's/kde4-dragonplayer.desktop/vlc.desktop/g' >> /usr/local/share/applications/mimeapps.list
-# grep kde4-konqueror.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
-#	| sed 's/kde4-konqueror.desktop/firefox.desktop/g' >> /usr/local/share/applications/mimeapps.list
+echo '[Added Associations]' > /usr/local/share/applications/mimeapps.list
+grep kde4-dragonplayer.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
+	| sed 's/kde4-dragonplayer.desktop/vlc.desktop/g' >> /usr/local/share/applications/mimeapps.list
+grep kde4-konqueror.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
+	| sed 's/kde4-konqueror.desktop/firefox.desktop/g' >> /usr/local/share/applications/mimeapps.list
 
 # Disable the update notifications of apper
 # cat > /etc/kde/apper << APPER_EOF
@@ -174,13 +168,25 @@ echo -e "\n*************\nPOST RAZOR-QT\n*************\n"
 # interval=0
 # APPER_EOF
 
-# oxygen-gtk3 as default gtk3 theme
+# Clearlooks as default style for qt, gtk2 and gtk3
+mkdir -p /etc/skel/.config
+cp /etc/Trolltech.conf  /etc/skel/.config/
+echo 'style=Cleanlooks' >> /etc/skel/.config/Trolltech.conf
+
+cat > /etc/gtk-2.0/gtkrc << EOF_GTKRC
+include "/usr/share/themes/Clearlooks/gtk-2.0/gtkrc"
+gtk-icon-theme-name = "oxygen"
+gtk-fallback-icon-theme = "gnome"
+EOF_GTKRC
+
 if [ ! -d "/etc/skel/.config/gtk-3.0" ]; then
   mkdir -p /etc/skel/.config/gtk-3.0
 fi
 cat > /etc/skel/.config/gtk-3.0/settings.ini << EOF_SETTINGS_GTK3
 [Settings]
-gtk-theme-name = oxygen-gtk
+gtk-theme-name = Clearlooks-Phenix
+gtk-icon-theme-name = oxygen
+gtk-fallback-icon-theme = gnome
 EOF_SETTINGS_GTK3
 
 %end
