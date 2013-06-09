@@ -13,9 +13,21 @@ dejavu-sans-*
 liberation-mono-fonts
 liberation-s*-fonts
 
+# Input methods
+ibus-m17n
+ibus-rawcode
+
+# System config
+firewall-config
+system-config-date
+system-config-keyboard
+system-config-users
+
 # Tools
+firstboot
 htop
 hunspell-it
+vim-enhanced
 yum-plugin-fastestmirror
 
 %end
@@ -38,49 +50,54 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 <fontconfig>
 <!-- Local default fonts -->
 <!-- Serif faces -->
-        <alias>
-                <family>Bitstream Vera Serif</family>
-                <prefer><family>DejaVu Serif</family></prefer>
-                <family>Liberation Serif</family>
-                <family>Times New Roman</family>
-                <family>Times</family>
-                <family>Nimbus Roman No9 L</family>
-                <family>Luxi Serif</family>
-                <family>Thorndale AMT</family>
-                <family>Thorndale</family>
-                <family>serif</family>
-        </alias>
+	<alias>
+		<family>serif</family>
+		<prefer>
+			<family>DejaVu Serif</family>
+			<family>Bitstream Vera Serif</family>
+			<family>Liberation Serif</family>
+			<family>Times New Roman</family>
+			<family>Thorndale AMT</family>
+			<family>Luxi Serif</family>
+			<family>Nimbus Roman No9 L</family>
+			<family>Times</family>
+		</prefer>
+	</alias>
 <!-- Sans-serif faces -->
-        <alias>
-                <family>Bitstream Vera Sans</family>
-                <prefer><family>DejaVu Sans</family></prefer>
-                <family>Liberation Sans</family>
-                <family>Arial</family>
-                <family>Helvetica</family>
-                <family>Verdana</family>
-                <family>Albany AMT</family>
-                <family>Albany</family>
-                <family>Nimbus Sans L</family>
-                <family>Luxi Sans</family>
-                <family>sans-serif</family>
-        </alias>
+	<alias>
+		<family>sans-serif</family>
+		<prefer>
+			<family>DejaVu Sans</family>
+			<family>Bitstream Vera Sans</family>
+			<family>Liberation Sans</family>
+			<family>Verdana</family>
+			<family>Arial</family>
+			<family>Albany AMT</family>
+			<family>Luxi Sans</family>
+			<family>Nimbus Sans L</family>
+			<family>Helvetica</family>
+			<family>Lucida Sans Unicode</family>
+			<family>BPG Glaho International</family>
+			<family>Tahoma</family>
+		</prefer>
+	</alias>
 <!-- Monospace faces -->
-        <alias>
-                <family>Bitstream Vera Sans Mono</family>
-                <prefer><family>DejaVu Sans Mono</family></prefer>
-                <family>Liberation Mono</family>
-                <family>Inconsolata</family>
-                <family>Courier New</family>
-                <family>Courier</family>
-                <family>Andale Mono</family>
-                <family>Luxi Mono</family>
-                <family>Cumberland AMT</family>
-                <family>Cumberland</family>
-                <family>Nimbus Mono L</family>
-                <family>monospace</family>
-        </alias>
+	<alias>
+		<family>monospace</family>
+		<prefer>
+			<family>DejaVu Sans Mono</family>
+			<family>Bitstream Vera Sans Mono</family>
+			<family>Liberation Mono</family>
+			<family>Inconsolata</family>
+			<family>Andale Mono</family>
+			<family>Courier New</family>
+			<family>Cumberland AMT</family>
+			<family>Luxi Mono</family>
+			<family>Nimbus Mono L</family>
+			<family>Courier</family>
+		</prefer>
+	</alias>
 </fontconfig>
-
 EOF_FONTS
 
 cat > /etc/profile.d/remix-shell.sh << EOF_SHELL
@@ -93,6 +110,25 @@ if [ -n "\$PS1" ]; then
         fi
 fi
 EOF_SHELL
+
+# Set a default grub config if not present (rhb #886502)
+if [ ! -f "/etc/default/grub" ]; then
+cat > /etc/default/grub << EOF_DEFAULT_GRUB
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="\$(sed 's, release .*\$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_CMDLINE_LINUX="rd.md=0 rd.dm=0 rd.luks=0 rhgb quiet"
+GRUB_DISABLE_RECOVERY="true"
+GRUB_THEME="/boot/grub2/themes/system/theme.txt"
+EOF_DEFAULT_GRUB
+fi
+
+# Set a default keymap if not present
+if [ ! -f "/etc/vconsole.conf" ]; then
+cat > /etc/vconsole.conf << EOF_VCONSOLE
+KEYMAP="it"
+EOF_VCONSOLE
+fi
 
 %end
 

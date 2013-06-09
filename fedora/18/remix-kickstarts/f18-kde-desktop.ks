@@ -2,8 +2,6 @@
 
 %include f18-common-desktop.ks
 
-part / --size 3072
-
 %packages
 
 ### The KDE-Desktop
@@ -14,7 +12,6 @@ part / --size 3072
 -gnome*
 -kdepim*
 
-@kde-desktop --nodefaults
 apper
 ark
 bluedevil
@@ -28,7 +25,9 @@ kde-baseapps
 kde-l10n-Italian
 kdeplasma-addons
 kde-plasma-networkmanagement
+kde-plasma-networkmanagement-*vpn*
 kde-settings-pulseaudio
+kde-workspace
 kmix
 kdm
 kgamma
@@ -46,11 +45,14 @@ xterm
 # Fallback icons for some gtk apps 
 gnome-icon-theme-symbolic
 
-### Internet
+# Input methods
+ibus-qt
+
+# Internet
 firefox
 thunderbird
 
-## Tools
+# Tools
 gparted
 
 
@@ -176,7 +178,7 @@ echo "****************"
 echo "POST KDE DESKTOP"
 echo "****************"
 
-# Default apps: vlc, firefox
+# Default apps: firefox
 echo '[Added Associations]' > /usr/local/share/applications/mimeapps.list
 grep kde4-konqueror.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
 	| sed 's/kde4-konqueror.desktop/firefox.desktop/g' >> /usr/local/share/applications/mimeapps.list
@@ -221,7 +223,16 @@ EmailClient[\$e]=thunderbird
 TerminalClient=false
 EMAILDEFAULTS_EOF
 
-# oxygen-gtk3 as default gtk3 theme
+# Disable nepomuk
+cat > /etc/kde/nepomukserverrc << NEPOMUK_EOF
+[Basic Settings]
+Start Nepomuk=false
+
+[Service-nepomukfileindexer]
+autostart=false
+NEPOMUK_EOF
+
+# Set oxygen-gtk3 as default gtk3 theme
 if [ ! -d "/etc/skel/.config/gtk-3.0" ]; then
   mkdir -p /etc/skel/.config/gtk-3.0
 fi

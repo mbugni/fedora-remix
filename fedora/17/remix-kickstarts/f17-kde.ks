@@ -15,7 +15,6 @@ part / --size 4096
 -kdepim*
 -libreoffice-kde
 
-@kde-desktop --nodefaults
 amarok
 apper
 ark
@@ -36,6 +35,7 @@ kdeplasma-addons
 kde-plasma-ktorrent
 kde-plasma-networkmanagement
 kde-settings-pulseaudio
+kde-workspace
 kdegraphics-thumbnailers
 kmix
 kscd

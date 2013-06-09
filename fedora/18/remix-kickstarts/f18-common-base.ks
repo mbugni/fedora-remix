@@ -3,7 +3,7 @@
 # Defines the basics for all remix-kickstarts
 
 lang it_IT.UTF-8
-keyboard it
+keyboard --vckeymap=it
 timezone Europe/Rome
 auth --useshadow --enablemd5
 selinux --enforcing
@@ -24,9 +24,9 @@ repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?rep
 # @fonts
 # @input-methods
 @dial-up
-#@multimedia
+# @multimedia
 @hardware-support
-#@printing
+# @printing
 
 # Explicitly specified here:
 # <notting> walters: because otherwise dependency loops cause yum issues.
