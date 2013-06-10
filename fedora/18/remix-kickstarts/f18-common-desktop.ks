@@ -8,8 +8,16 @@
 -PackageKit-command*
 -bash-completion*
 
+# Audio
+alsa-plugins-pulseaudio
+alsa-utils
+pulseaudio
+pulseaudio-module-x11
+pulseaudio-utils
+
 # Fonts
 dejavu-sans-*
+dejavu-serif-*
 liberation-mono-fonts
 liberation-s*-fonts
 
@@ -54,10 +62,9 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 		<family>serif</family>
 		<prefer>
 			<family>DejaVu Serif</family>
-			<family>Bitstream Vera Serif</family>
 			<family>Liberation Serif</family>
+			<family>Bitstream Vera Serif</family>
 			<family>Times New Roman</family>
-			<family>Thorndale AMT</family>
 			<family>Luxi Serif</family>
 			<family>Nimbus Roman No9 L</family>
 			<family>Times</family>
@@ -68,16 +75,13 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 		<family>sans-serif</family>
 		<prefer>
 			<family>DejaVu Sans</family>
-			<family>Bitstream Vera Sans</family>
 			<family>Liberation Sans</family>
+			<family>Bitstream Vera Sans</family>
 			<family>Verdana</family>
 			<family>Arial</family>
-			<family>Albany AMT</family>
 			<family>Luxi Sans</family>
 			<family>Nimbus Sans L</family>
 			<family>Helvetica</family>
-			<family>Lucida Sans Unicode</family>
-			<family>BPG Glaho International</family>
 			<family>Tahoma</family>
 		</prefer>
 	</alias>
@@ -86,12 +90,10 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 		<family>monospace</family>
 		<prefer>
 			<family>DejaVu Sans Mono</family>
-			<family>Bitstream Vera Sans Mono</family>
 			<family>Liberation Mono</family>
-			<family>Inconsolata</family>
-			<family>Andale Mono</family>
+			<family>Bitstream Vera Sans Mono</family>
 			<family>Courier New</family>
-			<family>Cumberland AMT</family>
+			<family>Andale Mono</family>
 			<family>Luxi Mono</family>
 			<family>Nimbus Mono L</family>
 			<family>Courier</family>

@@ -8,8 +8,27 @@ repo --name=rpmfusion-nonfree-updates --mirrorlist=http://mirrors.rpmfusion.org/
 repo --name=remi --includepkgs=libdvd*,remi-release* --baseurl=http://rpms.famillecollet.com/fedora/$releasever/remi/$basearch/
 
 %packages
-@multimedia --nodefaults
-@printing --nodefaults
+
+# @multimedia
+PackageKit-gstreamer-plugin
+gstreamer-plugins-bad-free
+gstreamer-plugins-good
+
+# @printing
+bluez-cups
+cups
+ghostscript
+ghostscript-cups
+foomatic
+foomatic-db-ppds
+foomatic-filters
+gutenprint
+gutenprint-cups
+hpijs
+hplip
+mpage
+paps
+samba-client
 
 # RPM Fusion repositories
 rpmfusion-free-release
@@ -64,6 +83,7 @@ enabled=1
 gpgcheck=0
 OPENPRINTING_REPO_EOF
 
+# A reduced version of Remi repository
 cat > /etc/yum.repos.d/remix.repo << REMI_REPO_EOF
 [remix-remi]
 name=Remix Remi - Fedora \$releasever - \$basearch

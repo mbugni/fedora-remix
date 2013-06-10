@@ -17,6 +17,7 @@ digikam
 k3b
 k3b-extras-freeworld
 kamoso
+kamera
 kde-print-manager
 kde-plasma-ktorrent
 kdegraphics-thumbnailers
@@ -24,17 +25,17 @@ kscd
 kwebkitpart
 skanlite
 
-### Internet
+# Internet
 icedtea-web
 pidgin
 
-### Multimedia
+# Multimedia
 kffmpegthumbnailer
 gnash-plugin
 vlc
 npapi-vlc
 
-### Office
+# Office
 libreoffice
 libreoffice-langpack-it
 
@@ -48,8 +49,9 @@ echo "**************"
 echo "POST KDE REMIX"
 echo "**************"
 
-# Default apps: vlc
+# Default apps: vlc (instead of dragonplayer)
 grep kde4-dragonplayer.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
+	| sed 's/kde4-dragonplayer.desktop/vlc.desktop/g' >> /usr/local/share/applications/mimeapps.list
 
 %end
 
