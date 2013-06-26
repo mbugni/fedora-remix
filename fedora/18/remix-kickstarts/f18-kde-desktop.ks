@@ -232,6 +232,13 @@ Start Nepomuk=false
 autostart=false
 NEPOMUK_EOF
 
+# Set oxygen-gtk2 as default gtk2 theme
+cat > /etc/gtk-2.0/gtkrc << EOF_GTKRC
+include "/usr/share/themes/oxygen-gtk/gtk-2.0/gtkrc"
+gtk-icon-theme-name = "oxygen"
+gtk-fallback-icon-theme = "gnome"
+EOF_GTKRC
+
 # Set oxygen-gtk3 as default gtk3 theme
 if [ ! -d "/etc/skel/.config/gtk-3.0" ]; then
   mkdir -p /etc/skel/.config/gtk-3.0

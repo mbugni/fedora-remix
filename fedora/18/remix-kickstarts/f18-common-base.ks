@@ -3,7 +3,7 @@
 # Defines the basics for all remix-kickstarts
 
 lang it_IT.UTF-8
-keyboard --vckeymap=it
+keyboard --vckeymap=it2 --xlayouts='it'
 timezone Europe/Rome
 auth --useshadow --enablemd5
 selinux --enforcing

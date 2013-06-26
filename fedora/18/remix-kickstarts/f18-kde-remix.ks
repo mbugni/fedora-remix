@@ -17,7 +17,7 @@ digikam
 k3b
 k3b-extras-freeworld
 kamoso
-kamera
+# kamera
 kde-print-manager
 kde-plasma-ktorrent
 kdegraphics-thumbnailers
