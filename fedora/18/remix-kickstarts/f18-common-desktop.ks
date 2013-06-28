@@ -125,12 +125,5 @@ GRUB_THEME="/boot/grub2/themes/system/theme.txt"
 EOF_DEFAULT_GRUB
 fi
 
-# Set a default keymap if not present
-if [ ! -f "/etc/vconsole.conf" ]; then
-cat > /etc/vconsole.conf << EOF_VCONSOLE
-KEYMAP="it"
-EOF_VCONSOLE
-fi
-
 %end
 
