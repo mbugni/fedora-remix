@@ -1,0 +1,37 @@
+## f18-cinnamon-remix.ks
+
+%include f18-cinnamon-desktop.ks
+%include f18-common-remix.ks
+
+part / --size 4096 --fstype ext4
+
+%packages
+
+# Graphics
+cheese
+sane-backends-drivers-scanners
+shotwell
+simple-scan
+
+# Internet
+icedtea-web
+pidgin
+transmission-gtk
+
+# Multimedia
+brasero
+gnash-plugin
+rhythmbox
+totem
+totem-mozplugin
+
+# Office
+libreoffice
+libreoffice-langpack-it
+
+# Settings
+system-config-printer
+
+%end
+
+

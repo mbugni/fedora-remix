@@ -102,7 +102,7 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 </fontconfig>
 EOF_FONTS
 
-cat > /etc/profile.d/remix-shell.sh << EOF_SHELL
+cat > /etc/profile.d/color-prompt.sh << EOF_SHELL
 ## Colored prompt
 if [ -n "\$PS1" ]; then
         if [ \${UID} -eq 0 ]; then

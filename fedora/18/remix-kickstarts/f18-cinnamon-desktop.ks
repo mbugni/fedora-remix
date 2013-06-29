@@ -4,8 +4,6 @@
 
 %packages
 
-### Cinnamon desktop
-
 # Unwanted stuff
 -abrt*
 -at-*
@@ -18,7 +16,6 @@
 NetworkManager-*vpn*
 PackageKit-gtk*
 avahi    
-cheese
 cinnamon
 control-center
 dconf
@@ -31,6 +28,7 @@ gdm
 gedit
 gnome-color-manager
 gnome-disk-utility
+gnome-font-viewer
 gnome-icon-theme
 gnome-icon-theme-legacy
 gnome-icon-theme-symbolic

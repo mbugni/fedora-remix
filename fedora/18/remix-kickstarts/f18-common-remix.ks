@@ -39,9 +39,11 @@ remi-release
 
 # Multimedia
 gstreamer-ffmpeg
-gstreamer-plugins-bad
-gstreamer-plugins-bad-nonfree
-gstreamer-plugins-ugly
+gstreamer*-libav
+gstreamer*-plugins-bad
+gstreamer*-plugins-bad-*free
+gstreamer*-plugins-bad-freeworld
+gstreamer*-plugins-ugly
 libdvdcss
 
 # Tools
