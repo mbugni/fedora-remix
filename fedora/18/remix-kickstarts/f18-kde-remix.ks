@@ -1,43 +1,45 @@
-## f18-kde-desktop.ks
+## f18-kde-remix.ks
 
 %include f18-kde-desktop.ks
 %include f18-common-remix.ks
 
-part / --size 4096
+part / --size 4096 --fstype ext4
 
 %packages
-
-### The KDE-Desktop
 
 # Unwanted stuff
 -libreoffice-kde
 
-amarok
+# Graphics
 digikam
-k3b
-k3b-extras-freeworld
-kamoso
 # kamera
-kde-print-manager
-kde-plasma-ktorrent
+kamoso
 kdegraphics-thumbnailers
-kscd
 kwebkitpart
+sane-backends-drivers-scanners
 skanlite
 
 # Internet
 icedtea-web
+kde-plasma-ktorrent
 pidgin
 
 # Multimedia
-kffmpegthumbnailer
+amarok
 gnash-plugin
+k3b
+k3b-extras-freeworld
+kffmpegthumbnailer
+kscd
 vlc
 npapi-vlc
 
 # Office
 libreoffice
 libreoffice-langpack-it
+
+# Settings
+kde-print-manager
 
 %end
 

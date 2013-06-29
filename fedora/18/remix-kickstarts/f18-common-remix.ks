@@ -43,6 +43,7 @@ gstreamer*-libav
 gstreamer*-plugins-bad
 gstreamer*-plugins-bad-*free
 gstreamer*-plugins-bad-freeworld
+gstreamer*-plugins-good
 gstreamer*-plugins-ugly
 libdvdcss
 
