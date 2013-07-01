@@ -1,7 +1,7 @@
 ## f18-kde-remix.ks
 
 %include f18-kde-desktop.ks
-%include f18-common-remix.ks
+%include f18-base-remix.ks
 
 part / --size 4096 --fstype ext4
 
@@ -25,7 +25,8 @@ kde-plasma-ktorrent
 pidgin
 
 # Multimedia
-amarok
+# amarok
+clementine
 gnash-plugin
 k3b
 k3b-extras-freeworld

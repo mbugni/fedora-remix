@@ -1,7 +1,7 @@
 ## f18-cinnamon-remix.ks
 
 %include f18-cinnamon-desktop.ks
-%include f18-common-remix.ks
+%include f18-base-remix.ks
 
 part / --size 4096 --fstype ext4
 

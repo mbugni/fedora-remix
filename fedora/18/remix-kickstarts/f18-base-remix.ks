@@ -1,4 +1,4 @@
-## f18-common-remix.ks
+## f18-base-remix.ks
 
 # Extra repositories
 repo --name=rpmfusion-free --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch
@@ -56,9 +56,9 @@ unrar
 %post
 
 echo ""
-echo "*****************"
-echo "POST COMMON REMIX"
-echo "*****************"
+echo "***************"
+echo "POST BASE REMIX"
+echo "***************"
 
 # Import RPM-GPG keys
 for key in $(ls /etc/pki/rpm-gpg/RPM-GPG-KEY-*) ; do

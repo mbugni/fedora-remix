@@ -1,6 +1,6 @@
 ## f18-cinnamon-desktop.ks
 
-%include f18-common-desktop.ks
+%include f18-base-desktop.ks
 
 %packages
 

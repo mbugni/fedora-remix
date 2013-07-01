@@ -1,12 +1,13 @@
-## f18-common-desktop.ks
+## f18-base-desktop.ks
 
-%include f18-common-base.ks
+%include f18-base.ks
 
 %packages
 
 # Unwanted stuff
 -PackageKit-command*
 -bash-completion*
+-fedora-release-notes
 
 # Audio
 alsa-plugins-pulseaudio
@@ -44,9 +45,9 @@ yum-plugin-fastestmirror
 %post
 
 echo ""
-echo "*******************"
-echo "POST COMMON DESKTOP"
-echo "*******************"
+echo "*****************"
+echo "POST BASE DESKTOP"
+echo "*****************"
 
 # Antialiasing by default
 ln -sf /etc/fonts/conf.avail/10-autohint.conf /etc/fonts/conf.d/

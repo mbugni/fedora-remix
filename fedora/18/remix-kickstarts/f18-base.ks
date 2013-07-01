@@ -1,6 +1,6 @@
-# f18-common-base.ks
+# f18-base.ks
 #
-# Defines the basics for all remix-kickstarts
+# Defines the basics for all kickstarts
 
 lang it_IT.UTF-8
 keyboard --vckeymap=it2 --xlayouts='it'
