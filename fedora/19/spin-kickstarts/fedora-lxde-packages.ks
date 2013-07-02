@@ -42,17 +42,25 @@ metacity
 ssmtp
 
 # save some space
+-autofs
 -acpid
+-gimp-help
+-desktop-backgrounds-basic
+-realmd                     # only seems to be used in GNOME
+-PackageKit*                # we switched to yumex, so we don't need this
 -foomatic-db-ppds
 -foomatic
 -stix-fonts
 -ibus-typing-booster
+-xscreensaver-extras
+-wqy-zenhei-fonts
 
+# FIXME: can be removed once mtpaint is gone from lxde-apps in comps
+-mtpaint
 
 # drop some system-config things
 -system-config-boot
 #-system-config-language
--system-config-lvm
 -system-config-network
 -system-config-rootpassword
 #-system-config-services

@@ -10,7 +10,6 @@
 # Maintainer: Jørn Lomax <northlomax@gmail.com>
 #             https://fedoraproject.org/wiki/User:jvlomax
 #             Brendan Jones <brendan.jones.it@gmail.com>
-# Last modified: Dec 20, 2012.
 
 %include fedora-livecd-kde.ks
 
@@ -191,7 +190,7 @@ thunderbird
 #setup kickoff favorites
 /bin/mkdir -p /etc/skel/.kde/share/config
 
-JAMFAVORITES=/usr/share/applications/firefox.desktop,/usr/share/applications/fedora-qjackctl.desktop,/usr/share/applications/qtractor.desktop,/usr/share/applications/frescobaldi.desktop,/usr/share/applications/kde4/konsole.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/systemsettings.desktop
+JAMFAVORITES=/usr/share/applications/firefox.desktop,/usr/share/applications/qjackctl.desktop,/usr/share/applications/qtractor.desktop,/usr/share/applications/frescobaldi.desktop,/usr/share/applications/kde4/konsole.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/systemsettings.desktop
 JAMFAVORITESLIVE=/usr/share/applications/liveinst.desktop,$JAMFAVORITES
 
 cat <<EOF  >> /etc/skel/.kde/share/config/kickoffrc

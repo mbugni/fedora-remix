@@ -16,8 +16,10 @@
 -desktop-backgrounds-compat
 -evolution
 -evolution-data-server
+-filezilla
 -firefox
 -geany
+-gnome-rdp
 -gnome-user-docs
 -hicolor-icon-theme
 -libreoffice-*
@@ -33,6 +35,7 @@
 -tigervnc-license
 -transmission-gtk
 -wvdial
+-xpdf
 -xterm
 -yelp
 

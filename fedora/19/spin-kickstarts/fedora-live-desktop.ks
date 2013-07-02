@@ -55,7 +55,6 @@ FOE
     mkdir -p ~liveuser/.config/autostart
     cp /usr/share/anaconda/gnome/fedora-welcome.desktop /usr/share/applications/
     cp /usr/share/anaconda/gnome/fedora-welcome.desktop ~liveuser/.config/autostart/
-    chown -R liveuser:liveuser /home/liveuser/.config/
   fi
 fi
 
@@ -73,6 +72,10 @@ FOE
 if [ -f /etc/PackageKit/CommandNotFound.conf ]; then
   sed -i -e 's/^SoftwareSourceSearch=true/SoftwareSourceSearch=false/' /etc/PackageKit/CommandNotFound.conf
 fi
+
+# make sure to set the right permissions and selinux contexts
+chown -R liveuser:liveuser /home/liveuser/
+restorecon -R /home/liveuser/
 
 EOF
 

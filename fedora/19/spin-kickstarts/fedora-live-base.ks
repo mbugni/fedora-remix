@@ -179,6 +179,9 @@ action "Adding live user" useradd \$USERADDARGS -c "Live System User" liveuser
 passwd -d liveuser > /dev/null
 usermod -aG wheel liveuser > /dev/null
 
+# Remove root password lock
+passwd -d root > /dev/null
+
 # don't use prelink on a running live image
 sed -i 's/PRELINKING=yes/PRELINKING=no/' /etc/sysconfig/prelink &>/dev/null || :
 
@@ -215,6 +218,10 @@ if strstr "\`cat /proc/cmdline\`" CDLABEL= ; then
 FOE
 chmod +x /sbin/halt.local
 fi
+
+# add static hostname to work around xauth bug
+# https://bugzilla.redhat.com/show_bug.cgi?id=679486
+echo "localhost" > /etc/hostname
 
 EOF
 

@@ -29,9 +29,12 @@
 -libfprint
 -realmd
 -eekboard-libs
+-open-vm-tools*
 
 # == Core Sugar Platform ==
 @sugar-desktop
+-sugar-ruler
+sugar-cp-updater
 
 # Write breaks unless we do this (we don't need it anyway)
 # enable for testing in the F17 dev cycle

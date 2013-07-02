@@ -7,7 +7,7 @@
 # - Luya Tshimbalanga <luya AT fedoraproject DOT org>
 # - Sebastian Dziallas <sdz AT fedoraproject DOT org>
 
-%include fedora-livecd-desktop.ks
+%include fedora-live-desktop.ks
 
 #DVD size partition
 part / --size 8192
@@ -89,28 +89,28 @@ overpass-fonts
 
 %end
 
-%post
+#%post
 
 #Include favorite design applications
-cat >> /usr/share/glib-2.0/schemas/org.gnome.shell.gschema.override << FOE
-[org.gnome.shell]
-favorite-apps=['firefox.desktop', 'evolution.desktop', 'empathy.desktop', 'rhythmbox.desktop', 'shotwell.desktop', 'gimp.desktop', 'inkscape.desktop', 'scribus.desktop', 'nautilus.desktop', 'anaconda.desktop']
-FOE
+#cat >> /usr/share/glib-2.0/schemas/org.gnome.shell.gschema.override << FOE
+#[org.gnome.shell]
+#favorite-apps=['firefox.desktop', 'evolution.desktop', 'empathy.desktop', 'rhythmbox.desktop', 'shotwell.desktop', 'gimp.desktop', 'inkscape.desktop', 'scribus.desktop', 'nautilus.desktop', 'anaconda.desktop']
+#FOE
 
 # Add link to the Inkscape Course
-cat >> /usr/share/applications/inkscape-course.desktop << FOE
-[Desktop Entry]
-Name=Introduction To Inkscape
-GenericName=Inkscape Course
-Comment=Materials from Máirín Duffy's Inkscape Class
-Exec=xdg-open http://linuxgrrl.com/learn/Introduction_To_Inkscape
-Type=Application
-Icon=fedora-logo-icon
-Categories=Graphics;Documentation;
-FOE
-chmod a+x /usr/share/applications/inkscape-course.desktop
+#cat >> /usr/share/applications/inkscape-course.desktop << FOE
+#[Desktop Entry]
+#Name=Introduction To Inkscape
+#GenericName=Inkscape Course
+#Comment=Materials from Máirín Duffy's Inkscape Class
+#Exec=xdg-open http://linuxgrrl.com/learn/Introduction_To_Inkscape
+#Type=Application
+#Icon=fedora-logo-icon
+#Categories=Graphics;Documentation;
+#FOE
+#chmod a+x /usr/share/applications/inkscape-course.desktop
 
-EOF
+#EOF
 
-%end
+#%end
 
