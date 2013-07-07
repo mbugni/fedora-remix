@@ -16,7 +16,6 @@ digikam
 kamoso
 kdegraphics-thumbnailers
 kwebkitpart
-sane-backends-drivers-scanners
 skanlite
 
 # Internet

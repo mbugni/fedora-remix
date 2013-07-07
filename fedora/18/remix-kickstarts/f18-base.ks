@@ -3,7 +3,7 @@
 # Defines the basics for all kickstarts
 
 lang it_IT.UTF-8
-keyboard --vckeymap=it2 --xlayouts='it'
+keyboard --vckeymap=it --xlayouts='it'
 timezone Europe/Rome
 auth --useshadow --enablemd5
 selinux --enforcing

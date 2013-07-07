@@ -9,6 +9,13 @@ repo --name=remi --includepkgs=libdvd*,remi-release* --baseurl=http://rpms.famil
 
 %packages
 
+# RPM Fusion repositories
+rpmfusion-free-release
+rpmfusion-nonfree-release
+
+# Remi repositories (disabled)
+remi-release
+
 # @multimedia
 PackageKit-gstreamer-plugin
 gstreamer-plugins-bad-free
@@ -30,12 +37,8 @@ mpage
 paps
 samba-client
 
-# RPM Fusion repositories
-rpmfusion-free-release
-rpmfusion-nonfree-release
-
-# Remi repositories (disabled)
-remi-release
+# Graphics
+sane-backends-drivers-scanners
 
 # Multimedia
 gstreamer-ffmpeg

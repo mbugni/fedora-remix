@@ -4,13 +4,12 @@
 
 %packages
 
-### The KDE-Desktop
-
 # Unwanted stuff
 -abrt*
 -*akonadi*
 -gnome*
 -kdepim*
+-system-config-printer
 
 apper
 ark
@@ -54,12 +53,6 @@ thunderbird
 
 # Tools
 gparted
-
-
-### fixes
-
-# use kde-print-manager instead of system-config-printer
--system-config-printer
 
 %end
 
@@ -139,6 +132,7 @@ AKONADI_EOF
 cat > /home/liveuser/.kde/share/config/apper << APPER_EOF
 [CheckUpdate]
 autoUpdate=0
+distroUpgrade=0
 interval=0
 APPER_EOF
 
@@ -187,6 +181,7 @@ grep kde4-konqueror.desktop /usr/share/kde-settings/kde-profile/default/share/ap
 cat > /etc/kde/apper << APPER_EOF
 [CheckUpdate]
 autoUpdate=0
+distroUpgrade=0
 interval=0
 APPER_EOF
 

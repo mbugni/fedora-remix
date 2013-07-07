@@ -9,7 +9,6 @@ part / --size 4096 --fstype ext4
 
 # Graphics
 cheese
-sane-backends-drivers-scanners
 shotwell
 simple-scan
 
