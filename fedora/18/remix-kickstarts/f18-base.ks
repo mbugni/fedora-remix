@@ -41,9 +41,6 @@ memtest86+
 anaconda
 @anaconda-tools
 
-# fpaste is very useful for debugging and very small
-fpaste
-
 %end
 
 %post

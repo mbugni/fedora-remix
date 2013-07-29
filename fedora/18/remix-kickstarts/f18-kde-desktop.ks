@@ -136,6 +136,13 @@ distroUpgrade=0
 interval=0
 APPER_EOF
 
+# Disable some kded modules
+# apperd: http://bugzilla.redhat.com/948099
+cat > /home/liveuser/.kde/share/config/kdedrc << KDEDRC_EOF
+[Module-apperd]
+autoload=false
+KDEDRC_EOF
+
 # Disable kres-migrator
 cat > /home/liveuser/.kde/share/config/kres-migratorrc << KRES_EOF
 [Migration]
@@ -193,6 +200,12 @@ BrowserApplication[\$e]=firefox.desktop
 Country=it
 Language=it:en_US
 GLOBALS_EOF
+
+# Disable module: apperd (no update checks)
+cat > /etc/kde/kdedrc << KDEDRC_EOF
+[Module-apperd]
+autoload=false
+KDEDRC_EOF
 
 # Add defaults to favorites menu
 cat > /etc/kde/kickoffrc << KICKOFF_EOF
