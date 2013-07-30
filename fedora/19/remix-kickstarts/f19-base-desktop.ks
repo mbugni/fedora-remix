@@ -1,6 +1,6 @@
-## f18-base-desktop.ks
+## f19-base-desktop.ks
 
-%include f18-base.ks
+%include f19-base.ks
 
 %packages
 
@@ -34,9 +34,9 @@ system-config-keyboard
 system-config-users
 
 # Tools
-firstboot
 htop
 hunspell-it
+initial-setup
 vim-enhanced
 yum-plugin-fastestmirror
 
@@ -123,7 +123,6 @@ GRUB_DISTRIBUTOR="\$(sed 's, release .*\$,,g' /etc/system-release)"
 GRUB_DEFAULT=saved
 GRUB_CMDLINE_LINUX="rd.md=0 rd.dm=0 rd.luks=0 rhgb quiet"
 GRUB_DISABLE_RECOVERY="true"
-GRUB_THEME="/boot/grub2/themes/system/theme.txt"
 EOF_DEFAULT_GRUB
 fi
 

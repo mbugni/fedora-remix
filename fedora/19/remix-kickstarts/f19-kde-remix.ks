@@ -1,7 +1,7 @@
-## f18-kde-remix.ks
+## f19-kde-remix.ks
 
-%include f18-kde-desktop.ks
-%include f18-base-remix.ks
+%include f19-kde-desktop.ks
+%include f19-base-remix.ks
 
 part / --size 4096 --fstype ext4
 
@@ -57,6 +57,7 @@ grep kde4-dragonplayer.desktop /usr/share/kde-settings/kde-profile/default/share
 # Default apps: clementine (instead of amarok)
 grep kde4-amarok.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
 	| sed 's/kde4-amarok.desktop/clementine.desktop/g' >> /usr/local/share/applications/mimeapps.list
+
 
 %end
 
