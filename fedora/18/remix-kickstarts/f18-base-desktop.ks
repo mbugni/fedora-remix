@@ -9,6 +9,8 @@
 -bash-completion*
 -fedora-release-notes
 -fpaste
+-rsyslog
+-sendmail
 
 # Audio
 alsa-plugins-pulseaudio
@@ -49,6 +51,9 @@ echo ""
 echo "*****************"
 echo "POST BASE DESKTOP"
 echo "*****************"
+
+# Enable journald storage persistency (instead of rsyslog)
+# mkdir -p /var/log/journal
 
 # Antialiasing by default
 ln -sf /etc/fonts/conf.avail/10-autohint.conf /etc/fonts/conf.d/
