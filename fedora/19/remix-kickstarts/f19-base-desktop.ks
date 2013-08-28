@@ -9,6 +9,8 @@
 -bash-completion*
 -fedora-release-notes
 -fpaste
+-rsyslog
+-sendmail
 
 # Audio
 alsa-plugins-pulseaudio
@@ -50,8 +52,11 @@ echo "*****************"
 echo "POST BASE DESKTOP"
 echo "*****************"
 
+# Enable journald storage persistency (instead of rsyslog)
+# mkdir -p /var/log/journal
+
 # Antialiasing by default
-ln -sf /etc/fonts/conf.avail/10-autohint.conf /etc/fonts/conf.d/
+ln -sf /usr/share/fontconfig/conf.avail/10-autohint.conf /etc/fonts/conf.d/
 
 # Set DejaVu fonts as preferred family
 cat > /etc/fonts/local.conf << EOF_FONTS
