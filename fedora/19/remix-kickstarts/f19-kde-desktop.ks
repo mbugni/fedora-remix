@@ -196,6 +196,9 @@ cat > /etc/kde/kdeglobals << GLOBALS_EOF
 [General]
 BrowserApplication[\$e]=firefox.desktop
 
+[KDE]
+SingleClick=false
+
 [Locale]
 Country=it
 Language=it:en_US
