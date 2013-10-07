@@ -6,6 +6,7 @@
 
 # Unwanted stuff
 -PackageKit-command*
+-abrt*
 -bash-completion*
 -fedora-release-notes
 -fpaste
@@ -38,7 +39,7 @@ system-config-users
 # Tools
 htop
 hunspell-it
-initial-setup
+# initial-setup
 vim-enhanced
 yum-plugin-fastestmirror
 
@@ -123,7 +124,7 @@ EOF_SHELL
 # Set a default grub config if not present (rhb #886502)
 if [ ! -f "/etc/default/grub" ]; then
 cat > /etc/default/grub << EOF_DEFAULT_GRUB
-GRUB_TIMEOUT=4
+GRUB_TIMEOUT=3
 GRUB_DISTRIBUTOR="\$(sed 's, release .*\$,,g' /etc/system-release)"
 GRUB_DEFAULT=saved
 GRUB_CMDLINE_LINUX="rd.md=0 rd.dm=0 rd.luks=0 rhgb quiet"
@@ -132,4 +133,3 @@ EOF_DEFAULT_GRUB
 fi
 
 %end
-

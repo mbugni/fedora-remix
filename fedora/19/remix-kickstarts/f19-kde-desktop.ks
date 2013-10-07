@@ -5,7 +5,6 @@
 %packages
 
 # Unwanted stuff
--abrt*
 -*akonadi*
 -gnome*
 -kdepim*
@@ -251,9 +250,7 @@ gtk-fallback-icon-theme = "gnome"
 EOF_GTKRC
 
 # Set oxygen-gtk3 as default gtk3 theme
-if [ ! -d "/etc/skel/.config/gtk-3.0" ]; then
-  mkdir -p /etc/skel/.config/gtk-3.0
-fi
+mkdir -p /etc/skel/.config/gtk-3.0
 cat > /etc/skel/.config/gtk-3.0/settings.ini << EOF_SETTINGS_GTK3
 [Settings]
 gtk-theme-name = oxygen-gtk
