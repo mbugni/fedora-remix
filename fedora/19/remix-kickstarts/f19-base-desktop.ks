@@ -10,6 +10,8 @@
 -bash-completion*
 -fedora-release-notes
 -fpaste
+-initial-setup
+-prelink
 -rsyslog
 -sendmail
 
@@ -19,6 +21,12 @@ alsa-utils
 pulseaudio
 pulseaudio-module-x11
 pulseaudio-utils
+
+# Boot tools
+grub2
+grub2-efi
+grub2-tools
+syslinux
 
 # Fonts
 dejavu-sans-*
@@ -39,7 +47,6 @@ system-config-users
 # Tools
 htop
 hunspell-it
-# initial-setup
 vim-enhanced
 yum-plugin-fastestmirror
 

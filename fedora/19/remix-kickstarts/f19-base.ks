@@ -3,7 +3,7 @@
 # Defines the basics for all kickstarts
 
 lang it_IT.UTF-8
-keyboard --vckeymap=it --xlayouts='it'
+keyboard --vckeymap=it --xlayouts=it
 timezone Europe/Rome
 auth --useshadow --enablemd5
 selinux --enforcing
@@ -31,6 +31,7 @@ repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?rep
 # Explicitly specified here:
 # <notting> walters: because otherwise dependency loops cause yum issues.
 kernel
+kernel-modules-extra
 
 # This was added a while ago, I think it falls into the category of
 # "Diagnosis/recovery tool useful from a Live OS image".  Leaving this untouched
@@ -39,7 +40,10 @@ memtest86+
 
 # The point of a live image is to install
 anaconda
-@anaconda-tools
+# @anaconda-tools
+
+# Make live images easy to shutdown and the like in libvirt
+# qemu-guest-agent
 
 %end
 
