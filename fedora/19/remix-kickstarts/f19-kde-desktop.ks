@@ -243,6 +243,7 @@ autostart=false
 NEPOMUK_EOF
 
 # Set oxygen-gtk2 as default gtk2 theme
+mkdir -p /etc/gtk-2.0
 cat > /etc/gtk-2.0/gtkrc << EOF_GTKRC
 include "/usr/share/themes/oxygen-gtk/gtk-2.0/gtkrc"
 gtk-icon-theme-name = "oxygen"
