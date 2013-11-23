@@ -24,8 +24,8 @@ gstreamer-plugins-good
 # @printing
 bluez-cups
 cups
+cups-filters
 ghostscript
-ghostscript-cups
 foomatic
 foomatic-db-ppds
 foomatic-filters

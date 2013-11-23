@@ -139,4 +139,9 @@ GRUB_DISABLE_RECOVERY="true"
 EOF_DEFAULT_GRUB
 fi
 
+# Force italian keyboard layout (rhb #982394)
+cat >> /etc/rc.d/init.d/livesys << EOF_KEYB_IT
+system-config-keyboard it
+EOF_KEYB_IT
+
 %end
