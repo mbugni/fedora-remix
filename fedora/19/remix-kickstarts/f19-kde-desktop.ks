@@ -215,6 +215,15 @@ cat > /etc/kde/kickoffrc << KICKOFF_EOF
 FavoriteURLs=/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/konsole.desktop
 KICKOFF_EOF
 
+# Launcher settings
+cat > /etc/kde/klaunchrc << KLAUNCHRC_EOF
+[BusyCursorSettings]
+Timeout=6
+
+[TaskbarButtonSettings]
+Timeout=6
+KLAUNCHRC_EOF
+
 # Avoid konqueror preload
 cat > /etc/kde/konquerorrc << KONQUEROR_EOF
 [Reusing]
@@ -222,6 +231,12 @@ AlwaysHavePreloaded=false
 MaxPreloadCount=0
 PreloadOnStartup=false
 KONQUEROR_EOF
+
+# Session settings
+cat > /etc/kde/ksmserverrc << KSMSERVERRC_EOF
+[General]
+loginMode=default
+KSMSERVERRC_EOF
 
 # Set Thunderbird as default email client
 cat > /etc/kde/emaildefaults << EMAILDEFAULTS_EOF

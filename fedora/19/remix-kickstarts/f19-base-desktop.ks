@@ -23,6 +23,7 @@ pulseaudio-module-x11
 pulseaudio-utils
 
 # Boot tools
+cryptsetup
 grub2
 grub2-efi
 grub2-tools
@@ -64,13 +65,23 @@ echo "*****************"
 # mkdir -p /var/log/journal
 
 # Antialiasing by default
-ln -sf /usr/share/fontconfig/conf.avail/10-autohint.conf /etc/fonts/conf.d/
+# ln -sf /usr/share/fontconfig/conf.avail/10-autohint.conf /etc/fonts/conf.d/
 
 # Set DejaVu fonts as preferred family
 cat > /etc/fonts/local.conf << EOF_FONTS
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 <fontconfig>
+
+<!-- Settins for better font rendering -->
+<match target="font">
+	<edit mode="assign" name="rgba"><const>rgb</const></edit>
+	<edit mode="assign" name="hinting"><bool>true</bool></edit>
+	<edit mode="assign" name="hintstyle"><const>hintfull</const></edit>
+	<edit mode="assign" name="antialias"><bool>true</bool></edit>
+	<edit mode="assign" name="lcdfilter"><const>lcddefault</const></edit>
+</match>
+
 <!-- Local default fonts -->
 <!-- Serif faces -->
 	<alias>
@@ -139,9 +150,10 @@ GRUB_DISABLE_RECOVERY="true"
 EOF_DEFAULT_GRUB
 fi
 
+cat >> /etc/rc.d/init.d/livesys << EOF_LIVESYS
+
 # Force italian keyboard layout (rhb #982394)
-cat >> /etc/rc.d/init.d/livesys << EOF_KEYB_IT
-system-config-keyboard it
-EOF_KEYB_IT
+system-config-keyboard --noui it
+EOF_LIVESYS
 
 %end
