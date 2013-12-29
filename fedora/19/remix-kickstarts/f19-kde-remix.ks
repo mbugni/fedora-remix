@@ -12,8 +12,8 @@ part / --size 4096 --fstype ext4
 
 # Graphics
 digikam
+guvcview
 # kamera
-kamoso
 kdegraphics-thumbnailers
 kwebkitpart
 skanlite
@@ -35,7 +35,7 @@ vlc
 npapi-vlc
 
 # Office
-libreoffice
+@libreoffice
 libreoffice-langpack-it
 
 # Settings
