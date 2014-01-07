@@ -38,6 +38,7 @@ paps
 samba-client
 
 # Graphics
+sane-backends-drivers-cameras
 sane-backends-drivers-scanners
 
 # Multimedia
@@ -62,11 +63,6 @@ echo ""
 echo "***************"
 echo "POST BASE REMIX"
 echo "***************"
-
-# Import RPM-GPG keys
-for key in $(ls /etc/pki/rpm-gpg/RPM-GPG-KEY-*) ; do
-   rpmkeys --import $key
-done
 
 # OpenPrinting/Database/DriverPackages based on the LSB 3.2
 cat > /etc/yum.repos.d/openprinting-drivers.repo << OPENPRINTING_REPO_EOF
