@@ -1,4 +1,4 @@
-## f18-cinnamon-desktop.ks
+## f19-cinnamon-desktop.ks
 
 %include f19-base-desktop.ks
 
@@ -43,6 +43,7 @@ nemo-fileroller
 network-manager-applet
 nm-connection-editor
 xdg-user-dirs-gtk
+zukitwo-gtk*-theme
 
 # Internet
 firefox
@@ -74,8 +75,9 @@ FOE
 if [ -f /usr/share/applications/liveinst.desktop ]; then
   # Show harddisk install in shell dash
   sed -i -e 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop ""
-  # need to move it to anaconda.desktop to make shell happy
-  mv /usr/share/applications/liveinst.desktop /usr/share/applications/anaconda.desktop
+  mkdir ~liveuser/Desktop
+  cp /usr/share/applications/liveinst.desktop ~liveuser/Desktop/
+  chmod +x ~liveuser/Desktop/liveinst.desktop
 
   cat > /usr/share/glib-2.0/schemas/org.cinnamon.remix.gschema.override << FOE
 [org.cinnamon]
@@ -123,8 +125,8 @@ sed -i 's/^#autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/li
 # set Cinnamon as default session, otherwise login will fail
 sed -i 's/^#user-session=.*/user-session=cinnamon/' /etc/lightdm/lightdm.conf
 
-# override default gnome settings
-cat >> /usr/share/glib-2.0/schemas/org.gnome.remix.gschema.override << GNOME_EOF
+# override default Cinnamon settings
+cat >> /usr/share/glib-2.0/schemas/fedora.remix.gschema.override << OVERRIDE_EOF
 [org.gnome.desktop.interface]
 font-name='Sans 10'
 document-font-name='Sans 10'
@@ -132,10 +134,10 @@ monospace-font-name='Monospace 10'
 
 [org.cinnamon.desktop.interface]
 font-name='Sans 10'
-document-font-name='Sans 10'
-monospace-font-name='Monospace 10'
+gtk-theme='Zukitwo'
 
 [org.cinnamon.desktop.wm.preferences]
+theme='Adwaita'
 titlebar-font='Sans Bold 9'
 
 [org.gnome.settings-daemon.plugins.updates]
@@ -143,13 +145,10 @@ active=false
 auto-download-updates=false
 frequency-get-updates=0
 frequency-get-upgrades=0
-GNOME_EOF
 
-# override default settings
-cat > /usr/share/glib-2.0/schemas/org.cinnamon.remix.gschema.override << EOF
 [org.cinnamon]
 favorite-apps=['cinnamon-settings.desktop', 'firefox.desktop', 'nemo.desktop', 'gnome-terminal.desktop']
-EOF
+OVERRIDE_EOF
 
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
