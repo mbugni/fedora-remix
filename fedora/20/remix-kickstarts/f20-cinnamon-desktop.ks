@@ -43,6 +43,7 @@ nemo-fileroller
 network-manager-applet
 nm-connection-editor
 xdg-user-dirs-gtk
+zukitwo-gtk*-theme
 
 # Internet
 firefox
@@ -133,7 +134,7 @@ monospace-font-name='Monospace 10'
 
 [org.cinnamon.desktop.interface]
 font-name='Sans 10'
-gtk-theme='Adwaita'
+gtk-theme='Zukitwo'
 
 [org.cinnamon.desktop.wm.preferences]
 theme='Adwaita'
