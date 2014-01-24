@@ -281,7 +281,7 @@ systemctl enable tmp.mount
 # work around for poor key import UI in PackageKit
 rm -f /var/lib/rpm/__db*
 releasever=$(rpm -q --qf '%{version}\n' fedora-release)
-basearch=$(uname -m)
+basearch=$(uname -i)
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
 echo "Packages within this LiveCD"
 rpm -qa
@@ -303,7 +303,7 @@ rm -f /core*
 
 
 %post --nochroot
-cp $INSTALL_ROOT/usr/share/doc/*-release-*/GPL $LIVE_ROOT/GPL
+cp $INSTALL_ROOT/usr/share/doc/*-release/GPL $LIVE_ROOT/GPL
 
 # only works on x86, x86_64
 if [ "$(uname -i)" = "i386" -o "$(uname -i)" = "x86_64" ]; then

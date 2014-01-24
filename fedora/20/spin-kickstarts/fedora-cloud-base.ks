@@ -197,7 +197,7 @@ truncate -c -s 0 /var/log/yum.log
 
 echo "Import RPM GPG key"
 releasever=$(rpm -q --qf '%{version}\n' fedora-release)
-basearch=$(uname -m)
+basearch=$(uname -i)
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
 
 echo "Packages within this cloud image:"
