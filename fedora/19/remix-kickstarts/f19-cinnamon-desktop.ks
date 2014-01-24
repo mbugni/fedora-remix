@@ -13,7 +13,6 @@
 -system-config-users
 
 NetworkManager-*vpn*
-PackageKit-gtk*
 cinnamon
 dconf-editor
 eog
@@ -26,7 +25,7 @@ gnome-font-viewer
 gnome-icon-theme
 gnome-icon-theme-legacy
 gnome-icon-theme-symbolic
-gnome-packagekit
+gnome-packagekit*
 gnome-screenshot
 gnome-terminal
 gucharmap

@@ -29,4 +29,7 @@ npapi-vlc
 @libreoffice
 libreoffice-langpack-it
 
+# Printing
+system-config-printer
+
 %end
