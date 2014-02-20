@@ -35,10 +35,6 @@ dejavu-serif-*
 liberation-mono-fonts
 liberation-s*-fonts
 
-# Input methods
-ibus-m17n
-ibus-rawcode
-
 # System config
 firewall-config
 system-config-date

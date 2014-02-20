@@ -22,8 +22,8 @@ kcm_touchpad
 kde-baseapps
 kde-l10n-Italian
 kdeplasma-addons
-kde-plasma-networkmanagement
-kde-plasma-networkmanagement-*vpn*
+kde-plasma-nm
+kde-plasma-nm-*vpn*
 kde-settings-pulseaudio
 kde-workspace
 kmix
@@ -42,9 +42,6 @@ xterm
 
 # Fallback icons for some gtk apps 
 gnome-icon-theme-symbolic
-
-# Input methods
-ibus-qt
 
 # Internet
 firefox
