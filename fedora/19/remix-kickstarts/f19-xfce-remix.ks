@@ -1,4 +1,4 @@
-## f18-xfce-remix.ks
+## f19-xfce-remix.ks
 
 %include f19-xfce-desktop.ks
 %include f19-base-remix.ks

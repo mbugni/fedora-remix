@@ -26,6 +26,7 @@ file-roller
 galculator
 gedit
 gnome-keyring-pam
+gnome-packagekit
 gtk-xfce-engine
 gvfs
 gvfs-fuse
@@ -65,7 +66,7 @@ xfdesktop
 xfwm4
 xfwm4-themes
 xscreensaver-base
-yumex
+# yumex
 
 # Internet
 firefox

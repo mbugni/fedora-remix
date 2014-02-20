@@ -43,9 +43,6 @@ xterm
 # Fallback icons for some gtk apps 
 gnome-icon-theme-symbolic
 
-# Input methods
-ibus-qt
-
 # Internet
 firefox
 thunderbird
