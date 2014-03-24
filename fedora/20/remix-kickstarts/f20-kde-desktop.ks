@@ -40,9 +40,6 @@ sweeper
 xsettings-kde
 xterm
 
-# Fallback icons for some gtk apps 
-gnome-icon-theme-symbolic
-
 # Internet
 firefox
 thunderbird

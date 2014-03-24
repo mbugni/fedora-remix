@@ -60,10 +60,8 @@ echo "*****************"
 # Enable journald storage persistency (instead of rsyslog)
 # mkdir -p /var/log/journal
 
-# Antialiasing by default
-# ln -sf /usr/share/fontconfig/conf.avail/10-autohint.conf /etc/fonts/conf.d/
-
-# Set DejaVu fonts as preferred family
+# Antialiasing by default.
+# Set DejaVu fonts as preferred family.
 cat > /etc/fonts/local.conf << EOF_FONTS
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
@@ -145,5 +143,17 @@ GRUB_CMDLINE_LINUX="rd.md=0 rd.dm=0 rd.luks=0 rhgb quiet"
 GRUB_DISABLE_RECOVERY="true"
 EOF_DEFAULT_GRUB
 fi
+
+# Disable SELinux by default
+sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+
+# Enable wheel group as administrator for print server (rhb #907595)
+sed -i 's/^SystemGroup /SystemGroup wheel /g' /etc/cups/cups-files.conf
+
+cat >> /etc/rc.d/init.d/livesys << EOF_LIVESYS
+
+# Force italian keyboard layout (rhb #982394)
+system-config-keyboard --noui it
+EOF_LIVESYS
 
 %end
