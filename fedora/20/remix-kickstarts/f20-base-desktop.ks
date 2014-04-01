@@ -144,9 +144,6 @@ GRUB_DISABLE_RECOVERY="true"
 EOF_DEFAULT_GRUB
 fi
 
-# Disable SELinux by default
-sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
-
 # Enable wheel group as administrator for print server (rhb #907595)
 sed -i 's/^SystemGroup /SystemGroup wheel /g' /etc/cups/cups-files.conf
 

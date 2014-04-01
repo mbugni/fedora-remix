@@ -6,7 +6,7 @@ lang it_IT.UTF-8
 keyboard it
 timezone Europe/Rome
 auth --useshadow --enablemd5
-selinux --enforcing
+selinux --disabled
 firewall --enabled --service=mdns
 xconfig --startxonboot
 part / --size 3072 --fstype ext4
