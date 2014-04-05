@@ -24,9 +24,11 @@ pulseaudio-utils
 
 # Boot tools
 cryptsetup
+efibootmgr
 grub2
 grub2-efi
 grub2-tools
+shim
 syslinux
 
 # Fonts
