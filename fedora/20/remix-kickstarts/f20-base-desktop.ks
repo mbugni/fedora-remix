@@ -32,8 +32,9 @@ shim
 syslinux
 
 # Fonts
-dejavu-sans-*
-dejavu-serif-*
+google-noto-sans-fonts
+google-noto-serif-fonts
+google-droid-sans-mono-fonts
 liberation-mono-fonts
 liberation-s*-fonts
 
@@ -83,10 +84,10 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 	<alias>
 		<family>serif</family>
 		<prefer>
+			<family>Noto Serif</family>
 			<family>DejaVu Serif</family>
 			<family>Liberation Serif</family>
 			<family>Bitstream Vera Serif</family>
-			<family>Times New Roman</family>
 			<family>Luxi Serif</family>
 			<family>Nimbus Roman No9 L</family>
 			<family>Times</family>
@@ -96,29 +97,26 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 	<alias>
 		<family>sans-serif</family>
 		<prefer>
+			<family>Noto Sans</family>
 			<family>DejaVu Sans</family>
 			<family>Liberation Sans</family>
 			<family>Bitstream Vera Sans</family>
-			<family>Verdana</family>
-			<family>Arial</family>
 			<family>Luxi Sans</family>
 			<family>Nimbus Sans L</family>
 			<family>Helvetica</family>
-			<family>Tahoma</family>
 		</prefer>
 	</alias>
 <!-- Monospace faces -->
 	<alias>
 		<family>monospace</family>
 		<prefer>
+			<family>Droid Sans Mono</family>
 			<family>DejaVu Sans Mono</family>
 			<family>Liberation Mono</family>
 			<family>Bitstream Vera Sans Mono</family>
-			<family>Courier New</family>
 			<family>Andale Mono</family>
 			<family>Luxi Mono</family>
 			<family>Nimbus Mono L</family>
-			<family>Courier</family>
 		</prefer>
 	</alias>
 </fontconfig>
