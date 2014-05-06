@@ -71,18 +71,24 @@ name=OpenPrinting LSB-based driver packages
 baseurl=http://www.openprinting.org/download/printdriver/components/lsb3.2/main/RPMS
 enabled=1
 gpgcheck=0
+timeout=5
+skip_if_unavailable=True
 
 [openprinting-drivers-contrib]
 name=OpenPrinting LSB-based driver packages
 baseurl=http://www.openprinting.org/download/printdriver/components/lsb3.2/contrib/RPMS
 enabled=1
 gpgcheck=0
+timeout=5
+skip_if_unavailable=True
 
 [openprinting-drivers-main-nonfree]
 name=OpenPrinting LSB-based driver packages
 baseurl=http://www.openprinting.org/download/printdriver/components/lsb3.2/main-nonfree/RPMS
 enabled=1
 gpgcheck=0
+timeout=5
+skip_if_unavailable=True
 OPENPRINTING_REPO_EOF
 
 # A reduced version of Remi repository
@@ -94,7 +100,7 @@ mirrorlist=http://rpms.famillecollet.com/fedora/\$releasever/remi/mirror
 enabled=1
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-remi
-failovermethod=priority
+timeout=5
 includepkgs=libdvd*,remi-release*
 REMI_REPO_EOF
 

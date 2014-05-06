@@ -26,11 +26,12 @@ kde-plasma-nm
 kde-plasma-nm-*vpn*
 kde-settings-pulseaudio
 kde-workspace
+kgpg
 kmix
 kdm
 kgamma
 ksnapshot
-kwallet
+kwalletmanager
 kate
 okular
 oxygen-gtk

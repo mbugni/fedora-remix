@@ -41,7 +41,6 @@ liberation-s*-fonts
 # System config
 firewall-config
 system-config-date
-system-config-keyboard
 system-config-users
 
 # Tools
@@ -150,7 +149,8 @@ sed -i 's/^SystemGroup /SystemGroup wheel /g' /etc/cups/cups-files.conf
 cat >> /etc/rc.d/init.d/livesys << EOF_LIVESYS
 
 # Force italian keyboard layout (rhb #982394)
-system-config-keyboard --noui it
+localectl set-x11-keymap it
+localectl set-keymap it
 EOF_LIVESYS
 
 %end
