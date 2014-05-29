@@ -143,9 +143,6 @@ GRUB_DISABLE_RECOVERY="true"
 EOF_DEFAULT_GRUB
 fi
 
-# Enable wheel group as administrator for print server (rhb #907595)
-sed -i 's/^SystemGroup /SystemGroup wheel /g' /etc/cups/cups-files.conf
-
 cat >> /etc/rc.d/init.d/livesys << EOF_LIVESYS
 
 # Force italian keyboard layout (rhb #982394)
