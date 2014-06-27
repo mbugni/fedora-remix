@@ -22,8 +22,9 @@ kcm_touchpad
 kde-baseapps
 kde-l10n-Italian
 kdeplasma-addons
-kde-plasma-nm
-kde-plasma-nm-*vpn*
+kde-plasma-nm-l2tp
+kde-plasma-nm-openvpn
+kde-plasma-nm-pptp
 kde-settings-pulseaudio
 kde-workspace
 kgpg
