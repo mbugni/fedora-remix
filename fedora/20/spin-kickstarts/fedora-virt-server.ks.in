@@ -1,0 +1,72 @@
+# Kickstart file to create a small "base" Fedora image install suitable
+# for use as e.g. an application server.
+# 
+# Maintainer: fedora-cloud-list@fedoraproject.org
+#
+# REQUIRED variables:
+#   @@PUBLIC_KEY@@ - ssh public key
+# 
+# You must search for all required variables and replace them.
+# Example usage:
+# sed -e s,@@PUBLIC_KEY@@,"$(cat ~/.ssh/authorized_keys)", fedora-virt-server.ks.in > my-fedora-server.ks
+
+lang C
+keyboard us
+timezone --utc GMT/Zulu
+auth --useshadow --enablemd5
+firewall --service=ssh
+bootloader --timeout=1 --append="acpi=force"
+network --bootproto=dhcp --device=eth0 --onboot=on
+services --enabled=network
+
+## IMPORTANT ##
+## EDIT HERE ##
+# ROOT PASSWORD:
+# Setting a root password is NOT RECOMMENDED, especially if your
+# server will be accessible to the public internet.  This is
+# because of the rise of automated ssh password guessing attacks.
+# You should instead (if you don't have one already)
+# generate a public ssh key:
+# http://sial.org/howto/openssh/publickey-auth/
+# 
+# See comment below in %post for authorizing your public
+# key for the root account.
+
+rootpw ""
+
+# However, if you choose instead to make a password,
+# you will need to replace the above line with one like
+# rootpw --iscrypted @@ROOT_PASSWORD_CRYPTED@@
+# If you do neither of these things, you will not be able to log
+# into your machine.
+
+clearpart --all --initlabel
+part / --size=550 --grow --fstype=ext4
+# You may change this if you don't want swap
+part swap --recommended
+
+%packages
+@standard
+%end
+
+#
+# Add custom post scripts after the base post.
+#
+%post
+
+## EDIT HERE ##
+cd /root
+if ! test -d .ssh; then
+  mkdir --mode=700 .ssh
+fi
+cat >> .ssh/authorized_keys << END_AUTHORIZED_KEYS
+@@PUBLIC_KEY@@
+END_AUTHORIZED_KEYS
+chmod 600 .ssh/authorized_keys
+if -x /usr/sbin/selinuxenabled && /usr/sbin/selinuxenabled; then
+  chcon -R -h -t home_ssh_t .ssh
+fi
+
+%end
+
+reboot

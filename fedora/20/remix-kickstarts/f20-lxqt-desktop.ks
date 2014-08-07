@@ -18,6 +18,8 @@ compton
 compton-conf
 kate
 kcalc
+kcharselect
+kcm_colors
 kde-style-oxygen
 konsole
 libfm-gtk
@@ -47,6 +49,11 @@ oxygen-icon-theme
 pavucontrol
 pcmanfm-qt
 phonon-backend-gstreamer
+xbacklight
+xsettings-kde
+NetworkManager-l2tp
+NetworkManager-openvpn
+NetworkManager-pptp
 
 # Internet
 firefox
@@ -64,6 +71,21 @@ echo ""
 echo "*****************"
 echo "POST LXQT DESKTOP"
 echo "*****************"
+
+# make oxygen-gtk the default GTK theme for root (see #683855, #689070, #808062)
+mkdir -p /etc/gtk-2.0
+cat > /etc/gtk-2.0/gtkrc << EOF_GTK2
+include "/usr/share/themes/oxygen-gtk/gtk-2.0/gtkrc"
+gtk-icon-theme-name = "oxygen"
+gtk-fallback-icon-theme = "gnome"
+EOF_GTK2
+mkdir -p /etc/gtk-3.0
+cat > /etc/gtk-3.0/settings.ini << EOF_GTK3
+[Settings]
+gtk-theme-name = oxygen-gtk
+gtk-icon-theme-name = oxygen
+gtk-fallback-icon-theme = gnome
+EOF_GTK3
 
 # add initscript
 cat >> /etc/rc.d/init.d/livesys << EOF
@@ -111,23 +133,6 @@ SingleClick=false
 Country=it
 Language=it:en_US
 GLOBALS_EOF
-
-# Sets oxygen-gtk2 as default gtk2 theme
-mkdir -p /etc/gtk-2.0
-cat > /etc/gtk-2.0/gtkrc << EOF_GTKRC
-include "/usr/share/themes/oxygen-gtk/gtk-2.0/gtkrc"
-gtk-icon-theme-name = "oxygen"
-gtk-fallback-icon-theme = "gnome"
-EOF_GTKRC
-
-# Sets oxygen-gtk3 as default gtk3 theme
-mkdir -p /etc/skel/.config/gtk-3.0
-cat > /etc/skel/.config/gtk-3.0/settings.ini << EOF_SETTINGS_GTK3
-[Settings]
-gtk-theme-name = oxygen-gtk
-gtk-icon-theme-name = oxygen
-gtk-fallback-icon-theme = gnome
-EOF_SETTINGS_GTK3
 
 # Sets oxygen as default qt theme
 mkdir -p /etc/skel/.config
