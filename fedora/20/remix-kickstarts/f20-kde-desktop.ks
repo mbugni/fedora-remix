@@ -6,6 +6,8 @@
 
 # Unwanted stuff
 -*akonadi*
+-*baloo*
+-*nepomuk*
 -gnome*
 -kdepim*
 -system-config-printer
@@ -61,16 +63,19 @@ DISPLAYMANAGER="KDE"
 EOF
 
 # make oxygen-gtk the default GTK+ theme for root (see #683855, #689070, #808062)
-cat > /root/.gtkrc-2.0 << EOF
+mkdir -p /etc/gtk-2.0
+cat > /etc/gtk-2.0/gtkrc << EOF_GTK2
 include "/usr/share/themes/oxygen-gtk/gtk-2.0/gtkrc"
-include "/etc/gtk-2.0/gtkrc"
-gtk-theme-name="oxygen-gtk"
-EOF
-mkdir -p /root/.config/gtk-3.0
-cat > /root/.config/gtk-3.0/settings.ini << EOF
+gtk-icon-theme-name = "oxygen"
+gtk-fallback-icon-theme = "gnome"
+EOF_GTK2
+mkdir -p /etc/gtk-3.0
+cat > /etc/gtk-3.0/settings.ini << EOF_GTK3
 [Settings]
 gtk-theme-name = oxygen-gtk
-EOF
+gtk-icon-theme-name = oxygen
+gtk-fallback-icon-theme = gnome
+EOF_GTK3
 
 # add initscript
 cat >> /etc/rc.d/init.d/livesys << EOF
@@ -137,6 +142,12 @@ cat > /home/liveuser/.kde/share/config/kdedrc << KDEDRC_EOF
 [Module-apperd]
 autoload=false
 KDEDRC_EOF
+
+# Disable baloo
+cat > /home/liveuser/.kde/share/config/baloofilerc << BALOO_EOF
+[Basic Settings]
+Indexing-Enabled=false
+BALOO_EOF
 
 # Disable kres-migrator
 cat > /home/liveuser/.kde/share/config/kres-migratorrc << KRES_EOF
@@ -244,31 +255,11 @@ EmailClient[\$e]=thunderbird
 TerminalClient=false
 EMAILDEFAULTS_EOF
 
-# Disable nepomuk
-cat > /etc/kde/nepomukserverrc << NEPOMUK_EOF
+# Disable baloo
+cat > /etc/kde/baloofilerc << BALOO_EOF
 [Basic Settings]
-Start Nepomuk=false
-
-[Service-nepomukfileindexer]
-autostart=false
-NEPOMUK_EOF
-
-# Set oxygen-gtk2 as default gtk2 theme
-mkdir -p /etc/gtk-2.0
-cat > /etc/gtk-2.0/gtkrc << EOF_GTKRC
-include "/usr/share/themes/oxygen-gtk/gtk-2.0/gtkrc"
-gtk-icon-theme-name = "oxygen"
-gtk-fallback-icon-theme = "gnome"
-EOF_GTKRC
-
-# Set oxygen-gtk3 as default gtk3 theme
-mkdir -p /etc/skel/.config/gtk-3.0
-cat > /etc/skel/.config/gtk-3.0/settings.ini << EOF_SETTINGS_GTK3
-[Settings]
-gtk-theme-name = oxygen-gtk
-gtk-icon-theme-name = oxygen
-gtk-fallback-icon-theme = gnome
-EOF_SETTINGS_GTK3
+Indexing-Enabled=false
+BALOO_EOF
 
 %end
 
