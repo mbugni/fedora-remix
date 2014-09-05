@@ -6,6 +6,8 @@
 
 # Unwanted stuff
 -*akonadi*
+-*baloo*
+-*nepomuk*
 -gnome*
 -kdepim*
 -system-config-printer
@@ -20,6 +22,7 @@ kcalc
 kcharselect
 kcm_colors
 # kcm_touchpad
+kde-l10n-Italian
 kde-style-oxygen
 # kde-workspace
 konsole
@@ -36,6 +39,7 @@ pavucontrol
 phonon-backend-gstreamer
 razorqt
 razorqt-themes
+sweeper
 xbacklight
 xsettings-kde
 NetworkManager-l2tp
@@ -59,7 +63,7 @@ echo "******************"
 echo "POST RAZOR DESKTOP"
 echo "******************"
 
-# make oxygen-gtk the default GTK theme for root (see #683855, #689070, #808062)
+# make oxygen-gtk the default GTK+ theme for root (see #683855, #689070, #808062)
 mkdir -p /etc/gtk-2.0
 cat > /etc/gtk-2.0/gtkrc << EOF_GTK2
 include "/usr/share/themes/oxygen-gtk/gtk-2.0/gtkrc"
@@ -87,7 +91,7 @@ sed -i 's/^#user-session=.*/user-session=razor/' /etc/lightdm/lightdm.conf
 # show liveinst.desktop on desktop and in menu
 sed -i 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
 
-# chmod +x ~/Desktop/liveinst.desktop to disable security warning
+# chmod +x ~/Desktop/liveinst.desktop to disable KDE's security warning
 chmod +x /usr/share/applications/liveinst.desktop
 
 # make sure to set the right permissions and selinux contexts
@@ -120,6 +124,36 @@ SingleClick=false
 Country=it
 Language=it:en_US
 GLOBALS_EOF
+
+# Avoid konqueror preload
+cat > /etc/kde/konquerorrc << KONQUEROR_EOF
+[Reusing]
+AlwaysHavePreloaded=false
+MaxPreloadCount=0
+PreloadOnStartup=false
+KONQUEROR_EOF
+
+# Session settings
+cat > /etc/kde/ksmserverrc << KSMSERVERRC_EOF
+[General]
+loginMode=default
+KSMSERVERRC_EOF
+
+# Set Thunderbird as default email client
+cat > /etc/kde/emaildefaults << EMAILDEFAULTS_EOF
+[Defaults]
+Profile=Default
+
+[PROFILE_Default]
+EmailClient[\$e]=thunderbird
+TerminalClient=false
+EMAILDEFAULTS_EOF
+
+# Disable baloo
+cat > /etc/kde/baloofilerc << BALOO_EOF
+[Basic Settings]
+Indexing-Enabled=false
+BALOO_EOF
 
 # Sets oxygen as default qt theme
 mkdir -p /etc/skel/.config

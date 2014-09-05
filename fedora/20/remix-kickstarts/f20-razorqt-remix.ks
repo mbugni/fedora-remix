@@ -29,7 +29,6 @@ clementine
 k3b
 k3b-extras-freeworld
 # kffmpegthumbnailer
-kscd
 vlc
 npapi-vlc
 
