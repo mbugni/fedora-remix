@@ -44,6 +44,7 @@ sane-backends-drivers-scanners
 # Multimedia
 gstreamer-ffmpeg
 gstreamer*-libav
+gstreamer*-vaapi
 gstreamer*-plugins-bad
 gstreamer*-plugins-bad-*free
 gstreamer*-plugins-bad-freeworld
