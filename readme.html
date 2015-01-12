@@ -6,28 +6,39 @@
 
 <h2>Remix di Fedora in italiano</h2>
 
-In questo progetto &egrave; contenuto il codice sorgente (di tipo <a href="http://fedoraproject.org/wiki/Anaconda/Kickstart">kickstart</a>) per costruire un remix personalizzato di Fedora. Tutti i sorgenti sono rilasciati con licenza <a href="http://it.wikipedia.org/wiki/GNU_General_Public_License">GPLv3</a>.
+In questo progetto &egrave; contenuto il codice sorgente (di tipo <a href="http://fedoraproject.org/wiki/Anaconda/Kickstart">kickstart</a>)
+per costruire un remix personalizzato di Fedora. Tutti i sorgenti sono rilasciati con licenza
+<a href="http://it.wikipedia.org/wiki/GNU_General_Public_License">GPLv3</a>.
 
 
 <h3>Perch&eacute; Fedora?</h3>
 
-<a href="http://fedoraproject.org/it/">Fedora</a> &egrave; un sistema operativo ricco di software e adattabile alle proprie esigenze. Grazie agli <a href="http://fedoraproject.org/wiki/It_IT/Come_creare_ed_usare_un_supporto_Live_CD">strumenti per LiveCD</a> &egrave; possibile creare una versione live con una configurazione personalizzata e pronta per essere installata.
+<a href="http://fedoraproject.org/it/">Fedora</a> &egrave; un sistema operativo ricco di software e adattabile alle proprie esigenze.
+Grazie agli <a href="http://fedoraproject.org/wiki/It_IT/Come_creare_ed_usare_un_supporto_Live_CD">strumenti per LiveCD</a> &egrave;
+possibile creare una versione live con una configurazione personalizzata e pronta per essere installata.
 
 <h3>Perch&eacute; un remix?</h3>
 
-Un <a href="http://fedoraproject.org/wiki/Remix">remix</a> &egrave; una live con contenuti extra rispetto ai repositori ufficiali. Le motivazioni che mi hanno spinto a creare un remix sono:
+Un <a href="http://fedoraproject.org/wiki/Remix">remix</a> &egrave; una live con contenuti extra rispetto ai repository ufficiali.
+Le motivazioni che mi hanno spinto a creare un remix sono:
 <ul>
 	<li>avere il sistema gi&agrave; predisposto in lingua italiana</li>
-	<li>modificare alcune configurazioni di base (fonts, aggiornamenti automatici, ecc.)</li>
+	<li>modificare alcune configurazioni di base (fonts, aggiornamenti automatici, etc)</li>
 	<li>ottenere un mix di software adatto ad una workstation di base</li>
 </ul>
-Il principio che mi ha ispirato non &egrave; solo <em>"come lo vorrei io"</em> ma anche <em>"cosa darei ad un amico"</em>. Questo remix infatti non &egrave; usato soltanto per le installazioni personali, ma anche per distribuire Fedora a tutti coloro che me lo chiedono.
-I media ufficiali per <a href="http://fedoraproject.org/it/get-fedora">ottenere Fedora</a> sono sostanzialmente di due tipi:
+Il principio che mi ha ispirato non &egrave; solo <em>"come lo vorrei io"</em> ma anche <em>"cosa darei ad un amico"</em>.
+Questo remix infatti non &egrave; usato soltanto per le installazioni personali, ma anche per distribuire Fedora a tutti coloro
+che me lo chiedono. I media ufficiali per <a href="https://getfedora.org/">ottenere Fedora</a> sono sostanzialmente
+di due tipi:
 <ul>
 	<li>DVD con tutti i pacchetti e wizard che permette la selezione del software</li>
-	<li>LiveCD pre-confezionati e basati su ambienti specifici (come Gnome, KDE, XFCE, ecc.)</li>
+	<li>LiveCD pre-confezionati e basati su ambienti specifici (come Gnome, KDE, XFCE, etc)</li>
 </ul>
-Nel primo caso si hanno a disposizione tutti i pacchetti tranne quelli presenti nei repository extra, e non si pu&ograve; provare la configurazione a priori. Nel secondo caso invece si pu&ograve; provare prima il sistema, ma non si pu&ograve; variare la configurazione durante l'installazione. In entrambi i casi i pacchetti non sono aggiornati all'ultima versione, perch&eacute; sono "congelati" al primo rilascio di Fedora.
+Nel primo caso si hanno a disposizione tutti i pacchetti tranne quelli presenti nei repository extra, e non si pu&ograve; provare
+la configurazione a priori. Nel secondo caso invece si pu&ograve; provare prima il sistema, ma non si pu&ograve; variare la
+configurazione durante l'installazione. In entrambi i casi i pacchetti non sono aggiornati all'ultima versione, perch&eacute; sono
+"congelati" al primo rilascio della versione scelta di Fedora (sono comunque disponibili
+<a href="http://alt.fedoraproject.org/pub/alt/live-respins/">alcune immagini aggiornate</a>).
 
 <p>
 Con un remix &egrave; possibile effettuare una selezione di software proveniente da diversi repository (anche non ufficiali) e creare un'immagione ISO che si pu&ograve; provare ed installare. Il tutto aggiornato all'ultima versione disponibile.
@@ -35,7 +46,8 @@ Con un remix &egrave; possibile effettuare una selezione di software proveniente
 
 <h3>Cosa c'&egrave; nel remix?</h3>
 
-La scelta di base &egrave; orientata ad una combinazione essenziale di software adatta come punto di partenza per un PC da utilizzare per uso personale. Le due versioni principali sono basate sui pi&ugrave; noti e completi ambienti per il desktop: Gnome e KDE. Gli obiettivi fondamentali del remix sono:
+La scelta di base &egrave; orientata ad una combinazione essenziale di software adatta come punto di partenza per un PC da utilizzare per uso personale.
+Le versioni disponibili sono basate sui pi&ugrave; noti e completi ambienti per il desktop, in particolare KDE. Gli obiettivi fondamentali del remix sono:
 <ul>
 	<li>Internet (browser, email, istant messenger, ...)</li>
 	<li>Connettivit&agrave; (wireless, bluetooth, ...)</li>
@@ -47,7 +59,12 @@ La scelta di base &egrave; orientata ad una combinazione essenziale di software 
 </ul>
 
 <p>
-Una particolare attenzione &egrave; stata dedicata al software multi-piattaforma, che si fa apprezzare per affidabilit&agrave; e si pu&ograve; utilizzare anche su altri sistemi. A questa categoria appartengono:
+Le configurazioni pi&ugrave; recenti sono state suddivise tra "desktop" (pi&ugrave; essenziali, basate solo su repository ufficiali) e "remix"
+(pi&ugrave; ricche, che usano anche repository extra, ad esempio per le componenti multimediali).
+</p>
+
+<p>
+Una particolare attenzione &egrave; dedicata al software multi-piattaforma, che si fa apprezzare per affidabilit&agrave; e si pu&ograve; utilizzare anche su altri sistemi. A questa categoria appartengono:
 <ul>
 	<li>Firefox</li>
 	<li>LibreOffice</li>
@@ -56,6 +73,9 @@ Una particolare attenzione &egrave; stata dedicata al software multi-piattaforma
 	<li>VLC</li>
 </ul>
 </p>
+
+A partire dalla versione 21 di Fedora la composizione dei pacchetti &egrave; basata sul 
+<a href="http://fedoraproject.org/wiki/Workstation/Workstation_PRD">prodotto Workstation</a>.
 
 <h3>Come si possono ottenere i sorgenti?</h3>
 
@@ -81,16 +101,17 @@ E' possibile consultare <a href="http://fedoraproject.org/wiki/It_IT/Come_creare
 Successivamente si avviano i comandi per scaricare i pacchetti e creare l'immagine ISO:
 <pre>
 # setenforce 0
-# livecd-creator -v -c f17-gnome.ks
+# livecd-creator -v --releasever=21 --config=f21-kde-remix.ks
 </pre>
 
-<h3>Non c'&egrave; l'immagine ISO gi&agrave; pronta?</h3>
-No. Per diverse ragioni l'autore non rende disponibile l'immagine, ma solo i sorgenti per costruirla.
+<h3>Non ci sono immagini ISO gi&agrave; pronte?</h3>
+No. Per diverse ragioni l'autore non rende disponibili le immagini, ma solo i sorgenti per costruirle.
 
 <h3>Come utilizzo la ISO che ho costruito?</h3>
 La ISO pu&ograve; essere riversata su una chiavetta con strumenti come <a href="http://fedoraproject.org/wiki/It_IT/Come_creare_ed_usare_un_supporto_Live_USB">liveusb-creator</a> oppure <a href="http://unetbootin.sourceforge.net/">UNetbootin</a> per effettuare il boot da USB. E' possibile anche masterizzare l'immagine su un supporto ottico.
 <p>
-Dopo aver avviato l'immagine col remix la potete provare. Se vi piace la potete installare avviando l'apposito programma con etichetta "Installa su disco rigido" (presente come icona tra i preferiti).
+Dopo aver avviato l'immagine col remix la potete provare. Se vi piace la potete installare avviando l'apposito programma con etichetta
+"Installa su disco rigido" (presente come icona tra i preferiti o sul desktop).
 </p>
 
 <h3>Come posso contattare l'autore?</h3>
