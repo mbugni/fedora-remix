@@ -14,6 +14,7 @@
 -prelink
 -rsyslog
 -sendmail
+-dnf*
 
 # Audio
 alsa-plugins-pulseaudio
@@ -21,15 +22,6 @@ alsa-utils
 pulseaudio
 pulseaudio-module-x11
 pulseaudio-utils
-
-# Boot tools
-cryptsetup
-efibootmgr
-grub2
-grub2-efi
-grub2-tools
-shim
-syslinux
 
 # Fonts
 google-noto-sans-fonts

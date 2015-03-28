@@ -40,7 +40,7 @@ memtest86+
 
 # The point of a live image is to install
 anaconda
-# @anaconda-tools
+@anaconda-tools
 
 # Make live images easy to shutdown and the like in libvirt
 # qemu-guest-agent
