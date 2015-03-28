@@ -120,9 +120,9 @@ cat > /etc/profile.d/color-prompt.sh << EOF_SHELL
 ## Colored prompt
 if [ -n "\$PS1" ]; then
         if [ \${UID} -eq 0 ]; then
-                PS1='\[\e[91m\]\u@\h \[\e[33m\]\W\[\e[0m\]\\$ '
+                PS1='\[\e[31m\]\u@\h \[\e[33m\]\W\[\e[0m\]\\$ '
         else
-                PS1='\[\e[92m\]\u@\h \[\e[33m\]\W\[\e[0m\]\\$ '
+                PS1='\[\e[32m\]\u@\h \[\e[33m\]\W\[\e[0m\]\\$ '
         fi
 fi
 EOF_SHELL

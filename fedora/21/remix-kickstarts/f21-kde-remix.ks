@@ -25,7 +25,7 @@ pidgin
 
 # Multimedia
 clementine
-gnash-plugin
+# gnash-plugin
 k3b
 k3b-extras-freeworld
 kffmpegthumbnailer
