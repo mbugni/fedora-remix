@@ -6,9 +6,10 @@
 
 # Unwanted stuff
 -*akonadi*
+-*baloo*
+-*nepomuk*
 -gnome*
 -kdepim*
--system-config-printer
 
 ark
 bluedevil
@@ -19,6 +20,7 @@ kcharselect
 kcm_colors
 kde-l10n-Italian
 kde-style-oxygen
+kdm
 konsole
 libfm-gtk
 liblxqt-mount
@@ -40,12 +42,11 @@ notification-daemon
 obconf
 okular
 openbox
-oxygen-gtk
+oxygen-gtk2
 oxygen-icon-theme
 pavucontrol
 pcmanfm-qt
 phonon-backend-gstreamer
-sddm
 upower
 xbacklight
 xdg-user-dirs
@@ -53,6 +54,7 @@ xsettings-kde
 NetworkManager-l2tp
 NetworkManager-openvpn
 NetworkManager-pptp
+xterm
 
 # Internet
 firefox
@@ -71,6 +73,12 @@ echo "*****************"
 echo "POST LXQT DESKTOP"
 echo "*****************"
 
+# create /etc/sysconfig/desktop (needed for installation)
+cat > /etc/sysconfig/desktop <<EOF
+DESKTOP="startlxqt"
+DISPLAYMANAGER="KDE"
+EOF
+
 # make oxygen-gtk the default GTK+ theme for root (see #683855, #689070, #808062)
 mkdir -p /etc/gtk-2.0
 cat > /etc/gtk-2.0/gtkrc << EOF_GTK2
@@ -81,7 +89,7 @@ EOF_GTK2
 mkdir -p /etc/gtk-3.0
 cat > /etc/gtk-3.0/settings.ini << EOF_GTK3
 [Settings]
-gtk-theme-name = oxygen-gtk
+gtk-theme-name = Adwaita
 gtk-icon-theme-name = oxygen
 gtk-fallback-icon-theme = gnome
 EOF_GTK3
@@ -89,17 +97,18 @@ EOF_GTK3
 # add initscript
 cat >> /etc/rc.d/init.d/livesys << EOF
 
+# make liveuser use KDE
+echo "startlxqt" > /home/liveuser/.xsession
+chmod a+x /home/liveuser/.xsession
+chown liveuser:liveuser /home/liveuser/.xsession
+
 # set up autologin for user liveuser
-if [ -f /etc/sddm.conf ]; then
-sed -i 's/^#User=.*/User=liveuser/' /etc/sddm.conf
-sed -i 's/^#Session=.*/Session=lxqt.desktop/' /etc/sddm.conf
-else
-cat > /etc/sddm.conf << SDDM_EOF
-[Autologin]
-User=liveuser
-Session=lxqt.desktop
-SDDM_EOF
-fi
+sed -i 's/#AutoLoginEnable=true/AutoLoginEnable=true/' /etc/kde/kdm/kdmrc
+sed -i 's/#AutoLoginUser=fred/AutoLoginUser=liveuser/' /etc/kde/kdm/kdmrc
+
+# set up user liveuser as default user and preselected user
+sed -i 's/#PreselectUser=Default/PreselectUser=Default/' /etc/kde/kdm/kdmrc
+sed -i 's/#DefaultUser=johndoe/DefaultUser=liveuser/' /etc/kde/kdm/kdmrc
 
 # show liveinst.desktop on desktop and in menu
 sed -i 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
@@ -183,9 +192,11 @@ cat > /etc/kde/baloofilerc << BALOO_EOF
 Indexing-Enabled=false
 BALOO_EOF
 
-# Sets oxygen as default qt theme
-mkdir -p /etc/skel/.config
-cp /etc/Trolltech.conf  /etc/skel/.config/
-echo 'style=oxygen' >> /etc/skel/.config/Trolltech.conf
+# Sets default Qt5 theme
+mkdir -p /etc/skel/.config/lxqt
+cat > /etc/skel/.config/lxqt/lxqt.conf << LXQT_CONF_EOF
+[Qt]
+style=Fusion
+LXQT_CONF_EOF
 
 %end
