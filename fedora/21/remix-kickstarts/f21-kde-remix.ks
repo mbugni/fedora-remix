@@ -3,8 +3,6 @@
 %include f21-kde-desktop.ks
 %include f21-base-remix.ks
 
-part / --size 4096 --fstype ext4
-
 %packages
 
 # Unwanted stuff

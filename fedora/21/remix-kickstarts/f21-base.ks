@@ -9,7 +9,7 @@ auth --useshadow --enablemd5
 selinux --disabled
 firewall --enabled --service=mdns
 xconfig --startxonboot
-part / --size 3072 --fstype ext4
+part / --size 5120 --fstype ext4
 services --enabled=NetworkManager --disabled=network,sshd
 
 repo --name=fedora --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=$basearch

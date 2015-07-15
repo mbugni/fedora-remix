@@ -33,6 +33,7 @@ liberation-s*-fonts
 # Tools
 @networkmanager-submodules
 fedora-release-workstation
+firewall-config
 firewalld-config-workstation
 htop
 hunspell-it
@@ -116,16 +117,24 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 </fontconfig>
 EOF_FONTS
 
-cat > /etc/profile.d/color-prompt.sh << EOF_SHELL
+cat > /etc/profile.d/color-prompt.sh << EOF_PROMPT
 ## Colored prompt
 if [ -n "\$PS1" ]; then
-        if [ \${UID} -eq 0 ]; then
-                PS1='\[\e[31m\]\u@\h \[\e[33m\]\W\[\e[0m\]\\$ '
-        else
-                PS1='\[\e[32m\]\u@\h \[\e[33m\]\W\[\e[0m\]\\$ '
-        fi
+	if [[ "\$TERM" == *256color ]]; then
+		if [ \${UID} -eq 0 ]; then
+			PS1='\[\e[91m\]\u@\h \[\e[93m\]\W\[\e[0m\]\\$ '
+		else
+			PS1='\[\e[92m\]\u@\h \[\e[93m\]\W\[\e[0m\]\\$ '
+		fi
+	else
+		if [ \${UID} -eq 0 ]; then
+			PS1='\[\e[31m\]\u@\h \[\e[33m\]\W\[\e[0m\]\\$ '
+		else
+			PS1='\[\e[32m\]\u@\h \[\e[33m\]\W\[\e[0m\]\\$ '
+		fi
+	fi
 fi
-EOF_SHELL
+EOF_PROMPT
 
 # Set a default grub config if not present (rhb #886502)
 if [ ! -f "/etc/default/grub" ]; then
