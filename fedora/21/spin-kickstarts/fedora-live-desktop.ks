@@ -5,7 +5,7 @@
 %include fedora-live-base.ks
 %include fedora-desktop-packages.ks
 
-part / --size 4096
+part / --size 6144
 
 %post
 cat >> /etc/rc.d/init.d/livesys << EOF
