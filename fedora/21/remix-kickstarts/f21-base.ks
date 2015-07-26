@@ -293,6 +293,9 @@ if [ -x /usr/bin/fc-cache ] ; then
    fc-cache -f
 fi
 
+echo 'File created by kickstart. See systemd-update-done.service(8).' \
+    | tee /etc/.updated >/var/.updated
+
 %end
 
 
