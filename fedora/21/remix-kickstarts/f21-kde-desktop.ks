@@ -38,7 +38,7 @@ kgamma
 ksnapshot
 kwalletmanager
 okular
-oxygen-gtk
+oxygen-gtk2
 phonon-backend-gstreamer
 svgpart
 sweeper
@@ -70,13 +70,13 @@ include "/usr/share/themes/oxygen-gtk/gtk-2.0/gtkrc"
 gtk-icon-theme-name = "oxygen"
 gtk-fallback-icon-theme = "gnome"
 EOF_GTK2
-mkdir -p /etc/gtk-3.0
-cat > /etc/gtk-3.0/settings.ini << EOF_GTK3
-[Settings]
-gtk-theme-name = oxygen-gtk
-gtk-icon-theme-name = oxygen
-gtk-fallback-icon-theme = gnome
-EOF_GTK3
+#mkdir -p /etc/gtk-3.0
+#cat > /etc/gtk-3.0/settings.ini << EOF_GTK3
+#[Settings]
+#gtk-theme-name = oxygen-gtk
+#gtk-icon-theme-name = oxygen
+#gtk-fallback-icon-theme = gnome
+#EOF_GTK3
 
 # add initscript
 cat >> /etc/rc.d/init.d/livesys << EOF
