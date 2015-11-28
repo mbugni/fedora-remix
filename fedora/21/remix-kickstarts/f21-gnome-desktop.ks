@@ -127,15 +127,17 @@ echo "******************"
 
 # override default Gnome settings
 cat >> /usr/share/glib-2.0/schemas/fedora.remix.gschema.override << OVERRIDE_EOF
-[org.gnome.software]
-download-updates=false
-FOE
+[org.gnome.desktop.input-sources]
+sources=[('xkb', 'it')]
 
 [org.gnome.shell]
 favorite-apps=['gnome-tweak-tool.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop', 'gnome-terminal.desktop']
 
+[org.gnome.software]
+download-updates=false
+
 [org.gnome.system.locale]
-region=it_IT.utf8
+region='it_IT.utf8'
 OVERRIDE_EOF
 
 glib-compile-schemas /usr/share/glib-2.0/schemas
