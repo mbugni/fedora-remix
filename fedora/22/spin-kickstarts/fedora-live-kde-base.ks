@@ -80,7 +80,7 @@ cat > /home/liveuser/.config/akonadi/akonadiserverrc << AKONADI_EOF
 Driver=QSQLITE3
 AKONADI_EOF
 
-# Disable 	
+# Disable plasma-pk-updates
 sed -i \
     -e "s|^X-KDE-PluginInfo-EnabledByDefault=true|X-KDE-PluginInfo-EnabledByDefault=false|g" \
     /usr/share/kservices5/plasma-applet-org.kde.plasma.pkupdates.desktop
