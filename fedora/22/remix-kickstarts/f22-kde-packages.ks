@@ -16,7 +16,6 @@ bluedevil
 cagibi
 firewall-config
 gwenview
-initial-setup-gui
 kate
 kcalc
 kcharselect
@@ -33,6 +32,7 @@ kinfocenter
 kmix
 kgamma
 konsole5
+kscreen
 ksnapshot
 kwalletmanager5
 kwin

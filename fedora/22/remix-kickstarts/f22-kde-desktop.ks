@@ -49,7 +49,7 @@ fi
 mkdir -p /home/liveuser/.config/
 cat > /home/liveuser/.config/kickoffrc << MENU_EOF
 [Favorites]
-FavoriteURLs=/usr/share/applications/firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/liveinst.desktop
+FavoriteURLs=/usr/share/applications/firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/systemsettings.desktop,/usr/share/applications/org.kde.konsole.desktop,/usr/share/applications/liveinst.desktop
 MENU_EOF
 
 # show liveinst.desktop on desktop and in menu
@@ -74,7 +74,7 @@ cat > /home/liveuser/.config/akonadi/akonadiserverrc << AKONADI_EOF
 Driver=QSQLITE3
 AKONADI_EOF
 
-# Disable 	
+# Disable plasma-pk-updates
 sed -i \
     -e "s|^X-KDE-PluginInfo-EnabledByDefault=true|X-KDE-PluginInfo-EnabledByDefault=false|g" \
     /usr/share/kservices5/plasma-applet-org.kde.plasma.pkupdates.desktop
@@ -112,6 +112,25 @@ echo '[Added Associations]' > /usr/local/share/applications/mimeapps.list
 grep kde4-konqueror.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
 	| sed 's/kde4-konqueror.desktop/firefox.desktop/g' >> /usr/local/share/applications/mimeapps.list
 
+# Defaults for user configuration
+mkdir -p /etc/skel/.config
+
+# Set Plasma locale
+cat > /etc/skel/.config/plasma-localerc << PLASMALOCALE_EOF
+[Formats]
+LANG=it_IT.UTF-8
+
+[Translations]
+LANGUAGE=it
+PLASMALOCALE_EOF
+
+# Disable baloo
+cat > /etc/kde/baloofilerc << BALOO_EOF
+[Basic Settings]
+Indexing-Enabled=false
+BALOO_EOF
+
+# System wide settings
 cat > /etc/kde/kdeglobals << GLOBALS_EOF
 [General]
 BrowserApplication[\$e]=firefox.desktop
@@ -164,21 +183,6 @@ Profile=Default
 EmailClient[\$e]=thunderbird
 TerminalClient=false
 EMAILDEFAULTS_EOF
-
-# Set Plasma locale
-cat > /etc/kde/plasma-localerc << PLASMALOCALE_EOF
-[Formats]
-LANG=it_IT.UTF-8
-
-[Translations]
-LANGUAGE=it
-PLASMALOCALE_EOF
-
-# Disable baloo
-cat > /etc/kde/baloofilerc << BALOO_EOF
-[Basic Settings]
-Indexing-Enabled=false
-BALOO_EOF
 
 %end
 
