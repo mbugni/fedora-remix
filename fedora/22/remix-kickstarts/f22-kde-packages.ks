@@ -14,6 +14,7 @@ adwaita-gtk2-theme
 ark
 bluedevil
 cagibi
+dolphin
 firewall-config
 gwenview
 kate
@@ -22,7 +23,6 @@ kcharselect
 kcm-gtk
 kcm_systemd
 kcm_touchpad
-kde-baseapps
 kde-l10n-Italian
 kde-settings-pulseaudio
 kde-style-breeze

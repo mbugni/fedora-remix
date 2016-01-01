@@ -17,7 +17,7 @@ kwebkitpart
 skanlite
 
 # Internet
-# icedtea-web
+icedtea-web
 kde-plasma-ktorrent
 pidgin
 
@@ -37,22 +37,3 @@ libreoffice-langpack-it
 kde-print-manager
 
 %end
-
-
-%post
-
-echo ""
-echo "**************"
-echo "POST KDE REMIX"
-echo "**************"
-
-# Default apps: vlc (instead of dragonplayer)
-grep kde4-dragonplayer.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
-	| sed 's/kde4-dragonplayer.desktop/vlc.desktop/g' >> /usr/local/share/applications/mimeapps.list
-# Default apps: clementine (instead of amarok)
-grep kde4-amarok.desktop /usr/share/kde-settings/kde-profile/default/share/applications/defaults.list \
-	| sed 's/kde4-amarok.desktop/clementine.desktop/g' >> /usr/local/share/applications/mimeapps.list
-
-
-%end
-
