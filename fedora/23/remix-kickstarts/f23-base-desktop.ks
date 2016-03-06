@@ -69,7 +69,7 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 <match target="font">
 	<edit mode="assign" name="rgba"><const>rgb</const></edit>
 	<edit mode="assign" name="hinting"><bool>true</bool></edit>
-	<edit mode="assign" name="hintstyle"><const>hintslight</const></edit>
+	<edit mode="assign" name="hintstyle"><const>hintfull</const></edit>
 	<edit mode="assign" name="antialias"><bool>true</bool></edit>
 	<edit mode="assign" name="lcdfilter"><const>lcddefault</const></edit>
 </match>
