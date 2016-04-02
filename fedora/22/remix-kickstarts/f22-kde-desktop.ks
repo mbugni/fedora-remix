@@ -9,8 +9,8 @@
 mkdir -p /etc/gtk-2.0
 cat > /etc/gtk-2.0/gtkrc << EOF_GTK2
 include "/usr/share/themes/Adwaita/gtk-2.0/gtkrc"
-gtk-icon-theme-name = "Adwaita"
-gtk-fallback-icon-theme = "gnome"
+gtk-icon-theme-name = "breeze"
+gtk-fallback-icon-theme = "hicolor"
 EOF_GTK2
 
 # add initscript
@@ -84,6 +84,17 @@ echo "****************"
 # Defaults for user configuration
 mkdir -p /etc/skel/.config
 
+# Disable baloo
+cat > /etc/kde/baloofilerc << BALOO_EOF
+[Basic Settings]
+Indexing-Enabled=false
+BALOO_EOF
+
+cat > /etc/skel/.config/baloofilerc << BALOO_EOF
+[Basic Settings]
+Indexing-Enabled=false
+BALOO_EOF
+
 # Set Plasma locale
 cat > /etc/skel/.config/plasma-localerc << PLASMALOCALE_EOF
 [Formats]
@@ -93,17 +104,14 @@ LANG=it_IT.UTF-8
 LANGUAGE=it
 PLASMALOCALE_EOF
 
-# Disable baloo
-cat > /etc/kde/baloofilerc << BALOO_EOF
-[Basic Settings]
-Indexing-Enabled=false
-BALOO_EOF
+# Add defaults to favorites menu
+cat > /etc/skel/.config/kickoffrc << KICKOFF_EOF
+[Favorites]
+FavoriteURLs=/usr/share/applications/systemsettings.desktop,/usr/share/applications/firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/org.kde.konsole.desktop
+KICKOFF_EOF
 
 # System wide settings
-cat > /etc/kde/kdeglobals << GLOBALS_EOF
-[General]
-BrowserApplication[\$e]=firefox.desktop
-
+cat > /etc/skel/.config/kdeglobals << GLOBALS_EOF
 [KDE]
 SingleClick=false
 
@@ -114,14 +122,8 @@ Country=it
 LANGUAGE=it
 GLOBALS_EOF
 
-# Add defaults to favorites menu
-cat > /etc/kde/kickoffrc << KICKOFF_EOF
-[Favorites]
-FavoriteURLs=/usr/share/applications/kde4/systemsettings.desktop,/usr/share/applications/firefox.desktop,/usr/share/applications/kde4/dolphin.desktop,/usr/share/applications/org.kde.konsole.desktop
-KICKOFF_EOF
-
 # Launcher settings
-cat > /etc/kde/klaunchrc << KLAUNCHRC_EOF
+cat > /etc/skel/.config/klaunchrc << KLAUNCHRC_EOF
 [BusyCursorSettings]
 Timeout=6
 
@@ -138,7 +140,7 @@ PreloadOnStartup=false
 KONQUEROR_EOF
 
 # Session settings
-cat > /etc/kde/ksmserverrc << KSMSERVERRC_EOF
+cat > /etc/skel/.config/ksmserverrc << KSMSERVERRC_EOF
 [General]
 loginMode=default
 KSMSERVERRC_EOF
@@ -154,4 +156,3 @@ TerminalClient=false
 EMAILDEFAULTS_EOF
 
 %end
-

@@ -18,7 +18,7 @@ skanlite
 
 # Internet
 icedtea-web
-kde-plasma-ktorrent
+ktorrent
 pidgin
 
 # Multimedia
@@ -33,7 +33,7 @@ npapi-vlc
 @libreoffice
 libreoffice-langpack-it
 
-# Settings
+# Printing
 kde-print-manager
 
 %end
