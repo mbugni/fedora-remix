@@ -11,7 +11,6 @@
 -fedora-release-notes
 -fpaste
 -initial-setup
--prelink
 -rsyslog
 -sendmail
 
@@ -43,7 +42,6 @@ unar
 dnf-langpacks
 dnf-plugins-core
 dnf-yum
--yum*
 
 %end
 
