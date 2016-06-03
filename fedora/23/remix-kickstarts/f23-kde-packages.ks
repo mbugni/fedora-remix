@@ -30,7 +30,6 @@ kde-style-breeze
 kdeplasma-addons
 kgpg
 kinfocenter
-# kmix
 kgamma
 konsole5
 kscreen

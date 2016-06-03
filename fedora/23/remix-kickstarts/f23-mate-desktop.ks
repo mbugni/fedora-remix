@@ -40,3 +40,22 @@ EOF
 rm -f /usr/share/icons/HighContrast/icon-theme.cache
 
 %end
+
+
+%post
+
+echo ""
+echo "*****************"
+echo "POST MATE DESKTOP"
+echo "*****************"
+
+# Defaults for user configuration
+mkdir -p /etc/skel/.config
+
+# QT4 looks like GTK+
+cat > /etc/skel/.config/Trolltech.conf << TROLLTECH_EOF
+[Qt]
+style=GTK+
+TROLLTECH_EOF
+
+%end

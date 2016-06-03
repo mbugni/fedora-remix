@@ -5,9 +5,6 @@
 
 %packages
 
-# Common
-adwaita-qt
-
 # Graphics
 guvcview
 shotwell
@@ -21,6 +18,7 @@ transmission-gtk
 # Multimedia
 brasero
 ffmpegthumbnailer
+gvfs-mtp
 rhythmbox
 vlc
 npapi-vlc

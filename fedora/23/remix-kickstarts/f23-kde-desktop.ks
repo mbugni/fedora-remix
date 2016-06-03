@@ -9,8 +9,8 @@
 mkdir -p /etc/gtk-2.0
 cat > /etc/gtk-2.0/gtkrc << EOF_GTK2
 include "/usr/share/themes/Adwaita/gtk-2.0/gtkrc"
-gtk-icon-theme-name = "Adwaita"
-gtk-fallback-icon-theme = "gnome"
+gtk-icon-theme-name = "breeze"
+gtk-fallback-icon-theme = "hicolor"
 EOF_GTK2
 
 # add initscript
@@ -41,7 +41,6 @@ sed -i 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desk
 chmod +x /usr/share/applications/liveinst.desktop
 mkdir /home/liveuser/Desktop
 cp -a /usr/share/applications/liveinst.desktop /home/liveuser/Desktop/
-# cp -a /usr/share/applications/liveinst.desktop \$(su - liveuser xdg-user-dir DESKTOP)/
 
 # Set akonadi backend
 mkdir -p /home/liveuser/.config/akonadi
@@ -114,7 +113,7 @@ cat > /etc/skel/.config/kickoffrc << KICKOFF_EOF
 FavoriteURLs=/usr/share/applications/systemsettings.desktop,/usr/share/applications/firefox.desktop,/usr/share/applications/org.kde.dolphin.desktop,/usr/share/applications/org.kde.konsole.desktop
 KICKOFF_EOF
 
-# System wide settings
+# User global settings
 cat > /etc/skel/.config/kdeglobals << GLOBALS_EOF
 [KDE]
 SingleClick=false
@@ -140,6 +139,18 @@ cat > /etc/skel/.config/ksmserverrc << KSMSERVERRC_EOF
 [General]
 loginMode=default
 KSMSERVERRC_EOF
+
+# System global settings
+cat > /etc/kde/kdeglobals << GLOBALS_EOF
+[KDE]
+SingleClick=false
+
+[Locale]
+Country=it
+
+[Translations]
+LANGUAGE=it
+GLOBALS_EOF
 
 # Set Thunderbird as default email client
 cat > /etc/kde/emaildefaults << EMAILDEFAULTS_EOF

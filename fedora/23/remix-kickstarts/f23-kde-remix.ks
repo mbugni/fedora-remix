@@ -26,6 +26,7 @@ clementine
 ffmpegthumbs
 k3b
 k3b-extras-freeworld
+kio_mtp
 vlc
 npapi-vlc
 
@@ -33,7 +34,7 @@ npapi-vlc
 @libreoffice
 libreoffice-langpack-it
 
-# Settings
+# Printing
 kde-print-manager
 
 %end
