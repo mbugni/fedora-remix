@@ -3,7 +3,6 @@
 %packages
 
 # Unwanted stuff
--abrt*
 -at-*
 -caribou*
 -deja-dup*
@@ -27,7 +26,6 @@ caja
 dconf-editor
 engrampa
 eom
-gtk2-engines
 gucharmap
 gvfs-archive
 gvfs-fuse
@@ -63,6 +61,10 @@ system-config-users
 xdg-user-dirs-gtk
 yumex-dnf
 
+# Bluetooth
+fuse-obexftp
+obexftp
+
 # System tools
 system-config-date
 system-config-language
@@ -73,6 +75,5 @@ thunderbird
 
 # Tools
 gparted
-
 
 %end

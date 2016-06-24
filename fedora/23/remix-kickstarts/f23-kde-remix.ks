@@ -1,6 +1,7 @@
 ## f23-kde-remix.ks
 
 %include f23-kde-desktop.ks
+%include f23-base-printing.ks
 %include f23-base-remix.ks
 
 %packages

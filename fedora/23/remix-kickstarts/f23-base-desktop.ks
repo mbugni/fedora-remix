@@ -41,7 +41,6 @@ unar
 # Package management
 dnf-langpacks
 dnf-plugins-core
-dnf-yum
 
 %end
 
@@ -115,6 +114,7 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 </fontconfig>
 EOF_FONTS
 
+# Set a colored prompt
 cat > /etc/profile.d/color-prompt.sh << EOF_PROMPT
 ## Colored prompt
 if [ -n "\$PS1" ]; then
@@ -145,6 +145,7 @@ GRUB_DISABLE_RECOVERY="true"
 EOF_DEFAULT_GRUB
 fi
 
+# Set italian locale
 cat >> /etc/rc.d/init.d/livesys << EOF_LIVESYS
 
 # Force italian keyboard layout (rhb #982394)

@@ -1,6 +1,7 @@
 ## f23-mate-remix.ks
 
 %include f23-mate-desktop.ks
+%include f23-base-printing.ks
 %include f23-base-remix.ks
 
 %packages
