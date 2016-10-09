@@ -2,7 +2,7 @@
 #
 # Defines the basics for all kickstarts
 
-lang it_IT.UTF-8
+lang it_IT.UTF-8 --addsupport=it_IT.UTF-8
 keyboard it
 timezone Europe/Rome
 auth --useshadow --passalgo=sha512

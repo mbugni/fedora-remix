@@ -52,10 +52,8 @@ echo "*****************"
 # Defaults for user configuration
 mkdir -p /etc/skel/.config
 
-# QT4 looks like GTK+
-cat > /etc/skel/.config/Trolltech.conf << TROLLTECH_EOF
-[Qt]
-style=GTK+
-TROLLTECH_EOF
+# Override default MATE settings
+sed -i "s/^hinting=.*/hinting='full'/" /usr/share/glib-2.0/schemas/mate-fedora.gschema.override
+glib-compile-schemas  /usr/share/glib-2.0/schemas
 
 %end

@@ -11,7 +11,7 @@
 -system-config-printer
 
 adwaita-gtk2-theme
-apper
+# apper         FIXME: doesn't work with groups
 ark
 bluedevil
 cagibi
@@ -43,14 +43,16 @@ plasma-desktop
 plasma-nm-l2tp
 plasma-nm-openvpn
 plasma-nm-pptp
-plasma-pk-updates
+# plasma-pk-updates     Updates notification in systray
 plasma-workspace
 polkit-kde
-sddm 
+sddm
+sddm-breeze
 sddm-kcm
 svgpart
 sweeper
 xsettings-kde
+yumex-dnf       # Replace apper and updates notification
 
 # Internet
 firefox

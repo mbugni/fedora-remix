@@ -115,6 +115,9 @@ KICKOFF_EOF
 
 # User global settings
 cat > /etc/skel/.config/kdeglobals << GLOBALS_EOF
+[General]
+XftAntialias=true
+
 [KDE]
 SingleClick=false
 

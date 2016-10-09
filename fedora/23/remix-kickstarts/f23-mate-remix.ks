@@ -6,6 +6,9 @@
 
 %packages
 
+# Environment
+adwaita-qt
+
 # Graphics
 guvcview
 shotwell

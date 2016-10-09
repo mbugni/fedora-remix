@@ -44,7 +44,6 @@ mate-media
 mate-menus
 mate-menus-preferences-category-menu
 mate-notification-daemon
-mate-netspeed
 mate-panel
 mate-polkit
 mate-power-manager
