@@ -14,6 +14,9 @@ echo ""
 echo "POST KDE BASE it_IT **********************************"
 echo ""
 
+# Defaults for user configuration
+mkdir -p /etc/skel/.config/KDE
+
 # Plasma locale settings
 cat > /etc/skel/.config/plasma-localerc << PLASMALOCALE_EOF
 [Formats]
@@ -40,5 +43,12 @@ Country=it
 [Translations]
 LANGUAGE=it
 GLOBALS_EOF
+
+# KDE Sonnet locale settings
+cat > /etc/skel/.config/KDE/Sonnet.conf << SONNET_EOF
+[General]
+autodetectLanguage=true
+defaultLanguage=it_IT
+SONNET_EOF
 
 %end

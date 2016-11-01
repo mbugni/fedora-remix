@@ -1,7 +1,7 @@
 ## f24-base-it_IT.ks
 
 lang it_IT.UTF-8 --addsupport=it_IT.UTF-8
-keyboard it
+keyboard --xlayouts=it --vckeymap=it
 timezone Europe/Rome
 
 %packages --excludeWeakdeps
