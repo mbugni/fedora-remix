@@ -132,14 +132,16 @@ if [ -n "\$PS1" ]; then
 fi
 EOF_PROMPT
 
-# Set a default grub config if not present (rhb #886502)
+# Sets a default grub config if not present (rhb #886502)
+# Provides some reasonable defaults when the bootloader is not installed
 if [ ! -f "/etc/default/grub" ]; then
 cat > /etc/default/grub << EOF_DEFAULT_GRUB
 GRUB_TIMEOUT=3
 GRUB_DISTRIBUTOR="\$(sed 's, release .*\$,,g' /etc/system-release)"
 GRUB_DEFAULT=saved
 GRUB_CMDLINE_LINUX="rd.md=0 rd.dm=0 rd.luks=0 rhgb quiet"
-GRUB_DISABLE_RECOVERY="true"
+GRUB_DISABLE_RECOVERY=false
+# GRUB_DISABLE_OS_PROBER=true
 EOF_DEFAULT_GRUB
 fi
 
