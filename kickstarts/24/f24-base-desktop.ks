@@ -7,7 +7,6 @@
 # Unwanted stuff
 -PackageKit-command*
 -abrt*
--bash-completion*
 -fedora-release-notes
 -fpaste
 -initial-setup
@@ -144,5 +143,8 @@ GRUB_DISABLE_RECOVERY=false
 # GRUB_DISABLE_OS_PROBER=true
 EOF_DEFAULT_GRUB
 fi
+
+# Disable weak dependencies to avoid unwanted stuff
+echo "install_weak_deps=False" >> /etc/dnf/dnf.conf
 
 %end
