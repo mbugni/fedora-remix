@@ -29,3 +29,9 @@ Nel sistema sono presenti anche:
 * configurazioni aggiuntive
 
 ... e altre funzionalità non contenute nelle immagini ufficiali.
+
+## Change Log
+All notable changes to this project will be documented in the [`CHANGELOG.md`](CHANGELOG.md) file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/).
+
