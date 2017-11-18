@@ -91,6 +91,10 @@ echo ""
 # Defaults for user configuration
 mkdir -p /etc/skel/.config
 
+# Create a default icon for user login face
+ln -s /usr/share/sddm/faces/.face.icon /etc/skel/.face
+ln -s './.face' /etc/skel/.face.icon
+
 # Disable baloo
 cat > /etc/skel/.config/baloofilerc << BALOO_EOF
 [Basic Settings]
