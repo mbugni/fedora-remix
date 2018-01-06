@@ -6,6 +6,7 @@
 - Default fonts installed ([eg Google Noto][2602]).
 ### Removed
 - Instant messaging client.
+- system-config-users tool.
 
 ## Fedora 25 - 2017-05-13
 

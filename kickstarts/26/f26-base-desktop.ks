@@ -34,7 +34,7 @@ fedora-release-workstation
 htop
 vim-enhanced
 # system-config-date
-system-config-users
+# system-config-users
 unar
 
 # Package management
