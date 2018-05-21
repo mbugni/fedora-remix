@@ -1,3 +1,8 @@
+## Fedora 27 - 2018-02-18
+
+### Changed
+- Improve bluetooth support.
+
 ## Fedora 26 - 2017-12-16
 
 ### Added

@@ -12,6 +12,10 @@
 adwaita-gtk2-theme
 ark
 bluedevil
+bluez-hid2hci
+bluez-obexd
+bluez-tools
+breeze-gtk
 cagibi
 dolphin
 firewall-config
