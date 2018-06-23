@@ -2,6 +2,7 @@
 
 ### Changed
 - Improve bluetooth support.
+- Improve fonts configuration.
 
 ## Fedora 26 - 2017-12-16
 

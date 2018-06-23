@@ -22,8 +22,7 @@ pulseaudio-utils
 
 # Fonts
 google-noto-mono-fonts
-google-noto-sans-fonts
-google-noto-serif-fonts
+google-noto-sans-ui-fonts
 liberation-mono-fonts
 liberation-s*-fonts
 wine-fonts
@@ -74,11 +73,10 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 	<alias>
 		<family>serif</family>
 		<prefer>
-			<family>Noto Serif</family>
+			<!-- family>Noto Serif</family -->
 			<family>DejaVu Serif</family>
 			<family>Liberation Serif</family>
             <family>Times New Roman</family>
-			<family>Luxi Serif</family>
 			<family>Nimbus Roman No9 L</family>
 			<family>Times</family>
 		</prefer>
@@ -87,11 +85,10 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 	<alias>
 		<family>sans-serif</family>
 		<prefer>
-			<family>Noto Sans</family>
+			<family>Noto Sans UI</family>
 			<family>DejaVu Sans</family>
 			<family>Liberation Sans</family>
             <family>Arial</family>
-			<family>Luxi Sans</family>
 			<family>Nimbus Sans L</family>
 			<family>Helvetica</family>
 		</prefer>
@@ -105,7 +102,6 @@ cat > /etc/fonts/local.conf << EOF_FONTS
 			<family>Liberation Mono</family>
             <family>Courier New</family>
 			<family>Andale Mono</family>
-			<family>Luxi Mono</family>
 			<family>Nimbus Mono L</family>
 		</prefer>
 	</alias>
