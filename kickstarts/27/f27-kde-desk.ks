@@ -11,7 +11,6 @@ sane-backends-drivers-cameras
 sane-backends-drivers-scanners
 
 # Internet
-icedtea-web
 ktorrent
 thunderbird
 
