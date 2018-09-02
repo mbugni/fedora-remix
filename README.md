@@ -11,13 +11,13 @@ Fedora is a feature-rich operating system which offers a complete suite of sofwa
 In a nutshell you have to choose a version (eg: KDE with language support) and then create a single Kickstart file from the base code:
 
 ```
- # ksflatten --config kickstarts/27/l10n/f27-kde-remix-it_IT.ks --output f27-kde-remix.ks
+ # ksflatten --config kickstarts/27/l10n/f27-kde-desk-it_IT.ks --output f27-kde-desk.ks
 ```
 
 Then you can build the ISO image using the kickstart just obtained:
 
 ```
- # livemedia-creator --resultdir=result-kde --make-iso --no-virt --project=Fedora --releasever=27 --ks=f27-kde-remix.ks
+ # livemedia-creator --resultdir=result-kde --make-iso --no-virt --project=Fedora --releasever=27 --ks=f27-kde-desk.ks
 ```
 
 ## ![Bandiera italiana][04] Per gli utenti italiani
