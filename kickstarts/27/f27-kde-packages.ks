@@ -19,6 +19,7 @@ breeze-gtk
 cagibi
 dolphin
 firewall-config
+gnome-keyring-pam
 gwenview
 kate
 kcalc
@@ -55,6 +56,7 @@ sddm-kcm
 spectacle
 svgpart
 sweeper
+xdg-desktop-portal-kde
 
 # Internet
 firefox

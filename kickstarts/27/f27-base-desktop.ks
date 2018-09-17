@@ -29,16 +29,12 @@ wine-fonts
 
 # Tools
 @networkmanager-submodules
+dnf-plugins-core
 fedora-release-workstation
+flatpak
 htop
 vim-enhanced
-# system-config-date
-# system-config-users
 unar
-
-# Package management
-# dnf-langpacks
-dnf-plugins-core
 
 %end
 
