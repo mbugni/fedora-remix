@@ -13,9 +13,6 @@ echo ""
 echo "POST BASE PRINTING ***********************************"
 echo ""
 
-# Enable wheel group as administrator for print server (rhb #907595)
-sed -i 's/^SystemGroup /SystemGroup wheel /g' /etc/cups/cups-files.conf
-
 # OpenPrinting/Database/DriverPackages based on the LSB 3.2
 cat > /etc/yum.repos.d/openprinting-drivers.repo << OPENPRINTING_REPO_EOF
 [openprinting-drivers-main]
