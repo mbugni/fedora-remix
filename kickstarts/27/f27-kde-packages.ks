@@ -43,6 +43,7 @@ phonon-backend-gstreamer
 plasma-breeze
 plasma-desktop
 plasma-discover
+plasma-discover-flatpak
 plasma-discover-notifier
 plasma-nm-l2tp
 plasma-nm-openvpn
