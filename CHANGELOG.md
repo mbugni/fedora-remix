@@ -1,8 +1,15 @@
+## Fedora 28 - 2018-10-22
+
+### Removed
+- Favorites from KDE menu.
+- digiKam from KDE.
+
 ## Fedora 27 - 2018-02-18
 
 ### Changed
 - Improve bluetooth support.
 - Improve fonts configuration.
+- Improve flatpak support.
 
 ## Fedora 26 - 2017-12-16
 
