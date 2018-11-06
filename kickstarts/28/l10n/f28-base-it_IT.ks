@@ -1,4 +1,6 @@
-## f28-base-it_IT.ks
+# f28-base-it_IT.ks
+#
+# Defines the basics for a workstation in italian.
 
 lang it_IT.UTF-8 --addsupport=it_IT.UTF-8
 keyboard --xlayouts=it --vckeymap=it

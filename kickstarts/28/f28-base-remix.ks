@@ -1,4 +1,6 @@
-## f28-base-remix.ks
+# f28-base-remix.ks
+#
+# Adds extra repos for software that the Fedora Project doesn't want to ship.
 
 # Extra repositories
 repo --name=rpmfusion-free --mirrorlist=http://mirrors.rpmfusion.org/mirrorlist?repo=free-fedora-$releasever&arch=$basearch

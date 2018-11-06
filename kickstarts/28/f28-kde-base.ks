@@ -1,4 +1,6 @@
-## f28-kde-desktop.ks
+# f28-kde-base.ks
+#
+# Defines the basics for the KDE desktop.
 
 %include f28-base-desktop.ks
 %include f28-kde-packages.ks

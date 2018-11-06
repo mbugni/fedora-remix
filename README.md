@@ -8,20 +8,20 @@ Fedora is a feature-rich operating system which offers a complete suite of sofwa
 
 ## How to build the LiveCD
 [See a detailed description][03] of how to build the live media.
-In a nutshell you have to choose a version (eg: KDE with language support) and then create a single Kickstart file from the base code:
+In a nutshell, you have to choose a version (eg: KDE with language support) and then create a single Kickstart file from the base code:
 
 ```
- # ksflatten --config kickstarts/27/l10n/f27-kde-desk-it_IT.ks --output f27-kde-desk.ks
+ # ksflatten --config kickstarts/28/l10n/f28-kde-desktop-it_IT.ks --output kde-desktop.ks
 ```
 
 Then you can build the ISO image using the kickstart just obtained:
 
 ```
- # livemedia-creator --resultdir=result-kde --make-iso --no-virt --project=Fedora --releasever=27 --ks=f27-kde-desk.ks
+ # livemedia-creator --resultdir=result-kde --make-iso --no-virt --project=Fedora --releasever=28 --ks=kde-desktop.ks
 ```
 
 ## ![Bandiera italiana][04] Per gli utenti italiani
-Questo è un [Remix di Fedora][05] con il supporto in italiano per lingua e tastiera. Nell'immagine ISO che si ottiene sono già installati i pacchetti e le configurazioni per il funzionamento in italiano delle varie applicazioni (come l'ambiente grafico, la suite LibreOffice etc).
+Questo è un [Remix di Fedora][01] con il supporto in italiano per lingua e tastiera. Nell'immagine ISO che si ottiene sono già installati i pacchetti e le configurazioni per il funzionamento in italiano delle varie applicazioni (come l'ambiente grafico, la suite LibreOffice etc).
 Nel sistema sono presenti anche:
 
 * repositori extra di uso comune
@@ -33,12 +33,10 @@ Nel sistema sono presenti anche:
 ## Change Log
 All notable changes to this project will be documented in the [`CHANGELOG.md`](CHANGELOG.md) file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/).
+The format is based on [Keep a Changelog][05].
 
 [01]: https://fedoraproject.org/wiki/Remix
 [02]: https://en.wikipedia.org/wiki/Anaconda_(installer)
 [03]: https://fedoraproject.org/wiki/Livemedia-creator-_How_to_create_and_use_a_Live_CD
 [04]: http://flagpedia.net/data/flags/mini/it.png
-[05]: https://fedoraproject.org/wiki/Remix
-
-
+[05]: https://keepachangelog.com/

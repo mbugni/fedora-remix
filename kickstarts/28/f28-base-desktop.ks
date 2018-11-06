@@ -1,4 +1,6 @@
-## f28-base-desktop.ks
+# f28-base-desktop.ks
+#
+# Defines the basics for a desktop workstation.
 
 %include f28-base.ks
 

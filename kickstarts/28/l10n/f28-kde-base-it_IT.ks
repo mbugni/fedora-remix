@@ -1,4 +1,6 @@
-## f28-kde-base-it_IT.ks
+# f28-kde-base-it_IT.ks
+#
+# Provides italian localization for the KDE desktop.
 
 %include f28-base-it_IT.ks
 

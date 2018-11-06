@@ -1,4 +1,6 @@
-## f28-base-printing.ks
+# f28-base-printing.ks
+#
+# Provides support for printing. Adds extra repos for drivers.
 
 %packages --excludeWeakdeps
 

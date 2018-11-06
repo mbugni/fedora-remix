@@ -1,4 +1,6 @@
-## f28-kde-desk.ks
+# f28-kde-desktop.ks
+#
+# Provides a complete KDE desktop. Includes office, print and scan support.
 
 %include f28-kde-box.ks
 %include f28-base-printing.ks
@@ -6,7 +8,6 @@
 %packages --excludeWeakdeps
 
 # Graphics
-# digikam
 sane-backends-drivers-cameras
 sane-backends-drivers-scanners
 

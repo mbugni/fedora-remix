@@ -1,4 +1,6 @@
-## f28-kde-packages.ks
+# f28-kde-packages.ks
+#
+# Defines common packages for the KDE desktop.
 
 %packages --excludeWeakdeps
 
