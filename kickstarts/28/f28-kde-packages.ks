@@ -6,8 +6,6 @@
 
 # Unwanted stuff
 -*akonadi*
--*baloo*
--gnome*
 -kdepim*
 -system-config-printer
 
