@@ -5,6 +5,8 @@
 %packages --excludeWeakdeps
 
 @printing
+cups-ipptool
+cups-lpd
 
 %end
 
