@@ -19,7 +19,7 @@
 alsa-plugins-pulseaudio
 alsa-utils
 pulseaudio
-pulseaudio-module-x11
+pulseaudio-module-*
 pulseaudio-utils
 
 # Fonts
