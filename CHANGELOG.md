@@ -1,8 +1,16 @@
+## Fedora 29 - 2019-02-02
+
+### Added
+- Java 8 dependency for L.Office.
+
 ## Fedora 28 - 2018-10-22
 
 ### Removed
 - Favorites from KDE menu.
 - digiKam from KDE.
+### Changed
+- Improve printing support.
+- Improve audio support.
 
 ## Fedora 27 - 2018-02-18
 
