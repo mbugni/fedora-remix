@@ -17,7 +17,22 @@ In a nutshell, you have to choose a version (eg: KDE with language support) and 
 Then you can build the ISO image using the kickstart just obtained:
 
 ```
- # livemedia-creator --resultdir=result-kde --make-iso --no-virt --project=Fedora --releasever=28 --ks=kde-desktop.ks
+ # livemedia-creator --resultdir=result --make-iso --no-virt --project=Fedora --releasever=28 --ks=kde-desktop.ks
+```
+
+## Transferring the image to a bootable media
+You can create a bootable USB/SD device (legacy BIOS) using the iso image:
+
+```
+ # livecd-iso-to-disk --format --reset-mbr --msods result/images/boot.iso /dev/sdX
+```
+
+In order to get an EFI bootable media:
+
+```
+ # cp result/images/boot.iso boot-efi.iso
+ # cat result/images/efiboot.img >> boot-efi.iso
+ # livecd-iso-to-disk --format --reset-mbr --efi boot-efi.iso /dev/sdX
 ```
 
 ## ![Bandiera italiana][04] Per gli utenti italiani
