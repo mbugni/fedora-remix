@@ -1,3 +1,8 @@
+## Fedora 30 - 2019-05-24
+
+### Changed
+- Changes the [default fonts to Google Noto Fonts][3001].
+
 ## Fedora 29 - 2019-02-02
 
 ### Added
@@ -44,6 +49,7 @@
 ### Changed
 - Repository moved from [Assembla][2401].
 
+[3001]: https://fedoraproject.org/wiki/Changes/DefaultFontsToNoto
 [2601]: https://en.wikipedia.org/wiki/ExFAT
 [2602]: https://www.google.com/get/noto/
 [2501]: https://bugzilla.redhat.com/show_bug.cgi?id=1394148
