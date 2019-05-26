@@ -20,6 +20,7 @@ alsa-plugins-pulseaudio
 alsa-utils
 pulseaudio
 pulseaudio-module-*
+-pulseaudio-module-bluetooth-freeworld		# Exclude conflicts
 pulseaudio-utils
 
 # Fonts
