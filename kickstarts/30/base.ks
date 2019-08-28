@@ -24,16 +24,10 @@ shutdown
 %include base-repo.ks
 
 %packages --excludeWeakdeps
-@base-x
-# @guest-desktop-agents
-@standard
-@core
-# @fonts
-# @input-methods
-@dial-up
-# @multimedia
 @hardware-support
-# @printing
+bash-completion
+bind-utils
+psmisc
 
 # Explicitly specified here:
 # <notting> walters: because otherwise dependency loops cause yum issues.
