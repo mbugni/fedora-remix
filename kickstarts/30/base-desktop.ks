@@ -37,6 +37,7 @@ dnf-plugins-core
 fedora-release-workstation
 flatpak
 htop
+plymouth-system-theme
 vim-enhanced
 unar
 

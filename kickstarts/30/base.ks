@@ -24,6 +24,7 @@ shutdown
 %include base-repo.ks
 
 %packages --excludeWeakdeps
+@core
 @hardware-support
 bash-completion
 bind-utils
