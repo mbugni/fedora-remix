@@ -1,7 +1,13 @@
+## Fedora 31 - 2019-11-10
+
+### Removed
+- Clementine audio player.
+
 ## Fedora 30 - 2019-05-24
 
 ### Changed
 - Changes the [default fonts to Google Noto Fonts][3001].
+- Package dependencies minimization.
 
 ## Fedora 29 - 2019-02-02
 
