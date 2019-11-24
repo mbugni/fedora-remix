@@ -1,5 +1,7 @@
 ## Fedora 31 - 2019-11-10
 
+### Changed
+- Adopt RPM Fusion "tainted" repos.
 ### Removed
 - Clementine audio player.
 
@@ -16,12 +18,12 @@
 
 ## Fedora 28 - 2018-10-22
 
-### Removed
-- Favorites from KDE menu.
-- digiKam from KDE.
 ### Changed
 - Improve printing support.
 - Improve audio support.
+### Removed
+- Favorites from KDE menu.
+- digiKam from KDE.
 
 ## Fedora 27 - 2018-02-18
 

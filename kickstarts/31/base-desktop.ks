@@ -14,9 +14,12 @@
 -rsyslog
 -sendmail
 
-# Audio
+# Multimedia
 alsa-plugins-pulseaudio
 alsa-utils
+mesa-dri-drivers
+mesa-vulkan-drivers
+pipewire-utils
 pulseaudio
 pulseaudio-module-*
 -pulseaudio-module-bluetooth-freeworld		# Exclude conflicts
@@ -36,7 +39,6 @@ dnf-plugins-core
 drpm
 flatpak
 htop
-pipewire-utils
 plymouth-system-theme
 rsync
 vim-enhanced
