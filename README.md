@@ -6,33 +6,73 @@ This project is a [Fedora Remix][01] and aims to offer a complete system for mul
 ## Why Fedora?
 Fedora is a feature-rich operating system which offers a complete suite of sofware for many purposes. It is flexible enough to get a custom version by using the installer ([see here for more details][02]).  The build process can be described through Kickstart files and can be modified to get new variants.
 
-## How to build the LiveCD
+## Prepare the build environment with mock
 [See a detailed description][03] of how to build the live media.
+Install mock for the chroot environment and add the group to your build user:
+
+```
+# dnf install mock
+
+# usermod -a -G mock <builduser>
+```
+
+Install live media tools:
+
+```
+# dnf install pykickstart livecd-iso-to-mediums
+```
+
+Configure the chroot for your `<builduser>` by editing the `/etc/mock/fedora-<version>-remix-x86_64.cfg` file as follows:
+
+```
+include('/etc/mock/fedora-<version>-x86_64.cfg')
+
+config_opts['root'] = 'fedora-{{ releasever }}-remix-{{ target_arch }}'
+config_opts['chroot_setup_cmd'] = 'install @buildsys-build anaconda-tui lorax-lmc-novirt dnf'
+# build results go into /home/<builduser>/results/
+config_opts['plugin_conf']['bind_mount_opts']['dirs'].append(('/home/<builduser>/results/','/results/'))
+config_opts['rpmbuild_networking'] = True
+config_opts['use_host_resolv'] = True
+```
+
+Prepare the chroot using your `<builduser>`:
+
+```
+$ mkdir ~/results
+
+$ mock --root=fedora-<version>-remix-x86_64 --old-chroot --init
+```
+
+## How to build the LiveCD
 In a nutshell, you have to choose a version (eg: KDE with language support) and then create a single Kickstart file from the base code:
 
 ```
- # ksflatten --config kickstarts/28/l10n/f28-kde-desktop-it_IT.ks --output kde-desktop.ks
+ $ ksflatten --config /<source-path>/kickstarts/<version>/l10n/kde-desktop-it_IT.ks --output ~/results/kde-desktop.ks
 ```
 
 Then you can build the ISO image using the kickstart just obtained:
 
 ```
- # livemedia-creator --resultdir=result --make-iso --no-virt --project=Fedora --releasever=28 --ks=kde-desktop.ks
+ $ mock --root=fedora-<version>-remix-x86_64 --old-chroot --chroot -- \
+ livemedia-creator --no-virt --nomacboot --tmp=/results --logfile=/results/logs/livemedia.log \
+ --make-iso --project=Fedora --releasever=<version> --ks=/results/kde-desktop.ks
 ```
 
 ## Transferring the image to a bootable media
 You can create a bootable USB/SD device (legacy BIOS) using the iso image:
 
 ```
- # livecd-iso-to-disk --format --reset-mbr --msods result/images/boot.iso /dev/sdX
+ # livecd-iso-to-disk --format --reset-mbr --msods /home/<builduser>/results/lmc-work-<code>/images/boot.iso /dev/sd[X]
 ```
 
 In order to get an EFI bootable media:
 
 ```
- # cp result/images/boot.iso boot-efi.iso
- # cat result/images/efiboot.img >> boot-efi.iso
- # livecd-iso-to-disk --format --reset-mbr --efi boot-efi.iso /dev/sdX
+ # cp /home/<builduser>/results/lmc-work-<code>/images/boot.iso boot-efi.iso
+
+ # cat /home/<builduser>/results/lmc-work-<code>/images/efiboot.img >> boot-efi.iso
+
+ # livecd-iso-to-disk --format --reset-mbr --efi boot-efi.iso /dev/sd[X]
 ```
 
 ## ![Bandiera italiana][04] Per gli utenti italiani
@@ -52,6 +92,6 @@ The format is based on [Keep a Changelog][05].
 
 [01]: https://fedoraproject.org/wiki/Remix
 [02]: https://en.wikipedia.org/wiki/Anaconda_(installer)
-[03]: https://fedoraproject.org/wiki/Livemedia-creator-_How_to_create_and_use_a_Live_CD
+[03]: https://weldr.io/lorax/livemedia-creator.html#using-mock-and-no-virt-to-create-images
 [04]: http://flagpedia.net/data/flags/mini/it.png
 [05]: https://keepachangelog.com/
