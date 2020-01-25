@@ -7,6 +7,9 @@
 
 %packages --excludeWeakdeps
 
+# Qt support for GNOME
+qgnomeplatform
+
 # Graphics
 sane-backends-drivers-cameras
 sane-backends-drivers-scanners
@@ -17,6 +20,7 @@ thunderbird
 # Multimedia
 brasero
 brasero-nautilus
+vlc
 
 # Office
 @libreoffice

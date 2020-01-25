@@ -109,6 +109,10 @@ monospace-font-name='Noto Sans Mono 11'
 
 [org/gnome/desktop/wm/preferences]
 titlebar-font='Noto Sans 11'
+
+[org/gnome/settings-daemon/plugins/xsettings]
+antialiasing='rgba'
+hinting='full'
 EOF_FONTS
 
 # Update configuration

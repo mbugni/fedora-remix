@@ -1,5 +1,7 @@
 ## Fedora 31 - 2019-11-10
 
+### Added
+- GNOME desktop.
 ### Changed
 - Adopt RPM Fusion "tainted" repos.
 ### Removed
