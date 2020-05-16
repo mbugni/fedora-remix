@@ -42,6 +42,9 @@ kernel-modules-extra
 #memtest86+
 @x86-baremetal-tools # memtest86+ is included
 
+# Grub2 EFI modules
+grub2-efi-*-modules
+
 # The point of a live image is to install
 anaconda
 anaconda-install-env-deps

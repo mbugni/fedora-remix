@@ -40,7 +40,7 @@ Prepare the chroot using your `<builduser>`:
 ```
 $ mkdir ~/results
 
-$ mock --root=fedora-<version>-remix-x86_64 --old-chroot --init
+$ mock --root=fedora-<version>-remix-x86_64 --isolation=simple --init
 ```
 
 ## How to build the LiveCD
@@ -53,7 +53,7 @@ In a nutshell, you have to choose a version (eg: KDE with language support) and 
 Then you can build the ISO image using the kickstart just obtained:
 
 ```
- $ mock --root=fedora-<version>-remix-x86_64 --old-chroot --chroot -- \
+ $ mock --root=fedora-<version>-remix-x86_64 --isolation=simple --chroot -- \
  livemedia-creator --no-virt --nomacboot --tmp=/results --logfile=/results/logs/livemedia.log \
  --make-iso --project=Fedora --releasever=<version> --ks=/results/kde-desktop.ks
 ```

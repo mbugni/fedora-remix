@@ -4,6 +4,7 @@
 - GNOME desktop.
 ### Changed
 - Adopt RPM Fusion "tainted" repos.
+- Multimedia support improved.
 ### Removed
 - Clementine audio player.
 

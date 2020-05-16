@@ -17,13 +17,15 @@
 # Multimedia
 alsa-plugins-pulseaudio
 alsa-utils
-mesa-dri-drivers
-mesa-vulkan-drivers
+libva-vdpau-driver
+libvdpau-va-gl
+mesa-*-drivers
 pipewire-utils
 pulseaudio
 pulseaudio-module-*
 -pulseaudio-module-bluetooth-freeworld		# Exclude conflicts
 pulseaudio-utils
+xorg-x11-drivers
 
 # Fonts
 google-noto-sans-fonts
