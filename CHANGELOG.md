@@ -1,3 +1,11 @@
+## Fedora 32 - 2020-07-11
+
+### Added
+- Emoji fonts support.
+### Changed
+- Desktop as basic box.
+- Workstation with full office support.
+
 ## Fedora 31 - 2019-11-10
 
 ### Added
