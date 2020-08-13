@@ -23,6 +23,7 @@ fedora-release-kde
 firewall-config
 gnome-keyring-pam
 gwenview
+ibus-qt
 kate
 kcalc
 kcharselect
