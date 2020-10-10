@@ -41,14 +41,18 @@ kernel-modules-extra
 #memtest86+
 @x86-baremetal-tools # memtest86+ is included
 
-# Grub2 EFI modules
-grub2-efi-*-modules
-
 # The point of a live image is to install
 anaconda
 anaconda-install-env-deps
 anaconda-live
-@anaconda-tools
+# @anaconda-tools
+efibootmgr
+grub2-efi-*
+grub2-pc
+grub2-tools*
+shim-*
+syslinux-extlinux
+zram
 
 # Without this, initramfs generation during live image creation fails: #1242586
 dracut-live

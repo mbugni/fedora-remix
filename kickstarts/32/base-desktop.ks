@@ -9,7 +9,6 @@
 # Unwanted stuff
 -PackageKit-command*
 -abrt*
--fedora-release-notes
 -fpaste
 -rsyslog
 -sendmail
@@ -35,6 +34,15 @@ google-noto-emoji-color-fonts
 liberation-mono-fonts
 liberation-s*-fonts
 
+# Networking
+@networkmanager-submodules
+firewalld
+firewall-config
+
+# Internet
+firefox
+mozilla-openh264
+
 # Software
 PackageKit
 PackageKit-gstreamer-plugin
@@ -43,7 +51,6 @@ drpm
 flatpak
 
 # Tools
-@networkmanager-submodules
 htop
 plymouth-system-theme
 rsync

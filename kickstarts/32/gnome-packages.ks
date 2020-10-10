@@ -16,7 +16,6 @@ evince-nautilus
 fedora-release-workstation
 file-roller
 file-roller-nautilus
-firewall-config
 gdm
 gedit
 gnome-bluetooth
@@ -41,14 +40,12 @@ gnome-terminal-nautilus
 gnome-themes-extra
 gnome-tweaks
 gthumb
+gvfs-goa
 nautilus
 polkit
 yelp
 xdg-desktop-portal-gtk
 xdg-user-dirs-gtk
-
-# Internet
-firefox
 
 # Tools
 gparted

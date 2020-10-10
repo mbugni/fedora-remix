@@ -18,7 +18,6 @@ breeze-gtk
 cagibi
 dolphin
 fedora-release-kde
-firewall-config
 gnome-keyring-pam
 gwenview
 ibus-qt
@@ -59,9 +58,6 @@ spectacle
 svgpart
 sweeper
 xdg-desktop-portal-kde
-
-# Internet
-firefox
 
 # Tools
 gparted
