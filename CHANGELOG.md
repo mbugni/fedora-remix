@@ -1,3 +1,10 @@
+## Fedora 33 - 2020-11-10
+
+### Changed
+- Kickstart packages organization.
+- [LibreOffice VCL][3301] for each DE.
+- [Nano as default editor][3302].
+
 ## Fedora 32 - 2020-07-11
 
 ### Added
@@ -68,6 +75,8 @@
 ### Changed
 - Repository moved from [Assembla][2401].
 
+[3301]: https://docs.libreoffice.org/vcl.html
+[3302]: https://fedoraproject.org/wiki/Changes/UseNanoByDefault
 [3001]: https://fedoraproject.org/wiki/Changes/DefaultFontsToNoto
 [2601]: https://en.wikipedia.org/wiki/ExFAT
 [2602]: https://www.google.com/get/noto/

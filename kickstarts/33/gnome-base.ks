@@ -49,7 +49,7 @@ if [ -f /usr/share/applications/liveinst.desktop ]; then
 
   cat >> /usr/share/glib-2.0/schemas/org.gnome.shell.gschema.override << FOE
 [org.gnome.shell]
-favorite-apps=['firefox.desktop', 'evolution.desktop', 'rhythmbox.desktop', 'shotwell.desktop', 'org.gnome.Nautilus.desktop', 'anaconda.desktop']
+favorite-apps=['firefox.desktop', 'org.gnome.Nautilus.desktop', 'anaconda.desktop']
 FOE
 
   # Make the welcome screen show up

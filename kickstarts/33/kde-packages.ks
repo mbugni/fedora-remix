@@ -25,7 +25,7 @@ kate
 kcalc
 kcharselect
 kcm_systemd
-kcm_touchpad
+# kcm_touchpad
 kde-gtk-config
 kde-settings-pulseaudio
 kde-style-breeze
@@ -39,15 +39,17 @@ ksysguard
 kwalletmanager5
 kwin
 okular
-phonon-backend-gstreamer
+phonon-qt5-backend-gstreamer
 plasma-breeze
 plasma-desktop
 plasma-discover
 plasma-discover-flatpak
 plasma-discover-notifier
+plasma-milou
 plasma-nm-l2tp
 plasma-nm-openvpn
 plasma-nm-pptp
+plasma-pa
 plasma-user-manager
 plasma-workspace
 polkit-kde

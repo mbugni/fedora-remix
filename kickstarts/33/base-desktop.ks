@@ -46,15 +46,17 @@ mozilla-openh264
 # Software
 PackageKit
 PackageKit-gstreamer-plugin
+deltarpm
 dnf-plugins-core
 drpm
 flatpak
 
 # Tools
 htop
+nano-default-editor
 plymouth-system-theme
 rsync
-vim-enhanced
+# vim-enhanced
 unar
 
 %end

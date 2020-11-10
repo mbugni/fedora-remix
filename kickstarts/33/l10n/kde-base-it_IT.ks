@@ -6,7 +6,7 @@
 
 %packages --excludeWeakdeps
 
-kde-l10n-Italian
+kde-l10n-it
 
 %end
 
