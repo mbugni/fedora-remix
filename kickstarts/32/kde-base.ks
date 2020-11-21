@@ -141,4 +141,10 @@ EmailClient[\$e]=thunderbird
 TerminalClient=false
 EMAILDEFAULTS_EOF
 
+# Set Plasma default theme
+cat > /etc/skel/.config/plasmarc << PLASMARC_EOF
+[Theme]
+name=breeze-dark
+PLASMARC_EOF
+
 %end

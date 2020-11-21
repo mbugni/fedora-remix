@@ -23,10 +23,12 @@ shutdown
 %include base-repo.ks
 
 %packages --excludeWeakdeps
+@base-x
 @core
 @hardware-support
 bash-completion
 bind-utils
+microcode_ctl
 psmisc
 
 # Explicitly specified here:

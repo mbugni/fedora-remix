@@ -15,6 +15,9 @@ brasero
 brasero-nautilus
 vlc
 
+# Office
+libreoffice-gtk3
+
 # Printers and scanners
 simple-scan
 

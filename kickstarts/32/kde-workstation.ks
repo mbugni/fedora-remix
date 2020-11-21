@@ -9,7 +9,9 @@
 
 # Multimedia
 k3b
-# k3b-extras-freeworld
+
+# Office
+libreoffice-kf5
 
 # Printers and scanners
 kde-print-manager

@@ -4,3 +4,9 @@
 
 %include ../gnome-desktop.ks
 %include base-it_IT.ks
+
+%packages --excludeWeakdeps
+
+gnome-getting-started-docs-it
+
+%end
