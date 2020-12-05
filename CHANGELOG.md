@@ -1,5 +1,7 @@
 ## Fedora 33 - 2020-11-10
 
+### Added
+- XFCE desktop environment remix.
 ### Changed
 - Kickstart packages organization.
 - [LibreOffice VCL][3301] for each DE.
