@@ -1,7 +1,13 @@
 # fedora-remix
 
 ## Purpose
-This project is a [Fedora Remix][01] and aims to offer a complete system for multipurpose usage with localization support. You can build a LiveCD and try the software, and then install it in your PC if you want.
+This project is a [Fedora Remix][01] and aims to offer a complete system for multipurpose usage with localization support. You can build a live image and try the software, and then install it in your PC if you want.
+Other goals of this remix are:
+
+* common extra-repos
+* multimedia apps
+* office automation support (printers and scanners)
+* and more...
 
 ## Why Fedora?
 Fedora is a feature-rich operating system which offers a complete suite of sofware for many purposes. It is flexible enough to get a custom version by using the installer ([see here for more details][02]).  The build process can be described through Kickstart files and can be modified to get new variants.
@@ -28,7 +34,7 @@ Configure the chroot for your `<builduser>` by editing the `/etc/mock/fedora-<ve
 include('/etc/mock/fedora-<version>-x86_64.cfg')
 
 config_opts['root'] = 'fedora-{{ releasever }}-remix-{{ target_arch }}'
-config_opts['chroot_setup_cmd'] = 'install @buildsys-build anaconda-tui lorax-lmc-novirt dnf'
+config_opts['chroot_setup_cmd'] = 'install lorax-lmc-novirt'
 # build results go into /home/<builduser>/results/
 config_opts['plugin_conf']['bind_mount_opts']['dirs'].append(('/home/<builduser>/results/','/results/'))
 config_opts['rpmbuild_networking'] = True
@@ -75,15 +81,26 @@ In order to get an EFI bootable media:
  # livecd-iso-to-disk --format --reset-mbr --efi boot-efi.iso /dev/sd[X]
 ```
 
+## Post-install tasks
+The Anaconda installer does not remove itself after installation. You can remove it to get space by running this command:
+```
+# dnf remove anaconda\*
+```
+
 ## ![Bandiera italiana][04] Per gli utenti italiani
 Questo è un [Remix di Fedora][01] con il supporto in italiano per lingua e tastiera. Nell'immagine ISO che si ottiene sono già installati i pacchetti e le configurazioni per il funzionamento in italiano delle varie applicazioni (come l'ambiente grafico, la suite LibreOffice etc).
 Nel sistema sono presenti anche:
 
 * repositori extra di uso comune
 * supporto per le applicazioni multimediali
-* configurazioni aggiuntive
+* supporto per l'ufficio (stampanti e scanner)
+* e altre funzionalità ancora...
 
-... e altre funzionalità non contenute nelle immagini ufficiali.
+### Attività post-installazione
+Il programma di installazione Anaconda non rimuove se stesso dopo l'installazione. E' possibile rimuoverlo per recuperare spazio utilizzando il seguente comando:
+```
+# dnf remove anaconda\*
+```
 
 ## Change Log
 All notable changes to this project will be documented in the [`CHANGELOG.md`](CHANGELOG.md) file.

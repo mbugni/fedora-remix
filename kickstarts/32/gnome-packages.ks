@@ -8,8 +8,10 @@ PackageKit-gtk3-module
 NetworkManager-l2tp-gnome
 NetworkManager-openvpn-gnome
 NetworkManager-pptp-gnome
+adwaita-gtk2-theme
 chrome-gnome-shell
 dconf
+dconf-editor
 desktop-backgrounds-gnome
 evince
 evince-nautilus

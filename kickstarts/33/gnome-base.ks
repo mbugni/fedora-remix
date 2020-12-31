@@ -99,9 +99,6 @@ echo ""
 cat > /etc/dconf/db/local.d/01-remix-gnome-fonts << EOF_FONTS
 # Remix global font settings
 
-[org/gnome/Characters]
-font='Noto Sans 50'
-
 [org/gnome/desktop/interface]
 document-font-name='Noto Sans 11'
 font-name='Noto Sans 11'
