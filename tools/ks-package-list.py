@@ -9,10 +9,13 @@ import pykickstart.version
 import dnf
 import dnf.transaction
 
+PKG_FORMAT = "{name}-{version}-{release}.{arch}"
+
 # Command line parsing
 argparser = argparse.ArgumentParser(description='List kickstart package dependencies.')
 argparser.add_argument('kickstart_file', metavar='KICKSTART', help='The kickstart file to parse')
 argparser.add_argument('--releasever', metavar='RELEASEVER', help='release version', type=int, required=False)
+argparser.add_argument('--format', metavar='FORMAT', help='package format (default is '+ PKG_FORMAT +')', required=False)
 argparser.add_argument('--verbose', help='print additional info to stderr', action='store_true')
 args = argparser.parse_args()
 
@@ -78,10 +81,13 @@ def resolvePackage(pkg_name):
 # Process kickstart required groups
 for group in ksparser.handler.packages.groupList:
     resolved_group = dnf_base.comps.group_by_pattern(group.name)
-    # Add group to install transaction
-    found = dnf_base.group_install(resolved_group.id, dnf_base.conf.group_package_types)
-    if args.verbose:
-        print(f"# Including {found} packages from group {group}", file=sys.stderr)
+    if resolved_group:
+        # Add group to install transaction
+        found = dnf_base.group_install(resolved_group.id, dnf_base.conf.group_package_types)
+        if args.verbose:
+            print(f"# Including {found} packages from group {group}", file=sys.stderr)
+    else:
+        print(f"# Warning: cannot find required group {group.name}", file=sys.stderr)
 
 # Process kickstart excluded packages
 excluded_list = ksparser.handler.packages.excludedList
@@ -99,8 +105,13 @@ for pkg in included_list:
     if not resolved:
         print(f"# Warning: cannot find required package {pkg}", file=sys.stderr)
         
-# Resolve install dependencies and print them
+# Resolve install dependencies
 dnf_base.install_specs(included_list, exclude=excluded_list)
 dnf_base.resolve()
-for pkg_inst in sorted(dnf_base.transaction.install_set):
-    print(f'{pkg_inst.name}-{pkg_inst.version}-{pkg_inst.release}.{pkg_inst.arch}')
+
+# Print formatted results
+pkg_format = PKG_FORMAT
+if args.format:
+    pkg_format = args.format
+for pkg in sorted(dnf_base.transaction.install_set):
+    print(pkg_format.format(name=pkg.name,epoch=pkg.epoch,version=pkg.version,release=pkg.release,arch=pkg.arch))
