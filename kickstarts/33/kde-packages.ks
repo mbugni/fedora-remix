@@ -25,12 +25,10 @@ kate
 kcalc
 kcharselect
 kcm_systemd
-# kcm_touchpad
 kde-gtk-config
 kde-settings-pulseaudio
 kde-style-breeze
 kdeplasma-addons
-# kgpg
 kinfocenter
 kgamma
 konsole5
@@ -39,6 +37,7 @@ ksysguard
 kwalletmanager5
 kwin
 okular
+pam-kwallet
 phonon-qt5-backend-gstreamer
 plasma-breeze
 plasma-desktop

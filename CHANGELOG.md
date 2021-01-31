@@ -2,6 +2,7 @@
 
 ### Added
 - XFCE desktop environment remix.
+- PAM integration with KWallet.
 ### Changed
 - Kickstart packages organization.
 - [LibreOffice VCL][3301] for each DE.
