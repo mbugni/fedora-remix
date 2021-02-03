@@ -6,7 +6,6 @@
 
 # Unwanted stuff
 -*akonadi*
--kdepim*
 
 adwaita-gtk2-theme
 ark

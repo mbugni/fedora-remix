@@ -51,10 +51,13 @@ dnf-plugins-core
 drpm
 flatpak
 
+# System
+plymouth-theme-spinner
+
 # Tools
 htop
 nano-default-editor
-plymouth-system-theme
+neofetch
 rsync
 # vim-enhanced
 unar
@@ -150,5 +153,8 @@ fi
 
 # Disable weak dependencies to avoid unwanted stuff
 echo "install_weak_deps=False" >> /etc/dnf/dnf.conf
+
+# Set default boot theme
+plymouth-set-default-theme spinner
 
 %end

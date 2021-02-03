@@ -39,7 +39,7 @@ gnome-software
 gnome-system-monitor
 gnome-terminal
 gnome-terminal-nautilus
-gnome-themes-extra
+# gnome-themes-extra
 gnome-tweaks
 gthumb
 gvfs-goa
