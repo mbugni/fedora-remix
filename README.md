@@ -10,7 +10,7 @@ Other goals of this remix are:
 * and more...
 
 ## Why Fedora?
-Fedora is a feature-rich operating system which offers a complete suite of sofware for many purposes. It is flexible enough to get a custom version by using the installer ([see here for more details][02]).  The build process can be described through Kickstart files and can be modified to get new variants.
+Fedora is a feature-rich operating system which offers a complete suite of sofware for many purposes. It is flexible enough to get a custom version by using the installer ([see here for more details][02]). The build process can be described through Kickstart files and can be modified to get new variants.
 
 ## Prepare the build environment with Lorax
 [See a detailed description][03] of how to build the live media.
@@ -34,33 +34,34 @@ Create a bootable .iso for building environment:
 # lorax --product='Fedora' --version=<version> --release=<version> --nomacboot \
  --source='https://dl.fedoraproject.org/pub/fedora/linux/releases/<version>/Everything/x86_64/os/' \
  --source='https://dl.fedoraproject.org/pub/fedora/linux/updates/<version>/Everything/x86_64/' \
- --logfile=/results/lorax-<version>/lorax.log /results/lorax-<version>
+ --logfile=/results/lorax-fedora-<version>/lorax.log /results/lorax-fedora-<version>
 ```
 
+## How to build the LiveCD
 Install live media tools:
 
 ```
 # dnf install pykickstart livecd-iso-to-mediums
 ```
 
-## How to build the LiveCD
-In a nutshell, you have to choose a version (eg: KDE workstation with italian support) and then create a single Kickstart file from the base code:
+Choose a version (eg: KDE workstation with italian support) and then create a single Kickstart file from the base code:
 
 ```
 $ ksflatten --config /<source-path>/kickstarts/<version>/l10n/kde-workstation-it_IT.ks \
- --output /results/kde-workstation-<version>.ks
+ --output /results/fedora-<version>-kde-workstation.ks
 ```
 
-Then you can build the ISO image using the kickstart just obtained:
+Then you can build the .iso image using the kickstart just obtained:
 
 ```
 # livemedia-creator --nomacboot --make-iso --project='Fedora' --releasever=<version> \
  --tmp=/results --logfile=/results/lmc-logs/livemedia.log \
- --iso=/results/lorax-<version>/images/boot.iso --ks=/results/kde-workstation-<version>.ks
+ --iso=/results/lorax-fedora-<version>/images/boot.iso \
+ --ks=/results/fedora-<version>-kde-workstation.ks
 ```
 
 ## Transferring the image to a bootable media
-You can create a bootable USB/SD device (legacy BIOS) using the .iso image:
+You can create a bootable USB/SD device using the .iso image:
 
 ```
 # livecd-iso-to-disk --format --reset-mbr /results/lmc-work-<code>/images/boot.iso /dev/sd[X]
@@ -74,7 +75,7 @@ The Anaconda installer does not remove itself after installation. You can remove
 ```
 
 ## ![Bandiera italiana][04] Per gli utenti italiani
-Questo è un [Remix di Fedora][01] con il supporto in italiano per lingua e tastiera. Nell'immagine ISO che si ottiene sono già installati i pacchetti e le configurazioni per il funzionamento in italiano delle varie applicazioni (come l'ambiente grafico, la suite LibreOffice etc).
+Questo è un [Remix di Fedora][01] con il supporto in italiano per lingua e tastiera. Nell'immagine .iso che si ottiene sono già installati i pacchetti e le configurazioni per il funzionamento in italiano delle varie applicazioni (come l'ambiente grafico, la suite LibreOffice etc).
 Nel sistema sono presenti anche:
 
 * repositori extra di uso comune
