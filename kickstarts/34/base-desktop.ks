@@ -6,24 +6,21 @@
 
 %packages --excludeWeakdeps
 
-# Unwanted stuff
--PackageKit-command*
--abrt*
--fpaste
--rsyslog
--sendmail
+# Common modules (see fedora-workstation-common.ks)
+@base-x
+@core
+@hardware-support
+bash-completion
+bind-utils
+btrfs-progs
+microcode_ctl
+psmisc
 
 # Multimedia
-alsa-plugins-pulseaudio
-alsa-utils
+@multimedia
 libva-vdpau-driver
 libvdpau-va-gl
 mesa-*-drivers
-pipewire-utils
-pulseaudio
-pulseaudio-module-*
--pulseaudio-module-bluetooth-freeworld		# Exclude conflicts
-pulseaudio-utils
 xorg-x11-drivers
 
 # Fonts
@@ -46,20 +43,22 @@ mozilla-openh264
 # Software
 PackageKit
 PackageKit-gstreamer-plugin
-deltarpm
+# deltarpm
 dnf-plugins-core
-drpm
+# drpm
 flatpak
 
 # System
 plymouth-theme-spinner
+rpm-plugin-systemd-inhibit
 
 # Tools
+blivet-gui			# Storage management
+exfatprogs
 htop
 nano-default-editor
 neofetch
 rsync
-# vim-enhanced
 unar
 
 %end

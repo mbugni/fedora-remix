@@ -1,3 +1,11 @@
+## Fedora 34 - 2021-05-30
+
+### Changed
+- Blivet-gui instead of GParted.
+### Removed
+- XFCE desktop environment remix.
+- Wine fonts.
+
 ## Fedora 33 - 2020-11-10
 
 ### Added

@@ -25,17 +25,11 @@ rpmfusion-*-appstream-data
 # Multimedia
 gstreamer1-libav
 gstreamer1-vaapi
-gstreamer1-plugin-openh264
-gstreamer1-plugins-bad-free
 gstreamer1-plugins-bad-freeworld
-gstreamer1-plugins-good
 gstreamer1-plugins-ugly
-gstreamer1-plugins-ugly-free
 libdvdcss
 
 # Tools
-exfat-utils
-fuse-exfat
 unrar
 
 %end

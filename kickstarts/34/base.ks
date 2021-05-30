@@ -23,15 +23,6 @@ shutdown
 %include base-repo.ks
 
 %packages --excludeWeakdeps
-@base-x
-@core
-@hardware-support
-bash-completion
-bind-utils
-btrfs-progs
-microcode_ctl
-psmisc
-
 # Explicitly specified here:
 # <notting> walters: because otherwise dependency loops cause yum issues.
 kernel
@@ -50,8 +41,9 @@ anaconda-install-env-deps
 anaconda-live
 # @anaconda-tools
 efibootmgr
-grub2-efi-*
-grub2-pc
+grub2-efi-ia32*
+grub2-efi-x64*
+grub2-pc*
 grub2-tools*
 shim-*
 syslinux-extlinux
@@ -195,9 +187,6 @@ systemctl --no-reload disable mdmonitor-takeover.service 2> /dev/null || :
 systemctl stop mdmonitor.service 2> /dev/null || :
 systemctl stop mdmonitor-takeover.service 2> /dev/null || :
 
-# don't enable the gnome-settings-daemon packagekit plugin
-gsettings set org.gnome.software download-updates 'false' || :
-
 # don't start cron/at as they tend to spawn things which are
 # disk intensive that are painful on a live image
 systemctl --no-reload disable crond.service 2> /dev/null || :
@@ -299,10 +288,6 @@ EOF
 
 # work around for poor key import UI in PackageKit
 rm -f /var/lib/rpm/__db*
-releasever=$(rpm --eval '%{fedora}')
-basearch=$(uname -i)
-# Import keys of Fedora and 3rd party repository
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-*
 echo "Packages within this LiveCD"
 rpm -qa --qf '%{size}\t%{name}-%{version}-%{release}.%{arch}\n' |sort -rn
 # Note that running rpm recreates the rpm db files which aren't needed or wanted

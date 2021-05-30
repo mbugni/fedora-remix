@@ -23,11 +23,11 @@ gedit
 gnome-bluetooth
 gnome-calculator
 gnome-characters
-gnome-classic-session
+# gnome-classic-session     Obsolete
 gnome-color-manager
 gnome-control-center
 gnome-font-viewer
-gnome-getting-started-docs
+# gnome-getting-started-docs
 gnome-initial-setup
 gnome-screenshot
 gnome-session-wayland-session
@@ -48,8 +48,5 @@ polkit
 yelp
 xdg-desktop-portal-gtk
 xdg-user-dirs-gtk
-
-# Tools
-gparted
 
 %end

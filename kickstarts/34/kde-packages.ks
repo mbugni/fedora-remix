@@ -4,9 +4,6 @@
 
 %packages --excludeWeakdeps
 
-# Unwanted stuff
--*akonadi*
-
 adwaita-gtk2-theme
 ark
 bluedevil
@@ -19,7 +16,7 @@ dolphin
 fedora-release-kde
 gnome-keyring-pam
 gwenview
-ibus-qt
+ibus-uniemoji
 kate
 kcalc
 kcharselect
@@ -32,7 +29,7 @@ kinfocenter
 kgamma
 konsole5
 kscreen
-ksysguard
+# ksysguard         Replaced by plasma-systemmonitor
 kwalletmanager5
 kwin
 okular
@@ -43,13 +40,18 @@ plasma-desktop
 plasma-discover
 plasma-discover-flatpak
 plasma-discover-notifier
+# plasma-discover-offline-updates
+plasma-discover-packagekit
 plasma-milou
 plasma-nm-l2tp
 plasma-nm-openvpn
 plasma-nm-pptp
 plasma-pa
-plasma-user-manager
+plasma-systemmonitor
+plasma-thunderbolt
+# plasma-user-manager   plasma now provides kcm_users
 plasma-workspace
+plasma-workspace-x11
 polkit-kde
 sddm
 sddm-breeze
@@ -58,8 +60,5 @@ spectacle
 svgpart
 sweeper
 xdg-desktop-portal-kde
-
-# Tools
-gparted
 
 %end

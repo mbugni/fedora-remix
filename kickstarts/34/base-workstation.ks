@@ -4,9 +4,6 @@
 
 %packages --excludeWeakdeps
 
-# Fonts
-wine-fonts
-
 # Graphics
 sane-backends-drivers-cameras
 sane-backends-drivers-scanners
