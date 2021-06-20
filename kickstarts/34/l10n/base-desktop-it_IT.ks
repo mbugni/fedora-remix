@@ -1,8 +1,8 @@
-# base-it_IT.ks
+# base-desktop-it_IT.ks
 #
 # Defines the basics for a workstation in italian.
 
-lang it_IT.UTF-8 --addsupport=it_IT.UTF-8
+lang --addsupport=it_IT.UTF-8 it_IT.UTF-8
 keyboard --xlayouts=it --vckeymap=it
 timezone Europe/Rome
 
@@ -18,7 +18,7 @@ langpacks-it
 %post
 
 echo ""
-echo "POST BASE it_IT **************************************"
+echo "POST BASE DESKTOP it_IT ******************************"
 echo ""
 
 # Set italian locale

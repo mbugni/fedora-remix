@@ -3,7 +3,7 @@
 # Provides a complete GNOME workstation with italian localization support.
 
 %include ../gnome-workstation.ks
-%include base-it_IT.ks
+%include gnome-base-it_IT.ks
 
 %packages --excludeWeakdeps
 
