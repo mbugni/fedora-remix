@@ -1,5 +1,6 @@
 ## Fedora 34 - 2021-05-30
-
+### Added
+- KDE Connect support.
 ### Changed
 - Blivet-gui instead of GParted.
 ### Removed

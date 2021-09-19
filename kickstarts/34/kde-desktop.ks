@@ -7,13 +7,16 @@
 
 %packages --excludeWeakdeps
 
+# Connectivity
+kde-connect
+kio_mtp
+
 # Graphics
 kamoso
 kdegraphics-thumbnailers
 
 # Multimedia
 ffmpegthumbs
-kio_mtp
 vlc
 
 %end

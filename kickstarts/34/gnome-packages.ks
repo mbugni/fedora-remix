@@ -26,6 +26,7 @@ gnome-characters
 # gnome-classic-session     Obsolete
 gnome-color-manager
 gnome-control-center
+gnome-extensions-app
 gnome-font-viewer
 # gnome-getting-started-docs
 gnome-initial-setup

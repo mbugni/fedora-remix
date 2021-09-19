@@ -7,11 +7,14 @@
 
 %packages --excludeWeakdeps
 
+# Connectivity
+gnome-shell-extension-gsconnect
+gvfs-mtp
+
 # Graphics
 cheese
 
 # Multimedia
-gvfs-mtp
 nautilus-extensions
 totem
 sushi
@@ -24,10 +27,9 @@ echo ""
 echo "POST GNOME DESKTOP ***********************************"
 echo ""
 
-# Set default fonts for GNOME environment
-cat > /etc/dconf/db/local.d/01-remix-gnome-fonts << EOF_FONTS
-# Remix global font settings
-
+# Default settings for GNOME environment
+cat > /etc/dconf/db/local.d/01-remix-gnome-settings << EOF_SETTINGS
+# Global fonts settings
 [org/gnome/desktop/interface]
 document-font-name='Noto Sans 11'
 font-name='Noto Sans 11'
@@ -39,7 +41,12 @@ titlebar-font='Noto Sans 11'
 [org/gnome/settings-daemon/plugins/xsettings]
 antialiasing='rgba'
 hinting='full'
-EOF_FONTS
+
+# Disable device automount
+[org/gnome/desktop/media-handling]
+automount=false
+automount-open=false
+EOF_SETTINGS
 
 # Update configuration
 dbus-launch --exit-with-session dconf update
