@@ -17,24 +17,25 @@ fedora-release-kde
 gnome-keyring-pam
 gwenview
 ibus-uniemoji
-kate
+# kate                      Replaced by kwrite
 kcalc
 kcharselect
 kcm_systemd
 kde-gtk-config
-kde-settings-pulseaudio
+# kde-settings-pulseaudio   Fedora is moving to PipeWire
 kde-style-breeze
 kdeplasma-addons
 kinfocenter
 kgamma
 konsole5
 kscreen
-# ksysguard         Replaced by plasma-systemmonitor
+# ksysguard                 Replaced by plasma-systemmonitor
 kwalletmanager5
 kwin
+kwrite
 okular
 pam-kwallet
-phonon-qt5-backend-gstreamer
+# phonon-qt5-backend-gstreamer
 plasma-breeze
 plasma-desktop
 plasma-discover
@@ -49,7 +50,7 @@ plasma-nm-pptp
 plasma-pa
 plasma-systemmonitor
 plasma-thunderbolt
-# plasma-user-manager   plasma now provides kcm_users
+# plasma-user-manager       Plasma now provides kcm_users
 plasma-workspace
 plasma-workspace-x11
 polkit-kde
