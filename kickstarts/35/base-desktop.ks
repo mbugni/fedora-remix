@@ -43,9 +43,7 @@ mozilla-openh264
 # Software
 PackageKit
 PackageKit-gstreamer-plugin
-# deltarpm
 dnf-plugins-core
-# drpm
 flatpak
 
 # System

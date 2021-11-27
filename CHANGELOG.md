@@ -1,3 +1,7 @@
+## Fedora 35 - 2021-11-27
+### Changed
+- KWrite instead of Kate.
+
 ## Fedora 34 - 2021-05-30
 ### Added
 - KDE Connect support.

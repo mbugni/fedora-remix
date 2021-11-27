@@ -9,8 +9,7 @@ Other goals of this remix are:
 * office automation support (printers and scanners)
 * and more...
 
-## Why Fedora?
-Fedora is a feature-rich operating system which offers a complete suite of sofware for many purposes. It is flexible enough to get a custom version by using the installer ([see here for more details][02]). The build process can be described through Kickstart files and can be modified to get new variants.
+For more info [visit the documentation page][02].
 
 ## How to build the LiveCD
 [See a detailed description][03] of how to build the live media.
@@ -128,7 +127,7 @@ All notable changes to this project will be documented in the [`CHANGELOG.md`](C
 The format is based on [Keep a Changelog][05].
 
 [01]: https://fedoraproject.org/wiki/Remix
-[02]: https://en.wikipedia.org/wiki/Anaconda_(installer)
+[02]: https://mbugni.github.io/fedora-remix.html
 [03]: https://weldr.io/lorax/lorax.html
 [04]: http://flagpedia.net/data/flags/mini/it.png
 [05]: https://keepachangelog.com/

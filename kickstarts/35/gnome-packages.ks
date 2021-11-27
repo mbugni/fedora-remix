@@ -23,12 +23,10 @@ gedit
 gnome-bluetooth
 gnome-calculator
 gnome-characters
-# gnome-classic-session     Obsolete
 gnome-color-manager
 gnome-control-center
 gnome-extensions-app
 gnome-font-viewer
-# gnome-getting-started-docs
 gnome-initial-setup
 gnome-screenshot
 gnome-session-wayland-session
@@ -40,7 +38,6 @@ gnome-software
 gnome-system-monitor
 gnome-terminal
 gnome-terminal-nautilus
-# gnome-themes-extra
 gnome-tweaks
 gthumb
 gvfs-goa

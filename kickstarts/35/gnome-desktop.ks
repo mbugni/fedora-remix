@@ -5,6 +5,8 @@
 %include gnome-base.ks
 %include base-remix.ks
 
+firewall --enabled --service=mdns,kdeconnect
+
 %packages --excludeWeakdeps
 
 # Connectivity
