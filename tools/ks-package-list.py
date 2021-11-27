@@ -7,6 +7,7 @@ import pykickstart.parser
 import pykickstart.version
 
 import dnf
+import dnf.conf
 import dnf.transaction
 
 PKG_FORMAT = "{name}-{version}-{release}.{arch}"
@@ -39,6 +40,7 @@ dnf_base.conf.install_weak_deps = not ksparser.handler.packages.excludeWeakdeps
 # Create parser for kickstart 'repo' command
 repoparser = argparse.ArgumentParser(prog='repo', description='Kickstart repo command')
 repoparser.add_argument('--name', required=True)
+repoparser.add_argument('--excludepkgs', required=False)
 repourl_opt = repoparser.add_mutually_exclusive_group()
 repourl_opt.add_argument('--baseurl', required=False)
 repourl_opt.add_argument('--metalink', required=False)
@@ -50,6 +52,7 @@ if repolist:
     if args.verbose:
         print(f'# Processing {len(repolist)} repositories', file=sys.stderr)
     for repocmd in ksparser.handler.commands['repo'].dataList():
+        repo_conf = dnf.Base().conf
         if args.verbose:
             print(f"#  {repocmd}".strip(), file=sys.stderr)
         repoargs = repoparser.parse_args(args=f"{repocmd}".split()[1:])
@@ -60,8 +63,10 @@ if repolist:
             repourls['metalink'] = repoargs.metalink
         if repoargs.mirrorlist:
             repourls['mirrorlist'] = repoargs.mirrorlist
+        if repoargs.excludepkgs:
+            repo_conf.exclude_pkgs(repoargs.excludepkgs)
         # Add repo to current configuration
-        dnf_base.repos.add_new_repo(repoid=repoargs.name.strip('"'), conf=dnf_base.conf, **repourls)
+        dnf_base.repos.add_new_repo(repoid=repoargs.name.strip('"'), conf=repo_conf, **repourls)
 elif args.verbose:
         print('# No repository command in kickstart file', file=sys.stderr)
 
@@ -91,12 +96,13 @@ for group in ksparser.handler.packages.groupList:
 
 # Process kickstart excluded packages
 excluded_list = ksparser.handler.packages.excludedList
-if args.verbose:
-    print(f"# Processing {len(excluded_list)} explicitly excluded packages: {excluded_list}", file=sys.stderr)
-for pkg in excluded_list:
-    resolved = resolvePackage(pkg)
-    if not resolved and args.verbose:
-        print(f"# Warning: cannot find excluded package {pkg}", file=sys.stderr)
+if excluded_list:
+    if args.verbose:
+        print(f"# Processing {len(excluded_list)} explicitly excluded packages: {excluded_list}", file=sys.stderr)
+    for pkg in excluded_list:
+        resolved = resolvePackage(pkg)
+        if not resolved and args.verbose:
+            print(f"# Warning: cannot find excluded package {pkg}", file=sys.stderr)
 
 # Process kickstart required packages
 included_list = ksparser.handler.packages.packageList
