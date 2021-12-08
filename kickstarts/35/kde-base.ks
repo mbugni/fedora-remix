@@ -2,7 +2,6 @@
 #
 # Defines the basics for the KDE desktop.
 
-%include base-desktop.ks
 %include kde-packages.ks
 
 %post

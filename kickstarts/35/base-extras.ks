@@ -1,6 +1,6 @@
-# base-remix.ks
+# base-extras.ks
 #
-# Adds extra repos for software that the Fedora Project doesn't want to ship.
+# Adds extra components that the Fedora Project doesn't want to ship.
 
 # Extra repositories
 repo --name=fedora-cisco-openh264 --metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-cisco-openh264-$releasever&arch=$basearch
@@ -37,7 +37,7 @@ unrar
 %post
 
 echo ""
-echo "POST BASE REMIX **************************************"
+echo "POST BASE EXTRAS *************************************"
 echo ""
 
 # Enable Cisco Open H.264 repository

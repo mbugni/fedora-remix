@@ -36,6 +36,19 @@ $ ksflatten --config /<source-path>/kickstarts/<version>/l10n/kde-workstation-it
  --output /results/fedora-<version>-kde-workstation.ks
 ```
 
+### Checking dependencies
+Run the `ks-package-list.py` command if you need to check Kickstart dependencies:
+
+```
+$ /<source-path>/tools/ks-package-list.py --releasever <version> /results/fedora-<version>-kde-workstation.ks
+```
+
+Use the `--help` option to get more info about the tool:
+
+```
+$ /<source-path>/tools/ks-package-list.py --help
+```
+
 ### Build the live image using Lorax
 Install Lorax to create the virtual environment:
 

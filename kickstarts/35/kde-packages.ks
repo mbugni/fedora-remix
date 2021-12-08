@@ -37,7 +37,7 @@ plasma-desktop
 plasma-discover
 plasma-discover-flatpak
 plasma-discover-notifier
-# plasma-discover-offline-updates
+plasma-discover-offline-updates
 plasma-discover-packagekit
 plasma-milou
 plasma-nm-l2tp

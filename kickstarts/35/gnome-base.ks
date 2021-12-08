@@ -2,7 +2,6 @@
 #
 # Defines the basics for the GNOME desktop.
 
-%include base-desktop.ks
 %include gnome-packages.ks
 
 %post

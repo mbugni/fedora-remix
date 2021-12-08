@@ -2,8 +2,9 @@
 #
 # Provides a basic Linux box based on GNOME desktop.
 
+%include base-desktop.ks
+%include base-extras.ks
 %include gnome-base.ks
-%include base-remix.ks
 
 firewall --enabled --service=mdns,kdeconnect
 
