@@ -1,8 +1,6 @@
 ## Fedora 35 - 2021-11-27
 ### Added
 - Plasma Discover offline updates.
-### Changed
-- KWrite instead of Kate.
 
 ## Fedora 34 - 2021-05-30
 ### Added

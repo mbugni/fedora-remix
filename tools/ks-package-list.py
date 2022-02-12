@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import copy
 import sys
 import argparse
 
@@ -50,9 +51,9 @@ repourl_opt.add_argument('--mirrorlist', required=False)
 repolist = ksparser.handler.commands['repo'].dataList()
 if repolist:
     if args.verbose:
-        print(f'# Processing {len(repolist)} repositories', file=sys.stderr)
+        print(f'# Processing {len(repolist)} repositories:', file=sys.stderr)
     for repocmd in ksparser.handler.commands['repo'].dataList():
-        repo_conf = dnf.Base().conf
+        repo_conf = copy.copy(dnf_base.conf)
         if args.verbose:
             print(f"#  {repocmd}".strip(), file=sys.stderr)
         repoargs = repoparser.parse_args(args=f"{repocmd}".split()[1:])

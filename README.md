@@ -24,23 +24,23 @@ Install kickstart tools:
 Prepare the target directory for build results:
 
 ```
-# mkdir /results
+# mkdir /result
 
-# chmod ugo+rwx /results
+# chmod ugo+rwx /result
 ```
 
 Choose a version (eg: KDE workstation with italian support) and then create a single Kickstart file from the base code:
 
 ```
 $ ksflatten --config /<source-path>/kickstarts/<version>/l10n/kde-workstation-it_IT.ks \
- --output /results/fedora-<version>-kde-workstation.ks
+ --output /result/fedora-<version>-kde-workstation.ks
 ```
 
 ### Checking dependencies
 Run the `ks-package-list.py` command if you need to check Kickstart dependencies:
 
 ```
-$ /<source-path>/tools/ks-package-list.py --releasever <version> /results/fedora-<version>-kde-workstation.ks
+$ /<source-path>/tools/ks-package-list.py --releasever <version> /result/fedora-<version>-kde-workstation.ks
 ```
 
 Use the `--help` option to get more info about the tool:
@@ -62,16 +62,16 @@ Create a bootable .iso for building environment:
 # lorax --product='Fedora' --version=<version> --release=<version> --nomacboot \
  --source='https://dl.fedoraproject.org/pub/fedora/linux/releases/<version>/Everything/x86_64/os/' \
  --source='https://dl.fedoraproject.org/pub/fedora/linux/updates/<version>/Everything/x86_64/' \
- --logfile=/results/lorax-fedora-<version>/lorax.log /results/lorax-fedora-<version>
+ --logfile=/result/lorax-fedora-<version>/lorax.log /result/lorax-fedora-<version>
 ```
 
 Build the .iso image using the kickstart:
 
 ```
 # livemedia-creator --nomacboot --make-iso --project='Fedora' --releasever=<version> \
- --tmp=/results --logfile=/results/lmc-logs/livemedia.log \
- --iso=/results/lorax-fedora-<version>/images/boot.iso \
- --ks=/results/fedora-<version>-kde-workstation.ks
+ --tmp=/result --logfile=/result/lmc-logs/livemedia.log \
+ --iso=/result/lorax-fedora-<version>/images/boot.iso \
+ --ks=/result/fedora-<version>-kde-workstation.ks
 ```
 
 ### Build the live image using Podman
@@ -91,11 +91,11 @@ $ sudo podman build --file /<source-path>/tools/Dockerfile \
 Build the .iso image by running the container:
 
 ```
-$ sudo podman run --privileged --volume=/dev:/dev --volume=/results:/results \
+$ sudo podman run --privileged --volume=/dev:/dev --volume=/result:/result \
  -it fedora/livebuild:<version> livemedia-creator --no-virt --nomacboot \
  --make-iso --project='Fedora' --releasever=<version> \
- --tmp=/results --logfile=/results/lmc-logs/livemedia.log \
- --ks=/results/fedora-<version>-kde-workstation.ks
+ --tmp=/result --logfile=/result/lmc-logs/livemedia.log \
+ --ks=/result/fedora-<version>-kde-workstation.ks
 ```
 
 ## Transferring the image to a bootable media
@@ -108,7 +108,7 @@ Install live media tools:
 Create a bootable USB/SD device using the .iso image:
 
 ```
-# livecd-iso-to-disk --format --reset-mbr /results/lmc-work-<code>/images/boot.iso /dev/sd[X]
+# livecd-iso-to-disk --format --reset-mbr /result/lmc-work-<code>/images/boot.iso /dev/sd[X]
 ```
 
 ## Post-install tasks
