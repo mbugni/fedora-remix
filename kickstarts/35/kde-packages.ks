@@ -17,6 +17,7 @@ fedora-release-kde
 gnome-keyring-pam
 gwenview
 ibus-uniemoji
+kate
 kcalc
 kcharselect
 kcm_systemd
@@ -29,7 +30,6 @@ konsole5
 kscreen
 kwalletmanager5
 kwin
-kwrite
 okular
 pam-kwallet
 plasma-breeze

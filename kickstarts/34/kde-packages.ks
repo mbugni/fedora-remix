@@ -17,7 +17,7 @@ fedora-release-kde
 gnome-keyring-pam
 gwenview
 ibus-uniemoji
-# kate                      Replaced by kwrite
+kate
 kcalc
 kcharselect
 kcm_systemd
@@ -32,7 +32,6 @@ kscreen
 # ksysguard                 Replaced by plasma-systemmonitor
 kwalletmanager5
 kwin
-kwrite
 okular
 pam-kwallet
 # phonon-qt5-backend-gstreamer
