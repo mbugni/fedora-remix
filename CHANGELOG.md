@@ -1,3 +1,7 @@
+## Fedora 36 - 2022-07-10
+### Changed
+- Back to GParted
+
 ## Fedora 35 - 2021-11-27
 ### Added
 - Plasma Discover offline updates.

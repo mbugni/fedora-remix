@@ -4,6 +4,8 @@
 
 %include base.ks
 
+repo --name=fedora-cisco-openh264 --metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-cisco-openh264-$releasever&arch=$basearch
+
 %packages --excludeWeakdeps
 
 # Common modules (see fedora-workstation-common.ks)
@@ -13,6 +15,7 @@
 bash-completion
 bind-utils
 btrfs-progs
+linux-firmware
 microcode_ctl
 psmisc
 
@@ -21,6 +24,8 @@ psmisc
 libva-vdpau-driver
 libvdpau-va-gl
 mesa-*-drivers
+vulkan-tools
+xdpyinfo
 xorg-x11-drivers
 
 # Fonts
@@ -47,11 +52,12 @@ dnf-plugins-core
 flatpak
 
 # System
+plymouth-scripts
 plymouth-theme-spinner
 rpm-plugin-systemd-inhibit
 
 # Tools
-blivet-gui			# Storage management
+gparted				# Storage management
 exfatprogs
 htop
 nano-default-editor
@@ -152,6 +158,9 @@ fi
 echo "install_weak_deps=False" >> /etc/dnf/dnf.conf
 
 # Set default boot theme
-plymouth-set-default-theme spinner
+/usr/sbin/plymouth-set-default-theme spinner
+
+# Enable Cisco Open H.264 repository
+dnf config-manager --set-enabled fedora-cisco-openh264
 
 %end

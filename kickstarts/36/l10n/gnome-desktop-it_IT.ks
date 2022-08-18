@@ -3,4 +3,4 @@
 # Provides a basic GNOME desktop with italian localization support.
 
 %include ../gnome-desktop.ks
-%include gnome-base-it_IT.ks
+%include base-desktop-it_IT.ks

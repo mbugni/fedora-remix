@@ -84,6 +84,15 @@ cat > /home/liveuser/.config/kwalletrc << KWALLET_EOL
 alreadyMigrated=true
 KWALLET_EOL
 
+# Disable automount of 'known' devices
+# https://bugzilla.redhat.com/show_bug.cgi?id=2073708
+cat > /home/liveuser/.config/kded_device_automounterrc << AUTOMOUNTER_EOF
+[General]
+AutomountEnabled=false
+AutomountOnLogin=false
+AutomountOnPlugin=false
+AUTOMOUNTER_EOF
+
 # make sure to set the right permissions and selinux contexts
 chown -R liveuser:liveuser /home/liveuser/
 restorecon -R /home/liveuser/

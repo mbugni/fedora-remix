@@ -1,6 +1,6 @@
 # base-desktop-it_IT.ks
 #
-# Defines the basics for a workstation in italian.
+# Defines the basics for a desktop with italian localization support.
 
 lang --addsupport=it_IT.UTF-8 it_IT.UTF-8
 keyboard --xlayouts=it --vckeymap=it

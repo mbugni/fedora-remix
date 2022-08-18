@@ -3,7 +3,6 @@
 # Adds extra components that the Fedora Project doesn't want to ship.
 
 # Extra repositories
-repo --name=fedora-cisco-openh264 --metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-cisco-openh264-$releasever&arch=$basearch
 repo --name=rpmfusion-free --metalink=https://mirrors.rpmfusion.org/metalink?repo=free-fedora-$releasever&arch=$basearch
 repo --name=rpmfusion-free-updates --metalink=https://mirrors.rpmfusion.org/metalink?repo=free-fedora-updates-released-$releasever&arch=$basearch
 repo --name=rpmfusion-nonfree --metalink=https://mirrors.rpmfusion.org/metalink?repo=nonfree-fedora-$releasever&arch=$basearch
@@ -31,16 +30,5 @@ libdvdcss
 
 # Tools
 unrar
-
-%end
-
-%post
-
-echo ""
-echo "POST BASE EXTRAS *************************************"
-echo ""
-
-# Enable Cisco Open H.264 repository
-dnf config-manager --set-enabled fedora-cisco-openh264
 
 %end

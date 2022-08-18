@@ -98,6 +98,12 @@ $ sudo podman run --privileged --volume=/dev:/dev --volume=/result:/result \
  --ks=/result/fedora-<version>-kde-workstation.ks
 ```
 
+Remove unused containers when finished:
+
+```
+$ sudo podman container prune
+```
+
 ## Transferring the image to a bootable media
 Install live media tools:
 
@@ -112,7 +118,7 @@ Create a bootable USB/SD device using the .iso image:
 ```
 
 ## Post-install tasks
-The Anaconda installer does not remove itself after installation. You can remove it to get space by running this command:
+The Anaconda installer does not remove itself after installation. You can remove it to save space by running this command:
 
 ```
 # dnf remove anaconda\*

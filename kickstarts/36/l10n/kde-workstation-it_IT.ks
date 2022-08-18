@@ -4,9 +4,4 @@
 
 %include ../kde-workstation.ks
 %include kde-base-it_IT.ks
-
-%packages --excludeWeakdeps
-
-libreoffice-langpack-it
-
-%end
+%include base-workstation-it_IT.ks

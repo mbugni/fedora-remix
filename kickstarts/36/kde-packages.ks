@@ -5,6 +5,7 @@
 %packages --excludeWeakdeps
 
 adwaita-gtk2-theme
+aha                     # Convert terminal output to HTML for KDE tools
 ark
 bluedevil
 bluez-hid2hci
