@@ -35,11 +35,11 @@ okular
 pam-kwallet
 plasma-breeze
 plasma-desktop
-plasma-discover
-plasma-discover-flatpak
-plasma-discover-notifier
-plasma-discover-offline-updates
-plasma-discover-packagekit
+# plasma-discover
+# plasma-discover-flatpak
+# plasma-discover-notifier
+# plasma-discover-offline-updates
+# plasma-discover-packagekit
 plasma-milou
 plasma-nm-l2tp
 plasma-nm-openvpn

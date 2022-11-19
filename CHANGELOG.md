@@ -1,6 +1,8 @@
 ## Fedora 36 - 2022-07-10
 ### Changed
 - Back to GParted
+### Removed
+- Software managers.
 
 ## Fedora 35 - 2021-11-27
 ### Added

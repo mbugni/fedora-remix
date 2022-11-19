@@ -34,7 +34,7 @@ gnome-session-xsession
 gnome-settings-daemon
 gnome-shell
 gnome-shell-extension-appindicator
-gnome-software
+# gnome-software
 gnome-system-monitor
 gnome-terminal
 gnome-terminal-nautilus

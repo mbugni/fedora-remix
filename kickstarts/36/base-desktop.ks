@@ -46,9 +46,9 @@ firefox
 mozilla-openh264
 
 # Software
-PackageKit
-PackageKit-gstreamer-plugin
-dnf-plugins-core
+# PackageKit
+# PackageKit-gstreamer-plugin
+# dnf-plugins-core
 flatpak
 
 # System
