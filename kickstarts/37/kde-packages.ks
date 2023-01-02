@@ -14,11 +14,11 @@ bluez-tools
 breeze-gtk
 cagibi
 dolphin
+featherpad
 fedora-release-kde
 gnome-keyring-pam
 gwenview
 ibus-uniemoji
-kate
 kcalc
 kcharselect
 kcm_systemd
@@ -35,11 +35,6 @@ okular
 pam-kwallet
 plasma-breeze
 plasma-desktop
-# plasma-discover
-# plasma-discover-flatpak
-# plasma-discover-notifier
-# plasma-discover-offline-updates
-# plasma-discover-packagekit
 plasma-milou
 plasma-nm-l2tp
 plasma-nm-openvpn
@@ -50,7 +45,8 @@ plasma-thunderbolt
 plasma-workspace
 plasma-workspace-x11
 polkit-kde
-sddm
+qt5-qtimageformats      # For images and backgrounds
+sddm-x11
 sddm-breeze
 sddm-kcm
 spectacle

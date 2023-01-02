@@ -1,3 +1,12 @@
+## Fedora 37 - 2023-01-02
+### Changed
+- Reduced package dependencies.
+- Featherpad editor replaces Kate.
+- Thumbnailer for GNOME.
+### Removed
+- Totem from GNOME.
+- Docker build file: use chroot instead.
+
 ## Fedora 36 - 2022-07-10
 ### Changed
 - Back to GParted

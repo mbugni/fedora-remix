@@ -9,12 +9,12 @@ NetworkManager-l2tp-gnome
 NetworkManager-openvpn-gnome
 NetworkManager-pptp-gnome
 adwaita-gtk2-theme
-chrome-gnome-shell
+# chrome-gnome-shell
 dconf
 dconf-editor
 desktop-backgrounds-gnome
 evince
-evince-nautilus
+# evince-nautilus
 fedora-release-workstation
 file-roller
 file-roller-nautilus
@@ -34,7 +34,6 @@ gnome-session-xsession
 gnome-settings-daemon
 gnome-shell
 gnome-shell-extension-appindicator
-# gnome-software
 gnome-system-monitor
 gnome-terminal
 gnome-terminal-nautilus
@@ -43,8 +42,9 @@ gthumb
 gvfs-goa
 nautilus
 polkit
-yelp
+webp-pixbuf-loader          # For images and backgrounds
 xdg-desktop-portal-gtk
 xdg-user-dirs-gtk
+yelp
 
 %end

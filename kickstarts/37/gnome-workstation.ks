@@ -8,11 +8,11 @@
 %packages --excludeWeakdeps
 
 # Qt support for GNOME
-qgnomeplatform
+qgnomeplatform-qt5
 
 # Multimedia
 brasero
-brasero-nautilus
+# brasero-nautilus
 vlc
 
 # Office

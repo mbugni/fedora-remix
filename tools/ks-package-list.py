@@ -52,7 +52,7 @@ repolist = ksparser.handler.commands['repo'].dataList()
 if repolist:
     if args.verbose:
         print(f'# Processing {len(repolist)} repositories:', file=sys.stderr)
-    for repocmd in ksparser.handler.commands['repo'].dataList():
+    for repocmd in repolist:
         repo_conf = copy.copy(dnf_base.conf)
         if args.verbose:
             print(f"#  {repocmd}".strip(), file=sys.stderr)
@@ -79,6 +79,37 @@ dnf_base.fill_sack(load_system_repo=False)
 
 # Retrieve metadata information about all known groups
 dnf_base.read_comps()
+
+# Parse modules (currently disabled)
+# modulelist = ksparser.handler.commands['module'].dataList()
+# if modulelist:
+#     if args.verbose:
+#         print(f'# Processing {len(modulelist)} modules:', file=sys.stderr)
+#     moduleparser = argparse.ArgumentParser(prog='module', description='Kickstart module command')
+#     moduleparser.add_argument('--name', required=True)
+#     moduleparser.add_argument('--stream', required=True)
+#     module_base = dnf.module.module_base.ModuleBase(dnf_base)
+#     enabled_modules = []
+#     for module in modulelist:
+#         moduleargs = moduleparser.parse_args(args=f"{module}".split()[1:])
+#         modulever = f"{moduleargs.name}:{moduleargs.stream}"
+#         print(f"# Enabling module: {modulever}", file=sys.stderr)
+#         module_packages, nsvcap = module_base.get_modules(modulever)
+
+#         print("Parsed NSVCAP:")
+#         print("name:", nsvcap.name)
+#         print("stream:", nsvcap.stream)
+#         print("version:", nsvcap.version)
+#         print("context:", nsvcap.context)
+#         print("arch:", nsvcap.arch)
+#         print("profile:", nsvcap.profile)
+
+#         print("Matching modules:")
+#         for mpkg in module_packages:
+#             print(mpkg.getFullIdentifier())
+
+#         enabled_modules.append(moduleargs.name)
+#     module_base.enable(enabled_modules)
 
 # Resolves package list from name
 def resolvePackage(pkg_name):

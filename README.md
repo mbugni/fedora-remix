@@ -17,80 +17,63 @@ For more info [visit the documentation page][02].
 ### Prepare the build target
 Install kickstart tools:
 
-```
-# dnf install pykickstart
+```shell
+$ sudo dnf install pykickstart
 ```
 
 Prepare the target directory for build results:
 
-```
-# mkdir /result
+```shell
+$ sudo mkdir /result
 
-# chmod ugo+rwx /result
+$ sudo chmod ugo+rwx /result
 ```
 
 Choose a version (eg: KDE workstation with italian support) and then create a single Kickstart file from the base code:
 
-```
+```shell
 $ ksflatten --config /<source-path>/kickstarts/<version>/l10n/kde-workstation-it_IT.ks \
  --output /result/fedora-<version>-kde-workstation.ks
 ```
 
-### Checking dependencies
+### Checking dependencies (optional)
 Run the `ks-package-list.py` command if you need to check Kickstart dependencies:
 
-```
+```shell
 $ /<source-path>/tools/ks-package-list.py --releasever <version> /result/fedora-<version>-kde-workstation.ks
 ```
 
 Use the `--help` option to get more info about the tool:
 
-```
+```shell
 $ /<source-path>/tools/ks-package-list.py --help
 ```
 
-### Build the live image using Lorax
-Install Lorax to create the virtual environment:
+### Prepare the build enviroment using Podman
+Install Podman:
 
-```
-# dnf install lorax-lmc-virt
-```
-
-Create a bootable .iso for building environment:
-
-```
-# lorax --product='Fedora' --version=<version> --release=<version> --nomacboot \
- --source='https://dl.fedoraproject.org/pub/fedora/linux/releases/<version>/Everything/x86_64/os/' \
- --source='https://dl.fedoraproject.org/pub/fedora/linux/updates/<version>/Everything/x86_64/' \
- --logfile=/result/lorax-fedora-<version>/lorax.log /result/lorax-fedora-<version>
+```shell
+$ sudo dnf install podman
 ```
 
-Build the .iso image using the kickstart:
+Create the root of the build enviroment:
 
+```shell
+$ sudo dnf -y --setopt='tsflags=nodocs' --setopt='install_weak_deps=False' \
+ --releasever=<version> --installroot=/result/livebuild-<version> \
+ --repo=fedora --repo=updates install lorax-lmc-novirt
 ```
-# livemedia-creator --nomacboot --make-iso --project='Fedora' --releasever=<version> \
- --tmp=/result --logfile=/result/lmc-logs/livemedia.log \
- --iso=/result/lorax-fedora-<version>/images/boot.iso \
- --ks=/result/fedora-<version>-kde-workstation.ks
+
+Create the container for building:
+
+```shell
+$ sudo sh -c 'tar -c -C /result/livebuild-<version> . | podman import - fedora/livebuild:<version>'
 ```
 
 ### Build the live image using Podman
-Install Podman:
+Build the .iso image by running the `livemedia-creator` command inside the container:
 
-```
-# dnf install podman
-```
-
-Create the container for building environment:
-
-```
-$ sudo podman build --file /<source-path>/tools/Dockerfile \
- --build-arg releasever=<version> --tag fedora/livebuild:<version>
-```
-
-Build the .iso image by running the container:
-
-```
+```shell
 $ sudo podman run --privileged --volume=/dev:/dev --volume=/result:/result \
  -it fedora/livebuild:<version> livemedia-creator --no-virt --nomacboot \
  --make-iso --project='Fedora' --releasever=<version> \
@@ -100,28 +83,28 @@ $ sudo podman run --privileged --volume=/dev:/dev --volume=/result:/result \
 
 Remove unused containers when finished:
 
-```
+```shell
 $ sudo podman container prune
 ```
 
 ## Transferring the image to a bootable media
 Install live media tools:
 
-```
-# dnf install livecd-iso-to-mediums
+```shell
+$ sudo dnf install livecd-iso-to-mediums
 ```
 
 Create a bootable USB/SD device using the .iso image:
 
-```
-# livecd-iso-to-disk --format --reset-mbr /result/lmc-work-<code>/images/boot.iso /dev/sd[X]
+```shell
+$ sudo livecd-iso-to-disk --format --reset-mbr /result/lmc-work-<code>/images/boot.iso /dev/sd[X]
 ```
 
 ## Post-install tasks
 The Anaconda installer does not remove itself after installation. You can remove it to save space by running this command:
 
-```
-# dnf remove anaconda\*
+```shell
+$ sudo dnf remove anaconda\*
 ```
 
 ## ![Bandiera italiana][04] Per gli utenti italiani
@@ -136,8 +119,8 @@ Nel sistema sono presenti anche:
 ### Attività post-installazione
 Il programma di installazione Anaconda non rimuove se stesso dopo l'installazione. E' possibile rimuoverlo per recuperare spazio utilizzando il seguente comando:
 
-```
-# dnf remove anaconda\*
+```shell
+$ sudo dnf remove anaconda\*
 ```
 
 ## Change Log

@@ -8,7 +8,7 @@
 
 lang en_US.UTF-8
 keyboard us
-timezone US/Eastern
+timezone --utc Etc/UTC
 selinux --permissive
 firewall --enabled --service=mdns
 xconfig --startxonboot
@@ -29,12 +29,6 @@ kernel
 kernel-modules
 kernel-modules-extra
 
-# This was added a while ago, I think it falls into the category of
-# "Diagnosis/recovery tool useful from a Live OS image".  Leaving this untouched
-# for now.
-#memtest86+
-@x86-baremetal-tools # memtest86+ is included
-
 # The point of a live image is to install
 anaconda
 anaconda-install-env-deps
@@ -46,12 +40,9 @@ grub2-efi-x64*
 grub2-pc*
 grub2-tools*
 shim-*
-syslinux-extlinux
-zram
 
 # Without this, initramfs generation during live image creation fails: #1242586
 dracut-live
-# syslinux is in @x86-baremetal-tools
 
 # anaconda needs the locales available to run for different locales
 glibc-all-langpacks

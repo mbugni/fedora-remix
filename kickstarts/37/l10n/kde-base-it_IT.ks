@@ -18,7 +18,7 @@ echo ""
 mkdir -p /etc/skel/.config/KDE
 
 # Plasma locale settings
-cat > /etc/skel/.config/plasma-localerc << PLASMALOCALE_EOF
+cat > /etc/xdg/plasma-localerc << PLASMALOCALE_EOF
 [Formats]
 LANG=it_IT.UTF-8
 

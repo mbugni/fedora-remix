@@ -18,9 +18,10 @@ gvfs-mtp
 cheese
 
 # Multimedia
+ffmpegthumbnailer
 nautilus-extensions
-totem
 sushi
+vlc
 
 %end
 

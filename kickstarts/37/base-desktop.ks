@@ -9,24 +9,54 @@ repo --name=fedora-cisco-openh264 --metalink=https://mirrors.fedoraproject.org/m
 %packages --excludeWeakdeps
 
 # Common modules (see fedora-workstation-common.ks)
-@base-x
-@core
-@hardware-support
-bash-completion
-bind-utils
-btrfs-progs
-linux-firmware
-microcode_ctl
-psmisc
+# Xorg modules (see @base-x)
+xorg-x11-server-Xorg
+xorg-x11-xauth
+xorg-x11-xinit
 
-# Multimedia
-@multimedia
+# Xorg drivers (see @base-x)
 libva-vdpau-driver
 libvdpau-va-gl
 mesa-*-drivers
+xorg-x11-drivers
+xorg-x11-drv-amdgpu
+
+# Xorg utils (see @base-x)
+egl-utils
+glx-utils
 vulkan-tools
 xdpyinfo
-xorg-x11-drivers
+xprop
+xrandr
+
+# Core modules (see @core)
+dnf
+dnf-plugins-core
+fwupd
+grubby
+sudo
+# systemd-oomd-defaults
+systemd-resolved
+util-linux
+zram-generator-defaults
+
+# Common utilities
+bash-completion
+bind-utils
+btrfs-progs
+less
+net-tools
+psmisc
+
+# Hardware support
+@hardware-support
+linux-firmware
+microcode_ctl
+
+# Multimedia
+@multimedia
+gstreamer1-plugin-libav			# FFmpeg/LibAV GStreamer plugin
+libjxl							# Library files for JPEG-XL
 
 # Fonts
 google-noto-sans-fonts
@@ -42,13 +72,10 @@ firewalld
 firewall-config
 
 # Internet
-firefox
+firefox-langpacks
 mozilla-openh264
 
 # Software
-# PackageKit
-# PackageKit-gstreamer-plugin
-# dnf-plugins-core
 flatpak
 
 # System
