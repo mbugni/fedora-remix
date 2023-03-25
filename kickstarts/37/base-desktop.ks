@@ -56,6 +56,7 @@ microcode_ctl
 # Multimedia
 @multimedia
 gstreamer1-plugin-libav			# FFmpeg/LibAV GStreamer plugin
+gstreamer1-plugins-bad-free
 libjxl							# Library files for JPEG-XL
 
 # Fonts
