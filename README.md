@@ -32,7 +32,7 @@ $ sudo chmod ugo+rwx /result
 Choose a version (eg: KDE workstation with italian support) and then create a single Kickstart file from the base code:
 
 ```shell
-$ ksflatten --config /<source-path>/kickstarts/<version>/l10n/kde-workstation-it_IT.ks \
+$ ksflatten --config /<source-path>/kickstarts/archive/<version>/l10n/kde-workstation-it_IT.ks \
  --output /result/fedora-<version>-kde-workstation.ks
 ```
 
