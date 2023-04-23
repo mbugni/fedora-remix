@@ -18,85 +18,20 @@ cat > /root/.config/gtk-3.0/settings.ini << EOF
 gtk-theme-name = Adwaita
 EOF
 
-# add initscript
-cat >> /etc/rc.d/init.d/livesys << EOF
+# set livesys session type
+sed -i 's/^livesys_session=.*/livesys_session="kde"/' /etc/sysconfig/livesys
 
-# are we *not* able to use wayland sessions?
-# if strstr "\`cat /proc/cmdline\`" nomodeset ; then
-PLASMA_SESSION_FILE="plasmax11.desktop"
-# else
-# PLASMA_SESSION_FILE="plasma.desktop"
-# fi
+# add extra livesys script
+mkdir -p /var/lib/livesys
+cat >> /var/lib/livesys/livesys-session-extra << EOF_LIVESYS
+# Use KDE X11 for auto-login session
+sed -i "s/^Session=.*/Session=plasmax11.desktop/" /etc/sddm.conf
+EOF_LIVESYS
 
-# set up autologin for user liveuser
-if [ -f /etc/sddm.conf ]; then
-sed -i 's/^#User=.*/User=liveuser/' /etc/sddm.conf
-sed -i "s/^#Session=.*/Session=\${PLASMA_SESSION_FILE}/" /etc/sddm.conf
-else
-cat > /etc/sddm.conf << SDDM_EOF
-[Autologin]
-User=liveuser
-Session=\${PLASMA_SESSION_FILE}
-SDDM_EOF
-fi
-
-# add liveinst.desktop to favorites menu
-mkdir -p /home/liveuser/.config/
-cat > /home/liveuser/.config/kickoffrc << MENU_EOF
-[Favorites]
-FavoriteURLs=/usr/share/applications/firefox.desktop,/usr/share/applications/org.kde.dolphin.desktop,/usr/share/applications/systemsettings.desktop,/usr/share/applications/org.kde.konsole.desktop,/usr/share/applications/liveinst.desktop
-MENU_EOF
-
-# show liveinst.desktop on desktop and in menu
-sed -i 's/NoDisplay=true/NoDisplay=false/' /usr/share/applications/liveinst.desktop
-# set executable bit disable KDE security warning
-chmod +x /usr/share/applications/liveinst.desktop
-mkdir /home/liveuser/Desktop
-cp -a /usr/share/applications/liveinst.desktop /home/liveuser/Desktop/
-
-# Set akonadi backend
-mkdir -p /home/liveuser/.config/akonadi
-cat > /home/liveuser/.config/akonadi/akonadiserverrc << AKONADI_EOF
-[%General]
-Driver=QSQLITE3
-AKONADI_EOF
-
-# "Disable plasma-discover-notifier"
-mkdir -p /home/liveuser/.config/autostart
-cp -a /etc/xdg/autostart/org.kde.discover.notifier.desktop /home/liveuser/.config/autostart/
-echo 'Hidden=true' >> /home/liveuser/.config/autostart/org.kde.discover.notifier.desktop
-
-# Disable baloo
-cat > /home/liveuser/.config/baloofilerc << BALOO_EOF
-[Basic Settings]
-Indexing-Enabled=false
-BALOO_EOF
-
-# Disable kres-migrator
-cat > /home/liveuser/.kde/share/config/kres-migratorrc << KRES_EOF
-[Migration]
-Enabled=false
-KRES_EOF
-
-# Disable kwallet migrator
-cat > /home/liveuser/.config/kwalletrc << KWALLET_EOL
-[Migration]
-alreadyMigrated=true
-KWALLET_EOL
-
-# Disable automount of 'known' devices
-# https://bugzilla.redhat.com/show_bug.cgi?id=2073708
-cat > /home/liveuser/.config/kded_device_automounterrc << AUTOMOUNTER_EOF
+cat >> /etc/sddm.conf.d/local.conf << EOF_SDDM
 [General]
-AutomountEnabled=false
-AutomountOnLogin=false
-AutomountOnPlugin=false
-AUTOMOUNTER_EOF
-
-# make sure to set the right permissions and selinux contexts
-chown -R liveuser:liveuser /home/liveuser/
-restorecon -R /home/liveuser/
-
-EOF
+# Control x11/wayland startup
+DisplayServer=x11
+EOF_SDDM
 
 %end

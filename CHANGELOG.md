@@ -1,3 +1,7 @@
+## Fedora 38 - 2023-04-23
+### Changed
+- Adjust [livesys scripts][3801]
+
 ## Fedora 37 - 2023-01-02
 ### Changed
 - Reduced package dependencies.
@@ -27,7 +31,6 @@
 - Wine fonts.
 
 ## Fedora 33 - 2020-11-10
-
 ### Added
 - XFCE desktop environment remix.
 - PAM integration with KWallet.
@@ -37,7 +40,6 @@
 - [Nano as default editor][3302].
 
 ## Fedora 32 - 2020-07-11
-
 ### Added
 - Emoji fonts support.
 ### Changed
@@ -45,7 +47,6 @@
 - Workstation with full office support.
 
 ## Fedora 31 - 2019-11-10
-
 ### Added
 - GNOME desktop.
 ### Changed
@@ -55,18 +56,15 @@
 - Clementine audio player.
 
 ## Fedora 30 - 2019-05-24
-
 ### Changed
 - Changes the [default fonts to Google Noto Fonts][3001].
 - Package dependencies minimization.
 
 ## Fedora 29 - 2019-02-02
-
 ### Added
 - Java 8 dependency for L.Office.
 
 ## Fedora 28 - 2018-10-22
-
 ### Changed
 - Improve printing support.
 - Improve audio support.
@@ -75,14 +73,12 @@
 - digiKam from KDE.
 
 ## Fedora 27 - 2018-02-18
-
 ### Changed
 - Improve bluetooth support.
 - Improve fonts configuration.
 - Improve flatpak support.
 
 ## Fedora 26 - 2017-12-16
-
 ### Added
 - Support for [exFAT][2601] filesystem.
 ### Changed
@@ -92,7 +88,6 @@
 - system-config-users tool.
 
 ## Fedora 25 - 2017-05-13
-
 ### Added
 - `gstreamer1-plugin-mpg123` package as [mp3 playback plugin][2501].
 - KDE - `plasma-user-manager` to modify user avatar ([see RHBG 1279057][2502]).
@@ -102,10 +97,10 @@
 - KDE - Package manager `yumex-dnf` is replaced by Plasma Discover.
 
 ## Fedora 24 - 2016-10-09
-
 ### Changed
 - Repository moved from [Assembla][2401].
 
+[3801]: https://fedoraproject.org/wiki/Changes/ModernizeLiveMedia
 [3301]: https://docs.libreoffice.org/vcl.html
 [3302]: https://fedoraproject.org/wiki/Changes/UseNanoByDefault
 [3001]: https://fedoraproject.org/wiki/Changes/DefaultFontsToNoto

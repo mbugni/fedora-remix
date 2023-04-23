@@ -14,21 +14,21 @@ langpacks-it
 
 %end
 
-
 %post
 
 echo ""
 echo "POST BASE DESKTOP it_IT ******************************"
 echo ""
 
-# Set italian locale
-cat >> /etc/rc.d/init.d/livesys << EOF_LIVESYS
-
+# Use italian locale in live image
+cat >> /var/lib/livesys/livesys-session-extra << EOF_LIVESYS
 # Force italian keyboard layout (rhb #982394)
 localectl set-locale it_IT.UTF-8
 localectl set-x11-keymap it
 localectl set-keymap it
 
+# Environment variable for Wayland
+export XKB_DEFAULT_LAYOUT=it
 EOF_LIVESYS
 
 %end
