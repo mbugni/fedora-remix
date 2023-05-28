@@ -1,6 +1,7 @@
 ## Fedora 38 - 2023-04-23
 ### Changed
 - Adjust [livesys scripts][3801]
+- Reduce kickstart files
 
 ## Fedora 37 - 2023-01-02
 ### Changed

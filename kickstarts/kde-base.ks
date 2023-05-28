@@ -2,8 +2,6 @@
 #
 # Defines the basics for the KDE desktop.
 
-%include kde-packages.ks
-
 %post
 
 # set default GTK+ theme for root (see #683855, #689070, #808062)

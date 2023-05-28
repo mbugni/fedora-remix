@@ -2,8 +2,6 @@
 #
 # Defines the basics for the GNOME desktop.
 
-%include gnome-packages.ks
-
 %post
 
 # set livesys session type

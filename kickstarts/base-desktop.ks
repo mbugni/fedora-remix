@@ -6,6 +6,8 @@
 
 repo --name=fedora-cisco-openh264 --metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-cisco-openh264-$releasever&arch=$basearch
 
+firewall --enabled --service=mdns
+
 %packages --excludeWeakdeps
 
 # Common modules (see fedora-workstation-common.ks)
@@ -17,7 +19,9 @@ xorg-x11-xinit
 # Xorg drivers (see @base-x)
 libva-vdpau-driver
 libvdpau-va-gl
-mesa-*-drivers
+mesa-dri-drivers
+mesa-omx-drivers
+mesa-vulkan-drivers
 xorg-x11-drivers
 xorg-x11-drv-amdgpu
 
@@ -48,36 +52,31 @@ less
 net-tools
 psmisc
 
-# Hardware support
-@hardware-support
-linux-firmware
-microcode_ctl
-
-# Multimedia
-@multimedia
-gstreamer1-plugin-libav			# FFmpeg/LibAV GStreamer plugin
-gstreamer1-plugins-bad-free
-libjxl							# Library files for JPEG-XL
-
 # Fonts
 google-noto-sans-fonts
 google-noto-sans-mono-fonts
 google-noto-serif-fonts
 google-noto-emoji-color-fonts
-liberation-mono-fonts
-liberation-s*-fonts
 
-# Networking
-@networkmanager-submodules
-firewalld
-firewall-config
+# Hardware support
+@hardware-support
+linux-firmware
+microcode_ctl
 
 # Internet
 firefox-langpacks
-mozilla-openh264
 
-# Software
-flatpak
+# Multimedia
+@multimedia
+mozilla-openh264
+gstreamer1-plugin-libav			# FFmpeg/LibAV GStreamer plugin
+gstreamer1-plugins-bad-free
+libjxl							# Library files for JPEG-XL
+
+# Networking
+NetworkManager-wifi
+firewalld
+firewall-config
 
 # System
 plymouth-scripts
@@ -85,6 +84,7 @@ plymouth-theme-spinner
 rpm-plugin-systemd-inhibit
 
 # Tools
+clinfo
 gparted				# Storage management
 exfatprogs
 htop
@@ -157,13 +157,13 @@ if [ -n "\$PS1" ]; then
 		if [ \${UID} -eq 0 ]; then
 			PS1='\[\e[91m\]\u@\h \[\e[93m\]\W\[\e[0m\]\\$ '
 		else
-			PS1='\[\e[92m\]\u@\h \[\e[93m\]\W\[\e[0m\]\\$ '
+			PS1='\[\e[94m\]\u@\h \[\e[93m\]\W\[\e[0m\]\\$ '
 		fi
 	else
 		if [ \${UID} -eq 0 ]; then
 			PS1='\[\e[31m\]\u@\h \[\e[33m\]\W\[\e[0m\]\\$ '
 		else
-			PS1='\[\e[32m\]\u@\h \[\e[33m\]\W\[\e[0m\]\\$ '
+			PS1='\[\e[34m\]\u@\h \[\e[33m\]\W\[\e[0m\]\\$ '
 		fi
 	fi
 fi

@@ -28,6 +28,8 @@ gstreamer1-plugins-bad-freeworld
 gstreamer1-plugins-ugly
 intel-media-driver
 libdvdcss
+mesa-va-drivers-freeworld
+mesa-vdpau-drivers-freeworld
 
 # Tools
 unrar

@@ -7,18 +7,29 @@
 
 %packages --excludeWeakdeps
 
-# Qt support for GNOME
-qgnomeplatform-qt5
+# Bluetooth
+gnome-bluetooth
+
+# Connectivity
+gnome-shell-extension-gsconnect
+gvfs-mtp
 
 # Multimedia
 brasero
-# brasero-nautilus
 vlc
+
+# Networking
+NetworkManager-l2tp-gnome
+NetworkManager-openvpn-gnome
+NetworkManager-pptp-gnome
 
 # Office
 libreoffice-gtk3
 
 # Printers and scanners
 simple-scan
+
+# Qt support for GNOME
+qgnomeplatform-qt5
 
 %end
