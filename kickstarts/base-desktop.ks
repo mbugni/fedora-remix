@@ -67,11 +67,20 @@ microcode_ctl
 firefox-langpacks
 
 # Multimedia
-@multimedia
+PackageKit-gstreamer-plugin
+alsa-utils
 mozilla-openh264
 gstreamer1-plugin-libav			# FFmpeg/LibAV GStreamer plugin
+gstreamer1-plugin-openh264
 gstreamer1-plugins-bad-free
+gstreamer1-plugins-good
+gstreamer1-plugins-ugly-free
 libjxl							# Library files for JPEG-XL
+pipewire-alsa
+pipewire-gstreamer
+pipewire-jack-audio-connection-kit
+pipewire-pulseaudio
+pipewire-utils
 
 # Networking
 NetworkManager-wifi

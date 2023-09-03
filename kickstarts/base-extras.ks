@@ -27,6 +27,7 @@ gstreamer1-vaapi
 gstreamer1-plugins-bad-freeworld
 gstreamer1-plugins-ugly
 intel-media-driver
+libva-intel-driver
 libdvdcss
 mesa-va-drivers-freeworld
 mesa-vdpau-drivers-freeworld
