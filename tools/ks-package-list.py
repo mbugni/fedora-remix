@@ -16,7 +16,9 @@ PKG_FORMAT = "{name}-{version}-{release}.{arch}"
 # Command line parsing
 argparser = argparse.ArgumentParser(description='List kickstart package dependencies.')
 argparser.add_argument('kickstart_file', metavar='KICKSTART', help='The kickstart file to parse')
-argparser.add_argument('--releasever', metavar='RELEASEVER', help='release version', type=int, required=False)
+version_opt = argparser.add_mutually_exclusive_group()
+version_opt.add_argument('--releasever', metavar='RELEASEVER', help='release version', type=int, required=False)
+version_opt.add_argument('--stream', metavar='STREAM', help='stream version', type=int, required=False)
 argparser.add_argument('--format', metavar='FORMAT', help='package format (default is '+ PKG_FORMAT +')', required=False)
 argparser.add_argument('--verbose', help='print additional info to stderr', action='store_true')
 args = argparser.parse_args()
@@ -28,11 +30,23 @@ ksparser.readKickstart(args.kickstart_file)
 # Base object for dnf operations: https://dnf.readthedocs.io/en/latest/api.html
 dnf_base = dnf.Base()
 
-# Set release version if any
+# Load variables substitutions from base.conf.varsdir, default value for varsdir is ("/etc/yum/vars/", "/etc/dnf/vars/")
+# the varsdir is searched under the installroot location. So if the varsdir is located on the host (outside the installroot)
+# then you have to use "/" as installroot in this call:
+#  dnf_base.conf.substitutions.update_from_etc(installroot=dnf_base.conf.installroot, varsdir=dnf_base.conf.varsdir)
+
+# Set release version, if any
 if args.releasever:
     if args.verbose:
         print(f'# Setting release version to {args.releasever}', file=sys.stderr)
     dnf_base.conf.releasever = args.releasever
+# Set stream version, if any
+elif args.stream:
+    if args.verbose:
+        print(f'# Setting stream version to {args.stream}', file=sys.stderr)
+    dnf_base.conf.releasever = args.stream
+    # Example of setting substitutions programmatically: the CentOS Stream version
+    dnf_base.conf.substitutions['stream'] = f"{args.stream}-stream"
 
 if args.verbose:
     print(f'# Exclude weak dependencies: {ksparser.handler.packages.excludeWeakdeps}', file=sys.stderr)
@@ -51,7 +65,7 @@ repourl_opt.add_argument('--mirrorlist', required=False)
 repolist = ksparser.handler.commands['repo'].dataList()
 if repolist:
     if args.verbose:
-        print(f'# Processing {len(repolist)} repositories:', file=sys.stderr)
+        print(f'# Processing {len(repolist)} repositories using substitutions {dnf_base.conf.substitutions}:', file=sys.stderr)
     for repocmd in repolist:
         repo_conf = copy.copy(dnf_base.conf)
         if args.verbose:
