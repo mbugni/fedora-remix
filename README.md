@@ -14,6 +14,16 @@ For more info [visit the documentation page][02].
 ## How to build the LiveCD
 [See a detailed description][03] of how to build the live media.
 
+---
+**NOTE**
+
+If `selinux` is on, disable it during the build process:
+
+```shell
+$ sudo setenforce 0
+```
+---
+
 ### Prepare the build directories
 Clone the project to get sources:
 
@@ -80,7 +90,7 @@ $ sudo sh -c 'tar -c -C /result/livebuild-f38 . | podman import - fedora/livebui
 Build the .iso image by running the `livemedia-creator` command inside the container:
 
 ```shell
-$ sudo podman run --privileged --volume=/dev:/dev --volume=/result:/result \
+$ sudo podman run --privileged --volume=/result:/result --volume=/dev:/dev:ro \
  -it fedora/livebuild:38 livemedia-creator --no-virt --nomacboot \
  --make-iso --project='Fedora' --releasever=38 \
  --tmp=/result --logfile=/result/lmc-logs/livemedia.log \
