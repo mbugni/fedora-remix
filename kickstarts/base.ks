@@ -1,6 +1,7 @@
 # base.ks
 #
 # Defines the basics for all kickstarts
+# Does not include package selection (other then mandatory)
 # Does not include localization packages or configuration
 #
 # Does includes "default" language configuration (kickstarts including

@@ -14,18 +14,9 @@ gnome-bluetooth
 gnome-shell-extension-gsconnect
 gvfs-mtp
 
-# Multimedia
-brasero
-
 # Networking
 NetworkManager-l2tp-gnome
 NetworkManager-openvpn-gnome
 NetworkManager-pptp-gnome
-
-# Office
-libreoffice-gtk3
-
-# Printers and scanners
-simple-scan
 
 %end

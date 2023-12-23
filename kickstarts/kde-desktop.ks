@@ -4,20 +4,18 @@
 
 %include base-desktop.ks
 %include base-extras.ks
+%include base-flatpak.ks
 %include kde-base.ks
 
 %packages --excludeWeakdeps
 
-# Graphics
-kamoso
-kdegraphics-thumbnailers
-
 # Multimedia
 ffmpegthumbs
-vlc
+
+# Software
+flatpak-kcm
 
 # KDE desktop
-adwaita-gtk2-theme
 aha                     # Convert terminal output to HTML for KDE tools
 ark
 breeze-gtk
@@ -25,7 +23,6 @@ cagibi
 dolphin
 featherpad
 fedora-release-kde
-gnome-keyring-pam
 gwenview
 ibus-uniemoji
 kcalc
@@ -52,7 +49,6 @@ plasma-thunderbolt
 plasma-workspace
 plasma-workspace-x11
 polkit-kde
-qt5-qtimageformats      # For images and backgrounds
 sddm-x11
 sddm-breeze
 sddm-kcm
@@ -90,12 +86,6 @@ toolBarFont=Noto Sans,11
 
 [KDE]
 SingleClick=false
-
-# HOW: https://develop.kde.org/deploy/kiosk/introduction/
-# WHY: https://bugzilla.redhat.com/show_bug.cgi?id=1929643
-[KDE Action Restrictions]
-action/start_new_session=false
-action/switch_user=false
 GLOBALS_EOF
 
 # Sudo settings
@@ -129,8 +119,8 @@ cat > /etc/xdg/mimeapps.list << MIMEAPPS_EOF
 text/plain=featherpad.desktop;
 MIMEAPPS_EOF
 
-# No Discover, replace icon by terminal emulator
-sed -i 's/applications:org.kde.discover.desktop/applications:org.kde.konsole.desktop/' \
+# Remove Discover icon and browser from taskmanager
+sed -i -e 's/applications:org.kde.discover.desktop//' \
 /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
 
 %end

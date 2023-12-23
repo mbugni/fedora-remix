@@ -4,25 +4,18 @@
 
 %include base-desktop.ks
 %include base-extras.ks
+%include base-flatpak.ks
 %include gnome-base.ks
 
 %packages --excludeWeakdeps
-
-# Graphics
-cheese
 
 # Multimedia
 ffmpegthumbnailer
 nautilus-extensions
 sushi
-vlc
-
-# Qt support for GNOME
-qgnomeplatform-qt5
 
 # GNOME desktop
 PackageKit-gtk3-module
-adwaita-gtk2-theme
 dconf
 dconf-editor
 desktop-backgrounds-gnome
@@ -56,7 +49,6 @@ polkit
 webp-pixbuf-loader          # For images and backgrounds
 xdg-desktop-portal-gtk
 xdg-user-dirs-gtk
-yelp
 
 %end
 

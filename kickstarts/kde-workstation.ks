@@ -17,22 +17,12 @@ bluez-tools
 kde-connect
 kio_mtp
 
-# Multimedia
-k3b
-
 # Networking
 plasma-nm-l2tp
 plasma-nm-openvpn
 plasma-nm-pptp
 
-# Office
-libreoffice-kf5
-
-# Printers and scanners
+# Printing
 kde-print-manager
-skanlite
-
-# Software
-flatpak-kcm
 
 %end

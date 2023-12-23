@@ -56,20 +56,16 @@ psmisc
 google-noto-sans-fonts
 google-noto-sans-mono-fonts
 google-noto-serif-fonts
-google-noto-emoji-color-fonts
+google-noto-emoji-fonts
 
 # Hardware support
 @hardware-support
 linux-firmware
 microcode_ctl
 
-# Internet
-firefox-langpacks
-
 # Multimedia
 PackageKit-gstreamer-plugin
 alsa-utils
-mozilla-openh264
 gstreamer1-plugin-libav			# FFmpeg/LibAV GStreamer plugin
 gstreamer1-plugin-openh264
 gstreamer1-plugins-bad-free
@@ -87,6 +83,9 @@ NetworkManager-wifi
 firewalld
 firewall-config
 
+# Software
+flatpak
+
 # System
 plymouth-scripts
 plymouth-theme-spinner
@@ -94,7 +93,6 @@ rpm-plugin-systemd-inhibit
 
 # Tools
 clinfo
-gparted				# Storage management
 exfatprogs
 htop
 nano-default-editor

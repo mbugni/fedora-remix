@@ -11,7 +11,7 @@ sed -i 's/^livesys_session=.*/livesys_session="gnome"/' /etc/sysconfig/livesys
 mkdir -p /var/lib/livesys
 cat >> /var/lib/livesys/livesys-session-extra << EOF_LIVESYS
 # Override favorite apps for GNOME
-APPS_OVERRIDE="['firefox.desktop','org.gnome.Nautilus.desktop','anaconda.desktop']"
+APPS_OVERRIDE="['firefox.desktop','org.gnome.Nautilus.desktop','liveinst.desktop']"
 sed -i "s/^favorite-apps=.*/favorite-apps=\${APPS_OVERRIDE}/" /usr/share/glib-2.0/schemas/org.gnome.shell.gschema.override
 
 # rebuild schema cache with any overrides we installed

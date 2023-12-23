@@ -2,6 +2,8 @@
 #
 # Provides italian localization for the KDE desktop.
 
+%include base-desktop-it_IT.ks
+
 %packages --excludeWeakdeps
 
 kde-l10n-it

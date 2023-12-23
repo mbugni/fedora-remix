@@ -1,20 +1,18 @@
 # fedora-remix
 
 ## Purpose
-This project is a [Fedora Remix][01] and aims to offer a complete system for multipurpose usage with localization support. You can build a live image and try the software, and then install it in your PC if you want.
-Other goals of this remix are:
+This project is a [Fedora Remix][01] and aims to offer a complete system for multipurpose usage with localization support. You can [download a live image][02] and try the software, and then install it in your PC if you want.
+You can also customize the image starting from available scripts.
 
+Other goals of this remix are:
 * common extra-repos
-* multimedia apps
+* multimedia apps support
 * office automation support (printers and scanners)
 * and more...
-
-For more info [visit the documentation page][02].
 
 ## How to build the LiveCD
 [See a detailed description][03] of how to build the live media.
 
----
 **NOTE**
 
 If `selinux` is on, disable it during the build process:
@@ -22,7 +20,6 @@ If `selinux` is on, disable it during the build process:
 ```shell
 $ sudo setenforce 0
 ```
----
 
 ### Prepare the build directories
 Clone the project to get sources:
@@ -49,14 +46,14 @@ Choose a version (eg: KDE workstation with italian support) and then create a si
 
 ```shell
 $ ksflatten --config /<source-path>/kickstarts/l10n/kde-workstation-it_IT.ks \
- --output /result/fedora-38-kde-workstation.ks
+ --output /result/fedora-39-kde-workstation.ks
 ```
 
 ### Checking dependencies (optional)
 Run the `ks-package-list.py` command if you need to check Kickstart dependencies:
 
 ```shell
-$ /<source-path>/tools/ks-package-list.py --releasever 38 /result/fedora-38-kde-workstation.ks
+$ /<source-path>/tools/ks-package-list.py --releasever 39 /result/fedora-39-kde-workstation.ks
 ```
 
 Use the `--help` option to get more info about the tool:
@@ -76,14 +73,14 @@ Create the root of the build enviroment:
 
 ```shell
 $ sudo dnf -y --setopt='tsflags=nodocs' --setopt='install_weak_deps=False' \
- --releasever=38 --installroot=/result/livebuild-f38 \
+ --releasever=39 --installroot=/result/livebuild-f39 \
  --repo=fedora --repo=updates install lorax-lmc-novirt
 ```
 
 Pack the build enviroment into a Podman container:
 
 ```shell
-$ sudo sh -c 'tar -c -C /result/livebuild-f38 . | podman import - fedora/livebuild:38'
+$ sudo sh -c 'tar -c -C /result/livebuild-f39 . | podman import - fedora/livebuild:39'
 ```
 
 ### Build the live image using Podman
@@ -91,10 +88,10 @@ Build the .iso image by running the `livemedia-creator` command inside the conta
 
 ```shell
 $ sudo podman run --privileged --volume=/result:/result --volume=/dev:/dev:ro \
- -it fedora/livebuild:38 livemedia-creator --no-virt --nomacboot \
- --make-iso --project='Fedora' --releasever=38 \
+ -it fedora/livebuild:39 livemedia-creator --no-virt --nomacboot \
+ --make-iso --project='Fedora' --releasever=39 \
  --tmp=/result --logfile=/result/lmc-logs/livemedia.log \
- --ks=/result/fedora-38-kde-workstation.ks
+ --ks=/result/fedora-39-kde-workstation.ks
 ```
 
 The build can take a while (40 minutes or more), it depends on your machine performances.
@@ -128,9 +125,9 @@ $ sudo dnf remove anaconda\* livesys-scripts
 ```
 
 ## ![Bandiera italiana][04] Per gli utenti italiani
-Questo è un [Remix di Fedora][01] con il supporto in italiano per lingua e tastiera. Nell'immagine .iso che si ottiene sono già installati i pacchetti e le configurazioni per il funzionamento in italiano delle varie applicazioni (come l'ambiente grafico, la suite LibreOffice etc).
-Nel sistema sono presenti anche:
+Questo è un [Remix di Fedora][01] con il supporto in italiano per lingua e tastiera. Nell'[immagine .iso][02] che si ottiene sono già installati i pacchetti e le configurazioni per il funzionamento in italiano delle varie applicazioni (come l'ambiente grafico, i repo extra etc).
 
+Nel sistema sono presenti anche:
 * repositori extra di uso comune
 * supporto per le applicazioni multimediali
 * supporto per l'ufficio (stampanti e scanner)
@@ -142,7 +139,7 @@ All notable changes to this project will be documented in the [`CHANGELOG.md`](C
 The format is based on [Keep a Changelog][05].
 
 [01]: https://fedoraproject.org/wiki/Remix
-[02]: https://mbugni.github.io/fedora-remix.html
+[02]: https://github.com/mbugni/fedora-remix/releases
 [03]: https://weldr.io/lorax/lorax.html
 [04]: http://flagpedia.net/data/flags/mini/it.png
 [05]: https://keepachangelog.com/

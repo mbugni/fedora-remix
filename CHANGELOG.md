@@ -1,3 +1,10 @@
+## Fedora 39 - 2023-12-23
+### Changed
+- Minimize apps in favour of Flatpak
+### Removed
+- Media tools (player, scanning, webcam)
+- Applications (office, email)
+
 ## Fedora 38 - 2023-04-23
 ### Changed
 - Adjust [livesys scripts][3801]
