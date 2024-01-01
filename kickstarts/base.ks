@@ -46,7 +46,9 @@ shim-*
 dracut-live
 
 # anaconda needs the locales available to run for different locales
-glibc-all-langpacks
+# but the live image includes only desired ones to save space
+glibc-langpack-en
+langpacks-en
 
 # provide the livesys scripts
 livesys-scripts

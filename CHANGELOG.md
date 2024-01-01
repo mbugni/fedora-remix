@@ -3,7 +3,7 @@
 - Minimize apps in favour of Flatpak
 ### Removed
 - Media tools (player, scanning, webcam)
-- Applications (office, email)
+- Applications (office, internet)
 
 ## Fedora 38 - 2023-04-23
 ### Changed

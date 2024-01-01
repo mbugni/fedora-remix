@@ -1,4 +1,4 @@
-# fedora-remix
+# Fedora Remix
 
 ## Purpose
 This project is a [Fedora Remix][01] and aims to offer a complete system for multipurpose usage with localization support. You can [download a live image][02] and try the software, and then install it in your PC if you want.
@@ -21,85 +21,87 @@ If `selinux` is on, disable it during the build process:
 $ sudo setenforce 0
 ```
 
-### Prepare the build directories
+### Prepare the working directories
 Clone the project to get sources:
 
 ```shell
 $ git clone https://github.com/mbugni/fedora-remix.git /<source-path>
 ```
 
-Install kickstart tools:
+Choose or create a `/<target-path>` where to put results.
+
+### Prepare the build container
+Install Podman:
 
 ```shell
-$ sudo dnf -y install pykickstart
+$ sudo dnf --assumeyes install podman
 ```
 
-Prepare the target directory for building results:
+Create the container for the build enviroment:
 
 ```shell
-$ sudo mkdir /result
-
-$ sudo chmod ugo+rwx /result
+$ sudo podman build --file=/<source-path>/Containerfile --tag=livebuild:fc39
 ```
 
-Choose a version (eg: KDE workstation with italian support) and then create a single Kickstart file from the base code:
+Initialize the container by running an interactive shell:
 
 ```shell
-$ ksflatten --config /<source-path>/kickstarts/l10n/kde-workstation-it_IT.ks \
- --output /result/fedora-39-kde-workstation.ks
+$ sudo podman run --privileged --network=host -it --volume=/dev:/dev:ro \
+ --volume=/<source-path>:/live/source:ro --volume=/<target-path>:/live/target \
+ --name=livebuild-fc39 --hostname=livebuild-fc39 livebuild:fc39 /usr/bin/bash
 ```
 
-### Checking dependencies (optional)
-Run the `ks-package-list.py` command if you need to check Kickstart dependencies:
+The container can be reused and upgraded multiple times. See [Podman docs][06] for more details.
+
+To enter again into the build container:
 
 ```shell
-$ /<source-path>/tools/ks-package-list.py --releasever 39 /result/fedora-39-kde-workstation.ks
+$ sudo podman start -ia livebuild-fc39
+```
+
+### Build the image
+
+Run build commands inside the container.
+
+#### Prepare the kickstart file
+
+Choose a version (eg: KDE workstation with italian support) and then create a single Kickstart file from the source code:
+
+```shell
+[] ksflatten --config /live/source/kickstarts/l10n/kde-workstation-it_IT.ks \
+ --output /live/target/fc39-kde-workstation.ks
+```
+
+#### Check dependencies (optional)
+Run the `ks-package-list` command if you need to check Kickstart dependencies:
+
+```shell
+[] ks-package-list --releasever 39 --format "{name}" --verbose \
+ /live/target/fc39-kde-workstation.ks > /live/target/fc39-kde-packages.txt
 ```
 
 Use the `--help` option to get more info about the tool:
 
 ```shell
-$ /<source-path>/tools/ks-package-list.py --help
+[] ks-package-list --help
 ```
 
-### Prepare the build enviroment using Podman
-Install Podman:
+#### Create the live image
+Build the .iso image by running the `livemedia-creator` command:
 
 ```shell
-$ sudo dnf -y install podman
+[] livemedia-creator --no-virt --nomacboot --make-iso --project='Fedora' \
+ --releasever=39 --tmp=/live/target --logfile=/live/target/lmc-logs/livemedia.log \
+ --ks=/live/target/fc39-kde-workstation.ks
 ```
 
-Create the root of the build enviroment:
+The build can take a while (30 minutes or more), it depends on your machine performances.
+
+Remove unused resources when don't need anymore:
 
 ```shell
-$ sudo dnf -y --setopt='tsflags=nodocs' --setopt='install_weak_deps=False' \
- --releasever=39 --installroot=/result/livebuild-f39 \
- --repo=fedora --repo=updates install lorax-lmc-novirt
-```
-
-Pack the build enviroment into a Podman container:
-
-```shell
-$ sudo sh -c 'tar -c -C /result/livebuild-f39 . | podman import - fedora/livebuild:39'
-```
-
-### Build the live image using Podman
-Build the .iso image by running the `livemedia-creator` command inside the container:
-
-```shell
-$ sudo podman run --privileged --volume=/result:/result --volume=/dev:/dev:ro \
- -it fedora/livebuild:39 livemedia-creator --no-virt --nomacboot \
- --make-iso --project='Fedora' --releasever=39 \
- --tmp=/result --logfile=/result/lmc-logs/livemedia.log \
- --ks=/result/fedora-39-kde-workstation.ks
-```
-
-The build can take a while (40 minutes or more), it depends on your machine performances.
-
-Remove unused containers when finished:
-
-```shell
-$ sudo podman container prune
+$ sudo podman container rm --force livebuild-fc39
+$ sudo podman image rm livebuild:fc39
 ```
 
 ## Transferring the image to a bootable media
@@ -112,7 +114,8 @@ $ sudo dnf install livecd-iso-to-mediums
 Create a bootable USB/SD device using the .iso image:
 
 ```shell
-$ sudo livecd-iso-to-disk --format --reset-mbr /result/lmc-work-<code>/images/boot.iso /dev/sd[X]
+$ sudo livecd-iso-to-disk --format --reset-mbr \
+ /<target-path>/lmc-work-<code>/images/boot.iso /dev/sd<X>
 ```
 
 ## Post-install tasks
@@ -143,3 +146,4 @@ The format is based on [Keep a Changelog][05].
 [03]: https://weldr.io/lorax/lorax.html
 [04]: http://flagpedia.net/data/flags/mini/it.png
 [05]: https://keepachangelog.com/
+[06]: https://docs.podman.io/

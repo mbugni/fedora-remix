@@ -119,7 +119,7 @@ cat > /etc/xdg/mimeapps.list << MIMEAPPS_EOF
 text/plain=featherpad.desktop;
 MIMEAPPS_EOF
 
-# Remove Discover icon and browser from taskmanager
+# Remove Discover icon from taskmanager
 sed -i -e 's/applications:org.kde.discover.desktop//' \
 /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
 

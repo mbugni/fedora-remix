@@ -18,31 +18,21 @@ echo ""
 echo "POST BASE FLATPAK ************************************"
 echo ""
 
-%end
-
-# Enable DNS resolution
-# See: https://anaconda-installer.readthedocs.io/en/latest/common-bugs.html#network-issues
-%post --nochroot
-cat /etc/resolv.conf > /mnt/sysimage/etc/resolv.conf
-%end
-
 # Manage flatpak setup
-%post
+mkdir -p /usr/share/doc/flatpak-setup
 
-# Manage flatpak repos
+cat > /usr/share/doc/flatpak-setup/setup.txt << EOF_FLATPAK
+# Flatpak setup commands
+
+## Add flathub repo
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# Workaround permission for error during flatpak install:
-# bwrap: No permissions to creating new namespace, likely because the kernel does not allow non-privileged user namespaces
-chmod u+s /usr/bin/bwrap
+## Override KDE's Gtk3 settings for all apps
+flatpak override --user --filesystem=xdg-config/gtk-3.0:ro
 
-# Install Firefox
+## Install Firefox
 flatpak install --noninteractive --assumeyes flathub org.mozilla.firefox
 
-# Restore workaround permission
-chmod u-s /usr/bin/bwrap
-
-# Restore DNS resolution
-rm /etc/resolv.conf
+EOF_FLATPAK
 
 %end
