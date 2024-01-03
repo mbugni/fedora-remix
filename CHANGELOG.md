@@ -2,8 +2,8 @@
 ### Changed
 - Minimize apps in favour of Flatpak
 ### Removed
-- Media tools (player, scanning, webcam)
-- Applications (office, internet)
+- GNOME desktop environment remix
+- Native apps (internet, multimedia, office)
 
 ## Fedora 38 - 2023-04-23
 ### Changed
