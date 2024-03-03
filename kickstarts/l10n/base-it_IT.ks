@@ -1,6 +1,6 @@
-# base-desktop-it_IT.ks
+# base-it_IT.ks
 #
-# Defines the basics for a desktop with italian localization support.
+# Defines the basics for italian localization support.
 
 lang --addsupport=it_IT.UTF-8 it_IT.UTF-8
 keyboard --xlayouts=it --vckeymap=it
@@ -17,7 +17,7 @@ langpacks-it
 %post
 
 echo ""
-echo "POST BASE DESKTOP it_IT ******************************"
+echo "POST BASE it_IT **************************************"
 echo ""
 
 # Use italian locale in live image

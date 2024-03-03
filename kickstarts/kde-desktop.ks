@@ -19,7 +19,6 @@ flatpak-kcm
 aha                     # Convert terminal output to HTML for KDE tools
 ark
 breeze-gtk
-cagibi
 dolphin
 featherpad
 fedora-release-kde
@@ -119,8 +118,8 @@ cat > /etc/xdg/mimeapps.list << MIMEAPPS_EOF
 text/plain=featherpad.desktop;
 MIMEAPPS_EOF
 
-# Remove Discover icon from taskmanager
-sed -i -e 's/applications:org.kde.discover.desktop//' \
+# Remove Discover and browser icons from taskmanager
+sed -i -e 's/,applications:org.kde.discover.desktop//' -e 's/,preferred:\/\/browser//' \
 /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
 
 %end

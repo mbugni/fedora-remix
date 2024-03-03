@@ -19,18 +19,21 @@ echo "POST BASE FLATPAK ************************************"
 echo ""
 
 # Manage flatpak setup
-mkdir -p /usr/share/doc/flatpak-setup
+mkdir -p /usr/local/post-install
 
-cat > /usr/share/doc/flatpak-setup/setup.txt << EOF_FLATPAK
+cat > /usr/local/post-install/flatpak-setup.sh << EOF_FLATPAK
 # Flatpak setup commands
 
-## Add flathub repo
+echo "Setting up flathub repo..."
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-## Override KDE's Gtk3 settings for all apps
+echo "Sharing user Gtk settings with apps..."
+flatpak override --user --filesystem=xdg-config/gtkrc:ro
+flatpak override --user --filesystem=xdg-config/gtkrc-2.0:ro
 flatpak override --user --filesystem=xdg-config/gtk-3.0:ro
+flatpak override --user --filesystem=xdg-config/gtk-4.0:ro
 
-## Install Firefox
+echo "Installing Firefox..."
 flatpak install --noninteractive --assumeyes flathub org.mozilla.firefox
 
 EOF_FLATPAK

@@ -5,17 +5,16 @@ This project is a [Fedora Remix][01] and aims to offer a complete system for mul
 You can also customize the image starting from available scripts.
 
 Other goals of this remix are:
-* common extra-repos
-* multimedia apps support
-* office automation support (printers and scanners)
-* and more...
+* adding common extra-repos
+* supporting multimedia and office (printers and scanners)
+* Flatpak apps usage
 
 ## How to build the LiveCD
 [See a detailed description][03] of how to build the live media.
 
-**NOTE**
-
-If `selinux` is on, disable it during the build process:
+> [!NOTE]
+>
+> If `selinux` is on, disable it during the build process:
 
 ```shell
 $ sudo setenforce 0
@@ -119,22 +118,25 @@ $ sudo livecd-iso-to-disk --format --reset-mbr \
 ```
 
 ## Post-install tasks
-After installation, you can remove live system components to save space by running these commands:
+After installation, you can remove live system resources to save space by running:
 
 ```shell
-$ sudo systemctl disable livesys.service
-$ sudo systemctl disable livesys-late.service
-$ sudo dnf remove anaconda\* livesys-scripts
+$ source /usr/local/post-install/livesys-cleanup.sh
+```
+
+A Flatpak quick setup script is provided:
+
+```shell
+$ source /usr/local/post-install/flatpak-setup.sh
 ```
 
 ## ![Bandiera italiana][04] Per gli utenti italiani
 Questo è un [Remix di Fedora][01] con il supporto in italiano per lingua e tastiera. Nell'[immagine .iso][02] che si ottiene sono già installati i pacchetti e le configurazioni per il funzionamento in italiano delle varie applicazioni (come l'ambiente grafico, i repo extra etc).
 
-Nel sistema sono presenti anche:
-* repositori extra di uso comune
-* supporto per le applicazioni multimediali
-* supporto per l'ufficio (stampanti e scanner)
-* e altre funzionalità ancora...
+Il remix ha come obiettivi anche:
+* aggiunta dei repository comuni
+* supporto per applicazioni multimediali e da ufficio (stampanti e scanner)
+* utilizzo delle applicazioni Flatpak
 
 ## Change Log
 All notable changes to this project will be documented in the [`CHANGELOG.md`](CHANGELOG.md) file.
