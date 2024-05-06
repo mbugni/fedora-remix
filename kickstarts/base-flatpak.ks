@@ -19,9 +19,9 @@ echo "POST BASE FLATPAK ************************************"
 echo ""
 
 # Manage flatpak setup
-mkdir -p /usr/local/post-install
+mkdir -p /usr/local/libexec/remix
 
-cat > /usr/local/post-install/flatpak-setup.sh << EOF_FLATPAK
+cat > /usr/local/libexec/remix/flatpak-setup << EOF_FLATPAK
 # Flatpak setup commands
 
 echo "Setting up flathub repo..."
@@ -32,9 +32,6 @@ flatpak override --user --filesystem=xdg-config/gtkrc:ro
 flatpak override --user --filesystem=xdg-config/gtkrc-2.0:ro
 flatpak override --user --filesystem=xdg-config/gtk-3.0:ro
 flatpak override --user --filesystem=xdg-config/gtk-4.0:ro
-
-echo "Installing Firefox..."
-flatpak install --noninteractive --assumeyes flathub org.mozilla.firefox
 
 EOF_FLATPAK
 

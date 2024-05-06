@@ -121,13 +121,13 @@ $ sudo livecd-iso-to-disk --format --reset-mbr \
 After installation, you can remove live system resources to save space by running:
 
 ```shell
-$ source /usr/local/post-install/livesys-cleanup.sh
+$ source /usr/local/libexec/remix/livesys-cleanup
 ```
 
 A Flatpak quick setup script is provided:
 
 ```shell
-$ source /usr/local/post-install/flatpak-setup.sh
+$ source /usr/local/libexec/remix/flatpak-setup
 ```
 
 ## ![Bandiera italiana][04] Per gli utenti italiani

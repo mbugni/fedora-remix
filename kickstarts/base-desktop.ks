@@ -2,7 +2,7 @@
 #
 # Defines the basics for a basic desktop environment.
 
-%include base.ks
+%include base-livesys.ks
 
 repo --name=fedora-cisco-openh264 --metalink=https://mirrors.fedoraproject.org/metalink?repo=fedora-cisco-openh264-$releasever&arch=$basearch
 
@@ -191,17 +191,5 @@ echo "install_weak_deps=False" >> /etc/dnf/dnf.conf
 
 # Set default boot theme
 /usr/sbin/plymouth-set-default-theme spinner
-
-# Crete post-install cleanup script
-mkdir -p /usr/local/post-install
-
-cat > /usr/local/post-install/livesys-cleanup.sh << CLEANUP_EOF
-# livesys cleanup commands
-
-echo "Cleaning up livesys resources..."
-sudo sh -c 'systemctl disable livesys.service; systemctl disable livesys-late.service;
-dnf --assumeyes remove anaconda\* livesys-scripts;
-rm /etc/sysconfig/livesys* -rf; rm /var/lib/livesys -rf'
-CLEANUP_EOF
 
 %end

@@ -32,6 +32,7 @@ kde-style-breeze
 kdeplasma-addons
 kinfocenter
 kgamma
+konqueror
 konsole5
 kscreen
 kwalletmanager5
@@ -119,7 +120,7 @@ text/plain=featherpad.desktop;
 MIMEAPPS_EOF
 
 # Remove Discover and browser icons from taskmanager
-sed -i -e 's/,applications:org.kde.discover.desktop//' -e 's/,preferred:\/\/browser//' \
+sed -i -e 's/,applications:org.kde.discover.desktop//' \
 /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
 
 %end
