@@ -1,0 +1,32 @@
+<image>
+	<repository type="rpm-md" alias="rpmfusion-free" sourcetype="metalink">
+		<source path="https://mirrors.rpmfusion.org/metalink?repo=free-fedora-$releasever&amp;arch=$basearch">
+			<signing key="file:///usr/share/distribution-gpg-keys/rpmfusion/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever" />
+		</source>
+	</repository>
+	<repository type="rpm-md" alias="rpmfusion-free-updates" sourcetype="metalink">
+		<source	path="https://mirrors.rpmfusion.org/metalink?repo=free-fedora-updates-released-$releasever&amp;arch=$basearch">
+			<signing key="file:///usr/share/distribution-gpg-keys/rpmfusion/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever" />
+		</source>
+	</repository>
+	<repository type="rpm-md" alias="rpmfusion-free-tainted" sourcetype="metalink">
+		<source	path="https://mirrors.rpmfusion.org/metalink?repo=free-fedora-tainted-$releasever&amp;arch=$basearch">
+			<signing key="file:///usr/share/distribution-gpg-keys/rpmfusion/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever" />
+		</source>
+	</repository>
+	<repository type="rpm-md" alias="rpmfusion-nonfree" sourcetype="metalink">
+		<source	path="https://mirrors.rpmfusion.org/metalink?repo=nonfree-fedora-$releasever&amp;arch=$basearch">
+			<signing key="file:///usr/share/distribution-gpg-keys/rpmfusion/RPM-GPG-KEY-rpmfusion-nonfree-fedora-$releasever" />
+		</source>
+	</repository>
+	<repository type="rpm-md" alias="rpmfusion-nonfree-updates" sourcetype="metalink">
+		<source	path="https://mirrors.rpmfusion.org/metalink?repo=nonfree-fedora-updates-released-$releasever&amp;arch=$basearch">
+			<signing key="file:///usr/share/distribution-gpg-keys/rpmfusion/RPM-GPG-KEY-rpmfusion-nonfree-fedora-$releasever" />
+		</source>
+	</repository>
+	<repository type="rpm-md" alias="rpmfusion-nonfree-tainted" sourcetype="metalink">
+		<source	path="https://mirrors.rpmfusion.org/metalink?repo=nonfree-fedora-tainted-$releasever&amp;arch=$basearch">
+			<signing key="file:///usr/share/distribution-gpg-keys/rpmfusion/RPM-GPG-KEY-rpmfusion-nonfree-fedora-$releasever" />
+		</source>
+	</repository>
+</image>

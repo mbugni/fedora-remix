@@ -1,0 +1,15 @@
+<image>
+	<profiles>
+		<profile name="Localization-it_IT" description="Italian localization"/>
+	</profiles>
+	<preferences profiles="Localization-it_IT">
+		<locale>it_IT</locale>
+		<keytable>it</keytable>
+		<timezone>Europe/Rome</timezone>
+	</preferences>
+	<packages type="image" profiles="Localization-it_IT">
+		<package name="glibc-langpack-it"/>
+		<package name="hunspell-it"/>
+		<package name="langpacks-it"/>
+	</packages>
+</image>

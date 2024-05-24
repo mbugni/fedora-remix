@@ -1,0 +1,20 @@
+<image>
+	<profiles>
+		<profile name="Minimal" description="Minimal environment">
+			<requires profile="BootCore"/>
+			<requires profile="CommonCore"/>
+			<requires profile="CommonExtras"/>
+			<requires profile="LiveSystemConsole"/>
+		</profile>
+		<profile name="Minimal-it_IT" description="Minimal it_IT">
+			<requires profile="Minimal"/>
+			<requires profile="Localization-it_IT"/>
+		</profile>
+	</profiles>
+	<users profiles="Minimal">
+        <user password="L1ve1$b3@ut1fu!" home="/home/liveuser" name="liveuser" groups="wheel" pwdformat="plain" />
+    </users>
+	<packages type="image" profiles="Minimal">
+		<package name="fedora-release"/>
+	</packages>
+</image>

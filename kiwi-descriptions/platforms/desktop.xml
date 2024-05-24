@@ -1,0 +1,119 @@
+<image>
+	<profiles>
+		<profile name="Desktop" description="Desktop environment">
+			<requires profile="BootCore"/>
+			<requires profile="CommonCore"/>
+			<requires profile="CommonExtras"/>
+			<requires profile="LiveSystemInstaller"/>
+		</profile>
+		<profile name="Desktop-it_IT" description="Desktop in italian">
+			<requires profile="Desktop"/>
+			<requires profile="Localization-it_IT"/>
+		</profile>
+	</profiles>
+	<packages type="bootstrap" profiles="Desktop">
+		<package name="fedora-release-identity-kde"/>
+	</packages>
+	<packages type="image" profiles="Desktop">
+		<!-- Display server (see @base-x) -->
+		<package name="xorg-x11-server-Xorg"/>
+		<package name="xorg-x11-xauth"/>
+		<package name="xorg-x11-xinit"/>
+		<!-- Display drivers (see @base-x) -->
+		<package name="libva-vdpau-driver"/>
+		<package name="libvdpau-va-gl"/>
+		<package name="mesa-dri-drivers"/>
+		<package name="mesa-omx-drivers"/>
+		<package name="mesa-vulkan-drivers"/>
+		<package name="xorg-x11-drivers"/>
+		<package name="xorg-x11-drv-amdgpu"/>
+		<!-- Display tools (see @base-x) -->
+		<package name="dbus-x11"/>
+		<package name="egl-utils"/>
+		<package name="glx-utils"/>
+		<package name="vulkan-tools"/>
+		<package name="xdpyinfo"/>
+		<package name="xprop"/>
+		<package name="xrandr"/>
+		<!-- Fonts -->
+		<package name="google-noto-sans-fonts"/>
+		<package name="google-noto-sans-mono-fonts"/>
+		<package name="google-noto-serif-fonts"/>
+		<package name="google-noto-emoji-fonts"/>
+		<!-- Flatpak -->
+		<package name="libreoffice-opensymbol-fonts"/>
+		<package name="flatpak"/>
+		<!-- Multimedia -->
+		<package name="PackageKit-gstreamer-plugin"/>
+		<package name="alsa-utils"/>
+		<package name="gstreamer1-plugin-libav"/><!-- FFmpeg/LibAV GStreamer plugin -->
+		<package name="gstreamer1-plugin-openh264"/>
+		<package name="gstreamer1-plugins-bad-free"/>
+		<package name="gstreamer1-plugins-good"/>
+		<package name="gstreamer1-plugins-ugly-free"/>
+		<package name="libjxl"/><!-- Library files for JPEG-XL -->
+		<package name="pipewire-alsa"/>
+		<package name="pipewire-gstreamer"/>
+		<package name="pipewire-jack-audio-connection-kit"/>
+		<package name="pipewire-pulseaudio"/>
+		<package name="pipewire-utils"/>
+		<!-- Multimedia extras -->
+		<package name="ffmpeg"/>
+		<package name="gstreamer1-vaapi"/>
+		<package name="gstreamer1-plugins-bad-freeworld"/>
+		<package name="gstreamer1-plugins-ugly"/>
+		<package name="intel-media-driver"/>
+		<package name="libva-intel-driver"/>
+		<package name="mesa-va-drivers-freeworld"/>
+		<package name="mesa-vdpau-drivers-freeworld"/>
+		<!-- KDE -->
+		<package name="aha"/><!-- Convert terminal output to HTML for KDE tools -->
+		<package name="ark"/>
+		<package name="breeze-gtk"/>
+		<package name="dolphin"/>
+		<package name="featherpad"/>
+		<package name="fedora-release-identity-kde"/>
+		<package name="ffmpegthumbs"/>
+		<package name="flatpak-kcm"/>
+		<package name="gwenview"/>
+		<package name="ibus-uniemoji"/>
+		<package name="kcalc"/>
+		<package name="kcharselect"/>
+		<package name="kcm_systemd"/>
+		<package name="kde-gtk-config"/>
+		<package name="kde-style-breeze"/>
+		<package name="kdeplasma-addons"/>
+		<package name="kinfocenter"/>
+		<package name="kgamma"/>
+		<package name="konqueror"/>
+		<package name="konsole5"/>
+		<package name="kscreen"/>
+		<package name="kwalletmanager5"/>
+		<package name="kwin"/>
+		<package name="okular"/>
+		<package name="pam-kwallet"/>
+		<package name="plasma-breeze"/>
+		<package name="plasma-desktop"/>
+		<package name="plasma-discover-flatpak"/>
+		<package name="plasma-discover-notifier"/>
+		<package name="plasma-milou"/>
+		<package name="plasma-nm"/><!-- Network Manager -->
+		<package name="plasma-pa"/><!-- Pulse Audio -->
+        <package name="plasma-systemmonitor"/>
+		<package name="plasma-thunderbolt"/>
+		<package name="plasma-workspace"/>
+		<package name="plasma-workspace-x11"/>
+		<package name="polkit-kde"/>
+		<package name="sddm-x11"/>
+		<package name="sddm-breeze"/>
+		<package name="sddm-kcm"/>
+		<package name="spectacle"/>
+		<package name="svgpart"/>
+		<package name="sweeper"/>
+		<package name="upower"/>
+		<package name="xdg-desktop-portal-kde"/>
+	</packages>
+	<packages type="image" profiles="Desktop-it_IT">
+		<package name="kde-l10n-it"/>
+	</packages>
+</image>

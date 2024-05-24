@@ -1,0 +1,9 @@
+[General]
+fixed=Noto Sans Mono,11
+font=Noto Sans,11
+menuFont=Noto Sans,11
+smallestReadableFont=Noto Sans,10
+toolBarFont=Noto Sans,11
+
+[KDE]
+SingleClick=false

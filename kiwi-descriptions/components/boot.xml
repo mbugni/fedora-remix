@@ -1,0 +1,20 @@
+<image>
+	<profiles>
+		<profile name="BootCore" description="Boot core packages"/>
+	</profiles>
+	<packages type="image" profiles="BootCore">
+		<package name="kernel"/>
+		<package name="kernel-modules"/>
+		<package name="kernel-modules-extra"/>
+		<!-- The point of a live image is to install -->
+		<package name="grub2-efi-ia32*"/>
+		<package name="grub2-efi-x64*"/>
+		<package name="grub2-pc*"/>
+		<package name="grub2-tools*"/>
+		<package name="grubby"/>
+		<package name="shim-*"/>
+		<!-- Basic langpack -->
+		<package name="glibc-langpack-en"/>
+		<package name="langpacks-en"/>
+	</packages>
+</image>

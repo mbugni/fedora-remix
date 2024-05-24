@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<image schemaversion="7.4" name="Fedora-Remix" displayname="Fedora 39 Remix">
+	<description type="system">
+		<author>Massimiliano Bugni</author>
+		<contact>massi.ergosum@gmail.com</contact>
+		<specification>Fedora Remix</specification>
+	</description>
+	<preferences>
+		<release-version>39</release-version>
+		<version>39.0.0</version>
+		<packagemanager>dnf</packagemanager>
+		<rpm-check-signatures>true</rpm-check-signatures>
+		<locale>en_US</locale>
+		<keytable>us</keytable>
+		<timezone>UTC</timezone>
+	</preferences>
+	<include from="this://./repositories/fedora.xml"/>
+	<include from="this://./repositories/rpmfusion.xml"/>
+	<include from="this://./components/boot.xml"/>
+	<include from="this://./components/common.xml"/>
+	<include from="this://./components/livesystem.xml"/>
+	<include from="this://./components/localization.xml"/>
+	<include from="this://./platforms/minimal.xml"/>
+	<include from="this://./platforms/desktop.xml"/>
+	<include from="this://./platforms/workstation.xml"/>
+	<packages type="bootstrap">
+		<package name="basesystem"/>
+		<package name="filesystem"/>
+	</packages>
+</image>
