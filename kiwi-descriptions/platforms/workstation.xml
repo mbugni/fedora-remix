@@ -18,10 +18,17 @@
 		<package name="kde-connect"/>
 		<package name="kio_mtp"/>
 		<!-- Networking -->
+		<namedCollection name="networkmanager-submodules"/>
 		<package name="plasma-nm-l2tp"/>
 		<package name="plasma-nm-openvpn"/>
 		<package name="plasma-nm-pptp"/>
 		<!-- Printing -->
+		<namedCollection name="printing"/>
+		<package name="cups-ipptool"/>
+		<package name="cups-lpd"/>
 		<package name="kde-print-manager"/>
+		<!-- Scanning -->
+		<package name="sane-backends-drivers-cameras"/>
+		<package name="sane-backends-drivers-scanners"/>		
 	</packages>
 </image>

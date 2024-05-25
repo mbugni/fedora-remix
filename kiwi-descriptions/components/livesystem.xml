@@ -1,6 +1,6 @@
 <image>
 	<profiles>
-		<profile name="LiveSystemCore" description="Live system core components" />
+		<profile name="LiveSystemCore" description="Live system core components"/>
 		<profile name="LiveSystemConsole" description="Live system console">
 			<requires profile="LiveSystemCore"/>
 		</profile>
@@ -17,15 +17,19 @@
 		<package name="dracut-squash"/>
 	</packages>
 	<preferences profiles="LiveSystemConsole">
-		<type image="iso" primary="true" flags="dmsquash" hybridpersistent_filesystem="ext4" hybridpersistent="true"
-			volid="Fedora_Remix" kernelcmdline="quiet"/>
+		<type image="iso" primary="true" flags="dmsquash" hybridpersistent_filesystem="ext4"
+				hybridpersistent="true"	volid="Fedora_Remix" firmware="uefi" kernelcmdline="quiet">
+			<bootloader name="grub2"/>
+		</type>
 	</preferences>
 	<packages type="image" profiles="LiveSystemGraphical">
 		<package name="plymouth-theme-spinner"/>
 	</packages>
 	<preferences profiles="LiveSystemGraphical">
-		<type image="iso" primary="true" flags="dmsquash" hybridpersistent_filesystem="ext4" hybridpersistent="true"
-			volid="Fedora_Remix" kernelcmdline="rhgb quiet"/>
+		<type image="iso" primary="true" flags="dmsquash" hybridpersistent_filesystem="ext4"
+				hybridpersistent="true"	volid="Fedora_Remix" firmware="uefi" kernelcmdline="rhgb quiet">
+			<bootloader name="grub2"/>
+		</type>
 	</preferences>
 	<packages type="image" profiles="LiveSystemInstaller">
 		<!-- Common-->
