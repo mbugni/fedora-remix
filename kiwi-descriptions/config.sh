@@ -92,6 +92,8 @@ if [[ "$kiwi_profiles" == *"LiveSystemGraphical"* ]]; then
 	systemctl enable livesys.service livesys-late.service
 	# Set up KDE live session
 	echo 'livesys_session="kde"' > /etc/sysconfig/livesys
+	echo "Setting up Flathub repo..."
+	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 fi
 
 #======================================

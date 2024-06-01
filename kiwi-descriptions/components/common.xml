@@ -11,17 +11,8 @@
 		<package name="microcode_ctl"/>
 		<!-- Networking -->
 		<package name="NetworkManager-wifi"/>
-		<package name="firewalld"/>
 		<!-- System -->
-		<package name="dnf"/>
-		<package name="dnf-plugins-core"/>
-		<package name="fwupd"/>
-		<package name="grubby"/>
-		<package name="sudo"/>
 		<!-- package name="systemd-oomd-defaults"/ -->
-		<package name="systemd-resolved"/>
-		<package name="util-linux"/>
-		<package name="zram-generator-defaults"/>
 		<package name="chrony"/>
 		<package name="plymouth-scripts"/>
 		<package name="rpm-plugin-systemd-inhibit"/>
@@ -29,7 +20,6 @@
 		<package name="bash-completion"/>
 		<package name="bind-utils"/>
 		<package name="btrfs-progs"/>
-		<package name="less"/>
 		<package name="net-tools"/>
 		<package name="psmisc"/>
 		<package name="clinfo"/>
