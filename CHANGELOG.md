@@ -1,3 +1,9 @@
+## [39.0.0] - 2024-06-02
+### Changed
+- Adopt kiwi-ng for builing images
+### Removed
+- Kickstart scripts
+
 ## Fedora 39 - 2023-12-23
 ### Changed
 - Minimize apps in favour of Flatpak
