@@ -7,10 +7,14 @@ fi
 sed -i "s/^Session=.*/Session=plasmax11.desktop/" /etc/sddm.conf
 
 if [ -f /usr/share/applications/calamares.desktop ]; then
-    #
     # Copy installer icon on desktop
     cp -a /usr/share/applications/calamares.desktop /home/liveuser/Desktop/
-    #
     # Set executable bit disable KDE security warning
     chmod +x /home/liveuser/Desktop/calamares.desktop
+fi
+
+if [ -f /usr/share/applications/liveinst.desktop ]; then
+    # Replace Discover icon in KDE taskmanager
+    sed -i -e 's/applications:org.kde.discover.desktop/applications:liveinst.desktop/' \
+    /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml 
 fi

@@ -14,7 +14,4 @@
 	<users profiles="Minimal">
         <user password="L1ve1$b3@ut1fu!" home="/home/liveuser" name="liveuser" groups="wheel" pwdformat="plain" />
     </users>
-	<packages type="image" profiles="Minimal">
-		<package name="fedora-release"/>
-	</packages>
 </image>

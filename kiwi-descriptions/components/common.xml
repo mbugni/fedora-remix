@@ -4,29 +4,44 @@
 		<profile name="CommonExtras" description="Extra packages"/>
 	</profiles>
 	<packages type="image" profiles="CommonCore">
-		<namedCollection name="core"/>
+		<!-- Core packages -->
+		<package name="binutils"/>
+		<package name="curl"/>
+		<package name="e2fsprogs"/>
+		<package name="man-db"/>
+		<package name="passwd"/>
+		<package name="policycoreutils"/>
+		<package name="procps-ng"/>
+		<package name="selinux-policy-targeted"/>
+		<package name="sudo"/>
+		<package name="util-linux"/>
 		<!-- Hardware support -->
 		<namedCollection name="hardware-support"/>
 		<package name="linux-firmware"/>
 		<package name="microcode_ctl"/>
+		<package name="fwupd"/>
 		<!-- Networking -->
 		<package name="NetworkManager-wifi"/>
+		<package name="firewalld"/>
+		<package name="systemd-resolved"/>
 		<!-- System -->
-		<!-- package name="systemd-oomd-defaults"/ -->
 		<package name="chrony"/>
 		<package name="plymouth-scripts"/>
 		<package name="rpm-plugin-systemd-inhibit"/>
+		<!-- package name="systemd-oomd-defaults"/ -->
+		<package name="zram-generator-defaults"/>
 		<!-- Tools -->
 		<package name="bash-completion"/>
 		<package name="bind-utils"/>
 		<package name="btrfs-progs"/>
 		<package name="net-tools"/>
+		<package name="pciutils"/>
 		<package name="psmisc"/>
 		<package name="clinfo"/>
 		<package name="exfatprogs"/>
 		<package name="htop"/>
 		<package name="nano-default-editor"/>
-		<package name="neofetch"/>
+		<package name="fastfetch"/>
 		<package name="rsync"/>
 		<package name="unar"/>
 	</packages>

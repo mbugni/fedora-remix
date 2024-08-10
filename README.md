@@ -97,7 +97,7 @@ You can use a tool like [Ventoy][07] to build multiboot USB devices, or simply t
 USB stick using the `dd` command:
 
 ```shell
-$ dd if=/<target-path>/Fedora-Remix.x86_64-<version>.iso of=/dev/<stickdevice>
+$ sudo dd if=/<target-path>/Fedora-Remix.x86_64-<version>.iso of=/dev/<stick-device>
 ```
 
 ## Post-install tasks

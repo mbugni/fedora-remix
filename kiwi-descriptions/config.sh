@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 set -euxo pipefail
 
@@ -42,8 +42,6 @@ echo "GRUB_DISABLE_RECOVERY=true" >> /etc/default/grub
 #======================================
 # Setup default services
 #--------------------------------------
-## Enable SSH
-systemctl enable sshd.service
 ## Enable NetworkManager
 systemctl enable NetworkManager.service
 ## Enable chrony
@@ -92,18 +90,24 @@ if [[ "$kiwi_profiles" == *"LiveSystemGraphical"* ]]; then
 	systemctl enable livesys.service livesys-late.service
 	# Set up KDE live session
 	echo 'livesys_session="kde"' > /etc/sysconfig/livesys
+	# Set up Flatpak
 	echo "Setting up Flathub repo..."
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+	# Avoid additional Fedora's Flatpak repos
+	systemctl disable flatpak-add-fedora-repos
 fi
 
 #======================================
 # Remix localization
 #--------------------------------------
+echo "LANG=en_US.UTF-8" > /etc/default/locale
 if [[ "$kiwi_profiles" == *"Localization"* ]]; then
-	livesys_locale="$(/bin/bash -c 'source /etc/locale.conf && echo $LANG')"
-	livesys_language="$(echo $livesys_locale | head -c 5)"
-	livesys_keymap="$(echo $livesys_locale | head -c 2)"
+	livesys_locale="${kiwi_language}.UTF-8"
+	livesys_language="${kiwi_language}"
+	livesys_keymap="${kiwi_keytable}"
 	echo "Set up language ${livesys_locale}"
+	# Setup system-wide locale
+	echo "LANG=${livesys_locale}" > /etc/default/locale
 	# Replace default locale settings
 	sed -i "s/^LANG=.*/LANG=${livesys_locale}/" /etc/xdg/plasma-localerc
 	sed -i "s/^LANGUAGE=.*/LANGUAGE="${livesys_language}"/" /etc/xdg/plasma-localerc
@@ -116,5 +120,14 @@ fi
 # Remix	settings
 #--------------------------------------
 echo "install_weak_deps=False" >> /etc/dnf/dnf.conf
+
+#======================================
+# Remix	fixes and tweaks
+#--------------------------------------
+## Remove preferred browser icon in KDE taskmanager
+if [ -f /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml ]; then
+    sed -i -e 's/\,preferred:\/\/browser//' \
+    /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
+fi
 
 exit 0

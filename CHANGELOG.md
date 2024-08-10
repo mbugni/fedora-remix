@@ -1,4 +1,11 @@
-## [39.0.0] - 2024-06-02
+## 39.0.1 - 2024-08-10
+### Changed
+- Build container is based on fedora-minimal
+- Falkon replaces Konqueror browser
+- Discover uses Flatpak as default backend
+- Minimize dependencies
+
+## 39.0.0 - 2024-06-02
 ### Changed
 - Adopt kiwi-ng for builing images
 ### Removed
