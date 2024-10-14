@@ -1,0 +1,12 @@
+[Unit]
+Description=Machine system settings
+
+[Service]
+Type=oneshot
+Restart=no
+RemainAfterExit=no
+ExecStart=/usr/local/libexec/remix/machine-setup
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=graphical.target

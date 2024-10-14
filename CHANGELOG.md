@@ -1,3 +1,12 @@
+## 39.0.2 - 2024-10-14
+### Added
+- Custom user Flatpak setup
+- Custom machine setup
+### Changed
+- Improve scan and print support
+- Better live system cleanup
+- Minimize dependencies
+
 ## 39.0.1 - 2024-08-10
 ### Changed
 - Build container is based on fedora-minimal

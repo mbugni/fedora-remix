@@ -1,0 +1,12 @@
+[Unit]
+Description=Flatpak user settings
+PartOf=graphical-session.target
+
+[Service]
+Type=oneshot
+Restart=no
+RemainAfterExit=no
+ExecStart=/usr/local/libexec/remix/flatpak-setup
+
+[Install]
+WantedBy=graphical-session.target

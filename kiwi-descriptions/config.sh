@@ -93,6 +93,8 @@ if [[ "$kiwi_profiles" == *"LiveSystemGraphical"* ]]; then
 	# Set up Flatpak
 	echo "Setting up Flathub repo..."
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+	# Enable Flatpak user settings
+	systemctl --global enable flatpak-setup.service
 	# Avoid additional Fedora's Flatpak repos
 	systemctl disable flatpak-add-fedora-repos
 fi
@@ -124,6 +126,8 @@ echo "install_weak_deps=False" >> /etc/dnf/dnf.conf
 #======================================
 # Remix	fixes and tweaks
 #--------------------------------------
+## Enable machine system settings
+systemctl enable machine-setup
 ## Remove preferred browser icon in KDE taskmanager
 if [ -f /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml ]; then
     sed -i -e 's/\,preferred:\/\/browser//' \

@@ -34,6 +34,7 @@
 		<package name="bash-completion"/>
 		<package name="bind-utils"/>
 		<package name="btrfs-progs"/>
+		<package name="dmidecode"/>
 		<package name="net-tools"/>
 		<package name="pciutils"/>
 		<package name="psmisc"/>

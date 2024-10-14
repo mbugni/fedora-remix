@@ -12,10 +12,6 @@
 		</profile>
 	</profiles>
 	<packages type="image" profiles="Desktop">
-		<!-- Display server -->
-		<package name="xorg-x11-server-Xorg"/>
-		<package name="xorg-x11-xauth"/>
-		<package name="xorg-x11-xinit"/>
 		<!-- Display drivers -->
 		<package name="libva-vdpau-driver"/>
 		<package name="libvdpau-va-gl"/>
@@ -63,6 +59,8 @@
 		<package name="libva-intel-driver"/>
 		<package name="mesa-va-drivers-freeworld"/>
 		<package name="mesa-vdpau-drivers-freeworld"/>
+		<!-- Networking -->
+		<package name="firewall-config"/>
 		<!-- KDE -->
 		<package name="aha"/><!-- Convert terminal output to HTML for KDE tools -->
 		<package name="ark"/>
@@ -72,13 +70,13 @@
 		<package name="featherpad"/>
 		<package name="ffmpegthumbs"/>
 		<package name="flatpak-kcm"/>
-		<package name="gwenview"/>
 		<package name="ibus-uniemoji"/>
 		<package name="kcalc"/>
 		<package name="kcharselect"/>
 		<package name="kcm_systemd"/>
 		<package name="kde-gtk-config"/>
 		<package name="kde-style-breeze"/>
+		<package name="kdegraphics-thumbnailers"/>
 		<package name="kdeplasma-addons"/>
 		<package name="khelpcenter"/>
 		<package name="kinfocenter"/>
@@ -87,7 +85,6 @@
 		<package name="kscreen"/>
 		<package name="kwalletmanager5"/>
 		<package name="kwin"/>
-		<package name="okular"/>
 		<package name="pam-kwallet"/>
 		<package name="plasma-breeze"/>
 		<package name="plasma-desktop"/>
@@ -102,6 +99,7 @@
 		<package name="plasma-workspace"/>
 		<package name="plasma-workspace-x11"/>
 		<package name="polkit-kde"/>
+		<package name="powerdevil"/>
 		<package name="sddm-x11"/>
 		<package name="sddm-breeze"/>
 		<package name="sddm-kcm"/>

@@ -1,6 +1,6 @@
 # livesys cleanup commands
 
-echo "Cleaning up livesys resources..."
+echo "Cleaning up livesys resources"
 sudo sh -c 'systemctl disable livesys.service; systemctl disable livesys-late.service;
-dnf --assumeyes remove anaconda\* livesys-scripts;
+dnf --assumeyes remove anaconda\* livesys-scripts dracut-live;
 rm /etc/sysconfig/livesys* -rf; rm /var/lib/livesys -rf'

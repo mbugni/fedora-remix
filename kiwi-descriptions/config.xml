@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="7.4" name="Fedora-Remix" displayname="Fedora 39 Remix">
+<image schemaversion="7.6" name="Fedora-Remix" displayname="Fedora 39 Remix">
 	<description type="system">
 		<author>Massimiliano Bugni</author>
 		<contact>massi.ergosum@gmail.com</contact>
@@ -8,8 +8,8 @@
 	</description>
 	<preferences>
 		<release-version>39</release-version>
-		<version>39.0.1</version>
-		<packagemanager>dnf</packagemanager>
+		<version>39.0.2</version>
+		<packagemanager>dnf4</packagemanager>
 		<rpm-check-signatures>true</rpm-check-signatures>
 		<locale>en_US</locale>
 		<keytable>us</keytable>

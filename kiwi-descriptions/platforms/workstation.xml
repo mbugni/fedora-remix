@@ -15,8 +15,12 @@
 		<package name="bluez-obexd"/>
 		<package name="bluez-tools"/>
 		<!-- Connectivity -->
+		<package name="ipp-usb"/>
 		<package name="kde-connect"/>
 		<package name="kio_mtp"/>
+		<!-- Hardware support -->
+		<package name="iscan-firmware"/>
+		<package name="libsane-hpaio"/>
 		<!-- Networking -->
 		<namedCollection name="networkmanager-submodules"/>
 		<package name="plasma-nm-l2tp"/>
@@ -28,6 +32,7 @@
 		<package name="cups-lpd"/>
 		<package name="kde-print-manager"/>
 		<!-- Scanning -->
+		<package name="sane-backends-daemon"/>
 		<package name="sane-backends-drivers-cameras"/>
 		<package name="sane-backends-drivers-scanners"/>		
 	</packages>
