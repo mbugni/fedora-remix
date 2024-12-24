@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-# flatpak: user settings
+# Remix session setup
 
 echo "Sharing KDE custom Gtk settings with apps"
 flatpak override --user --filesystem=xdg-config/gtkrc:ro

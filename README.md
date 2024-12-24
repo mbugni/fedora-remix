@@ -1,25 +1,21 @@
 # Fedora Remix
 
 ## Purpose
-This project is a [Fedora Remix][01] and aims to offer a complete system for multipurpose usage with localization support.
+This project is a [Fedora Remix][01] and aims to be a complete system for personal computing with localization support.
 You can [download a live image][02] and try the software, and then install it in your PC if you want.
 You can also customize the image starting from available scripts.
 
 Main goals of this remix are:
 * Flatpak apps usage
 * adding common extra-repos
-* supporting printers and scanners
+* supporting external devices (like printers and scanners)
 
 ## How to build the LiveCD
 [See a detailed description][03] about how to build the live media.
 
 > [!NOTE]
 >
-> If `selinux` is on, disable it during the build process:
-
-```shell
-$ sudo setenforce 0
-```
+> If `selinux` is on, [turn it off](https://osinside.github.io/kiwi/troubleshooting/security.html) during the build process.
 
 ### Prepare the working directories
 Clone the project into your `<source-path>` to get sources:
@@ -40,7 +36,7 @@ $ sudo dnf --assumeyes install podman
 Create the container for the build enviroment:
 
 ```shell
-$ sudo podman build --file=/<source-path>/Containerfile --tag=livebuild:fc39
+$ sudo podman build --file=/<source-path>/Containerfile --tag=livebuild:fc40
 ```
 
 Initialize the container by running an interactive shell:
@@ -48,38 +44,39 @@ Initialize the container by running an interactive shell:
 ```shell
 $ sudo podman run --privileged --network=host -it --volume=/dev:/dev:ro \
 --volume=/<source-path>:/live/source:ro --volume=/<target-path>:/live/target \
---name=livebuild-fc39 --hostname=livebuild-fc39 livebuild:fc39 /usr/bin/bash
+--name=livebuild-fc40 --hostname=livebuild-fc40 livebuild:fc40 /usr/bin/bash
 ```
 
-The container can be reused and upgraded multiple times. See [Podman docs][06] for more details.
+Exit from the build container. The container can be reused and upgraded multiple times.
+See [Podman docs][06] for more details.
 
 To enter again into the build container:
 
 ```shell
-$ sudo podman start -ia livebuild-fc39
+$ sudo podman start -ia livebuild-fc40
 ```
 
 ### Build the image
 First, start the build container if not running:
 
 ```shell
-$ sudo podman start livebuild-fc39
+$ sudo podman start livebuild-fc40
 ```
 
-Choose a variant (eg: KDE workstation with italian support) that corresponds to a profile (eg: `Workstation-it_IT`).
+Choose a variant (eg: workstation with localization support) that corresponds to a profile (eg: `Workstation-l10n`).
 
 Available profiles/variants are:
 * `Minimal` (console only, mainly for testing)
 * `Desktop` (minimal KDE environment with basic tools)
 * `Workstation` (KDE environment with more features like printing and scanning support)
 
-For each variant you can append `-it_IT` to get italian localization (eg: `Desktop-it_IT`).
+For each variant you can append `-l10n` to get italian localization (eg: `Desktop-l10n`).
 
 Build the .iso image by running the `kiwi-ng` command:
 
 ```shell
-$ sudo podman exec livebuild-fc39 kiwi-ng --profile=Workstation-it_IT --type=iso \
---shared-cache-dir=/live/target/cache system build \
+$ sudo podman exec livebuild-fc40 kiwi-ng --profile=Workstation-l10n --type=iso \
+--debug --color-output --shared-cache-dir=/live/target/cache system build \
 --description=/live/source/kiwi-descriptions --target-dir=/live/target
 ```
 
@@ -88,8 +85,8 @@ The build can take a while (30 minutes or more), it depends on your machine perf
 Remove unused resources when don't need anymore:
 
 ```shell
-$ sudo podman container rm --force livebuild-fc39
-$ sudo podman image rm livebuild:fc39
+$ sudo podman container rm --force livebuild-fc40
+$ sudo podman image rm livebuild:fc40
 ```
 
 ## Transferring the image to a bootable media
@@ -108,12 +105,12 @@ $ source /usr/local/libexec/remix/livesys-cleanup
 ```
 
 ## ![Bandiera italiana][04] Per gli utenti italiani
-Questo è un [Remix di Fedora][01] con il supporto in italiano per lingua e tastiera. Nell'[immagine .iso][02] che si ottiene sono già installati i pacchetti e le configurazioni per il funzionamento in italiano delle varie applicazioni (come l'ambiente grafico, i repo extra etc).
+Questo è un [Remix di Fedora][01] per computer ad uso personale con il supporto in italiano. Nell'[immagine .iso][02] che si ottiene sono già installati i pacchetti e le configurazioni per il funzionamento in italiano del sistema (come l'ambiente grafico, i repo extra etc).
 
 Il remix ha come obiettivi principali:
 * utilizzo delle applicazioni Flatpak
 * aggiunta dei repository comuni
-* supporto per stampanti e scanner
+* supporto per dispositivi esterni (come stampanti e scanner)
 
 ## Change Log
 All notable changes to this project will be documented in the [`CHANGELOG.md`](CHANGELOG.md) file.

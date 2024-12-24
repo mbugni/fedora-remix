@@ -7,38 +7,28 @@
 		<profile name="LiveSystemGraphical" description="Live system graphical">
 			<requires profile="LiveSystemCore"/>
 		</profile>
-		<profile name="LiveSystemInstaller" description="Live system installer">
-			<requires profile="LiveSystemGraphical"/>
-		</profile>
 	</profiles>
 	<packages type="image" profiles="LiveSystemCore">
 		<!-- package name="dracut-kiwi-live"/ -->
 		<package name="dracut-live"/>
 		<package name="dracut-squash"/>
 	</packages>
-	<preferences profiles="LiveSystemConsole">
-		<type image="iso" primary="true" flags="dmsquash" hybridpersistent_filesystem="ext4"
-				hybridpersistent="true"	volid="Fedora_Remix" firmware="uefi" kernelcmdline="quiet">
-			<bootloader name="grub2"/>
-		</type>
-	</preferences>
+	<packages type="image" profiles="LiveSystemConsole">
+		<package name="plymouth-scripts"/>
+	</packages>
 	<packages type="image" profiles="LiveSystemGraphical">
+		<!-- Anaconda installer -->
+		<package name="anaconda"/>
+		<package name="anaconda-install-env-deps"/>
+		<package name="anaconda-live"/>
+		<!-- Calamares installer -->
+		<!-- package name="calamares"/ -->
 		<package name="plymouth-theme-spinner"/>
 	</packages>
-	<preferences profiles="LiveSystemGraphical">
+	<preferences>
 		<type image="iso" primary="true" flags="dmsquash" hybridpersistent_filesystem="ext4"
 				hybridpersistent="true"	volid="Fedora_Remix" firmware="uefi" kernelcmdline="rhgb quiet">
 			<bootloader name="grub2"/>
 		</type>
 	</preferences>
-	<packages type="image" profiles="LiveSystemInstaller">
-		<!-- Common-->
-		<package name="livesys-scripts"/>
-		<!-- Anaconda -->
-		<package name="anaconda"/>
-		<package name="anaconda-install-env-deps"/>
-		<package name="anaconda-live"/>
-		<!-- Calamares -->
-		<!-- package name="calamares"/ -->
-	</packages>
 </image>

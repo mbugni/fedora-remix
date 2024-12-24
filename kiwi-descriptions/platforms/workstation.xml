@@ -3,9 +3,9 @@
 		<profile name="Workstation" description="Workstation environment">
 			<requires profile="Desktop"/>
 		</profile>
-		<profile name="Workstation-it_IT" description="Workstation in italian">
+		<profile name="Workstation-l10n" description="Workstation localization">
 			<requires profile="Workstation"/>
-			<requires profile="Desktop-it_IT"/>
+			<requires profile="Desktop-l10n"/>
 		</profile>
 	</profiles>
 	<packages type="image" profiles="Workstation">

@@ -1,7 +1,7 @@
 <image>
 	<profiles>
-		<profile name="CommonCore" description="Common packages"/>
-		<profile name="CommonExtras" description="Extra packages"/>
+		<profile name="CommonCore" description="Core packages"/>
+		<profile name="Common-l10n" description="Localization"/>
 	</profiles>
 	<packages type="image" profiles="CommonCore">
 		<!-- Core packages -->
@@ -25,8 +25,6 @@
 		<package name="firewalld"/>
 		<package name="systemd-resolved"/>
 		<!-- System -->
-		<package name="chrony"/>
-		<package name="plymouth-scripts"/>
 		<package name="rpm-plugin-systemd-inhibit"/>
 		<!-- package name="systemd-oomd-defaults"/ -->
 		<package name="zram-generator-defaults"/>
@@ -45,15 +43,22 @@
 		<package name="fastfetch"/>
 		<package name="rsync"/>
 		<package name="unar"/>
-	</packages>
-	<packages type="image" profiles="CommonExtras">
+		<package name="unrar"/>
 		<!-- RPM Fusion repositories -->
 		<package name="rpmfusion-free-release"/>
 		<package name="rpmfusion-free-release-tainted"/>
 		<package name="rpmfusion-nonfree-release"/>
 		<package name="rpmfusion-nonfree-release-tainted"/>
 		<package name="rpmfusion-*-appstream-data"/>
-		<!-- Tools -->
-		<package name="unrar"/>
+	</packages>
+	<preferences profiles="Common-l10n">
+		<locale>it_IT</locale>
+		<keytable>it</keytable>
+		<timezone>Europe/Rome</timezone>
+	</preferences>
+	<packages type="image" profiles="Common-l10n">
+		<package name="glibc-langpack-it"/>
+		<package name="hunspell-it"/>
+		<package name="langpacks-it"/>
 	</packages>
 </image>

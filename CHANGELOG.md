@@ -1,3 +1,13 @@
+## 40.0.0 - 2024-12-24
+### Added
+- Custom live scripts
+- Calamares configs (experimental)
+### Removed
+- Package livesys-scripts provided by distro
+### Changed
+- Move to Plasma 6 and Wayland
+- systemd-timesyncd instead of chrony
+
 ## 39.0.2 - 2024-10-14
 ### Added
 - Custom user Flatpak setup

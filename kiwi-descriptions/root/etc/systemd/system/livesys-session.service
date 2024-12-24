@@ -1,0 +1,11 @@
+[Unit]
+Description=Initialization for live environments
+Before=display-manager.service
+ConditionKernelCommandLine=rd.live.image
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/libexec/livesys/livesys-session
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,33 @@
+#!/usr/bin/bash
+#
+# livesys-session: init scripts for liveuser session
+
+## Check if live system is already configured
+[ -e /.livesys-configured ] && exit 0
+
+echo 'Setup liveuser'
+## Add liveuser user with no passwd
+useradd --comment "Live System User" --create-home --shell /usr/bin/bash liveuser
+passwd -d liveuser > /dev/null
+usermod -aG audio,video,wheel liveuser > /dev/null
+
+echo 'Setup installer for liveuser'
+## Installer settings
+### Calamares
+# rsync -a /usr/local/libexec/livesys/calamares/ /etc/calamares/
+### Anaconda
+desktop-file-edit --set-key=Hidden --set-value=true /etc/xdg/autostart/liveinst-setup.desktop
+desktop-file-edit --set-key=Hidden --set-value=true /usr/share/applications/liveinst.desktop
+
+## Create insaller launcher at liveuser login
+echo -e '\nsource /usr/local/libexec/livesys/installer-setup\n' >> '/usr/local/libexec/remix/session-setup'
+
+echo 'Setup liveuser desktop'
+source /usr/local/libexec/livesys/desktop-setup
+
+echo 'Finish liveuser setup'
+## Make sure to set the right permissions for liveuser
+chown -R liveuser:liveuser /home/liveuser
+
+## Mark things as configured and keep this at the end of this script!
+touch /.livesys-configured

@@ -3,12 +3,11 @@
 		<profile name="Desktop" description="Desktop environment">
 			<requires profile="BootCore"/>
 			<requires profile="CommonCore"/>
-			<requires profile="CommonExtras"/>
-			<requires profile="LiveSystemInstaller"/>
+			<requires profile="LiveSystemGraphical"/>
 		</profile>
-		<profile name="Desktop-it_IT" description="Desktop in italian">
+		<profile name="Desktop-l10n" description="Desktop localization">
 			<requires profile="Desktop"/>
-			<requires profile="Localization-it_IT"/>
+			<requires profile="Common-l10n"/>
 		</profile>
 	</profiles>
 	<packages type="image" profiles="Desktop">
@@ -18,16 +17,10 @@
 		<package name="mesa-dri-drivers"/>
 		<package name="mesa-omx-drivers"/>
 		<package name="mesa-vulkan-drivers"/>
-		<package name="xorg-x11-drivers"/>
-		<package name="xorg-x11-drv-amdgpu"/>
 		<!-- Display tools -->
-		<package name="dbus-x11"/>
 		<package name="egl-utils"/>
 		<package name="glx-utils"/>
 		<package name="vulkan-tools"/>
-		<package name="xdpyinfo"/>
-		<package name="xprop"/>
-		<package name="xrandr"/>
 		<!-- Fonts -->
 		<package name="google-noto-sans-fonts"/>
 		<package name="google-noto-sans-mono-fonts"/>
@@ -78,12 +71,15 @@
 		<package name="kde-style-breeze"/>
 		<package name="kdegraphics-thumbnailers"/>
 		<package name="kdeplasma-addons"/>
+		<package name="kf6-kio"/>
+		<package name="kf5-sonnet-hunspell"/>
+		<package name="kf6-sonnet-hunspell"/>
 		<package name="khelpcenter"/>
 		<package name="kinfocenter"/>
 		<package name="kgamma"/>
-		<package name="konsole5"/>
+		<package name="konsole"/>
 		<package name="kscreen"/>
-		<package name="kwalletmanager5"/>
+		<package name="kwalletmanager"/>
 		<package name="kwin"/>
 		<package name="pam-kwallet"/>
 		<package name="plasma-breeze"/>
@@ -97,10 +93,9 @@
         <package name="plasma-systemmonitor"/>
 		<package name="plasma-thunderbolt"/>
 		<package name="plasma-workspace"/>
-		<package name="plasma-workspace-x11"/>
 		<package name="polkit-kde"/>
 		<package name="powerdevil"/>
-		<package name="sddm-x11"/>
+		<package name="sddm"/>
 		<package name="sddm-breeze"/>
 		<package name="sddm-kcm"/>
 		<package name="spectacle"/>
@@ -110,7 +105,7 @@
 		<package name="xdg-desktop-portal-kde"/>
 		<package name="xdg-desktop-portal-gnome"/>
 	</packages>
-	<packages type="image" profiles="Desktop-it_IT">
+	<packages type="image" profiles="Desktop-l10n">
 		<package name="kde-l10n-it"/>
 	</packages>
 </image>

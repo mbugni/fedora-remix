@@ -3,15 +3,9 @@
 set -euxo pipefail
 
 #======================================
-# Functions...
-#--------------------------------------
-test -f /.kconfig && . /.kconfig
-test -f /.profile && . /.profile
-
-#======================================
 # Greeting...
 #--------------------------------------
-echo "Configure image: [$kiwi_iname]-[$kiwi_iversion]..."
+echo "Configure image: [$kiwi_iname]-[$kiwi_iversion]"
 echo "Profiles: [$kiwi_profiles]"
 
 #======================================
@@ -29,23 +23,12 @@ echo "localhost" > /etc/hostname
 truncate -s 0 /etc/machine-id
 
 #======================================
-# Configure grub correctly
-#--------------------------------------
-## Works around issues with grub-bls
-## See: https://github.com/OSInside/kiwi/issues/2198
-echo "GRUB_DEFAULT=saved" >> /etc/default/grub
-## Disable submenus to match Fedora
-echo "GRUB_DISABLE_SUBMENU=true" >> /etc/default/grub
-## Disable recovery entries to match Fedora
-echo "GRUB_DISABLE_RECOVERY=true" >> /etc/default/grub
-
-#======================================
 # Setup default services
 #--------------------------------------
 ## Enable NetworkManager
 systemctl enable NetworkManager.service
-## Enable chrony
-systemctl enable chronyd.service
+## Enable systemd-timesyncd
+systemctl enable systemd-timesyncd
 
 #======================================
 # Setup default target
@@ -68,33 +51,34 @@ rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-primary
 rm -f /var/lib/rpm/__db*
 
 #======================================
-# Remix minimal
+# Remix livesystem
 #--------------------------------------
-if [[ "$kiwi_profiles" == *"Minimal"* ]]; then
-	# Delete and lock the root user password
+if [[ "$kiwi_profiles" == *"LiveSystem"* ]]; then
+	echo "Delete the root user password"
 	passwd -d root
-	passwd -l root
-	# Delete the liveuser user password
-	passwd -d liveuser
-	usermod -c "Live System User" liveuser
+	if [[ "$kiwi_profiles" == *"LiveSystemConsole"* ]]; then
+		echo "Delete the liveuser password"
+		passwd -d liveuser
+		# Set up default boot theme
+		/usr/sbin/plymouth-set-default-theme details
+	fi
 fi
 
 #======================================
 # Remix graphical
 #--------------------------------------
 if [[ "$kiwi_profiles" == *"LiveSystemGraphical"* ]]; then
-	echo "Set up desktop ${kiwi_displayname}"
+	echo "Lock the root user account"
+	passwd -l root
 	# Set up default boot theme
 	/usr/sbin/plymouth-set-default-theme spinner
-	# Enable livesys services
-	systemctl enable livesys.service livesys-late.service
-	# Set up KDE live session
-	echo 'livesys_session="kde"' > /etc/sysconfig/livesys
+	# Enable livesys session service
+	systemctl enable livesys-session.service
+	# Enable remix session settings
+	systemctl --global enable remix-session.service
 	# Set up Flatpak
 	echo "Setting up Flathub repo..."
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-	# Enable Flatpak user settings
-	systemctl --global enable flatpak-setup.service
 	# Avoid additional Fedora's Flatpak repos
 	systemctl disable flatpak-add-fedora-repos
 fi
@@ -103,29 +87,26 @@ fi
 # Remix localization
 #--------------------------------------
 echo "LANG=en_US.UTF-8" > /etc/default/locale
-if [[ "$kiwi_profiles" == *"Localization"* ]]; then
+if [[ "$kiwi_profiles" == *"l10n"* ]]; then
 	livesys_locale="${kiwi_language}.UTF-8"
-	livesys_language="${kiwi_language}"
-	livesys_keymap="${kiwi_keytable}"
-	echo "Set up language ${livesys_locale}"
+	echo "Set up locale ${livesys_locale}"
 	# Setup system-wide locale
 	echo "LANG=${livesys_locale}" > /etc/default/locale
+	# Setup keyboard layout
+	echo "[Layout]" > /etc/xdg/kxkbrc
+	echo "LayoutList=${kiwi_keytable}" >> /etc/xdg/kxkbrc
+	echo "Use=true" >> /etc/xdg/kxkbrc
 	# Replace default locale settings
 	sed -i "s/^LANG=.*/LANG=${livesys_locale}/" /etc/xdg/plasma-localerc
-	sed -i "s/^LANGUAGE=.*/LANGUAGE="${livesys_language}"/" /etc/xdg/plasma-localerc
-	sed -i "s/^defaultLanguage=.*/defaultLanguage=${livesys_language}/" /etc/skel/.config/KDE/Sonnet.conf
-	# Store locale config for live scripts
-	echo 'livesys_keymap="'$livesys_keymap'"' >> /etc/sysconfig/livesys
+	sed -i "s/^LANGUAGE=.*/LANGUAGE="${kiwi_language}"/" /etc/xdg/plasma-localerc
+	sed -i "s/^defaultLanguage=.*/defaultLanguage=${kiwi_language}/" /etc/skel/.config/KDE/Sonnet.conf
 fi
 
 #======================================
-# Remix	settings
+# Remix	settings and tweaks
 #--------------------------------------
+## Avoid to install weak dependencies
 echo "install_weak_deps=False" >> /etc/dnf/dnf.conf
-
-#======================================
-# Remix	fixes and tweaks
-#--------------------------------------
 ## Enable machine system settings
 systemctl enable machine-setup
 ## Remove preferred browser icon in KDE taskmanager
