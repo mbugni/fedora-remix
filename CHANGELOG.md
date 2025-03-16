@@ -1,3 +1,14 @@
+## 41.0.0 - 2025-03-16
+### Added
+- Realtime support
+- Zip tools
+### Removed
+- Redundant localization configs
+- Non-free multimedia plugins
+### Changed
+- One session setup for both console and graphical mode
+- Switch to dnf5 package manager
+
 ## 40.0.0 - 2024-12-24
 ### Added
 - Custom live scripts

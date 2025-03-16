@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+#
+# livesys-setup: configuration scripts for live system
+
+## Check if live system is already configured
+[ -e /.livesys-configured ] && exit 0
+
+source /.profile
+
+echo 'Setup liveuser'
+## Add liveuser user with no passwd
+useradd --comment "Live System User" --create-home --shell /usr/bin/bash liveuser
+passwd -d liveuser > /dev/null
+usermod -aG audio,video,wheel liveuser > /dev/null
+
+if [[ "$kiwi_profiles" == *"LiveSystemGraphical"* ]]; then
+	echo 'Setup liveuser desktop'
+    source /usr/local/libexec/livesys/graphical-setup
+fi
+
+echo 'Finish liveuser setup'
+## Make sure to set the right permissions for liveuser
+chown -R liveuser:liveuser /home/liveuser
+
+## Mark things as configured and keep this at the end of this script!
+touch /.livesys-configured

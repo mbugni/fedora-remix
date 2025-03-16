@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="7.6" name="Fedora-Remix" displayname="Fedora 40 Remix">
+<image schemaversion="8.2" name="Fedora-Remix" displayname="Fedora 41 Remix">
 	<description type="system">
 		<author>Massimiliano Bugni</author>
 		<contact>massi.ergosum@gmail.com</contact>
 		<specification>Fedora Remix</specification>
 	</description>
 	<preferences>
-		<release-version>40</release-version>
-		<version>40.0.0</version>
-		<packagemanager>dnf4</packagemanager>
+		<release-version>41</release-version>
+		<version>41.0.0</version>
+		<packagemanager>dnf5</packagemanager>
 		<rpm-check-signatures>true</rpm-check-signatures>
 		<locale>en_US</locale>
 		<keytable>us</keytable>
@@ -20,14 +20,14 @@
 	<include from="this://./components/boot.xml"/>
 	<include from="this://./components/common.xml"/>
 	<include from="this://./components/livesystem.xml"/>
-	<include from="this://./platforms/minimal.xml"/>
+	<include from="this://./platforms/console.xml"/>
 	<include from="this://./platforms/desktop.xml"/>
 	<include from="this://./platforms/workstation.xml"/>
 	<packages type="bootstrap">
 		<package name="basesystem"/>
 		<package name="coreutils"/>
-		<package name="dnf"/>
-		<package name="dnf-plugins-core"/>
+		<package name="dnf5"/>
+		<package name="dnf5-plugins"/>
 		<package name="fedora-release-identity-kde"/>
 		<package name="rootfiles"/>
 	</packages>

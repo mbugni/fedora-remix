@@ -1,0 +1,59 @@
+#!/usr/bin/bash
+#
+# graphical-setup: desktop settings for liveuser
+
+# Set up auto login for live user
+if [ -f /etc/sddm.conf ]; then
+    sed -i 's/^#User=.*/User=liveuser/' /etc/sddm.conf
+    sed -i "s/^#Session=.*/Session=plasma.desktop/" /etc/sddm.conf
+else
+cat > /etc/sddm.conf << SDDM_EOF
+[Autologin]
+User=liveuser
+Session=plasma.desktop
+SDDM_EOF
+fi
+
+# Disable plasma-discover-notifier
+desktop-file-edit --set-key=Hidden --set-value=true /etc/xdg/autostart/org.kde.discover.notifier.desktop
+
+# Create config directory, if not exists
+mkdir /home/liveuser/.config
+
+# Disable automount of 'known' devices
+# https://bugzilla.redhat.com/show_bug.cgi?id=2073708
+cat > /home/liveuser/.config/kded_device_automounterrc << AUTOMOUNTER_EOF
+[General]
+AutomountEnabled=false
+AutomountOnLogin=false
+AutomountOnPlugin=false
+AUTOMOUNTER_EOF
+
+echo 'Setup installer for liveuser'
+
+## Calamares
+## Hide original installer actions
+#mv /usr/share/applications/calamares.desktop /usr/share/applications/livesys-install.desktop
+## Adjust installer launcher
+#installer_cmd='pkexec env $(env | grep -E "(QT|XDG|XKB|HOME)") QT_QPA_PLATFORM=wayland calamares'
+#desktop-file-edit --set-key=Exec --set-value="$installer_cmd" /usr/share/applications/livesys-install.desktop
+
+## Setup Calamares settings
+#rsync -a /usr/local/libexec/livesys/calamares/config/ /etc/calamares/
+#rsync -a /usr/local/libexec/livesys/calamares/branding/auto/ /usr/share/calamares/branding/auto/
+
+## Anaconda
+## Hide original installer actions
+desktop-file-edit --set-key=Hidden --set-value=true /etc/xdg/autostart/liveinst-setup.desktop
+mv /usr/share/applications/liveinst.desktop /usr/share/applications/livesys-install.desktop
+
+# Replace Discover icon in KDE taskmanager with the installer icon
+sed -i -e 's/applications:org.kde.discover.desktop/applications:livesys-install.desktop/' \
+ /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
+
+## Remove preferred browser icon in KDE taskmanager
+sed -i -e 's/\,preferred:\/\/browser//' \
+ /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
+
+# Additional settings for liveuser session
+echo 'source /usr/local/libexec/livesys/session-setup' >> '/usr/local/libexec/remix/session-setup'

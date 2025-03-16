@@ -1,29 +1,24 @@
 <image>
 	<profiles>
 		<profile name="LiveSystemCore" description="Live system core components"/>
-		<profile name="LiveSystemConsole" description="Live system console">
-			<requires profile="LiveSystemCore"/>
-		</profile>
 		<profile name="LiveSystemGraphical" description="Live system graphical">
 			<requires profile="LiveSystemCore"/>
 		</profile>
 	</profiles>
 	<packages type="image" profiles="LiveSystemCore">
-		<!-- package name="dracut-kiwi-live"/ -->
 		<package name="dracut-live"/>
+		<package name="dracut-network"/>
 		<package name="dracut-squash"/>
-	</packages>
-	<packages type="image" profiles="LiveSystemConsole">
 		<package name="plymouth-scripts"/>
 	</packages>
 	<packages type="image" profiles="LiveSystemGraphical">
+		<package name="plymouth-theme-spinner"/>
 		<!-- Anaconda installer -->
 		<package name="anaconda"/>
 		<package name="anaconda-install-env-deps"/>
 		<package name="anaconda-live"/>
 		<!-- Calamares installer -->
 		<!-- package name="calamares"/ -->
-		<package name="plymouth-theme-spinner"/>
 	</packages>
 	<preferences>
 		<type image="iso" primary="true" flags="dmsquash" hybridpersistent_filesystem="ext4"

@@ -1,0 +1,29 @@
+---
+componentName:  auto
+
+welcomeStyleCalamares:   true
+
+strings:
+    productName:         "Fedora Linux"
+    shortProductName:    "Fedora Linux"
+    version:             "41 (KDE Plasma)"
+    shortVersion:        "41"
+    versionedName:       "Fedora Linux 41 (KDE Plasma)"
+    shortVersionedName:  "Fedora Linux 41"
+    bootloaderEntryName: "Fedora Linux"
+    productUrl:          "https://fedoraproject.org/"
+    supportUrl:          "https://ask.fedoraproject.org/"
+
+images:
+    productWelcome:      "/usr/share/pixmaps/fedora-logo.png"
+    productLogo:         "/usr/share/pixmaps/fedora-logo-sprite.png"
+    productIcon:         "/usr/share/icons/hicolor/48x48/apps/fedora-logo-icon.png"
+
+slideshow:               "show.qml"
+
+style:
+   SidebarBackground:        "#292F34"
+   SidebarText:              "#FFFFFF"
+   SidebarTextCurrent:       "#FFFFFF"
+   SidebarBackgroundCurrent: "#51A2DA"
+

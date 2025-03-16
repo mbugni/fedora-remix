@@ -11,7 +11,7 @@ Main goals of this remix are:
 * supporting external devices (like printers and scanners)
 
 ## How to build the LiveCD
-[See a detailed description][03] about how to build the live media.
+[See a detailed description][03] about how to build a live media using kiwi-ng.
 
 > [!NOTE]
 >
@@ -36,7 +36,7 @@ $ sudo dnf --assumeyes install podman
 Create the container for the build enviroment:
 
 ```shell
-$ sudo podman build --file=/<source-path>/Containerfile --tag=livebuild:fc40
+$ sudo podman build --file=/<source-path>/Containerfile --tag=livebuild:fc41
 ```
 
 Initialize the container by running an interactive shell:
@@ -44,7 +44,7 @@ Initialize the container by running an interactive shell:
 ```shell
 $ sudo podman run --privileged --network=host -it --volume=/dev:/dev:ro \
 --volume=/<source-path>:/live/source:ro --volume=/<target-path>:/live/target \
---name=livebuild-fc40 --hostname=livebuild-fc40 livebuild:fc40 /usr/bin/bash
+--name=livebuild-fc41 --hostname=livebuild-fc41 livebuild:fc41 /usr/bin/bash
 ```
 
 Exit from the build container. The container can be reused and upgraded multiple times.
@@ -53,20 +53,20 @@ See [Podman docs][06] for more details.
 To enter again into the build container:
 
 ```shell
-$ sudo podman start -ia livebuild-fc40
+$ sudo podman start -ia livebuild-fc41
 ```
 
 ### Build the image
 First, start the build container if not running:
 
 ```shell
-$ sudo podman start livebuild-fc40
+$ sudo podman start livebuild-fc41
 ```
 
 Choose a variant (eg: workstation with localization support) that corresponds to a profile (eg: `Workstation-l10n`).
 
 Available profiles/variants are:
-* `Minimal` (console only, mainly for testing)
+* `Console` (command line only, mainly for testing)
 * `Desktop` (minimal KDE environment with basic tools)
 * `Workstation` (KDE environment with more features like printing and scanning support)
 
@@ -75,7 +75,7 @@ For each variant you can append `-l10n` to get italian localization (eg: `Deskto
 Build the .iso image by running the `kiwi-ng` command:
 
 ```shell
-$ sudo podman exec livebuild-fc40 kiwi-ng --profile=Workstation-l10n --type=iso \
+$ sudo podman exec livebuild-fc41 kiwi-ng --profile=Workstation-l10n --type=iso \
 --debug --color-output --shared-cache-dir=/live/target/cache system build \
 --description=/live/source/kiwi-descriptions --target-dir=/live/target
 ```
@@ -85,8 +85,8 @@ The build can take a while (30 minutes or more), it depends on your machine perf
 Remove unused resources when don't need anymore:
 
 ```shell
-$ sudo podman container rm --force livebuild-fc40
-$ sudo podman image rm livebuild:fc40
+$ sudo podman container rm --force livebuild-fc41
+$ sudo podman image rm livebuild:fc41
 ```
 
 ## Transferring the image to a bootable media

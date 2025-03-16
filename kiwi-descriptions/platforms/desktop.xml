@@ -15,8 +15,10 @@
 		<package name="libva-vdpau-driver"/>
 		<package name="libvdpau-va-gl"/>
 		<package name="mesa-dri-drivers"/>
-		<package name="mesa-omx-drivers"/>
+		<!-- package name="mesa-omx-drivers"/ -->
 		<package name="mesa-vulkan-drivers"/>
+		<package name="mesa-va-drivers"/>
+		<package name="mesa-vdpau-drivers"/>
 		<!-- Display tools -->
 		<package name="egl-utils"/>
 		<package name="glx-utils"/>
@@ -37,21 +39,17 @@
 		<package name="gstreamer1-plugins-bad-free"/>
 		<package name="gstreamer1-plugins-good"/>
 		<package name="gstreamer1-plugins-ugly-free"/>
+		<package name="gstreamer1-vaapi"/>
 		<package name="libjxl"/><!-- Library files for JPEG-XL -->
 		<package name="pipewire-alsa"/>
 		<package name="pipewire-gstreamer"/>
 		<package name="pipewire-jack-audio-connection-kit"/>
 		<package name="pipewire-pulseaudio"/>
 		<package name="pipewire-utils"/>
+		<package name="realtime-setup"/>
 		<!-- Multimedia extras -->
-		<package name="ffmpeg"/>
-		<package name="gstreamer1-vaapi"/>
-		<package name="gstreamer1-plugins-bad-freeworld"/>
-		<package name="gstreamer1-plugins-ugly"/>
 		<package name="intel-media-driver"/>
 		<package name="libva-intel-driver"/>
-		<package name="mesa-va-drivers-freeworld"/>
-		<package name="mesa-vdpau-drivers-freeworld"/>
 		<!-- Networking -->
 		<package name="firewall-config"/>
 		<!-- KDE -->
@@ -72,7 +70,7 @@
 		<package name="kdegraphics-thumbnailers"/>
 		<package name="kdeplasma-addons"/>
 		<package name="kf6-kio"/>
-		<package name="kf5-sonnet-hunspell"/>
+		<!-- package name="kf5-sonnet-hunspell"/ -->
 		<package name="kf6-sonnet-hunspell"/>
 		<package name="khelpcenter"/>
 		<package name="kinfocenter"/>

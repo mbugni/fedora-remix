@@ -41,9 +41,11 @@
 		<package name="htop"/>
 		<package name="nano-default-editor"/>
 		<package name="fastfetch"/>
+		<package name="p7zip"/>
 		<package name="rsync"/>
 		<package name="unar"/>
 		<package name="unrar"/>
+		<package name="zip"/>
 		<!-- RPM Fusion repositories -->
 		<package name="rpmfusion-free-release"/>
 		<package name="rpmfusion-free-release-tainted"/>

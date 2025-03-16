@@ -5,7 +5,7 @@ ConditionKernelCommandLine=rd.live.image
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/libexec/livesys/livesys-session
+ExecStart=/usr/local/libexec/livesys/livesys-setup
 
 [Install]
 WantedBy=multi-user.target

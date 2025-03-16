@@ -1,0 +1,13 @@
+<image>
+	<profiles>
+		<profile name="Console" description="Console environment">
+			<requires profile="BootCore"/>
+			<requires profile="CommonCore"/>
+			<requires profile="LiveSystemCore"/>
+		</profile>
+		<profile name="Console-l10n" description="Console localization">
+			<requires profile="Console"/>
+			<requires profile="Common-l10n"/>
+		</profile>
+	</profiles>
+</image>

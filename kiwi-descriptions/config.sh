@@ -5,7 +5,7 @@ set -euxo pipefail
 #======================================
 # Greeting...
 #--------------------------------------
-echo "Configure image: [$kiwi_iname]-[$kiwi_iversion]"
+echo "Configure image: $kiwi_iname-$kiwi_iversion"
 echo "Profiles: [$kiwi_profiles]"
 
 #======================================
@@ -15,10 +15,10 @@ echo "Profiles: [$kiwi_profiles]"
 setsebool -P selinuxuser_execmod 1
 
 #======================================
-# Clear machine specific configuration
+# Setup machine specific configuration
 #--------------------------------------
-## Force generic hostname	
-echo "localhost" > /etc/hostname
+## Setup hostname	
+echo "${kiwi_iname,,}" > /etc/hostname
 ## Clear machine-id on pre generated images
 truncate -s 0 /etc/machine-id
 
@@ -31,49 +31,25 @@ systemctl enable NetworkManager.service
 systemctl enable systemd-timesyncd
 
 #======================================
-# Setup default target
-#--------------------------------------
-if [[ "$kiwi_profiles" == *"Desktop"* ]]; then
-	systemctl set-default graphical.target
-else
-	systemctl set-default multi-user.target
-fi
-
-#======================================
 # Import GPG keys
 #--------------------------------------
 releasever=$(rpm --eval '%{fedora}')
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-primary
-# echo "Packages within this disk image"
-# rpm -qa --qf '%{size}\t%{name}-%{version}-%{release}.%{arch}\n' | sort -rn
-
-# Note that running rpm recreates the rpm db files which aren't needed or wanted
-rm -f /var/lib/rpm/__db*
 
 #======================================
 # Remix livesystem
 #--------------------------------------
-if [[ "$kiwi_profiles" == *"LiveSystem"* ]]; then
-	echo "Delete the root user password"
-	passwd -d root
-	if [[ "$kiwi_profiles" == *"LiveSystemConsole"* ]]; then
-		echo "Delete the liveuser password"
-		passwd -d liveuser
-		# Set up default boot theme
-		/usr/sbin/plymouth-set-default-theme details
-	fi
-fi
-
-#======================================
-# Remix graphical
-#--------------------------------------
+echo 'Delete the root user password'
+passwd -d root
+echo 'Lock the root user account'
+passwd -l root
+echo 'Enable livesys session'
+systemctl enable livesys-setup.service
 if [[ "$kiwi_profiles" == *"LiveSystemGraphical"* ]]; then
-	echo "Lock the root user account"
-	passwd -l root
+	# Setup graphical system
+	systemctl set-default graphical.target
 	# Set up default boot theme
 	/usr/sbin/plymouth-set-default-theme spinner
-	# Enable livesys session service
-	systemctl enable livesys-session.service
 	# Enable remix session settings
 	systemctl --global enable remix-session.service
 	# Set up Flatpak
@@ -81,6 +57,11 @@ if [[ "$kiwi_profiles" == *"LiveSystemGraphical"* ]]; then
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	# Avoid additional Fedora's Flatpak repos
 	systemctl disable flatpak-add-fedora-repos
+else
+	# Fallback to console system
+	systemctl set-default multi-user.target
+	# Set up default boot theme
+	/usr/sbin/plymouth-set-default-theme details
 fi
 
 #======================================
@@ -88,18 +69,14 @@ fi
 #--------------------------------------
 echo "LANG=en_US.UTF-8" > /etc/default/locale
 if [[ "$kiwi_profiles" == *"l10n"* ]]; then
-	livesys_locale="${kiwi_language}.UTF-8"
-	echo "Set up locale ${livesys_locale}"
+	remix_locale="${kiwi_language}.UTF-8"
+	echo "Set up locale ${remix_locale}"
 	# Setup system-wide locale
-	echo "LANG=${livesys_locale}" > /etc/default/locale
+	echo "LANG=${remix_locale}" > /etc/default/locale
 	# Setup keyboard layout
 	echo "[Layout]" > /etc/xdg/kxkbrc
 	echo "LayoutList=${kiwi_keytable}" >> /etc/xdg/kxkbrc
 	echo "Use=true" >> /etc/xdg/kxkbrc
-	# Replace default locale settings
-	sed -i "s/^LANG=.*/LANG=${livesys_locale}/" /etc/xdg/plasma-localerc
-	sed -i "s/^LANGUAGE=.*/LANGUAGE="${kiwi_language}"/" /etc/xdg/plasma-localerc
-	sed -i "s/^defaultLanguage=.*/defaultLanguage=${kiwi_language}/" /etc/skel/.config/KDE/Sonnet.conf
 fi
 
 #======================================
@@ -109,10 +86,11 @@ fi
 echo "install_weak_deps=False" >> /etc/dnf/dnf.conf
 ## Enable machine system settings
 systemctl enable machine-setup
-## Remove preferred browser icon in KDE taskmanager
-if [ -f /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml ]; then
-    sed -i -e 's/\,preferred:\/\/browser//' \
-    /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
-fi
+
+#======================================
+# Remix	system clean
+#--------------------------------------
+## Running rpm recreates the rpm db files which aren't needed or wanted
+rm -f /var/lib/rpm/__db*
 
 exit 0
