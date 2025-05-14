@@ -37,7 +37,7 @@ releasever=$(rpm --eval '%{fedora}')
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-primary
 
 #======================================
-# Remix livesystem
+# Setup live system
 #--------------------------------------
 echo 'Delete the root user password'
 passwd -d root
@@ -49,7 +49,7 @@ if [[ "$kiwi_profiles" == *"LiveSystemGraphical"* ]]; then
 	# Setup graphical system
 	systemctl set-default graphical.target
 	# Set up default boot theme
-	/usr/sbin/plymouth-set-default-theme spinner
+	/usr/sbin/plymouth-set-default-theme bgrt
 	# Enable remix session settings
 	systemctl --global enable remix-session.service
 	# Set up Flatpak
@@ -65,14 +65,14 @@ else
 fi
 
 #======================================
-# Remix localization
+# Setup localization
 #--------------------------------------
 echo "LANG=en_US.UTF-8" > /etc/default/locale
 if [[ "$kiwi_profiles" == *"l10n"* ]]; then
-	remix_locale="${kiwi_language}.UTF-8"
-	echo "Set up locale ${remix_locale}"
+	system_locale="${kiwi_language}.UTF-8"
+	echo "Set up locale ${system_locale}"
 	# Setup system-wide locale
-	echo "LANG=${remix_locale}" > /etc/default/locale
+	echo "LANG=${system_locale}" > /etc/default/locale
 	# Setup keyboard layout
 	echo "[Layout]" > /etc/xdg/kxkbrc
 	echo "LayoutList=${kiwi_keytable}" >> /etc/xdg/kxkbrc
@@ -80,7 +80,7 @@ if [[ "$kiwi_profiles" == *"l10n"* ]]; then
 fi
 
 #======================================
-# Remix	settings and tweaks
+# Additional settings and tweaks
 #--------------------------------------
 ## Avoid to install weak dependencies
 echo "install_weak_deps=False" >> /etc/dnf/dnf.conf
@@ -88,7 +88,7 @@ echo "install_weak_deps=False" >> /etc/dnf/dnf.conf
 systemctl enable machine-setup
 
 #======================================
-# Remix	system clean
+# System clean
 #--------------------------------------
 ## Running rpm recreates the rpm db files which aren't needed or wanted
 rm -f /var/lib/rpm/__db*

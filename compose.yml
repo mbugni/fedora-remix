@@ -1,0 +1,24 @@
+---
+name: "fedora-remix"
+version: "3"
+services:
+
+  live-build:
+    image: "livebuild:fc41"
+    privileged: true
+    build:
+      context: .
+      args:
+        FEDORA_VERSION: 41
+    container_name: "livebuild-fc41"
+    hostname: "livebuild-fc41"
+    volumes:
+      - "/dev:/dev:ro"
+      - ".:/live/source:ro"
+      - "${KIWI_TARGET_DIR:-.}:/live/target"
+    command:
+      - >
+        kiwi-ng --profile=${KIWI_PROFILE:-Workstation-l10n} --type=iso --debug
+        --color-output --shared-cache-dir=/live/target/cache system build
+        --description=/live/source/kiwi-descriptions --target-dir=/live/target
+    restart: "no"

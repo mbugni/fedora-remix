@@ -1,3 +1,11 @@
+## 41.1.0 - 2025-05-14
+### Added
+- Image build using Podman compose
+### Changed
+- Switch the boot spinner theme to BGRT (Boot Graphics Resource Table)
+- Reset the KDE preferred browser to fallback the default
+- Improve power management
+
 ## 41.0.0 - 2025-03-16
 ### Added
 - Realtime support

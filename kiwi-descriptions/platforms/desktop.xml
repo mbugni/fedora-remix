@@ -52,6 +52,9 @@
 		<package name="libva-intel-driver"/>
 		<!-- Networking -->
 		<package name="firewall-config"/>
+		<!-- Power management -->
+		<package name="power-profiles-daemon"/>
+		<package name="upower"/>
 		<!-- KDE -->
 		<package name="aha"/><!-- Convert terminal output to HTML for KDE tools -->
 		<package name="ark"/>
@@ -99,7 +102,6 @@
 		<package name="spectacle"/>
 		<package name="svgpart"/>
 		<package name="sweeper"/>
-		<package name="upower"/>
 		<package name="xdg-desktop-portal-kde"/>
 		<package name="xdg-desktop-portal-gnome"/>
 	</packages>

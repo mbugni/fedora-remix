@@ -4,13 +4,13 @@ componentName:  auto
 welcomeStyleCalamares:   true
 
 strings:
-    productName:         "Fedora Linux"
-    shortProductName:    "Fedora Linux"
-    version:             "41 (KDE Plasma)"
-    shortVersion:        "41"
-    versionedName:       "Fedora Linux 41 (KDE Plasma)"
-    shortVersionedName:  "Fedora Linux 41"
-    bootloaderEntryName: "Fedora Linux"
+    productName:         "${NAME}"
+    shortProductName:    "${NAME}"
+    version:             "${VERSION}"
+    shortVersion:        "${VERSION_ID}"
+    versionedName:       "${NAME} ${VERSION}"
+    shortVersionedName:  "${NAME} ${VERSION_ID}"
+    bootloaderEntryName: "${NAME}"
     productUrl:          "https://fedoraproject.org/"
     supportUrl:          "https://ask.fedoraproject.org/"
 
