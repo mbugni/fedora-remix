@@ -13,6 +13,7 @@
 		<package name="grub2-efi-x64-modules"/>
 		<package name="grub2-pc"/>
 		<package name="grub2-pc-modules"/>
+		<package name="grub2-tools-efi"/>
 		<package name="grubby"/>
 		<package name="shim-signed-x64"/>
 		<!-- Basic langpack -->

@@ -12,17 +12,20 @@
 		<package name="plymouth-scripts"/>
 	</packages>
 	<packages type="image" profiles="LiveSystemGraphical">
+		<!-- Filter out unwanted EFI files from the embedded ESP, see rhbz#2358785 -->
+		<file name="iso-esp-excludes.yaml" target="image/exclude_files_efifatimage.yaml"/>
+		<!-- Graphical boot -->
 		<package name="plymouth-theme-spinner"/>
 		<!-- Anaconda installer -->
-		<package name="anaconda"/>
+		<!-- package name="anaconda"/>
 		<package name="anaconda-install-env-deps"/>
-		<package name="anaconda-live"/>
+		<package name="anaconda-live"/ -->
 		<!-- Calamares installer -->
-		<!-- package name="calamares"/ -->
+		<package name="calamares"/>
 	</packages>
 	<preferences>
-		<type image="iso" primary="true" flags="dmsquash" hybridpersistent_filesystem="ext4"
-				hybridpersistent="true"	volid="Fedora_Remix" firmware="uefi" kernelcmdline="rhgb quiet">
+		<type image="iso" primary="true" flags="dmsquash" kernelcmdline="rhgb quiet" firmware="uefi"
+				publisher="Fedora Remix" volid="Fedora_Remix" application_id="Fedora_Remix">
 			<bootloader name="grub2"/>
 		</type>
 	</preferences>

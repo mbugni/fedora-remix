@@ -28,6 +28,7 @@
 		<package name="plasma-nm-pptp"/>
 		<!-- Printing -->
 		<namedCollection name="printing"/>
+		<package name="hplip"/>
 		<package name="cups-ipptool"/>
 		<package name="cups-lpd"/>
 		<package name="kde-print-manager"/>

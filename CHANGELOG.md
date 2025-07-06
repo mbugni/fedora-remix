@@ -1,3 +1,16 @@
+## 42.0.0 - 2025-07-06
+### Added
+- Sensors support
+- Calamares installer
+- system-create command to build an image based on the existing root
+### Changed
+- Filter out [unwanted EFI files from the embedded ESP](https://bugzilla.redhat.com/show_bug.cgi?id=2358785)
+- EFI [partition mount options](https://github.com/OSInside/kiwi/issues/2201)
+- Move clean up scripts to Calamares post-install
+### Removed
+- Anaconda installer
+- xdg-desktop-portal-gnome
+
 ## 41.1.0 - 2025-05-14
 ### Added
 - Image build using Podman compose

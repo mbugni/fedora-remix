@@ -52,9 +52,10 @@
 		<package name="libva-intel-driver"/>
 		<!-- Networking -->
 		<package name="firewall-config"/>
-		<!-- Power management -->
+		<!-- System -->
 		<package name="power-profiles-daemon"/>
 		<package name="upower"/>
+		<package name="lm_sensors"/>
 		<!-- KDE -->
 		<package name="aha"/><!-- Convert terminal output to HTML for KDE tools -->
 		<package name="ark"/>
@@ -103,7 +104,6 @@
 		<package name="svgpart"/>
 		<package name="sweeper"/>
 		<package name="xdg-desktop-portal-kde"/>
-		<package name="xdg-desktop-portal-gnome"/>
 	</packages>
 	<packages type="image" profiles="Desktop-l10n">
 		<package name="kde-l10n-it"/>

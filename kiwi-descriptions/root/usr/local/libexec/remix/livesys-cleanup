@@ -1,9 +1,0 @@
-#!/usr/bin/bash
-#
-# livesys-cleanup: post-install cleanup scripts
-
-echo "Cleaning up livesys resources"
-sudo sh -c 'systemctl disable livesys-setup.service;
-dnf --assumeyes remove anaconda\* calamares\* dracut-live;
-rm /etc/systemd/system/livesys-setup.service -f;
-rm /usr/local/libexec/livesys -rf;'

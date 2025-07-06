@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Set ESP mount options to match what Fedora does
+# https://github.com/OSInside/kiwi/issues/2201
+gawk -i inplace '$2 == "/boot/efi" { $4 = $4",umask=0077,shortname=winnt" } { print $0 }' /etc/fstab

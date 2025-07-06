@@ -33,19 +33,22 @@ echo 'Setup installer for liveuser'
 
 ## Calamares
 ## Hide original installer actions
-#mv /usr/share/applications/calamares.desktop /usr/share/applications/livesys-install.desktop
+mv /usr/share/applications/calamares.desktop /usr/share/applications/livesys-install.desktop
 ## Adjust installer launcher
-#installer_cmd='pkexec env $(env | grep -E "(HOME|KDE|QT|XDG|XKB)") QT_QPA_PLATFORM=wayland calamares'
-#desktop-file-edit --set-key=Exec --set-value="$installer_cmd" /usr/share/applications/calamares-install.desktop
-
+installer_cmd='pkexec env $(env | grep -E "(HOME|KDE|QT|XDG|XKB)") QT_QPA_PLATFORM=wayland calamares'
+desktop-file-edit --set-key=Exec --set-value="$installer_cmd" /usr/share/applications/livesys-install.desktop
 ## Setup Calamares settings
-#rsync -a /usr/local/libexec/livesys/calamares/config/ /etc/calamares/
-#rsync -a /usr/local/libexec/livesys/calamares/branding/auto/ /usr/share/calamares/branding/auto/
+rsync -a /usr/local/libexec/livesys/calamares/config/ /etc/calamares/
+## Setup Calamares branding
+source /etc/os-release
+env NAME="Fedora Remix" VERSION="$VERSION" VERSION_ID="$VERSION_ID" envsubst \
+    < /usr/local/libexec/livesys/calamares/branding/auto/branding.desc \
+    > /usr/share/calamares/branding/auto/branding.desc
 
 ## Anaconda
 ## Hide original installer actions
-desktop-file-edit --set-key=Hidden --set-value=true /etc/xdg/autostart/liveinst-setup.desktop
-mv /usr/share/applications/liveinst.desktop /usr/share/applications/livesys-install.desktop
+# desktop-file-edit --set-key=Hidden --set-value=true /etc/xdg/autostart/liveinst-setup.desktop
+# mv /usr/share/applications/liveinst.desktop /usr/share/applications/livesys-install.desktop
 
 # Replace Discover icon in KDE taskmanager with the installer icon
 sed -i -e 's/applications:org.kde.discover.desktop/applications:livesys-install.desktop/' \
