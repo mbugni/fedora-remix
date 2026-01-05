@@ -1,3 +1,13 @@
+## 43.0.0 - 2026-01-05
+### Added
+- UEFI firmware updates support
+### Changed
+- Add default user to realtime group
+- Emoji fonts are colored now
+### Removed
+- Redundant VPN support
+- Unsupported packages
+
 ## 42.0.0 - 2025-07-06
 ### Added
 - Sensors support

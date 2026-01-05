@@ -20,6 +20,7 @@
 		<package name="linux-firmware"/>
 		<package name="microcode_ctl"/>
 		<package name="fwupd"/>
+		<package name="fwupd-efi"/>
 		<!-- Networking -->
 		<package name="NetworkManager-wifi"/>
 		<package name="firewalld"/>

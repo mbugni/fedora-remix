@@ -12,7 +12,6 @@
 	</profiles>
 	<packages type="image" profiles="Desktop">
 		<!-- Display drivers -->
-		<package name="libva-vdpau-driver"/>
 		<package name="libvdpau-va-gl"/>
 		<package name="mesa-dri-drivers"/>
 		<!-- package name="mesa-omx-drivers"/ -->
@@ -27,7 +26,7 @@
 		<package name="google-noto-sans-fonts"/>
 		<package name="google-noto-sans-mono-fonts"/>
 		<package name="google-noto-serif-fonts"/>
-		<package name="google-noto-emoji-fonts"/>
+		<package name="google-noto-color-emoji-fonts"/>
 		<!-- Flatpak -->
 		<package name="libreoffice-opensymbol-fonts"/>
 		<package name="flatpak"/>
@@ -74,7 +73,6 @@
 		<package name="kdegraphics-thumbnailers"/>
 		<package name="kdeplasma-addons"/>
 		<package name="kf6-kio"/>
-		<!-- package name="kf5-sonnet-hunspell"/ -->
 		<package name="kf6-sonnet-hunspell"/>
 		<package name="khelpcenter"/>
 		<package name="kinfocenter"/>

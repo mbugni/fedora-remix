@@ -10,7 +10,7 @@ Main goals of this remix are:
 * adding common extra-repos
 * supporting external devices (like printers and scanners)
 
-## How to build the LiveCD
+## How to build the LiveCD (on Fedora 43 or latest)
 [See a detailed description][03] about how to build a live media using kiwi-ng.
 
 > [!NOTE]
@@ -57,12 +57,6 @@ Environment arguments are optional, available variables are:
 |:---------------:|:-----------------------:|:------------------:|
 | KIWI_PROFILE    | Image variant           | `Workstation-l10n` |
 | KIWI_TARGET_DIR | Build target directory  | `.`                |
-
-Remove unused images when finished:
-
-```shell
-$ sudo podman image prune
-```
 
 ## Transferring the image to a bootable media
 You can use a tool like [Ventoy][07] to build multiboot USB devices, or simply transfer the image to a single

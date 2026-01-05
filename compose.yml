@@ -4,14 +4,14 @@ version: "3"
 services:
 
   system-build:
-    image: "livebuild:fc42"
+    image: "livebuild:fc43"
     privileged: true
     build:
       context: .
       args:
-        FEDORA_VERSION: "42"
+        FEDORA_VERSION: "43"
     volumes:
-      - "/dev:/dev:ro"
+      - "/dev:/dev"
       - ".:/live/source:ro"
       - "${KIWI_TARGET_DIR:-.}:/live/target"
     command:
@@ -22,10 +22,10 @@ services:
     restart: "no"
 
   system-create:
-    image: "livebuild:fc42"
+    image: "livebuild:fc43"
     privileged: true
     volumes:
-      - "/dev:/dev:ro"
+      - "/dev:/dev"
       - ".:/live/source:ro"
       - "${KIWI_TARGET_DIR:-.}:/live/target"
     command:

@@ -35,7 +35,7 @@ echo 'Setup installer for liveuser'
 ## Hide original installer actions
 mv /usr/share/applications/calamares.desktop /usr/share/applications/livesys-install.desktop
 ## Adjust installer launcher
-installer_cmd='pkexec env $(env | grep -E "(HOME|KDE|QT|XDG|XKB)") QT_QPA_PLATFORM=wayland calamares'
+installer_cmd='pkexec env $(env | grep -E "(XDG|XKB)") calamares'
 desktop-file-edit --set-key=Exec --set-value="$installer_cmd" /usr/share/applications/livesys-install.desktop
 ## Setup Calamares settings
 rsync -a /usr/local/libexec/livesys/calamares/config/ /etc/calamares/

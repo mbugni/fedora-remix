@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="8.2" name="Fedora-Remix" displayname="Fedora 42 Remix">
+<image schemaversion="8.2" name="Fedora-Remix" displayname="Fedora 43 Remix">
 	<description type="system">
 		<author>Massimiliano Bugni</author>
 		<contact>massi.ergosum@gmail.com</contact>
 		<specification>Fedora Remix</specification>
 	</description>
 	<preferences>
-		<release-version>42</release-version>
-		<version>42.0.0</version>
+		<release-version>43</release-version>
+		<version>43.0.0</version>
 		<packagemanager>dnf5</packagemanager>
 		<rpm-check-signatures>true</rpm-check-signatures>
 		<locale>en_US</locale>

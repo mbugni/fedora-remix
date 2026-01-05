@@ -23,9 +23,6 @@
 		<package name="libsane-hpaio"/>
 		<!-- Networking -->
 		<namedCollection name="networkmanager-submodules"/>
-		<package name="plasma-nm-l2tp"/>
-		<package name="plasma-nm-openvpn"/>
-		<package name="plasma-nm-pptp"/>
 		<!-- Printing -->
 		<namedCollection name="printing"/>
 		<package name="hplip"/>
