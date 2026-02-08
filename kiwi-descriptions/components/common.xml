@@ -15,12 +15,26 @@
 		<package name="selinux-policy-targeted"/>
 		<package name="sudo"/>
 		<package name="util-linux"/>
-		<!-- Hardware support -->
-		<namedCollection name="hardware-support"/>
+		<!-- Firmware -->
 		<package name="linux-firmware"/>
-		<package name="microcode_ctl"/>
 		<package name="fwupd"/>
 		<package name="fwupd-efi"/>
+		<!-- Hardware support -->
+		<package name="amd-gpu-firmware"/>
+		<package name="nvidia-gpu-firmware"/>
+		<package name="intel-gpu-firmware"/>
+		<package name="atheros-firmware"/>
+		<package name="b43-openfwwf"/>
+		<package name="brcmfmac-firmware"/>
+		<package name="qcom-wwan-firmware"/>
+		<package name="iwlwifi-dvm-firmware"/>
+		<package name="iwlwifi-mvm-firmware"/>
+		<package name="mt7xxx-firmware"/>
+		<package name="realtek-firmware"/>
+		<package name="alsa-sof-firmware"/>
+		<package name="tiwilink-firmware"/>
+		<package name="microcode_ctl"/>
+		<package name="usb_modeswitch"/>
 		<!-- Networking -->
 		<package name="NetworkManager-wifi"/>
 		<package name="firewalld"/>

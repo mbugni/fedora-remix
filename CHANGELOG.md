@@ -1,3 +1,15 @@
+## 43.1.0 - 2026-02-08
+### Added
+- OpenSymbol fonts mapping to Noto Sans Symbols
+### Changed
+- Replace obsolete KDE packages
+- KWrite instead of FeatherPad as default editor
+- tuned-ppd instead of power-profiles-daemon
+- Firmware dependencies reviewed
+- Printing dependencies reviewed
+### Removed
+- VDPAU modules
+
 ## 43.0.0 - 2026-01-05
 ### Added
 - UEFI firmware updates support

@@ -12,12 +12,11 @@
 	</profiles>
 	<packages type="image" profiles="Desktop">
 		<!-- Display drivers -->
-		<package name="libvdpau-va-gl"/>
+		<package name="libva"/>
 		<package name="mesa-dri-drivers"/>
 		<!-- package name="mesa-omx-drivers"/ -->
 		<package name="mesa-vulkan-drivers"/>
 		<package name="mesa-va-drivers"/>
-		<package name="mesa-vdpau-drivers"/>
 		<!-- Display tools -->
 		<package name="egl-utils"/>
 		<package name="glx-utils"/>
@@ -25,21 +24,22 @@
 		<!-- Fonts -->
 		<package name="google-noto-sans-fonts"/>
 		<package name="google-noto-sans-mono-fonts"/>
+		<package name="google-noto-sans-symbols-fonts"/>
+		<package name="google-noto-sans-symbols-2-fonts"/>
+		<package name="google-noto-sans-symbols-vf-fonts"/>
 		<package name="google-noto-serif-fonts"/>
 		<package name="google-noto-color-emoji-fonts"/>
-		<!-- Flatpak -->
-		<package name="libreoffice-opensymbol-fonts"/>
-		<package name="flatpak"/>
 		<!-- Multimedia -->
-		<package name="PackageKit-gstreamer-plugin"/>
 		<package name="alsa-utils"/>
-		<package name="gstreamer1-plugin-libav"/><!-- FFmpeg/LibAV GStreamer plugin -->
+		<package name="alsa-ucm"/> <!-- ALSA Use Case Manager -->
+		<package name="PackageKit-gstreamer-plugin"/>
+		<package name="gstreamer1-plugin-libav"/> <!-- FFmpeg/LibAV GStreamer plugin -->
 		<package name="gstreamer1-plugin-openh264"/>
 		<package name="gstreamer1-plugins-bad-free"/>
 		<package name="gstreamer1-plugins-good"/>
 		<package name="gstreamer1-plugins-ugly-free"/>
 		<package name="gstreamer1-vaapi"/>
-		<package name="libjxl"/><!-- Library files for JPEG-XL -->
+		<package name="libjxl"/> <!-- Library files for JPEG-XL -->
 		<package name="pipewire-alsa"/>
 		<package name="pipewire-gstreamer"/>
 		<package name="pipewire-jack-audio-connection-kit"/>
@@ -52,16 +52,17 @@
 		<!-- Networking -->
 		<package name="firewall-config"/>
 		<!-- System -->
-		<package name="power-profiles-daemon"/>
-		<package name="upower"/>
+		<package name="flatpak"/>
 		<package name="lm_sensors"/>
+		<package name="tuned-ppd"/>
+		<package name="udisks2"/>
+		<package name="upower"/>
 		<!-- KDE -->
 		<package name="aha"/><!-- Convert terminal output to HTML for KDE tools -->
 		<package name="ark"/>
 		<package name="breeze-gtk"/>
 		<package name="dolphin"/>
 		<package name="falkon"/>
-		<package name="featherpad"/>
 		<package name="ffmpegthumbs"/>
 		<package name="flatpak-kcm"/>
 		<package name="ibus-uniemoji"/>
@@ -69,7 +70,6 @@
 		<package name="kcharselect"/>
 		<package name="kcm_systemd"/>
 		<package name="kde-gtk-config"/>
-		<package name="kde-style-breeze"/>
 		<package name="kdegraphics-thumbnailers"/>
 		<package name="kdeplasma-addons"/>
 		<package name="kf6-kio"/>
@@ -81,6 +81,7 @@
 		<package name="kscreen"/>
 		<package name="kwalletmanager"/>
 		<package name="kwin"/>
+		<package name="kwrite"/>
 		<package name="pam-kwallet"/>
 		<package name="plasma-breeze"/>
 		<package name="plasma-desktop"/>
@@ -90,7 +91,7 @@
 		<package name="plasma-milou"/>
 		<package name="plasma-nm"/><!-- Network Manager -->
 		<package name="plasma-pa"/><!-- Pulse Audio -->
-        <package name="plasma-systemmonitor"/>
+		<package name="plasma-systemmonitor"/>
 		<package name="plasma-thunderbolt"/>
 		<package name="plasma-workspace"/>
 		<package name="polkit-kde"/>

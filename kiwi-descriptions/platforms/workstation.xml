@@ -17,18 +17,29 @@
 		<!-- Connectivity -->
 		<package name="ipp-usb"/>
 		<package name="kde-connect"/>
-		<package name="kio_mtp"/>
+		<package name="kio-extras"/>
 		<!-- Hardware support -->
 		<package name="iscan-firmware"/>
 		<package name="libsane-hpaio"/>
 		<!-- Networking -->
-		<namedCollection name="networkmanager-submodules"/>
+		<package name="NetworkManager-bluetooth"/>
+		<package name="NetworkManager-wwan"/>
+		<package name="samba-client"/>
 		<!-- Printing -->
-		<namedCollection name="printing"/>
-		<package name="hplip"/>
+		<package name="bluez-cups"/>
+		<package name="cups"/>
+		<package name="cups-browsed"/>
+		<package name="cups-filters"/>
 		<package name="cups-ipptool"/>
 		<package name="cups-lpd"/>
+		<package name="cups-pk-helper"/>
+		<package name="ghostscript"/>
+		<package name="gutenprint-cups"/>
+		<package name="hplip"/>
+		<package name="paps"/>
 		<package name="kde-print-manager"/>
+		<package name="system-config-printer-libs"/>
+		<package name="system-config-printer-udev"/>
 		<!-- Scanning -->
 		<package name="sane-backends-daemon"/>
 		<package name="sane-backends-drivers-cameras"/>

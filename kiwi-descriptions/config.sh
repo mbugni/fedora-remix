@@ -27,7 +27,7 @@ truncate -s 0 /etc/machine-id
 #--------------------------------------
 ## Enable NetworkManager
 systemctl enable NetworkManager.service
-## Enable systemd-timesyncd
+## Enable Network Time Protocol
 systemctl enable systemd-timesyncd
 
 #======================================
