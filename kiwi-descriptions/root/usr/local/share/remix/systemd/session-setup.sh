@@ -7,7 +7,3 @@ flatpak override --user --filesystem=xdg-config/gtkrc:ro
 flatpak override --user --filesystem=xdg-config/gtkrc-2.0:ro
 flatpak override --user --filesystem=xdg-config/gtk-3.0:ro
 flatpak override --user --filesystem=xdg-config/gtk-4.0:ro
-
-# https://bugzilla.mozilla.org/show_bug.cgi?id=1882641
-echo "Inhibit idle when Firefox is playing full screen video"
-flatpak override --user --talk-name=org.freedesktop.ScreenSaver org.mozilla.firefox

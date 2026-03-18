@@ -44,14 +44,15 @@ passwd -d root
 echo 'Lock the root user account'
 passwd -l root
 echo 'Enable livesys session'
-systemctl enable livesys-setup.service
+systemctl enable livesys-boot-setup.service
+plymouth_theme="details"
 if [[ "$kiwi_profiles" == *"LiveSystemGraphical"* ]]; then
 	# Setup graphical system
 	systemctl set-default graphical.target
-	# Set up default boot theme
-	/usr/sbin/plymouth-set-default-theme bgrt
-	# Enable remix session settings
-	systemctl --global enable remix-session.service
+	# Setup graphical boot theme
+	plymouth_theme="bgrt"
+	# Enable user session setup
+	systemctl --global enable remix-session-setup.service
 	# Set up Flatpak
 	echo "Setting up Flathub repo..."
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -60,9 +61,9 @@ if [[ "$kiwi_profiles" == *"LiveSystemGraphical"* ]]; then
 else
 	# Fallback to console system
 	systemctl set-default multi-user.target
-	# Set up default boot theme
-	/usr/sbin/plymouth-set-default-theme details
 fi
+# Setup default boot theme
+/usr/sbin/plymouth-set-default-theme "${plymouth_theme}"
 
 #======================================
 # Setup localization
@@ -84,8 +85,8 @@ fi
 #--------------------------------------
 ## Avoid to install weak dependencies
 echo "install_weak_deps=False" >> /etc/dnf/dnf.conf
-## Enable machine system settings
-systemctl enable machine-setup
+## Enable system wide settings
+systemctl enable remix-system-setup.service
 
 #======================================
 # System clean

@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-# livesys-setup: configuration scripts for live system
+# boot-setup: configuration scripts for live system
 
 ## Check if live system is already configured
 [ -e /.livesys-configured ] && exit 0
@@ -15,7 +15,7 @@ usermod -aG audio,video,wheel liveuser > /dev/null
 
 if [[ "$kiwi_profiles" == *"LiveSystemGraphical"* ]]; then
 	echo 'Setup liveuser desktop'
-    source /usr/local/libexec/livesys/graphical-setup
+    source /usr/local/share/livesys/systemd/graphical-setup.sh
 fi
 
 echo 'Finish liveuser setup'

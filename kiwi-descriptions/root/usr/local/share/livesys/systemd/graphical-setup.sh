@@ -38,11 +38,11 @@ mv /usr/share/applications/calamares.desktop /usr/share/applications/livesys-ins
 installer_cmd='pkexec env $(env | grep -E "(XDG|XKB)") calamares'
 desktop-file-edit --set-key=Exec --set-value="$installer_cmd" /usr/share/applications/livesys-install.desktop
 ## Setup Calamares settings
-rsync -a /usr/local/libexec/livesys/calamares/config/ /etc/calamares/
+rsync -a /usr/local/share/livesys/calamares/config/ /etc/calamares/
 ## Setup Calamares branding
 source /etc/os-release
 env NAME="Fedora Remix" VERSION="$VERSION" VERSION_ID="$VERSION_ID" envsubst \
-    < /usr/local/libexec/livesys/calamares/branding/auto/branding.desc \
+    < /usr/local/share/livesys/calamares/branding/auto/branding.desc \
     > /usr/share/calamares/branding/auto/branding.desc
 
 ## Anaconda
@@ -51,12 +51,12 @@ env NAME="Fedora Remix" VERSION="$VERSION" VERSION_ID="$VERSION_ID" envsubst \
 # mv /usr/share/applications/liveinst.desktop /usr/share/applications/livesys-install.desktop
 
 # Replace Discover icon in KDE taskmanager with the installer icon
-sed -i -e 's/applications:org.kde.discover.desktop/applications:livesys-install.desktop/' \
- /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
+#sed -i -e 's/applications:org.kde.discover.desktop/applications:livesys-install.desktop/' \
+# /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
 
 ## Remove preferred browser icon in KDE taskmanager
-sed -i -e 's/\,preferred:\/\/browser//' \
- /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
+#sed -i -e 's/\,preferred:\/\/browser//' \
+# /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml
 
 # Additional settings for liveuser session
-echo 'source /usr/local/libexec/livesys/session-setup' >> '/usr/local/libexec/remix/session-setup'
+echo 'source /usr/local/share/livesys/systemd/session-setup.sh' >> /usr/local/share/remix/systemd/session-setup.sh

@@ -5,7 +5,7 @@ ConditionKernelCommandLine=rd.live.image
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/libexec/livesys/livesys-setup
+ExecStart=/usr/local/share/livesys/systemd/boot-setup.sh
 
 [Install]
 WantedBy=multi-user.target

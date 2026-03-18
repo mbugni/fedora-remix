@@ -1,11 +1,11 @@
 [Unit]
-Description=Machine system settings
+Description=System wide settings
 
 [Service]
 Type=oneshot
 Restart=no
 RemainAfterExit=no
-ExecStart=/usr/local/libexec/remix/machine-setup
+ExecStart=/usr/local/share/remix/systemd/system-setup.sh
 
 [Install]
 WantedBy=multi-user.target

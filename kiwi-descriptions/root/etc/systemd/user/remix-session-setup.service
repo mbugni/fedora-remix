@@ -7,7 +7,7 @@ After=graphical-session.target
 Type=oneshot
 Restart=no
 RemainAfterExit=no
-ExecStart=/usr/local/libexec/remix/session-setup
+ExecStart=/usr/local/share/remix/systemd/session-setup.sh
 
 [Install]
 WantedBy=graphical-session.target

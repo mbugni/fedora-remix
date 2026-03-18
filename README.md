@@ -2,6 +2,7 @@
 
 ## Purpose
 This project is a [Fedora Remix][01] and aims to be a complete system for personal computing with localization support.
+It is based on KDE ([KDE Desktop Environment][08]).
 You can [download a live image][02] and try the software, and then install it in your PC if you want.
 You can also customize the image starting from available scripts.
 
@@ -67,7 +68,9 @@ $ sudo dd if=/<target-path>/Fedora-Remix.x86_64-<version>.iso of=/dev/<stick-dev
 ```
 
 ## ![Bandiera italiana][04] Per gli utenti italiani
-Questo è un [Remix di Fedora][01] per computer ad uso personale con il supporto in italiano. Nell'[immagine .iso][02] che si ottiene sono già installati i pacchetti e le configurazioni per il funzionamento in italiano del sistema (come l'ambiente grafico, i repo extra etc).
+Questo è un [Remix di Fedora][01] per computer ad uso personale con il supporto in italiano.
+È basato sull'ambiente KDE ([KDE Desktop Environment][08]).
+Nell'[immagine .iso][02] che si ottiene sono già installati i pacchetti e le configurazioni per il funzionamento in italiano del sistema (come l'ambiente grafico, i repo extra etc).
 
 Il remix ha come obiettivi principali:
 * utilizzo delle applicazioni Flatpak
@@ -86,3 +89,4 @@ The format is based on [Keep a Changelog][05].
 [05]: https://keepachangelog.com/
 [06]: https://docs.podman.io/
 [07]: https://www.ventoy.net/
+[08]: https://kde.org/

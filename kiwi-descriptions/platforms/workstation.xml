@@ -37,7 +37,7 @@
 		<package name="gutenprint-cups"/>
 		<package name="hplip"/>
 		<package name="paps"/>
-		<package name="kde-print-manager"/>
+		<package name="plasma-print-manager"/>
 		<package name="system-config-printer-libs"/>
 		<package name="system-config-printer-udev"/>
 		<!-- Scanning -->

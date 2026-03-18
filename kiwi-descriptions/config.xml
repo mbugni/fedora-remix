@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="8.2" name="Fedora-Remix" displayname="Fedora 43 Remix">
+<image schemaversion="8.3" name="Fedora-Remix" displayname="Fedora 43 Remix">
 	<description type="system">
 		<author>Massimiliano Bugni</author>
 		<contact>massi.ergosum@gmail.com</contact>
@@ -8,7 +8,7 @@
 	</description>
 	<preferences>
 		<release-version>43</release-version>
-		<version>43.1.0</version>
+		<version>43.2.0</version>
 		<packagemanager>dnf5</packagemanager>
 		<rpm-check-signatures>true</rpm-check-signatures>
 		<locale>en_US</locale>

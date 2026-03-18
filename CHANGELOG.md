@@ -1,3 +1,12 @@
+## 43.2.0 - 2026-03-18
+### Added
+- LiveVirtualGuest build profile
+### Changed
+- Improved build isolation
+- Improved install scripts
+### Removed
+- KDE Plasma taskbar customizations
+
 ## 43.1.0 - 2026-02-08
 ### Added
 - OpenSymbol fonts mapping to Noto Sans Symbols
