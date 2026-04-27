@@ -2,14 +2,14 @@
 # Copyright (c) 2026 Massimiliano Bugni
 
 [Unit]
-Description=System wide setup
-Before=systemd-logind.service
+Description=System finalizing
+After=remix-system-setup.service
 
 [Service]
-Type=oneshot
+Type=simple
 Restart=no
 RemainAfterExit=no
-ExecStart=/usr/bin/remix system setup
+ExecStart=/usr/bin/remix system finalize
 
 [Install]
 WantedBy=multi-user.target

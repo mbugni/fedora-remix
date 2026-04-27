@@ -1,0 +1,37 @@
+#!/usr/bin/bash
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (c) 2026 Massimiliano Bugni
+#
+# remix: service command executor
+
+invoked_program="$(basename $0)"
+invoked_service="$1"
+invoked_command="$2"
+
+if [[ $# -lt 2 ]]; then 
+    exec echo "Usage: ${invoked_program} service command"
+fi
+
+export REMIX_BASE_DIR="${REMIX_BASE_DIR:-/usr/libexec/remix}"
+export REMIX_ACTIONABLE_DIR="${REMIX_BASE_DIR}/command/$invoked_service/$invoked_command"
+
+if [[ ! -f $REMIX_ACTIONABLE_DIR/execute.sh ]]; then 
+    exec echo "Fatal: ivalid command '$invoked_service $invoked_command'"
+fi
+
+export REMIX_ACTIONABLE_SERVICE="$invoked_service"
+export REMIX_ACTIONABLE_COMMAND="$invoked_command"
+
+source ${REMIX_BASE_DIR}/module/environment.sh
+source ${REMIX_BASE_DIR}/module/functions.sh
+
+command_log_path='/tmp/remix/command'
+if [ ! -d "$command_log_path" ]; then
+    mkdir --parents $command_log_path
+    chmod ugo+rwx $command_log_path
+fi
+
+export REMIX_ACTIONABLE_LOG="${command_log_path}/${invoked_service}-${invoked_command}.log"
+
+source ${REMIX_ACTIONABLE_DIR}/execute.sh 2>&1 | tee $REMIX_ACTIONABLE_LOG

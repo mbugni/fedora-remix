@@ -3,7 +3,7 @@
 ## Purpose
 This project is a [Fedora Remix][01] and aims to be a complete system for personal computing with localization support.
 It is based on KDE ([KDE Desktop Environment][08]).
-You can [download a live image][02] and try the software, and then install it in your PC if you want.
+You can build and [try the live image][02], then install it in your PC if you want.
 You can also customize the image starting from available scripts.
 
 Main goals of this remix are:
@@ -82,8 +82,21 @@ All notable changes to this project will be documented in the [`CHANGELOG.md`](C
 
 The format is based on [Keep a Changelog][05].
 
+## Licensing (SPDX-License-Identifier: GPL-2.0-or-later)
+This program is free software; you can redistribute it and/or modify it under the terms of
+the GNU General Public License version 2 as published by the Free Software Foundation, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program.
+If not, see <http://www.gnu.org/licenses/>.
+
+
 [01]: https://fedoraproject.org/wiki/Remix
-[02]: https://github.com/mbugni/fedora-remix/releases
+[02]: https://virt-manager.org/
 [03]: https://osinside.github.io/kiwi
 [04]: http://flagpedia.net/data/flags/mini/it.png
 [05]: https://keepachangelog.com/

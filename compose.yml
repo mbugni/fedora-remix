@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (c) 2026 Massimiliano Bugni
 ---
 name: "fedora-remix"
 version: "3"
@@ -54,5 +56,12 @@ services:
     command:
       - >
         kiwi-ng --profile=${KIWI_PROFILE:-Workstation-l10n} --type=iso --debug
-        --color-output --shared-cache-dir=/live/target/cache system create
-        --root=/live/target/build/image-root --target-dir=/live/target
+        --color-output system create --root=/live/target/build/image-root
+        --target-dir=/live/target
+
+  # Print the KIWI NG help
+  kiwi-ng-help:
+    <<: *kiwi-ng-container
+    command:
+      - >
+        kiwi-ng --help

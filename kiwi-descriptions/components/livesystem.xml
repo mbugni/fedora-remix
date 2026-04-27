@@ -18,11 +18,9 @@
 		<!-- Graphical boot -->
 		<package name="plymouth-theme-spinner"/>
 		<!-- Anaconda installer -->
-		<!-- package name="anaconda"/>
+		<package name="anaconda"/>
 		<package name="anaconda-install-env-deps"/>
-		<package name="anaconda-live"/ -->
-		<!-- Calamares installer -->
-		<package name="calamares"/>
+		<package name="anaconda-live"/>
 	</packages>
 	<packages type="image" profiles="LiveVirtualGuest">
 		<package name="qemu-guest-agent"/>

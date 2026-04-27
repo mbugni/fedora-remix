@@ -5,9 +5,9 @@
 	</profiles>
 	<packages type="image" profiles="CommonCore">
 		<!-- Core packages -->
+		<package name="bash-completion"/>
 		<package name="binutils"/>
-		<package name="curl"/>
-		<package name="e2fsprogs"/>
+		<package name="console-setup"/>
 		<package name="man-db"/>
 		<package name="passwd"/>
 		<package name="policycoreutils"/>
@@ -35,34 +35,46 @@
 		<package name="tiwilink-firmware"/>
 		<package name="microcode_ctl"/>
 		<package name="usb_modeswitch"/>
+		<!-- Diagnostics -->
+		<package name="dmidecode"/>
+		<package name="pciutils"/>
+		<package name="usbutils"/>
 		<!-- Networking -->
+		<package name="bind-utils"/>
+		<package name="curl"/>
 		<package name="NetworkManager-wifi"/>
-		<package name="firewalld"/>
+		<package name="net-tools"/>
+		<package name="firewalld"/> <!-- Firewall management -->
 		<package name="systemd-resolved"/>
+		<package name="wget"/>
+		<package name="wireless-regdb"/>
+		<package name="wpa_supplicant"/>
+		<!-- Fileystem support -->
+		<package name="btrfs-progs"/>
+		<package name="dosfstools"/>
+		<package name="e2fsprogs"/>
+		<package name="exfatprogs"/>
+		<package name="f2fs-tools"/>
+		<package name="ntfs-3g"/>
+		<package name="xfsprogs"/>
+		<package name="parted"/>
 		<!-- System -->
 		<package name="rpm-plugin-systemd-inhibit"/>
 		<!-- package name="systemd-oomd-defaults"/ -->
 		<package name="zram-generator-defaults"/>
 		<!-- Tools -->
-		<package name="bash-completion"/>
-		<package name="bind-utils"/>
-		<package name="btrfs-progs"/>
-		<package name="dmidecode"/>
-		<package name="dosfstools"/>
-		<package name="f2fs-tools"/>
-		<package name="net-tools"/>
-		<package name="pciutils"/>
 		<package name="psmisc"/>
 		<package name="clinfo"/>
-		<package name="exfatprogs"/>
 		<package name="htop"/>
 		<package name="nano-default-editor"/>
 		<package name="fastfetch"/>
 		<package name="p7zip"/>
 		<package name="rsync"/>
+		<package name="tree"/>
 		<package name="unar"/>
 		<package name="unrar"/>
 		<package name="zip"/>
+		<package name="zstd"/>
 		<!-- RPM Fusion repositories -->
 		<package name="rpmfusion-free-release"/>
 		<package name="rpmfusion-free-release-tainted"/>

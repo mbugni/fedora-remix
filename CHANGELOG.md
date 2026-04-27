@@ -1,3 +1,13 @@
+## 43.3.0 - 2026-04-27
+### Added
+- More system tools
+- More filesystem support
+### Changed
+- Licence from MIT to GPLv2 (GPL-2.0-or-later)
+- Installer: Anaconda replaces Calamares
+- Scripts refactoring
+- Weekly updates notification
+
 ## 43.2.0 - 2026-03-18
 ### Added
 - LiveVirtualGuest build profile

@@ -12,7 +12,6 @@
 	</profiles>
 	<packages type="image" profiles="Desktop">
 		<!-- Display drivers -->
-		<package name="libva"/>
 		<package name="mesa-dri-drivers"/>
 		<!-- package name="mesa-omx-drivers"/ -->
 		<package name="mesa-vulkan-drivers"/>
@@ -22,17 +21,15 @@
 		<package name="glx-utils"/>
 		<package name="vulkan-tools"/>
 		<!-- Fonts -->
-		<package name="google-noto-sans-fonts"/>
-		<package name="google-noto-sans-mono-fonts"/>
+		<package name="default-fonts-core"/>
 		<package name="google-noto-sans-symbols-fonts"/>
 		<package name="google-noto-sans-symbols-2-fonts"/>
 		<package name="google-noto-sans-symbols-vf-fonts"/>
-		<package name="google-noto-serif-fonts"/>
-		<package name="google-noto-color-emoji-fonts"/>
 		<!-- Multimedia -->
 		<package name="alsa-utils"/>
 		<package name="alsa-ucm"/> <!-- ALSA Use Case Manager -->
 		<package name="PackageKit-gstreamer-plugin"/>
+		<package name="ffmpeg"/>
 		<package name="gstreamer1-plugin-libav"/> <!-- FFmpeg/LibAV GStreamer plugin -->
 		<package name="gstreamer1-plugin-openh264"/>
 		<package name="gstreamer1-plugins-bad-free"/>
@@ -46,9 +43,10 @@
 		<package name="pipewire-pulseaudio"/>
 		<package name="pipewire-utils"/>
 		<package name="realtime-setup"/>
-		<!-- Multimedia extras -->
+		<!-- Video Acceleration API -->
+		<package name="libva"/>
 		<package name="intel-media-driver"/>
-		<package name="libva-intel-driver"/>
+		<package name="libva-utils"/>
 		<!-- Networking -->
 		<package name="firewall-config"/>
 		<!-- System -->
@@ -58,7 +56,7 @@
 		<package name="udisks2"/>
 		<package name="upower"/>
 		<!-- KDE -->
-		<package name="aha"/><!-- Convert terminal output to HTML for KDE tools -->
+		<package name="aha"/> <!-- Convert terminal output to HTML for KDE tools -->
 		<package name="ark"/>
 		<package name="breeze-gtk"/>
 		<package name="dolphin"/>

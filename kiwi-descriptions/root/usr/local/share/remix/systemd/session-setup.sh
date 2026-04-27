@@ -1,9 +1,0 @@
-#!/usr/bin/bash
-#
-# session-setup: configure graphical session
-
-echo "Sharing KDE custom Gtk settings with apps"
-flatpak override --user --filesystem=xdg-config/gtkrc:ro
-flatpak override --user --filesystem=xdg-config/gtkrc-2.0:ro
-flatpak override --user --filesystem=xdg-config/gtk-3.0:ro
-flatpak override --user --filesystem=xdg-config/gtk-4.0:ro

@@ -43,21 +43,12 @@ echo 'Delete the root user password'
 passwd -d root
 echo 'Lock the root user account'
 passwd -l root
-echo 'Enable livesys session'
-systemctl enable livesys-boot-setup.service
 plymouth_theme="details"
 if [[ "$kiwi_profiles" == *"LiveSystemGraphical"* ]]; then
 	# Setup graphical system
 	systemctl set-default graphical.target
 	# Setup graphical boot theme
 	plymouth_theme="bgrt"
-	# Enable user session setup
-	systemctl --global enable remix-session-setup.service
-	# Set up Flatpak
-	echo "Setting up Flathub repo..."
-	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-	# Avoid additional Fedora's Flatpak repos
-	systemctl disable flatpak-add-fedora-repos
 else
 	# Fallback to console system
 	systemctl set-default multi-user.target
@@ -85,8 +76,8 @@ fi
 #--------------------------------------
 ## Avoid to install weak dependencies
 echo "install_weak_deps=False" >> /etc/dnf/dnf.conf
-## Enable system wide settings
-systemctl enable remix-system-setup.service
+## Setup remix live image
+/usr/bin/remix liveimage setup 
 
 #======================================
 # System clean
