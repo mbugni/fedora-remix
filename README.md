@@ -1,5 +1,7 @@
 # Fedora Remix
 
+## ⚠️ This project is no longer maintained 👉 You can try the new [Linux Symbiont](https://gitlab.com/mbugni/xbiont) instead
+
 ## Purpose
 This project is a [Fedora Remix][01] and aims to be a complete system for personal computing with localization support.
 It is based on KDE ([KDE Desktop Environment][08]).
